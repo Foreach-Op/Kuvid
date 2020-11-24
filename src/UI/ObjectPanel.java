@@ -15,6 +15,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
 
     private BufferedImage image;
     private Position position;
+    public GameObject obj;
 
     public ObjectPanel(String type, Position position) {
         this.position=position;
@@ -32,6 +33,12 @@ public class ObjectPanel extends JPanel implements ObjectListener {
 
     @Override
     public void addOnGameScreen() {
+        GameScreen.getInstance().addObjectPanel(this);
+    }
+
+    @Override
+    public void changeLocation(Position position) {
+        this.setBounds(position.getX(),position.getY(),100,100);
         GameScreen.getInstance().addObjectPanel(this);
     }
 

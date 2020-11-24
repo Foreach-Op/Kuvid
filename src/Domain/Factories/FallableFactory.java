@@ -1,5 +1,6 @@
 package Domain.Factories;
 
+import Domain.Listeners.ObjectListener;
 import Domain.Objects.*;
 import UI.ObjectPanel;
 
@@ -17,7 +18,7 @@ public class FallableFactory {
 
     public Fallable getFallableObject(String object,String type){
         Fallable fallable=null;
-        ObjectPanel objPanel;
+        ObjectListener objPanel;
         switch (object){
             case "Molecule":
                 fallable=new Molecule(type);
