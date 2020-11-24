@@ -1,6 +1,7 @@
 package Domain.Factories;
 
 import Domain.Objects.*;
+import UI.ObjectPanel;
 
 public class FallableFactory {
     private static FallableFactory fallableFactory;
@@ -16,9 +17,12 @@ public class FallableFactory {
 
     public Fallable getFallableObject(String object,String type){
         Fallable fallable=null;
+        ObjectPanel objPanel;
         switch (object){
             case "Molecule":
                 fallable=new Molecule(type);
+                objPanel=new ObjectPanel(type,new Position());
+                objPanel.initialize((GameObject) fallable);
                 break;
             case "Blocker":
                 fallable=new Blocker(type);
