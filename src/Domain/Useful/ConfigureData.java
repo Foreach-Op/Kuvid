@@ -8,6 +8,7 @@ import java.util.HashMap;
 public class ConfigureData implements Serializable {
 
     //If it is loaded
+    private boolean isLoaded=false;
     private HashMap<GameObject, Position> frameHash=null;
     private Health health=null;
     private Score score=null;
