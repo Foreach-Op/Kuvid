@@ -1,6 +1,6 @@
 package Domain.Factories;
 
-import Domain.Objects.Fireable;
+import Domain.Objects.*;
 
 public class FireableFactory {
     private static FireableFactory fireableFactory;
@@ -18,10 +18,10 @@ public class FireableFactory {
         Fireable fireable=null;
         switch (object){
             case "Atom":
-                //fireable=new Atom(type);
+                fireable=new Atom(type);
                 break;
             case "Powerup":
-                //fireable=new Powerup(type);
+                fireable=new Powerup(type);
                 // /src/Images/type/subtype
                 break;
         }

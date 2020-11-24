@@ -1,7 +1,6 @@
 package Domain.Factories;
 
-import Domain.Objects.Fallable;
-import Domain.Objects.GameObject;
+import Domain.Objects.*;
 
 public class FallableFactory {
     private static FallableFactory fallableFactory;
@@ -19,13 +18,13 @@ public class FallableFactory {
         Fallable fallable=null;
         switch (object){
             case "Molecule":
-                //fallable=new Molecule(type);
+                fallable=new Molecule(type);
                 break;
             case "Blocker":
-                //fallable=new Blocker(type);
+                fallable=new Blocker(type);
                 break;
             case "Powerup":
-                //fallable=new Powerup(type);
+                fallable=new Powerup(type);
                 break;
         }
         return fallable;
