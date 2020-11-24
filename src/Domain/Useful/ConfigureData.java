@@ -1,22 +1,27 @@
 package Domain.Useful;
 
-import Domain.Objects.Fallable;
-import Domain.Objects.Fireable;
-import Domain.Objects.GameObject;
-import Domain.Objects.Position;
+import Domain.Objects.*;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
 public class ConfigureData implements Serializable {
-    private HashMap<GameObject, Position> frameHash;
-    private HashMap<String,HashMap<String,Integer>> remainingObjects;
-    private Health health;
-    private Score score;
-    private int remainingTime;
-    private Difficulty difficulty;
+
+    //If it is loaded
+    private HashMap<GameObject, Position> frameHash=null;
+    private Health health=null;
+    private Score score=null;
+    private int remainingTime=10;
+    private Fireable objectInTheTrigger=null;
+    //Always
+    //If it is saved, these will be updated
     private HashMap<Fireable,Integer> ammunition;
-    private Fireable objectInTheTrigger;
+    private HashMap<String,HashMap<String,Integer>> remainingObjects;
+    //Even if it is saved, these will be same
+    private Difficulty difficulty;
+    private int L;
+    private HashMap<String,String> alphaType;
+    private HashMap<String,String> BetaType;
 
     public ConfigureData(HashMap<GameObject, Position> frameHash,
                          HashMap<String,HashMap<String,Integer>> remainingObjects,
