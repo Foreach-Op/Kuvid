@@ -2,6 +2,7 @@ package Application.Modes;
 
 
 import Domain.Objects.GameObject;
+import Domain.Singletons.Player;
 import UI.ObjectPanel;
 
 import java.util.ArrayList;
