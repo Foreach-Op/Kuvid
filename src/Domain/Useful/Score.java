@@ -6,7 +6,7 @@ public class Score {
 
     public Score(){}
 
-    public void updateTotalScore(){} //Incomplete
+    public void updateTotalScore(int score){} //Incomplete
 
     public int getTotalScore() {
         return totalScore;

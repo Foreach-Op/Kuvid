@@ -1,8 +1,11 @@
 package Domain.Factories;
 
+import Application.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
 import Domain.Objects.*;
 import UI.ObjectPanel;
+
+import java.util.HashMap;
 
 public class FallableFactory {
     private static FallableFactory fallableFactory;
@@ -16,22 +19,24 @@ public class FallableFactory {
         return fallableFactory;
     }
 
-    public Fallable getFallableObject(String object,String type){
+    public HashMap<Fallable,ObjectListener> createFallableObject(String object,String subtype){
         Fallable fallable=null;
-        ObjectListener objPanel;
+        ObjectListener objPanel=null;
         switch (object){
             case "Molecule":
-                fallable=new Molecule(type);
-                objPanel=new ObjectPanel(type,new Position());
+                fallable=new Molecule(subtype);
+                objPanel=new ObjectPanel("Molecule",subtype,new Position());
                 objPanel.initialize((GameObject) fallable);
                 break;
             case "Blocker":
-                fallable=new Blocker(type);
+                fallable=new Blocker(subtype);
                 break;
             case "Powerup":
-                fallable=new Powerup(type);
+                fallable=new Powerup(subtype);
                 break;
         }
-        return fallable;
+        HashMap<Fallable,ObjectListener> map=new HashMap<>();
+        map.put(fallable,objPanel);
+        return map;
     }
 }

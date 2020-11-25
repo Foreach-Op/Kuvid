@@ -47,5 +47,9 @@ public class Player {
         health.updateHealthLevel(a);
     }
 
+    public void increaseScore(int scr){
+        score.updateTotalScore(scr);
+    }
+
 
 }

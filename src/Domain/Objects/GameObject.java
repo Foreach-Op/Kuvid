@@ -12,10 +12,13 @@ public abstract class GameObject {
 
     public void getDestroy(){
         RunningMode.getInstance().killObj(this);
+        objPanel.onDestroy();
     }
 
+    public abstract void collision(GameObject collider);
+
     public void updatePosition(){
-        objPanel.changeLocation(position);
+        objPanel.onLocationChange(position);
     }
 
     public void setPanel(ObjectPanel objPanel){
@@ -32,5 +35,19 @@ public abstract class GameObject {
         updatePosition();
     }
 
+    public String getType() {
+        return type;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getSubType() {
+        return subType;
+    }
+
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
 }

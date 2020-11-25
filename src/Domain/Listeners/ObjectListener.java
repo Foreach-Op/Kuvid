@@ -5,7 +5,7 @@ import Domain.Objects.Position;
 
 public interface ObjectListener {
     void addOnGameScreen();
-    void changeLocation(Position position);
-
+    void onLocationChange(Position position);
+    void onDestroy();
     void initialize(GameObject fallable);
 }

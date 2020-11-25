@@ -15,16 +15,20 @@ public class ObjectPanel extends JPanel implements ObjectListener {
 
     private BufferedImage image;
     private Position position;
-    public GameObject obj;
 
-    public ObjectPanel(String type, Position position) {
+    public ObjectPanel(String type,String subtype ,Position position) {
         this.position=position;
         this.setBounds(position.getX(),position.getY(),100,100);
         try {
-            image = ImageIO.read(new File("src/Images/"+type));
+            image = ImageIO.read(new File("src/Images/"+type+"/"+subtype));
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
+    }
+
+    public Position getPosition(){
+        return this.position;
     }
 
     public void initialize(GameObject obj){
@@ -37,9 +41,16 @@ public class ObjectPanel extends JPanel implements ObjectListener {
     }
 
     @Override
-    public void changeLocation(Position position) {
+    public void onLocationChange(Position position) {
         this.setBounds(position.getX(),position.getY(),100,100);
-        GameScreen.getInstance().addObjectPanel(this);
+        //GameScreen.getInstance().addObjectPanel(this);
+        repaint();
+    }
+
+    @Override
+    public void onDestroy(){
+        GameScreen.getInstance().remove(this);
+        repaint();
     }
 
     @Override

@@ -14,7 +14,7 @@ public class FireableFactory {
         return fireableFactory;
     }
 
-    public Fireable getFireableObject(String object, String type){
+    public Fireable createFireableObject(String object, String type){
         Fireable fireable=null;
         switch (object){
             case "Atom":
