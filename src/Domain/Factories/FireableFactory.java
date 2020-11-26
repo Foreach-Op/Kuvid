@@ -1,6 +1,10 @@
 package Domain.Factories;
 
+import Domain.Listeners.ObjectListener;
 import Domain.Objects.*;
+import UI.ObjectPanel;
+
+import java.util.HashMap;
 
 public class FireableFactory {
     private static FireableFactory fireableFactory;
@@ -14,17 +18,23 @@ public class FireableFactory {
         return fireableFactory;
     }
 
-    public Fireable createFireableObject(String object, String type){
+    public HashMap<GameObject, ObjectListener> createFireableObject(String object, String type){
         Fireable fireable=null;
+        ObjectListener objPanel=null;
+        HashMap<GameObject,ObjectListener> map=new HashMap<>();
         switch (object){
             case "Atom":
                 fireable=new Atom(type);
+                objPanel=new ObjectPanel("Powerup",type,new Position());
+                objPanel.initialize((GameObject) fireable);
                 break;
             case "Powerup":
                 fireable=new Powerup(type);
-                // /src/Images/type/subtype
+                objPanel=new ObjectPanel("Powerup",type,new Position());
+                objPanel.initialize((GameObject) fireable);
                 break;
         }
-        return fireable;
+        map.put((GameObject) fireable,objPanel);
+        return map;
     }
 }
