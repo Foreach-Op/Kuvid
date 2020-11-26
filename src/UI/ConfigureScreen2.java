@@ -90,6 +90,7 @@ public class ConfigureScreen2 {
         radioButtonLinear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // If Linear Structure is selected, then enable falling type options
                 radioButtonStationary.setEnabled(true);
                 radioButtonSpinning.setEnabled(true);
             }
@@ -98,6 +99,7 @@ public class ConfigureScreen2 {
         radioButtonTriangle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // If Triangle Structure is selected, then unable falling type options and set Stationary type as default
                 radioButtonStationary.setEnabled(false);
                 radioButtonStationary.setSelected(true);
                 radioButtonSpinning.setEnabled(false);
