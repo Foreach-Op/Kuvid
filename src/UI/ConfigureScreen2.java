@@ -10,11 +10,13 @@ import java.util.HashMap;
 public class ConfigureScreen2 {
 
     public JPanel panelMain;
+    private JPanel panelSelectionFields;
 
     private JFormattedTextField textFieldNumberOfAtoms;
     private JFormattedTextField textFieldNumberOfBlockers;
-    private JFormattedTextField textFieldNumberOfMolecules;
     private JFormattedTextField textFieldNumberOfPowerups;
+    private JFormattedTextField textFieldNumberOfMolecules;
+    private JFormattedTextField textFieldLength;
 
     private JPanel panelMoleculeStructure;
     private JRadioButton radioButtonLinear;
@@ -35,11 +37,11 @@ public class ConfigureScreen2 {
     private JTextArea textAreaBlockers;
     private JTextArea textAreaPowerups;
     private JTextArea textAreaMolecules;
+    private JTextArea footnote;
+    private JTextArea textAreaLength;
     private JTextArea textAreaMoleculeStructure;
     private JTextArea textAreaMoleculeFallingType;
     private JTextArea textAreaDifficulty;
-    private JPanel panelSelectionFields;
-    private JTextArea footnote;
 
     private ButtonGroup structureGroup;
     private ButtonGroup fallingTypeGroup;
@@ -61,7 +63,7 @@ public class ConfigureScreen2 {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(510, 400);
+        frame.setSize(510, 420);
         // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         frame.setResizable(false);
 
@@ -115,18 +117,20 @@ public class ConfigureScreen2 {
                     int numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
                     int numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
                     int numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
+                    int length = Integer.parseUnsignedInt(textFieldLength.getText());
 
-                    // Put object amounts into hashmap as String
+                    // Put object amounts and length into hashmap as String
                     configurationInfo.put("atom", textFieldNumberOfAtoms.getText());
                     configurationInfo.put("blocker", textFieldNumberOfBlockers.getText());
                     configurationInfo.put("powerup", textFieldNumberOfPowerups.getText());
                     configurationInfo.put("molecule", textFieldNumberOfMolecules.getText());
+                    configurationInfo.put("length", textFieldLength.getText());
 
                     String moleculeStructure = new String();
                     String fallingType = new String();
                     String gameDifficulty = new String();
 
-                    // Get the selected RadioButton from radioButtonGroups and assign it to a string
+                    // Get the selected RadioButton from radioButtonGroups and assign it to strings
                     for (Enumeration<AbstractButton> rb = structureGroup.getElements(); rb.hasMoreElements(); ) {
                         AbstractButton radioButton = rb.nextElement();
                         if (radioButton.isSelected())
@@ -151,6 +155,9 @@ public class ConfigureScreen2 {
                     configurationInfo.put("difficulty", gameDifficulty);
 
                     System.out.println(configurationInfo);
+
+                    // SEND HASHMAP TO THE DOMAIN
+
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
