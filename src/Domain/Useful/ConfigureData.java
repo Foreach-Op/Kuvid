@@ -8,24 +8,24 @@ import java.util.HashMap;
 public class ConfigureData implements Serializable {
 
     //If it is loaded
-    private boolean isLoaded=false;
-    private HashMap<GameObject, Position> frameHash=null;
-    private Health health=null;
-    private Score score=null;
-    private int remainingTime=10;
-    private Fireable objectInTheTrigger=null;
+    private boolean isLoaded = false;
+    private HashMap<GameObject, Position> frameHash = null;
+    private Health health = null;
+    private Score score = null;
+    private int remainingTime = 10;
+    private Fireable objectInTheTrigger = null;
     //Always
     //If it is saved, these will be updated
-    private HashMap<Fireable,Integer> ammunition;
-    private HashMap<String,HashMap<String,Integer>> remainingObjects;
+    private HashMap<Fireable, Integer> ammunition;
+    private HashMap<String, HashMap<String, Integer>> remainingObjects;
     //Even if it is saved, these will be same
     private Difficulty difficulty;
     private int L;
-    private HashMap<String,String> alphaType;
-    private HashMap<String,String> BetaType;
+    private HashMap<String, String> alphaType;
+    private HashMap<String, String> BetaType;
 
     public ConfigureData(HashMap<GameObject, Position> frameHash,
-                         HashMap<String,HashMap<String,Integer>> remainingObjects,
+                         HashMap<String, HashMap<String, Integer>> remainingObjects,
                          Health health, Score score, int remainingTime,
                          Difficulty difficulty, HashMap<Fireable, Integer> ammunition,
                          Fireable objectInTheTrigger) {
@@ -47,11 +47,11 @@ public class ConfigureData implements Serializable {
         this.frameHash = frameHash;
     }
 
-    public HashMap<String,HashMap<String,Integer>> getRemainingObjects() {
+    public HashMap<String, HashMap<String, Integer>> getRemainingObjects() {
         return remainingObjects;
     }
 
-    public void setRemainingObjects(HashMap<String,HashMap<String,Integer>> remainingObjects) {
+    public void setRemainingObjects(HashMap<String, HashMap<String, Integer>> remainingObjects) {
         this.remainingObjects = remainingObjects;
     }
 
