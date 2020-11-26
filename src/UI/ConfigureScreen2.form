@@ -30,17 +30,19 @@
       <grid id="56538" binding="panelSelectionFields" layout-manager="FormLayout">
         <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
+        <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
+        <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:2dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:3dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
+        <rowspec value="center:d:noGrow"/>
         <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
-        <rowspec value="top:4dlu:noGrow"/>
-        <rowspec value="center:d:grow"/>
+        <rowspec value="center:d:noGrow"/>
         <colspec value="fill:d:noGrow"/>
         <colspec value="left:4dlu:noGrow"/>
         <colspec value="fill:max(d;4px):noGrow"/>
@@ -67,7 +69,7 @@
               <font size="16"/>
               <foreground color="-16777216"/>
               <lineWrap value="false"/>
-              <text value="Number of Atoms:"/>
+              <text value="Number of Atoms*:"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -94,7 +96,7 @@
               <font size="16"/>
               <foreground color="-16777216"/>
               <lineWrap value="false"/>
-              <text value="Number of Reaction Blockers:"/>
+              <text value="Number of Reaction Blockers*:"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -121,7 +123,7 @@
               <font size="16"/>
               <foreground color="-16777216"/>
               <lineWrap value="false"/>
-              <text value="Number of Powerups:"/>
+              <text value="Number of Powerups*:"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -148,7 +150,7 @@
               <font size="16"/>
               <foreground color="-16777216"/>
               <lineWrap value="false"/>
-              <text value="Number of Molecules:"/>
+              <text value="Number of Molecules*:"/>
               <wrapStyleWord value="false"/>
             </properties>
           </component>
@@ -163,7 +165,7 @@
           </component>
           <component id="9cbcd" class="javax.swing.JTextArea" binding="textAreaMoleculeStructure">
             <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
               <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -181,7 +183,7 @@
           </component>
           <grid id="798c8" binding="panelMoleculeStructure" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints>
-              <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
@@ -207,7 +209,7 @@
           </grid>
           <component id="fbb51" class="javax.swing.JTextArea" binding="textAreaMoleculeFallingType">
             <constraints>
-              <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
               <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -225,7 +227,7 @@
           </component>
           <grid id="4114f" binding="panelMoleculeFallingType" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints>
-              <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
@@ -251,7 +253,7 @@
           </grid>
           <component id="43762" class="javax.swing.JTextArea" binding="textAreaDifficulty">
             <constraints>
-              <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
               </grid>
               <forms defaultalign-horz="false" defaultalign-vert="false"/>
@@ -269,7 +271,7 @@
           </component>
           <grid id="a5fdb" binding="panelGameDifficulty" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
             <constraints>
-              <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <forms/>
             </constraints>
             <properties>
@@ -284,11 +286,11 @@
                   <text value="Easy"/>
                 </properties>
               </component>
-              <component id="e8d1e" class="javax.swing.JRadioButton" binding="radioButtonMedium">
+              <component id="e8d1e" class="javax.swing.JRadioButton" binding="radioButtonNormal">
                 <constraints/>
                 <properties>
                   <background color="-1"/>
-                  <text value="Medium"/>
+                  <text value="Normal"/>
                 </properties>
               </component>
               <component id="5f6a" class="javax.swing.JRadioButton" binding="radioButtonHard">
@@ -300,6 +302,20 @@
               </component>
             </children>
           </grid>
+          <component id="85f58" class="javax.swing.JTextArea" binding="footnote">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <text value="*For each type"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

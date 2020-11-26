@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class ConfigureScreen2 {
 
     public JPanel panelMain;
+
     private JFormattedTextField textFieldNumberOfAtoms;
     private JFormattedTextField textFieldNumberOfBlockers;
     private JFormattedTextField textFieldNumberOfMolecules;
@@ -44,11 +45,6 @@ public class ConfigureScreen2 {
     private ButtonGroup structureGroup;
     private ButtonGroup fallingTypeGroup;
     private ButtonGroup gameDifficultyGroup;
-
-    private int numberOfAtoms;
-    private int numberOfBlockers;
-    private int numberOfPowerups;
-    private int numberOfMolecules;
 
     private HashMap<String, String> configurationInfo;
 
@@ -107,16 +103,16 @@ public class ConfigureScreen2 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    numberOfAtoms = Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
+                    int numberOfAtoms = Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
                     configurationInfo.put("atom", textFieldNumberOfAtoms.getText());
 
-                    numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
+                    int numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
                     configurationInfo.put("blocker", textFieldNumberOfBlockers.getText());
 
-                    numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
+                    int numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
                     configurationInfo.put("powerup", textFieldNumberOfPowerups.getText());
 
-                    numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
+                    int numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
                     configurationInfo.put("molecule", textFieldNumberOfMolecules.getText());
 
                     String moleculeStructure = new String();
@@ -168,18 +164,4 @@ public class ConfigureScreen2 {
 
         frame.setLocation(x, y);
     }
-
-    public int getNumberOfAtoms() {
-        return numberOfAtoms;
-    }
-    public int getNumberOfBlockers() {
-        return numberOfBlockers;
-    }
-    public int getNumberOfPowerups() {
-        return numberOfPowerups;
-    }
-    public int getNumberOfMolecules() {
-        return numberOfMolecules;
-    }
-
 }
