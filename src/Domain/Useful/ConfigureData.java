@@ -1,6 +1,7 @@
 package Domain.Useful;
 
 import Domain.Objects.*;
+import UI.ConfigureScreen2;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -24,11 +25,19 @@ public class ConfigureData implements Serializable {
     private HashMap<String,String> alphaType;
     private HashMap<String,String> BetaType;
 
+    //Variables from UI
+    private int numberOfAtoms;
+    private int numberOfBlockers;
+    private int numberOfPowerups;
+    private int numberOfMolecules;
+
+    private ConfigureScreen2 ui;
     public ConfigureData(HashMap<GameObject, Position> frameHash,
                          HashMap<String,HashMap<String,Integer>> remainingObjects,
                          Health health, Score score, int remainingTime,
                          Difficulty difficulty, HashMap<Fireable, Integer> ammunition,
-                         Fireable objectInTheTrigger) {
+                         Fireable objectInTheTrigger, int numberOfAtoms,int numberOfBlockers,int
+                         numberOfPowerups,int numberOfMolecules) {
         this.frameHash = frameHash;
         this.remainingObjects = remainingObjects;
         this.health = health;
@@ -37,6 +46,10 @@ public class ConfigureData implements Serializable {
         this.difficulty = difficulty;
         this.ammunition = ammunition;
         this.objectInTheTrigger = objectInTheTrigger;
+        this.numberOfAtoms = ui.getNumberOfAtoms();
+        this.numberOfBlockers = ui.getNumberOfBlockers();
+        this.numberOfPowerups = ui.getNumberOfPowerups();
+        this.numberOfMolecules = ui.getNumberOfMolecules();
     }
 
     public HashMap<GameObject, Position> getFrameHash() {
@@ -101,5 +114,37 @@ public class ConfigureData implements Serializable {
 
     public void setObjectInTheTrigger(Fireable objectInTheTrigger) {
         this.objectInTheTrigger = objectInTheTrigger;
+    }
+
+    public int getNumberOfMolecules() {
+        return numberOfMolecules;
+    }
+
+    public void setNumberOfMolecules(int numberOfMolecules) {
+        this.numberOfMolecules = numberOfMolecules;
+    }
+
+    public int getNumberOfPowerups() {
+        return numberOfPowerups;
+    }
+
+    public void setNumberOfPowerups(int numberOfPowerups) {
+        this.numberOfPowerups = numberOfPowerups;
+    }
+
+    public int getNumberOfBlockers() {
+        return numberOfBlockers;
+    }
+
+    public void setNumberOfBlockers(int numberOfBlockers) {
+        this.numberOfBlockers = numberOfBlockers;
+    }
+
+    public int getNumberOfAtoms() {
+        return numberOfAtoms;
+    }
+
+    public void setNumberOfAtoms(int numberOfAtoms) {
+        this.numberOfAtoms = numberOfAtoms;
     }
 }
