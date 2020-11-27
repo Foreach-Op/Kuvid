@@ -9,6 +9,12 @@ public abstract class GameObject {
     public Position position;
     protected String type;
     protected String subType;
+    //length
+    //height
+    //angle
+    //rectangle
+    //rectangle must be updated in where? in move, in other updateRectangle method, or in strategy pattern
+    //will GameObject have length/height/angle/rectangle separately or just a rectangle that have all the other info?
 
     public void getDestroy(){
         RunningMode.getInstance().killObj(this);
