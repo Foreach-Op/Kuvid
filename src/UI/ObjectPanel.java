@@ -24,11 +24,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
-    }
-
-    public Position getPosition(){
-        return this.position;
+        //addOnGameScreen();
     }
 
     public void initialize(GameObject obj){
@@ -37,6 +33,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
 
     @Override
     public void addOnGameScreen() {
+        this.setBounds(position.getX(),position.getY(),100,100);
         GameScreen.getInstance().addObjectPanel(this);
     }
 

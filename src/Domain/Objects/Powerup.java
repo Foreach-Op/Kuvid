@@ -1,6 +1,6 @@
 package Domain.Objects;
 
-public class Powerup extends GameObject implements Fallable,Fireable{
+public class Powerup extends GameObject implements Fallable, Fireable {
     public Powerup(String type) {
         super();
     }
@@ -9,4 +9,5 @@ public class Powerup extends GameObject implements Fallable,Fireable{
     public void collision(GameObject collider) {
 
     }
+
 }

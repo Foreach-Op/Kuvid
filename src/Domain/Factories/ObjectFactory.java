@@ -52,9 +52,6 @@ public class ObjectFactory {
             case "Atom":
                 ObjectMap = FireableFactory.getInstance().createFireableObject(object,type);
                 break;
-            case "Shooter":
-                ObjectMap = ShooterFactory.getInstance().createShooterObject(object);
-                break;
             default:
                 ObjectMap = FallableFactory.getInstance().createFallableObject(object,type);
         }

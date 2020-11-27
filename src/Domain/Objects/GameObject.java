@@ -2,7 +2,6 @@ package Domain.Objects;
 
 import Application.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
-import UI.ObjectPanel;
 
 public abstract class GameObject {
     public ObjectListener objPanel;
@@ -27,7 +26,7 @@ public abstract class GameObject {
         objPanel.onLocationChange(position);
     }
 
-    public void setPanel(ObjectPanel objPanel){
+    public void setPanel(ObjectListener objPanel){
         this.objPanel=objPanel;
     }
 

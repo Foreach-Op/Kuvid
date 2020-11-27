@@ -3,56 +3,72 @@ package Domain.Useful;
 import Domain.Objects.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ConfigureData implements Serializable {
 
     //If it is loaded
-    private boolean isLoaded = false;
-    private HashMap<GameObject, Position> frameHash = null;
+    private ArrayList<GameObject> frameObjects = null;
     private Health health = null;
     private Score score = null;
     private int remainingTime = 10;
     private Fireable objectInTheTrigger = null;
+    private HashMap<String, HashMap<String, Integer>> powerUps=null;
     //Always
     //If it is saved, these will be updated
-    private HashMap<Fireable, Integer> ammunition;
+    private boolean isLoaded = false;
+    private HashMap<String, HashMap<String, Integer>> ammunition;
     private HashMap<String, HashMap<String, Integer>> remainingObjects;
     //Even if it is saved, these will be same
     private Difficulty difficulty;
     private int L;
-    private HashMap<String, String> alphaType;
-    private HashMap<String, String> BetaType;
+    private String alphaBetaType;
+    private MovementType alphaBetaMovementType;
 
-    public ConfigureData(HashMap<GameObject, Position> frameHash,
+    public ConfigureData(){}
+
+    public ConfigureData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
                          HashMap<String, HashMap<String, Integer>> remainingObjects,
-                         Health health, Score score, int remainingTime,
-                         Difficulty difficulty, HashMap<Fireable, Integer> ammunition,
-                         Fireable objectInTheTrigger) {
-        this.frameHash = frameHash;
+                         Difficulty difficulty, int l, String alphaBetaType,
+                         MovementType alphaBetaMovementType) {
+        this.isLoaded = isLoaded;
+        this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
+        this.difficulty = difficulty;
+        L = l;
+        this.alphaBetaType = alphaBetaType;
+        this.alphaBetaMovementType = alphaBetaMovementType;
+    }
+
+    public ConfigureData(ArrayList<GameObject> frameObjects, Health health,
+                         Score score, int remainingTime, Fireable objectInTheTrigger,
+                         HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                         HashMap<String, HashMap<String, Integer>> ammunition,
+                         HashMap<String, HashMap<String, Integer>> remainingObjects,
+                         Difficulty difficulty, int l, String alphaBetaType,
+                         MovementType alphaBetaMovementType) {
+        this.frameObjects = frameObjects;
         this.health = health;
         this.score = score;
         this.remainingTime = remainingTime;
-        this.difficulty = difficulty;
-        this.ammunition = ammunition;
         this.objectInTheTrigger = objectInTheTrigger;
-    }
-
-    public HashMap<GameObject, Position> getFrameHash() {
-        return frameHash;
-    }
-
-    public void setFrameHash(HashMap<GameObject, Position> frameHash) {
-        this.frameHash = frameHash;
-    }
-
-    public HashMap<String, HashMap<String, Integer>> getRemainingObjects() {
-        return remainingObjects;
-    }
-
-    public void setRemainingObjects(HashMap<String, HashMap<String, Integer>> remainingObjects) {
+        this.powerUps = powerUps;
+        this.isLoaded = isLoaded;
+        this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
+        this.difficulty = difficulty;
+        L = l;
+        this.alphaBetaType = alphaBetaType;
+        this.alphaBetaMovementType = alphaBetaMovementType;
+    }
+
+    public ArrayList<GameObject> getFrameObjects() {
+        return frameObjects;
+    }
+
+    public void setFrameObjects(ArrayList<GameObject> frameObjects) {
+        this.frameObjects = frameObjects;
     }
 
     public Health getHealth() {
@@ -79,6 +95,46 @@ public class ConfigureData implements Serializable {
         this.remainingTime = remainingTime;
     }
 
+    public Fireable getObjectInTheTrigger() {
+        return objectInTheTrigger;
+    }
+
+    public void setObjectInTheTrigger(Fireable objectInTheTrigger) {
+        this.objectInTheTrigger = objectInTheTrigger;
+    }
+
+    public HashMap<String, HashMap<String, Integer>> getPowerUps() {
+        return powerUps;
+    }
+
+    public void setPowerUps(HashMap<String, HashMap<String, Integer>> powerUps) {
+        this.powerUps = powerUps;
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
+    }
+
+    public HashMap<String, HashMap<String, Integer>> getAmmunition() {
+        return ammunition;
+    }
+
+    public void setAmmunition(HashMap<String, HashMap<String, Integer>> ammunition) {
+        this.ammunition = ammunition;
+    }
+
+    public HashMap<String, HashMap<String, Integer>> getRemainingObjects() {
+        return remainingObjects;
+    }
+
+    public void setRemainingObjects(HashMap<String, HashMap<String, Integer>> remainingObjects) {
+        this.remainingObjects = remainingObjects;
+    }
+
     public Difficulty getDifficulty() {
         return difficulty;
     }
@@ -87,19 +143,27 @@ public class ConfigureData implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public HashMap<Fireable, Integer> getAmmunition() {
-        return ammunition;
+    public int getL() {
+        return L;
     }
 
-    public void setAmmunition(HashMap<Fireable, Integer> ammunition) {
-        this.ammunition = ammunition;
+    public void setL(int l) {
+        L = l;
     }
 
-    public Fireable getObjectInTheTrigger() {
-        return objectInTheTrigger;
+    public String getAlphaBetaType() {
+        return alphaBetaType;
     }
 
-    public void setObjectInTheTrigger(Fireable objectInTheTrigger) {
-        this.objectInTheTrigger = objectInTheTrigger;
+    public void setAlphaBetaType(String alphaBetaType) {
+        this.alphaBetaType = alphaBetaType;
+    }
+
+    public MovementType getAlphaBetaMovementType() {
+        return alphaBetaMovementType;
+    }
+
+    public void setAlphaBetaMovementType(MovementType alphaBetaMovementType) {
+        this.alphaBetaMovementType = alphaBetaMovementType;
     }
 }

@@ -16,7 +16,6 @@ public class RunningMode {
     //and RunningMode without calling RunningMode.
     private ArrayList<GameObject> frameObjects =new ArrayList<>();
 
-    // Bu maplere dokanmayın
     private HashMap<String,HashMap<String,Integer>> fallableMap=new HashMap<>();
     private HashMap<String,HashMap<String,Integer>> fireableMap=new HashMap<>();
 

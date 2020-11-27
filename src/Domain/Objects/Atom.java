@@ -9,4 +9,5 @@ public class Atom extends GameObject implements Fireable {
     public void collision(GameObject collider) {
 
     }
+
 }
