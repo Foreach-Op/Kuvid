@@ -47,8 +47,10 @@ public class Player {
         health.updateHealthLevel(a);
     }
 
-    public void increaseScore(int scr){
-        score.updateTotalScore(scr);
+    // Method changed according to the score formula.
+
+    public void increaseScore(int current_molecules, int remaining_time){
+        score.updateTotalScore(current_molecules,remaining_time);
     }
 
 

@@ -1,18 +1,28 @@
 package Domain.Useful;
 
 public class Health {
-    //Görkem
-    private int healthLevel=100;
+
+    //We start from 100 health.
+
+    private double healthLevel = 100;
+    private static int game_width;
+
 
     public Health(){}
 
-    public void updateHealthLevel(int a){} //Incomplete
-
-    public void setHealthLevel(int healthLevel) {
-        this.healthLevel = healthLevel;
+    //formula for calculating health. Each time a blocker explodes we subtract
+    //(game width / distance between blocker and shooter) from the current total health.
+    public void updateHealthLevel(double distance){
+        healthLevel -= game_width/distance;
     }
 
-    public int getHealthLevel(){
+    // Unnecessary at the moment
+    /*
+    public void setHealthLevel(int healthLevel) {
+        this.healthLevel = healthLevel;
+    }*/
+
+    public double getHealthLevel(){
         return this.healthLevel;
     }
 }
