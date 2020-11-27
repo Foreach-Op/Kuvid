@@ -1,7 +1,7 @@
 package Domain.Useful;
 
 public class Score {
-
+    //Görkem
     private int totalScore=0;
 
     public Score(){}
