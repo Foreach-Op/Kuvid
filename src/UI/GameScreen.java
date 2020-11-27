@@ -20,8 +20,4 @@ public class GameScreen extends JFrame {
         this.add(objectPanel);
     }
 
-
-    /// objectPanel.obj.collison(objectPanel2.obj)
-
-
 }

@@ -1,71 +1,74 @@
 package Domain.Useful;
 
 import Domain.Objects.*;
-import UI.ConfigureScreen2;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ConfigureData implements Serializable {
 
     //If it is loaded
-    private boolean isLoaded = false;
-    private HashMap<GameObject, Position> frameHash = null;
+    private ArrayList<GameObject> frameObjects = null;
     private Health health = null;
     private Score score = null;
     private int remainingTime = 10;
     private Fireable objectInTheTrigger = null;
+    private HashMap<String, HashMap<String, Integer>> powerUps=null;
     //Always
     //If it is saved, these will be updated
-    private HashMap<Fireable, Integer> ammunition;
+    private boolean isLoaded = false;
+    private HashMap<String, HashMap<String, Integer>> ammunition;
     private HashMap<String, HashMap<String, Integer>> remainingObjects;
     //Even if it is saved, these will be same
     private Difficulty difficulty;
     private int L;
-    private HashMap<String, String> alphaType;
-    private HashMap<String, String> BetaType;
+    private String alphaBetaType;
+    private MovementType alphaBetaMovementType;
 
-    //Variables from UI
-    private int numberOfAtoms;
-    private int numberOfBlockers;
-    private int numberOfPowerups;
-    private int numberOfMolecules;
+    public ConfigureData(){}
 
-    private ConfigureScreen2 ui;
-    public ConfigureData(HashMap<GameObject, Position> frameHash,
+    public ConfigureData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
                          HashMap<String, HashMap<String, Integer>> remainingObjects,
-                         Health health, Score score, int remainingTime,
-                         Difficulty difficulty, HashMap<Fireable, Integer> ammunition,
-                         Fireable objectInTheTrigger, int numberOfAtoms,int numberOfBlockers,int
-                         numberOfPowerups,int numberOfMolecules) {
-        this.frameHash = frameHash;
+                         Difficulty difficulty, int l, String alphaBetaType,
+                         MovementType alphaBetaMovementType) {
+        this.isLoaded = isLoaded;
+        this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
+        this.difficulty = difficulty;
+        L = l;
+        this.alphaBetaType = alphaBetaType;
+        this.alphaBetaMovementType = alphaBetaMovementType;
+    }
+
+    public ConfigureData(ArrayList<GameObject> frameObjects, Health health,
+                         Score score, int remainingTime, Fireable objectInTheTrigger,
+                         HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                         HashMap<String, HashMap<String, Integer>> ammunition,
+                         HashMap<String, HashMap<String, Integer>> remainingObjects,
+                         Difficulty difficulty, int l, String alphaBetaType,
+                         MovementType alphaBetaMovementType) {
+        this.frameObjects = frameObjects;
         this.health = health;
         this.score = score;
         this.remainingTime = remainingTime;
-        this.difficulty = difficulty;
-        this.ammunition = ammunition;
         this.objectInTheTrigger = objectInTheTrigger;
-        this.numberOfAtoms = ui.getNumberOfAtoms();
-        this.numberOfBlockers = ui.getNumberOfBlockers();
-        this.numberOfPowerups = ui.getNumberOfPowerups();
-        this.numberOfMolecules = ui.getNumberOfMolecules();
-    }
-
-    public HashMap<GameObject, Position> getFrameHash() {
-        return frameHash;
-    }
-
-    public void setFrameHash(HashMap<GameObject, Position> frameHash) {
-        this.frameHash = frameHash;
-    }
-
-    public HashMap<String, HashMap<String, Integer>> getRemainingObjects() {
-        return remainingObjects;
-    }
-
-    public void setRemainingObjects(HashMap<String, HashMap<String, Integer>> remainingObjects) {
+        this.powerUps = powerUps;
+        this.isLoaded = isLoaded;
+        this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
+        this.difficulty = difficulty;
+        L = l;
+        this.alphaBetaType = alphaBetaType;
+        this.alphaBetaMovementType = alphaBetaMovementType;
+    }
+
+    public ArrayList<GameObject> getFrameObjects() {
+        return frameObjects;
+    }
+
+    public void setFrameObjects(ArrayList<GameObject> frameObjects) {
+        this.frameObjects = frameObjects;
     }
 
     public Health getHealth() {
@@ -92,22 +95,6 @@ public class ConfigureData implements Serializable {
         this.remainingTime = remainingTime;
     }
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public HashMap<Fireable, Integer> getAmmunition() {
-        return ammunition;
-    }
-
-    public void setAmmunition(HashMap<Fireable, Integer> ammunition) {
-        this.ammunition = ammunition;
-    }
-
     public Fireable getObjectInTheTrigger() {
         return objectInTheTrigger;
     }
@@ -116,35 +103,67 @@ public class ConfigureData implements Serializable {
         this.objectInTheTrigger = objectInTheTrigger;
     }
 
-    public int getNumberOfMolecules() {
-        return numberOfMolecules;
+    public HashMap<String, HashMap<String, Integer>> getPowerUps() {
+        return powerUps;
     }
 
-    public void setNumberOfMolecules(int numberOfMolecules) {
-        this.numberOfMolecules = numberOfMolecules;
+    public void setPowerUps(HashMap<String, HashMap<String, Integer>> powerUps) {
+        this.powerUps = powerUps;
     }
 
-    public int getNumberOfPowerups() {
-        return numberOfPowerups;
+    public boolean isLoaded() {
+        return isLoaded;
     }
 
-    public void setNumberOfPowerups(int numberOfPowerups) {
-        this.numberOfPowerups = numberOfPowerups;
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
     }
 
-    public int getNumberOfBlockers() {
-        return numberOfBlockers;
+    public HashMap<String, HashMap<String, Integer>> getAmmunition() {
+        return ammunition;
     }
 
-    public void setNumberOfBlockers(int numberOfBlockers) {
-        this.numberOfBlockers = numberOfBlockers;
+    public void setAmmunition(HashMap<String, HashMap<String, Integer>> ammunition) {
+        this.ammunition = ammunition;
     }
 
-    public int getNumberOfAtoms() {
-        return numberOfAtoms;
+    public HashMap<String, HashMap<String, Integer>> getRemainingObjects() {
+        return remainingObjects;
     }
 
-    public void setNumberOfAtoms(int numberOfAtoms) {
-        this.numberOfAtoms = numberOfAtoms;
+    public void setRemainingObjects(HashMap<String, HashMap<String, Integer>> remainingObjects) {
+        this.remainingObjects = remainingObjects;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public int getL() {
+        return L;
+    }
+
+    public void setL(int l) {
+        L = l;
+    }
+
+    public String getAlphaBetaType() {
+        return alphaBetaType;
+    }
+
+    public void setAlphaBetaType(String alphaBetaType) {
+        this.alphaBetaType = alphaBetaType;
+    }
+
+    public MovementType getAlphaBetaMovementType() {
+        return alphaBetaMovementType;
+    }
+
+    public void setAlphaBetaMovementType(MovementType alphaBetaMovementType) {
+        this.alphaBetaMovementType = alphaBetaMovementType;
     }
 }

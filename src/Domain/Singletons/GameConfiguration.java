@@ -1,13 +1,9 @@
 package Domain.Singletons;
 
-import Domain.Objects.Fallable;
 import Domain.Objects.Fireable;
 import Domain.Objects.GameObject;
 import Domain.Objects.Position;
-import Domain.Useful.ConfigureData;
-import Domain.Useful.Difficulty;
-import Domain.Useful.Health;
-import Domain.Useful.Score;
+import Domain.Useful.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,12 +29,14 @@ public class GameConfiguration {
         this.data = data;
     }
 
-    public void setData(HashMap<GameObject, Position> frameHash,
-                        HashMap<String,HashMap<String,Integer>> remainingObjects,
-                        Health health, Score score, int remainingTime,
-                        Difficulty difficulty, HashMap<Fireable, Integer> ammunition,
-                        Fireable objectInTheTrigger) {
-        this.data=new ConfigureData(frameHash, remainingObjects, health, score, remainingTime, difficulty, ammunition, objectInTheTrigger);
+    public void setData(ArrayList<GameObject> frameObjects, Health health,
+                        Score score, int remainingTime, Fireable objectInTheTrigger,
+                        HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                        HashMap<String, HashMap<String, Integer>> ammunition,
+                        HashMap<String, HashMap<String, Integer>> remainingObjects,
+                        Difficulty difficulty, int l, String alphaBetaType,
+                        MovementType alphaBetaMovementType) {
+    this.data=new ConfigureData(frameObjects, health, score, remainingTime, objectInTheTrigger, powerUps, isLoaded, ammunition, remainingObjects, difficulty, l, alphaBetaType, alphaBetaMovementType);
     }
 
 

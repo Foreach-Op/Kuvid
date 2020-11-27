@@ -1,8 +1,6 @@
 package Domain.Objects;
 
-import Application.Modes.RunningMode;
-
-public class Molecule extends GameObject implements Fallable{
+public class Molecule extends GameObject implements Fallable {
     public Molecule(String type) {
         super();
         //..
@@ -27,4 +25,6 @@ public class Molecule extends GameObject implements Fallable{
         GameObject gameObj=(GameObject) obj;
         return this.subType.equals(gameObj.subType);
     }
+
+
 }

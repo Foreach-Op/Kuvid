@@ -2,7 +2,6 @@ package Domain.Objects;
 
 import Application.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
-import UI.ObjectPanel;
 
 public abstract class GameObject {
     public ObjectListener objPanel;

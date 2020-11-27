@@ -25,7 +25,6 @@ public class ObjectPanel extends JPanel implements ObjectListener {
             ioException.printStackTrace();
         }
         //addOnGameScreen();
-
     }
 
     public void initialize(GameObject obj){

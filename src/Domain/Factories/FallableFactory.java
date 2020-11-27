@@ -1,6 +1,5 @@
 package Domain.Factories;
 
-import Application.Modes.GameController;
 import Application.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
 import Domain.Objects.*;
