@@ -1,7 +1,7 @@
 package Domain.Useful;
 
 public class Health {
-
+    //Görkem
     private int healthLevel=100;
 
     public Health(){}

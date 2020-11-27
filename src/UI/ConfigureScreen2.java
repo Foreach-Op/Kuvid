@@ -1,22 +1,22 @@
 package UI;
 
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
 import java.util.Enumeration;
 import java.util.HashMap;
 
 public class ConfigureScreen2 {
 
     public JPanel panelMain;
+    private JPanel panelSelectionFields;
 
     private JFormattedTextField textFieldNumberOfAtoms;
     private JFormattedTextField textFieldNumberOfBlockers;
-    private JFormattedTextField textFieldNumberOfMolecules;
     private JFormattedTextField textFieldNumberOfPowerups;
+    private JFormattedTextField textFieldNumberOfMolecules;
+    private JFormattedTextField textFieldLength;
 
     private JPanel panelMoleculeStructure;
     private JRadioButton radioButtonLinear;
@@ -28,7 +28,7 @@ public class ConfigureScreen2 {
 
     private JPanel panelGameDifficulty;
     private JRadioButton radioButtonEasy;
-    private JRadioButton radioButtonMedium;
+    private JRadioButton radioButtonNormal;
     private JRadioButton radioButtonHard;
 
     private JButton buttonStart;
@@ -37,10 +37,11 @@ public class ConfigureScreen2 {
     private JTextArea textAreaBlockers;
     private JTextArea textAreaPowerups;
     private JTextArea textAreaMolecules;
+    private JTextArea footnote;
+    private JTextArea textAreaLength;
     private JTextArea textAreaMoleculeStructure;
     private JTextArea textAreaMoleculeFallingType;
     private JTextArea textAreaDifficulty;
-    private JPanel panelSelectionFields;
 
     private ButtonGroup structureGroup;
     private ButtonGroup fallingTypeGroup;
@@ -51,17 +52,22 @@ public class ConfigureScreen2 {
     public ConfigureScreen2() {
         configurationInfo = new HashMap<>();
 
-        JFrame frame = new JFrame("Initial Settings");
-        frame.setContentPane(panelMain);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(510, 400);
-        frame.setResizable(false);
-        CenterFrame(frame);
-
+        CreateUIElements();
         InitializeRBGroups();
         ActionListener();
+    }
+
+    private void CreateUIElements() {
+        JFrame frame = new JFrame("Game Configuration");
+        frame.setContentPane(panelMain);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setSize(510, 420);
+        // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        frame.setResizable(false);
+
+        CenterFrame(frame);
     }
 
     private void InitializeRBGroups() {
@@ -77,15 +83,16 @@ public class ConfigureScreen2 {
 
         gameDifficultyGroup = new ButtonGroup();
         gameDifficultyGroup.add(radioButtonEasy);
-        gameDifficultyGroup.add(radioButtonMedium);
+        gameDifficultyGroup.add(radioButtonNormal);
         gameDifficultyGroup.add(radioButtonHard);
-        radioButtonMedium.setSelected(true);
+        radioButtonNormal.setSelected(true);
     }
 
     private void ActionListener() {
         radioButtonLinear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // If Linear Structure is selected, then enable falling type options
                 radioButtonStationary.setEnabled(true);
                 radioButtonSpinning.setEnabled(true);
             }
@@ -94,7 +101,9 @@ public class ConfigureScreen2 {
         radioButtonTriangle.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // If Triangle Structure is selected, then unable falling type options and set Stationary type as default
                 radioButtonStationary.setEnabled(false);
+                radioButtonStationary.setSelected(true);
                 radioButtonSpinning.setEnabled(false);
             }
         });
@@ -103,51 +112,51 @@ public class ConfigureScreen2 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    // Take numerical inputs as non-negative integers.
                     int numberOfAtoms = Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
-                    configurationInfo.put("atom", textFieldNumberOfAtoms.getText());
-
                     int numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
-                    configurationInfo.put("blocker", textFieldNumberOfBlockers.getText());
-
                     int numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
-                    configurationInfo.put("powerup", textFieldNumberOfPowerups.getText());
-
                     int numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
+                    int length = Integer.parseUnsignedInt(textFieldLength.getText());
+
+                    // Put object amounts and length into hashmap as String
+                    configurationInfo.put("atom", textFieldNumberOfAtoms.getText());
+                    configurationInfo.put("blocker", textFieldNumberOfBlockers.getText());
+                    configurationInfo.put("powerup", textFieldNumberOfPowerups.getText());
                     configurationInfo.put("molecule", textFieldNumberOfMolecules.getText());
+                    configurationInfo.put("length", textFieldLength.getText());
 
                     String moleculeStructure = new String();
                     String fallingType = new String();
                     String gameDifficulty = new String();
 
+                    // Get the selected RadioButton from radioButtonGroups and assign it to strings
                     for (Enumeration<AbstractButton> rb = structureGroup.getElements(); rb.hasMoreElements(); ) {
                         AbstractButton radioButton = rb.nextElement();
-                        if (radioButton.isSelected()) {
+                        if (radioButton.isSelected())
                             moleculeStructure = radioButton.getText();
-                            configurationInfo.put("structure", moleculeStructure);
-                        }
                     }
 
-                    if(moleculeStructure.equals("Linear")){
-                        for (Enumeration<AbstractButton> rb = fallingTypeGroup.getElements(); rb.hasMoreElements(); ) {
-                            AbstractButton radioButton = rb.nextElement();
-                            if (radioButton.isSelected()) {
-                                fallingType = radioButton.getText();
-                                configurationInfo.put("type", fallingType);
-                            }
-                        }
-                    } else {
-                        configurationInfo.put("type", "null");
+                    for (Enumeration<AbstractButton> rb = fallingTypeGroup.getElements(); rb.hasMoreElements(); ) {
+                        AbstractButton radioButton = rb.nextElement();
+                        if (radioButton.isSelected())
+                            fallingType = radioButton.getText();
                     }
 
                     for (Enumeration<AbstractButton> rb = gameDifficultyGroup.getElements(); rb.hasMoreElements(); ) {
                         AbstractButton radioButton = rb.nextElement();
-                        if (radioButton.isSelected()) {
+                        if (radioButton.isSelected())
                             gameDifficulty = radioButton.getText();
-                            configurationInfo.put("difficulty", gameDifficulty);
-                        }
                     }
 
+                    // Put those strings into hashmap
+                    configurationInfo.put("structure", moleculeStructure);
+                    configurationInfo.put("type", fallingType);
+                    configurationInfo.put("difficulty", gameDifficulty);
+
                     System.out.println(configurationInfo);
+
+                    // SEND HASHMAP TO THE DOMAIN
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");

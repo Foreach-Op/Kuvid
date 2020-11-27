@@ -21,7 +21,7 @@ public abstract class GameObject {
         objPanel.onLocationChange(position);
     }
 
-    public void setPanel(ObjectPanel objPanel){
+    public void setPanel(ObjectListener objPanel){
         this.objPanel=objPanel;
     }
 

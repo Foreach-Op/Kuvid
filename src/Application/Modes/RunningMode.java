@@ -30,7 +30,7 @@ public class RunningMode {
     public void addFrame(ObjectPanel panel){
         framePanels.add(panel);
     }
-
+//test
     public void addGameObject(ObjectPanel panel){
         framePanels.add(panel);
     }
