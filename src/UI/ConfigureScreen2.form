@@ -24,6 +24,9 @@
           <forms/>
         </constraints>
         <properties>
+          <background color="-8284823"/>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="true"/>
           <text value="Start"/>
         </properties>
       </component>
@@ -81,7 +84,9 @@
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
+              <nextFocusableComponent value="5a559"/>
               <text value=""/>
+              <verifyInputWhenFocusTarget value="true"/>
             </properties>
           </component>
           <component id="a1ea9" class="javax.swing.JTextArea" binding="textAreaBlockers">
@@ -108,6 +113,7 @@
               <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
+              <nextFocusableComponent value="49983"/>
               <text value=""/>
             </properties>
           </component>
@@ -135,6 +141,7 @@
               <forms/>
             </constraints>
             <properties>
+              <nextFocusableComponent value="87a6f"/>
               <text value=""/>
             </properties>
           </component>
@@ -162,6 +169,7 @@
               <forms/>
             </constraints>
             <properties>
+              <nextFocusableComponent value="507ad"/>
               <text value=""/>
             </properties>
           </component>
