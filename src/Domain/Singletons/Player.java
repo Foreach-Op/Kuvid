@@ -8,7 +8,6 @@ public class Player {
     private static Player player;
     private Health health=new Health();
     private Score score=new Score();
-    private Shooter shooter=new Shooter();
 
     private Player(){}
 
@@ -33,14 +32,6 @@ public class Player {
 
     public void setScore(Score score) {
         this.score = score;
-    }
-
-    public Shooter getShooter() {
-        return shooter;
-    }
-
-    public void setShooter(Shooter shooter) {
-        this.shooter = shooter;
     }
 
     public void getDamage(int a){
