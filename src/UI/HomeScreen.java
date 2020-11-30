@@ -51,6 +51,13 @@ public class HomeScreen {
 
             }
         });
+
+        buttonExit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(-1);
+            }
+        });
     }
 
     private void CenterFrame(JFrame frame){
