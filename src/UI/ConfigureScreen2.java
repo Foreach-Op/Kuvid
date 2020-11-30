@@ -42,6 +42,8 @@ public class ConfigureScreen2 {
     private JTextArea textAreaMoleculeStructure;
     private JTextArea textAreaMoleculeFallingType;
     private JTextArea textAreaDifficulty;
+    private JButton buttonSetDefaultValues;
+    private JButton buttonResetValues;
 
     private ButtonGroup structureGroup;
     private ButtonGroup fallingTypeGroup;
@@ -60,10 +62,10 @@ public class ConfigureScreen2 {
     private void CreateUIElements() {
         JFrame frame = new JFrame("Game Configuration");
         frame.setContentPane(panelMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(510, 420);
+        frame.setSize(500, 500);
         // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         frame.setResizable(false);
 
@@ -161,6 +163,41 @@ public class ConfigureScreen2 {
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
+            }
+        });
+
+        buttonSetDefaultValues.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // If Triangle Structure is selected, then unable falling type options and set Stationary type as default
+                textFieldNumberOfAtoms.setText("100");
+                textFieldNumberOfBlockers.setText("10");
+                textFieldNumberOfPowerups.setText("20");
+                textFieldNumberOfMolecules.setText("100");
+                textFieldLength.setText("1000");
+                radioButtonLinear.setSelected(true);
+                radioButtonStationary.setSelected(true);
+                radioButtonNormal.setSelected(true);
+
+                radioButtonStationary.setEnabled(true);
+                radioButtonSpinning.setEnabled(true);
+            }
+        });
+
+        buttonResetValues.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textFieldNumberOfAtoms.setText("");
+                textFieldNumberOfBlockers.setText("");
+                textFieldNumberOfPowerups.setText("");
+                textFieldNumberOfMolecules.setText("");
+                textFieldLength.setText("");
+                radioButtonLinear.setSelected(true);
+                radioButtonStationary.setSelected(true);
+                radioButtonNormal.setSelected(true);
+
+                radioButtonStationary.setEnabled(true);
+                radioButtonSpinning.setEnabled(true);
             }
         });
     }

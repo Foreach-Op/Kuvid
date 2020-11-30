@@ -10,8 +10,10 @@ import java.util.HashMap;
 
 public class RunningMode {
     private static RunningMode runningMode;
-
+//
     private ArrayList<ObjectPanel> framePanels=new ArrayList<>();
+    //can we create a singleton that have the frameObjects? So, we can use a common list from MovementHandler, CollisionHandler
+    //and RunningMode without calling RunningMode.
     private ArrayList<GameObject> frameObjects =new ArrayList<>();
 
     private HashMap<String,HashMap<String,Integer>> fallableMap=new HashMap<>();
