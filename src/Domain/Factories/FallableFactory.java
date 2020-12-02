@@ -19,7 +19,7 @@ public class FallableFactory {
         return fallableFactory;
     }
 
-    public HashMap<GameObject,ObjectListener> createFallableObject(String object,String subtype){
+ /* public HashMap<GameObject,ObjectListener> createFallableObject(String object,String subtype){
         Fallable fallable=null;
         ObjectListener objPanel=null;
         HashMap<GameObject,ObjectListener> map=new HashMap<>();
@@ -42,5 +42,5 @@ public class FallableFactory {
         }
         map.put((GameObject) fallable,objPanel);
         return map;
-    }
+    }*/
 }

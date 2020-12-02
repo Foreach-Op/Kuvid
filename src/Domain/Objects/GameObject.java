@@ -2,12 +2,13 @@ package Domain.Objects;
 
 import Application.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
+import Domain.Useful.Subtype;
 
 public abstract class GameObject {
     public ObjectListener objPanel;
     public Position position;
     protected String type;
-    protected String subType;
+    protected Subtype subType;
     //length
     //height
     //angle
@@ -23,7 +24,7 @@ public abstract class GameObject {
     public abstract void collision(GameObject collider);
 
     public void updatePosition(){
-        objPanel.onLocationChange(position);
+        objPanel.onLocationChange();
     }
 
     public void setPanel(ObjectListener objPanel){
@@ -48,11 +49,11 @@ public abstract class GameObject {
         this.type = type;
     }
 
-    public String getSubType() {
+    public Subtype getSubType() {
         return subType;
     }
 
-    public void setSubType(String subType) {
+    public void setSubType(Subtype subType) {
         this.subType = subType;
     }
 }

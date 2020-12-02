@@ -32,13 +32,18 @@ public class ObjectPanel extends JPanel implements ObjectListener {
     }
 
     @Override
+    public void onCreate(GameObject obj) {
+
+    }
+
+    @Override
     public void addOnGameScreen() {
         this.setBounds(position.getX(),position.getY(),100,100);
         GameScreen.getInstance().addObjectPanel(this);
     }
 
     @Override
-    public void onLocationChange(Position position) {
+    public void onLocationChange() {
         this.setBounds(position.getX(),position.getY(),100,100);
         //GameScreen.getInstance().addObjectPanel(this);
         repaint();

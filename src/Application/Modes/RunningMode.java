@@ -50,11 +50,11 @@ public class RunningMode {
     }
 
     // Move ve collision ayrı class da işlenecek
-    public void move(){
+    /*public void move(){
         for (GameObject object: frameObjects) {
-            object.move(0,5);
+            object.setPosition(object.getPosition+ 7,5);
         }
-    }
+    }*/
 
     public void collisionDetect(){
         for (int i=0;i<framePanels.size();i++) {

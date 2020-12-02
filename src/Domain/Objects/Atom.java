@@ -1,7 +1,9 @@
 package Domain.Objects;
 
+import Domain.Useful.Subtype;
+
 public class Atom extends GameObject implements Fireable {
-    public Atom(String type) {
+    public Atom(Subtype type) {
         super();
     }
 
