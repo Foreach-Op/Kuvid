@@ -19,7 +19,7 @@ public class ObjectFactory {
         return objectFactory;
     }
 
-    public HashMap<GameObject, ObjectListener> createObject(String object){
+    /*public HashMap<GameObject, ObjectListener> createObject(String object){
         HashMap<GameObject, ObjectListener> ObjectMap;
         ObjectMap=createObject(object,"","");
         return ObjectMap;
@@ -36,10 +36,10 @@ public class ObjectFactory {
 
         return ObjectMap;
 
-    }
+    }*/
 
 
-    public HashMap<GameObject, ObjectListener> createObject(String object, String type, String property){
+    /*public HashMap<GameObject, ObjectListener> createObject(String object, String type, String property){
         HashMap<GameObject, ObjectListener> ObjectMap;
         switch (object){
             case "Powerup":
@@ -55,10 +55,10 @@ public class ObjectFactory {
             default:
                 ObjectMap = FallableFactory.getInstance().createFallableObject(object,type);
         }
-        return ObjectMap;
+        return ObjectMap;*/
     }
 
 
 
 
-}
+

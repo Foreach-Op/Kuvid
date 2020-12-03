@@ -12,4 +12,5 @@ public class Atom extends GameObject implements Fireable {
 
     }
 
+
 }
