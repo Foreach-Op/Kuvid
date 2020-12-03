@@ -1,9 +1,13 @@
 package Domain.Objects;
 
-public class Molecule extends GameObject implements Fallable {
-    public Molecule(String type) {
+import Domain.Useful.Subtype;
+
+import java.util.HashMap;
+
+public class Molecule extends GameObject implements Fallable, Collectable{
+    public Molecule(Subtype type) {
         super();
-        //..
+        this.subType = type;
     }
 
 
@@ -27,4 +31,12 @@ public class Molecule extends GameObject implements Fallable {
     }
 
 
+    @Override
+    public HashMap<Integer, HashMap<Subtype, Integer>> getCollected() {
+        HashMap<Integer, HashMap<Subtype, Integer>> mapToReturn = new HashMap<Integer, HashMap<Subtype, Integer>>();
+        HashMap<Subtype, Integer> map = new HashMap<Subtype, Integer>();
+        map.put(this.subType, this.subType.getNumOfAtoms());
+        mapToReturn.put(0, map);
+        return mapToReturn;
+    }
 }

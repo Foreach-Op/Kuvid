@@ -39,4 +39,15 @@ public class Blender {
             }
         }
     }
+    public void breakAtom(Subtype fromType, Subtype toType, Shooter shooter){
+        if(blendRules.get(toType) != null && blendRules.get(toType).get(fromType)!= null){
+            int add = blendRules.get(toType).get(fromType);
+            HashMap<Subtype, Integer> shooterMap = shooter.getNumOfAtoms();
+            if (shooterMap.get(fromType)>=1) {
+                shooterMap.replace(toType, shooterMap.get(toType) + add);
+                shooterMap.replace(fromType, shooterMap.get(fromType) - 1);
+                shooter.setNumOfAtoms(shooterMap);
+            }
+        }
+    }
 }
