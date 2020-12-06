@@ -17,7 +17,7 @@ public abstract class GameObject {
     //will GameObject have length/height/angle/rectangle separately or just a rectangle that have all the other info?
 
     public void getDestroy(){
-        //RunningMode.getInstance().killObj(this);
+        // RunningMode.getInstance().killObj(this);
         objPanel.onDestroy();
     }
 
