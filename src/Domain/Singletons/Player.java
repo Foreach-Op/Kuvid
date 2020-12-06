@@ -39,10 +39,7 @@ public class Player {
     }
 
     // Method changed according to the score formula.
-
     public void increaseScore(int current_molecules, int remaining_time){
         score.updateTotalScore(current_molecules,remaining_time);
     }
-
-
 }
