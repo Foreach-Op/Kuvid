@@ -15,6 +15,7 @@ public class Load {
         try(FileInputStream file = new FileInputStream(fileName);
             ObjectInputStream read = new ObjectInputStream(file)){
             data=(GameData) read.readObject();
+            data.setLoaded(true); //sets the gameData is loaded
         }
         catch(Exception e){
             e.printStackTrace();
