@@ -1,4 +1,4 @@
-package Application.Modes;
+package Domain.Modes;
 
 import Domain.Singletons.GameConfiguration;
 import Domain.Useful.GameData;

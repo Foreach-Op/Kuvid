@@ -1,11 +1,15 @@
 package UI;
 
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import java.util.HashMap;
+
+import Domain.Modes.*;  //Domain.Modes.GameController does not work
 
 public class ConfigureScreen2 {
 
@@ -50,10 +54,11 @@ public class ConfigureScreen2 {
     private ButtonGroup gameDifficultyGroup;
 
     private HashMap<String, String> configurationInfo;
+    private GameController gameController;
 
     public ConfigureScreen2() {
         configurationInfo = new HashMap<>();
-
+        gameController=new GameController();
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
@@ -159,6 +164,8 @@ public class ConfigureScreen2 {
                     System.out.println(configurationInfo);
 
                     // SEND HASHMAP TO THE DOMAIN
+                    gameController.startGame(configurationInfo);
+                    //LOAD GAME?
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");

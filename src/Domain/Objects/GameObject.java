@@ -1,6 +1,6 @@
 package Domain.Objects;
 
-import Application.Modes.RunningMode;
+//import Domain.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
 import Domain.Useful.Subtype;
 

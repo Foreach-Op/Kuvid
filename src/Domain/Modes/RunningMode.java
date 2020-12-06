@@ -1,16 +1,15 @@
-package Application.Modes;
+package Domain.Modes;
 
 
 import Domain.Objects.GameObject;
-import Domain.Singletons.Player;
 import UI.ObjectPanel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RunningMode {
-    private static RunningMode runningMode;
-//
+
+    //
     private ArrayList<ObjectPanel> framePanels=new ArrayList<>();
     //can we create a singleton that have the frameObjects? So, we can use a common list from MovementHandler, CollisionHandler
     //and RunningMode without calling RunningMode.
@@ -18,6 +17,10 @@ public class RunningMode {
 
     private HashMap<String,HashMap<String,Integer>> fallableMap=new HashMap<>();
     private HashMap<String,HashMap<String,Integer>> fireableMap=new HashMap<>();
+
+    public RunningMode(){
+    }
+
 
     public void addFrame(ObjectPanel panel){
         framePanels.add(panel);
@@ -59,4 +62,7 @@ public class RunningMode {
         }
     }
 
+    public void startGame() {
+
+    }
 }
