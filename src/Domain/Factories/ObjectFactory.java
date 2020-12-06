@@ -19,6 +19,10 @@ public class ObjectFactory {
         return objectFactory;
     }
 
+    public static void createObject(){
+
+    }
+
     /*public HashMap<GameObject, ObjectListener> createObject(String object){
         HashMap<GameObject, ObjectListener> ObjectMap;
         ObjectMap=createObject(object,"","");
