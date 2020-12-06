@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.StatisticsWindow">
+  <grid id="27dc6" binding="panelMain" layout-manager="FormLayout">
+    <rowspec value="center:150px:noGrow"/>
+    <rowspec value="center:250px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:max(d;4px):grow"/>
+    <colspec value="fill:10dlu:noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="720"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <inheritsPopupMenu value="true"/>
+      <maximumSize width="240" height="720"/>
+      <minimumSize width="240" height="720"/>
+      <preferredSize width="240" height="720"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="c5d36" binding="panelGameInfo" layout-manager="FormLayout">
+        <rowspec value="center:10dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:d:noGrow"/>
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-10223845"/>
+          <maximumSize width="240" height="180"/>
+          <minimumSize width="240" height="180"/>
+          <preferredSize width="240" height="180"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a52" class="javax.swing.JTextArea" binding="textAreaScore">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <font name="DialogInput" size="22"/>
+              <foreground color="-1"/>
+              <opaque value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="Score:"/>
+            </properties>
+          </component>
+          <component id="e1554" class="javax.swing.JTextArea" binding="textAreaTime">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <font name="DialogInput" size="22"/>
+              <foreground color="-1"/>
+              <opaque value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="Time:"/>
+            </properties>
+          </component>
+          <component id="81fa3" class="javax.swing.JTextArea" binding="textAreaHealth">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <font name="DialogInput" size="22"/>
+              <foreground color="-1"/>
+              <opaque value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="Health:"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="50b0c" binding="panelPowerupInfo" layout-manager="FormLayout">
+        <rowspec value="center:10dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:80px:noGrow"/>
+        <colspec value="left:10dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):grow"/>
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <background color="-3806465"/>
+          <maximumSize width="240" height="250"/>
+          <minimumSize width="240" height="250"/>
+          <preferredSize width="240" height="250"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b7d4c" class="javax.swing.JButton" binding="powerupSigma">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <maximumSize width="38" height="50"/>
+              <minimumSize width="38" height="50"/>
+              <opaque value="false"/>
+              <preferredSize width="38" height="50"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="35740" class="javax.swing.JTextArea" binding="textAreaSigmaPowerupAmount">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="62965" class="javax.swing.JButton" binding="powerupBeta">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <maximumSize width="57" height="50"/>
+              <minimumSize width="57" height="50"/>
+              <opaque value="false"/>
+              <preferredSize width="57" height="50"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="4a251" class="javax.swing.JTextArea" binding="textAreaBetaPowerupAmount">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="b7647" class="javax.swing.JButton" binding="powerupAlpha">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <maximumSize width="65" height="50"/>
+              <minimumSize width="65" height="50"/>
+              <opaque value="false"/>
+              <preferredSize width="65" height="50"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="6e526" class="javax.swing.JTextArea" binding="textAreaAlphaPowerupAmount">
+            <constraints>
+              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="9698" class="javax.swing.JButton" binding="powerupGamma">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <borderPainted value="false"/>
+              <contentAreaFilled value="false"/>
+              <maximumSize width="32" height="50"/>
+              <minimumSize width="32" height="50"/>
+              <opaque value="false"/>
+              <preferredSize width="35" height="50"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="95511" class="javax.swing.JTextArea" binding="textAreaGammaPowerupAmount">
+            <constraints>
+              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="2f505" binding="panelAtomInfo" layout-manager="FormLayout">
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:d:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):grow"/>
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <background color="-1507502"/>
+          <maximumSize width="240" height="200"/>
+          <minimumSize width="240" height="200"/>
+          <preferredSize width="240" height="200"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="4cf3a" class="javax.swing.JLabel" binding="atomIconAlpha">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <maximumSize width="50" height="50"/>
+              <minimumSize width="50" height="50"/>
+              <preferredSize width="50" height="50"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="a9334" class="javax.swing.JTextArea" binding="textAreaAlphaAtomAmount">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="10677" class="javax.swing.JLabel" binding="atomIconGamma">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <maximumSize width="50" height="50"/>
+              <minimumSize width="50" height="50"/>
+              <preferredSize width="50" height="50"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="256ad" class="javax.swing.JTextArea" binding="textAreaGammaAtomAmount">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="e3ec0" class="javax.swing.JLabel" binding="atomIconSigma">
+            <constraints>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <maximumSize width="50" height="50"/>
+              <minimumSize width="50" height="50"/>
+              <preferredSize width="50" height="50"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="48b5e" class="javax.swing.JTextArea" binding="textAreaSigmaAtomAmount">
+            <constraints>
+              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="c2c60" class="javax.swing.JLabel" binding="atomIconBeta">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms/>
+            </constraints>
+            <properties>
+              <maximumSize width="50" height="50"/>
+              <minimumSize width="50" height="50"/>
+              <preferredSize width="50" height="50"/>
+              <text value="Label"/>
+            </properties>
+          </component>
+          <component id="a9d14" class="javax.swing.JTextArea" binding="textAreaBetaAtomAmount">
+            <constraints>
+              <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <autoscrolls value="true"/>
+              <editable value="false"/>
+              <foreground color="-16777216"/>
+              <opaque value="false"/>
+              <preferredSize width="100" height="17"/>
+              <requestFocusEnabled value="false"/>
+              <selectedTextColor color="-1"/>
+              <text value="0000"/>
+            </properties>
+          </component>
+          <component id="b9bb9" class="javax.swing.JLabel" binding="blendIcon">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <maximumSize width="50" height="50"/>
+              <minimumSize width="50" height="50"/>
+              <preferredSize width="50" height="50"/>
+              <text value=""/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
