@@ -14,8 +14,8 @@ public abstract class GameObject {
     public MovementofObject movementofObject;
 
     //bu ikisi silinecek gibi ya da bilgi olarak tutulacak sadece
-    public String type;
-    public String subType;
+    private String type;
+    private String subType;
 
 
     //protected String type;
