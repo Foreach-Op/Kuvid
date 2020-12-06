@@ -2,13 +2,24 @@ package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
 import Domain.Listeners.ObjectListener;
+import Domain.Useful.Rectangle;
 import Domain.Useful.Subtype;
 
 public abstract class GameObject {
-    public ObjectListener objPanel;
+    //Position
+    //movementPerFrame(+-y,+-x)
+    //rectangle
     public Position position;
-    protected String type;
-    protected Subtype subType;
+    public Rectangle rectangle;
+    public MovementofObject movementofObject;
+
+    //bu ikisi silinecek gibi ya da bilgi olarak tutulacak sadece
+    public String type;
+    public String subType;
+
+
+    //protected String type;
+    //protected Subtype subType;
     //length
     //height
     //angle
@@ -16,16 +27,17 @@ public abstract class GameObject {
     //rectangle must be updated in where? in move, in other updateRectangle method, or in strategy pattern
     //will GameObject have length/height/angle/rectangle separately or just a rectangle that have all the other info?
 
+    /*
+    bu yorumdakiler silinecek static yapılacak objectler,
+
     public void getDestroy(){
         // RunningMode.getInstance().killObj(this);
-        objPanel.onDestroy();
+        //objPanel.onDestroy();
     }
 
     public abstract void collision(GameObject collider);
 
-    public void updatePosition(){
-        objPanel.onLocationChange();
-    }
+    //public void updatePosition(){ objPanel.onLocationChange(); }
 
     public void setPanel(ObjectListener objPanel){
         this.objPanel=objPanel;
@@ -35,10 +47,13 @@ public abstract class GameObject {
         objPanel.addOnGameScreen();
     }
 
+     */
+
+    //dışardan yönetilecek gerek yok, ama şimdilik dursun
     public void move(int x,int y){
         //position.setX(position.getX()+10);
         position.setY(position.getY()+y);
-        updatePosition();
+        //updatePosition();
     }
 
     public String getType() {
@@ -49,11 +64,11 @@ public abstract class GameObject {
         this.type = type;
     }
 
-    public Subtype getSubType() {
+    public String getSubType() {
         return subType;
     }
 
-    public void setSubType(Subtype subType) {
+    public void setSubType(String subType) {
         this.subType = subType;
     }
 }
