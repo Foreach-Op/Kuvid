@@ -19,7 +19,6 @@ public class Shooter extends GameObject {
         numOfPowerups.put(Subtype.GAMMA,0);
         numOfPowerups.put(Subtype.SIGMA,0);
 
-
     }
     public void collision(GameObject collider) {
 

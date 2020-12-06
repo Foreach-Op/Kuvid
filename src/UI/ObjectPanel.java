@@ -20,7 +20,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
         this.position=position;
         this.setBounds(position.getX(),position.getY(),100,100);
         try {
-            image = ImageIO.read(new File("src/Images/"+type+"/"+subtype));
+            image = ImageIO.read(new File("assets/"+type+"s/"+subtype));
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

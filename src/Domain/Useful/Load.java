@@ -10,11 +10,11 @@ public class Load {
         this.fileName=fileName;
     }
 
-    public ConfigureData LoadTheGame(){
-        ConfigureData data=null;
+    public GameData LoadTheGame(){
+        GameData data=null;
         try(FileInputStream file = new FileInputStream(fileName);
             ObjectInputStream read = new ObjectInputStream(file)){
-            data=(ConfigureData) read.readObject();
+            data=(GameData) read.readObject();
         }
         catch(Exception e){
             e.printStackTrace();

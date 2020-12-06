@@ -1,7 +1,7 @@
 package Application.Modes;
 
 import Domain.Singletons.GameConfiguration;
-import Domain.Useful.ConfigureData;
+import Domain.Useful.GameData;
 import Domain.Useful.Difficulty;
 import Domain.Useful.Load;
 import Domain.Useful.MovementType;
@@ -11,18 +11,18 @@ import java.util.HashMap;
 public class BuildMode {
 
     public void startNewGame(HashMap<String,String> configMap){
-        ConfigureData configureData=hashToConfigData(configMap);
-        GameConfiguration.getInstance().setData(configureData);
+        GameData gameData =hashToConfigData(configMap);
+        GameConfiguration.getInstance().setData(gameData);
     }
 
     public void loadTheGame(String fileName){
         Load load=new Load(fileName);
-        ConfigureData configureData=load.LoadTheGame();
-        GameConfiguration.getInstance().setData(configureData);
+        GameData gameData =load.LoadTheGame();
+        GameConfiguration.getInstance().setData(gameData);
     }
 
-    public ConfigureData hashToConfigData(HashMap<String,String> configMap){
-        ConfigureData configureData=new ConfigureData();
+    public GameData hashToConfigData(HashMap<String,String> configMap){
+        GameData gameData =new GameData();
 
         boolean isLoaded = false;
 
@@ -66,7 +66,7 @@ public class BuildMode {
 
 
 
-        return configureData;
+        return gameData;
 
     }
 }

@@ -17,7 +17,7 @@ public class Save {
             ObjectOutputStream write = new ObjectOutputStream(file)){
 
             GameConfiguration gameConfiguration = GameConfiguration.getInstance();
-            ConfigureData data=gameConfiguration.getData();
+            GameData data=gameConfiguration.getData();
 
             write.writeObject(data);
         }

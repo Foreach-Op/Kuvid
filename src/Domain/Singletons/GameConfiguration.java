@@ -2,7 +2,6 @@ package Domain.Singletons;
 
 import Domain.Objects.Fireable;
 import Domain.Objects.GameObject;
-import Domain.Objects.Position;
 import Domain.Useful.*;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.HashMap;
 
 public class GameConfiguration {
     private static GameConfiguration gameConfiguration;
-    private ConfigureData data;
+    private GameData data;
 
     private GameConfiguration(){}
 
@@ -21,11 +20,11 @@ public class GameConfiguration {
         return gameConfiguration;
     }
 
-    public ConfigureData getData() {
+    public GameData getData() {
         return this.data;
     }
 
-    public void setData(ConfigureData data) {
+    public void setData(GameData data) {
         this.data = data;
     }
 
@@ -36,7 +35,7 @@ public class GameConfiguration {
                         HashMap<String, HashMap<String, Integer>> remainingObjects,
                         Difficulty difficulty, int l, String alphaBetaType,
                         MovementType alphaBetaMovementType) {
-    this.data=new ConfigureData(frameObjects, health, score, remainingTime, objectInTheTrigger, powerUps, isLoaded, ammunition, remainingObjects, difficulty, l, alphaBetaType, alphaBetaMovementType);
+    this.data=new GameData(frameObjects, health, score, remainingTime, objectInTheTrigger, powerUps, isLoaded, ammunition, remainingObjects, difficulty, l, alphaBetaType, alphaBetaMovementType);
     }
 
 

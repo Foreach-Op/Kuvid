@@ -1,6 +1,5 @@
-package Domain.Singletons;
+package Domain.Objects;
 
-import Domain.Objects.Shooter;
 import Domain.Useful.Subtype;
 
 import java.util.HashMap;
@@ -9,7 +8,7 @@ public class Blender {
     //Blender class is created for blend functionality. It is a singleton and created with Pure Fabrication pattern.
     private static Blender instance;
     private static HashMap<Subtype, HashMap<Subtype, Integer>> blendRules = new HashMap<Subtype, HashMap<Subtype, Integer>>();
-    private Blender(){
+    public Blender(){
         HashMap<Subtype, Integer> alphaMap = new HashMap<Subtype, Integer>();
         alphaMap.put(Subtype.BETA,2);
         alphaMap.put(Subtype.GAMMA,3);
@@ -22,12 +21,8 @@ public class Blender {
         HashMap<Subtype, Integer> gammaMap = new HashMap<Subtype, Integer>();
         gammaMap.put(Subtype.SIGMA, 2);
         blendRules.put(Subtype.GAMMA, gammaMap);
+    }
 
-    }
-    public static Blender getInstance(){
-        if(instance == null) instance = new Blender();
-        return instance;
-    }
     public void blend(Subtype fromType, Subtype toType, Shooter shooter){
         if(blendRules.get(fromType) != null && blendRules.get(fromType).get(toType)!= null){
             int use = blendRules.get(fromType).get(toType);

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ConfigureData implements Serializable {
+public class GameData implements Serializable {
 
     //If it is loaded
     private ArrayList<GameObject> frameObjects = null;
@@ -26,12 +26,12 @@ public class ConfigureData implements Serializable {
     private String alphaBetaType;
     private MovementType alphaBetaMovementType;
 
-    public ConfigureData(){}
+    public GameData(){}
 
-    public ConfigureData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
-                         HashMap<String, HashMap<String, Integer>> remainingObjects,
-                         Difficulty difficulty, int l, String alphaBetaType,
-                         MovementType alphaBetaMovementType) {
+    public GameData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
+                    HashMap<String, HashMap<String, Integer>> remainingObjects,
+                    Difficulty difficulty, int l, String alphaBetaType,
+                    MovementType alphaBetaMovementType) {
         this.isLoaded = isLoaded;
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
@@ -41,13 +41,13 @@ public class ConfigureData implements Serializable {
         this.alphaBetaMovementType = alphaBetaMovementType;
     }
 
-    public ConfigureData(ArrayList<GameObject> frameObjects, Health health,
-                         Score score, int remainingTime, Fireable objectInTheTrigger,
-                         HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
-                         HashMap<String, HashMap<String, Integer>> ammunition,
-                         HashMap<String, HashMap<String, Integer>> remainingObjects,
-                         Difficulty difficulty, int l, String alphaBetaType,
-                         MovementType alphaBetaMovementType) {
+    public GameData(ArrayList<GameObject> frameObjects, Health health,
+                    Score score, int remainingTime, Fireable objectInTheTrigger,
+                    HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                    HashMap<String, HashMap<String, Integer>> ammunition,
+                    HashMap<String, HashMap<String, Integer>> remainingObjects,
+                    Difficulty difficulty, int l, String alphaBetaType,
+                    MovementType alphaBetaMovementType) {
         this.frameObjects = frameObjects;
         this.health = health;
         this.score = score;

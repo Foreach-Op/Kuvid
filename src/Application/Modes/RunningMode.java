@@ -19,19 +19,10 @@ public class RunningMode {
     private HashMap<String,HashMap<String,Integer>> fallableMap=new HashMap<>();
     private HashMap<String,HashMap<String,Integer>> fireableMap=new HashMap<>();
 
-    private RunningMode(){}
-
-    public static RunningMode getInstance(){
-        if(runningMode ==null){
-            runningMode =new RunningMode();
-        }
-        return runningMode;
-    }
-
     public void addFrame(ObjectPanel panel){
         framePanels.add(panel);
     }
-//test
+    //test
     public void addGameObject(ObjectPanel panel){
         framePanels.add(panel);
     }
