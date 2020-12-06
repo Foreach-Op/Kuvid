@@ -35,6 +35,7 @@ public class StatisticsWindow {
     public StatisticsWindow(){
         CreateUIElements();
         SetPowerupIcons();
+        SetAtomIcons();
         ActionListener();
     }
 
@@ -65,6 +66,28 @@ public class StatisticsWindow {
         ImageIcon gammaIcon = new ImageIcon("./assets/powerups/+gamma-b.png");
         Image newGammaIcon = gammaIcon.getImage().getScaledInstance(32, 50,  java.awt.Image.SCALE_SMOOTH);
         powerupGamma.setIcon(new ImageIcon(newGammaIcon));
+    }
+
+    private void SetAtomIcons(){
+        ImageIcon alphaIcon = new ImageIcon("./assets/atoms/alpha.png");
+        Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH);
+        atomIconAlpha.setIcon(new ImageIcon(newAlphaIcon));
+
+        ImageIcon gammaIcon = new ImageIcon("./assets/atoms/gamma.png");
+        Image newGammaIcon = gammaIcon.getImage().getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH);
+        atomIconGamma.setIcon(new ImageIcon(newGammaIcon));
+
+        ImageIcon sigmaIcon = new ImageIcon("./assets/atoms/sigma.png");
+        Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH);
+        atomIconSigma.setIcon(new ImageIcon(newSigmaIcon));
+
+        ImageIcon betaIcon = new ImageIcon("./assets/atoms/beta.png");
+        Image newBetaIcon = betaIcon.getImage().getScaledInstance(30, 30,  java.awt.Image.SCALE_SMOOTH);
+        atomIconBeta.setIcon(new ImageIcon(newBetaIcon));
+
+        ImageIcon blendIconLocal = new ImageIcon("./assets/mixer.png");
+        Image newBlendIcon = blendIconLocal.getImage().getScaledInstance(75, 75,  java.awt.Image.SCALE_SMOOTH);
+        blendIcon.setIcon(new ImageIcon(newBlendIcon));
     }
 
     private void ActionListener(){

@@ -272,14 +272,14 @@
         <children>
           <component id="4cf3a" class="javax.swing.JLabel" binding="atomIconAlpha">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
               <maximumSize width="50" height="50"/>
               <minimumSize width="50" height="50"/>
-              <preferredSize width="50" height="50"/>
-              <text value="Label"/>
+              <preferredSize width="30" height="30"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="a9334" class="javax.swing.JTextArea" binding="textAreaAlphaAtomAmount">
@@ -302,14 +302,14 @@
           </component>
           <component id="10677" class="javax.swing.JLabel" binding="atomIconGamma">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
               <maximumSize width="50" height="50"/>
               <minimumSize width="50" height="50"/>
-              <preferredSize width="50" height="50"/>
-              <text value="Label"/>
+              <preferredSize width="30" height="30"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="256ad" class="javax.swing.JTextArea" binding="textAreaGammaAtomAmount">
@@ -332,14 +332,14 @@
           </component>
           <component id="e3ec0" class="javax.swing.JLabel" binding="atomIconSigma">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
             </constraints>
             <properties>
               <maximumSize width="50" height="50"/>
               <minimumSize width="50" height="50"/>
-              <preferredSize width="50" height="50"/>
-              <text value="Label"/>
+              <preferredSize width="30" height="30"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="48b5e" class="javax.swing.JTextArea" binding="textAreaSigmaAtomAmount">
@@ -362,14 +362,14 @@
           </component>
           <component id="c2c60" class="javax.swing.JLabel" binding="atomIconBeta">
             <constraints>
-              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
             </constraints>
             <properties>
               <maximumSize width="50" height="50"/>
               <minimumSize width="50" height="50"/>
-              <preferredSize width="50" height="50"/>
-              <text value="Label"/>
+              <preferredSize width="30" height="30"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="a9d14" class="javax.swing.JTextArea" binding="textAreaBetaAtomAmount">
@@ -398,7 +398,7 @@
             <properties>
               <maximumSize width="50" height="50"/>
               <minimumSize width="50" height="50"/>
-              <preferredSize width="50" height="50"/>
+              <preferredSize width="75" height="75"/>
               <text value=""/>
             </properties>
           </component>
