@@ -1,12 +1,16 @@
 package Domain.Objects;
 
-import Domain.Useful.Subtype;
 
-import java.util.HashMap;
+import Domain.Useful.FinalValues;
 
 public class Molecule extends GameObject{
-    public Molecule(Subtype type) {
+
+    /*public Molecule(Subtype type) {
         super();
+    }*/
+
+    public Molecule(String subType){
+        super(FinalValues.MOLECULE,subType);
     }
 
 

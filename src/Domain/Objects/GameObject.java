@@ -18,6 +18,12 @@ public abstract class GameObject {
     private String subType;
 
 
+    public GameObject(){}
+
+    public GameObject(String type,String subType){
+        this.type=type;
+        this.subType=subType;
+    }
     //protected String type;
     //protected Subtype subType;
     //length
