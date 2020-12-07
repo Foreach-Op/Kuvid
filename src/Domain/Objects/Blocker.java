@@ -5,10 +5,6 @@ public class Blocker extends GameObject implements Fallable {
         super();
     }
 
-    @Override
-    public void collision(GameObject collider) {
-
-    }
 
 
 }

@@ -27,9 +27,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
         //addOnGameScreen();
     }
 
-    public void initialize(GameObject obj){
-        obj.setPanel(this);
-    }
+    //public void initialize(GameObject obj){obj.setPanel(this);}
 
     @Override
     public void onCreate(GameObject obj) {
