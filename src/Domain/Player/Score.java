@@ -1,4 +1,4 @@
-package Domain.Useful;
+package Domain.Player;
 
 public class Score {
 
@@ -14,6 +14,10 @@ public class Score {
 
     public void updateTotalScore(int collected_molecules, int collection_time){
         totalScore = collected_molecules + (1/collection_time);
+    }
+
+    public void setTotalScore(double score){
+        this.totalScore=score;
     }
 
     public double getTotalScore() {

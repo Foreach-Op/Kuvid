@@ -1,5 +1,6 @@
-package Domain.Objects;
+package Domain.Functionalities;
 
+import Domain.Objects.Shooter;
 import Domain.Useful.Subtype;
 
 import java.util.HashMap;

@@ -1,17 +1,17 @@
-package Domain.Singletons;
+package Domain.Functionalities;
 
-public class GameStatueController {
+public class GameStatueControl {
 
-    private static GameStatueController singleton;
+    private static GameStatueControl singleton;
 
     private boolean isPaused=false;
     private boolean isEnded=false;
 
-    private GameStatueController(){}
+    private GameStatueControl(){}
 
-    public synchronized static GameStatueController getInstance() {
+    public synchronized static GameStatueControl getInstance() {
         if(singleton==null){
-            singleton=new GameStatueController();
+            singleton=new GameStatueControl();
         }
         return singleton;
     }

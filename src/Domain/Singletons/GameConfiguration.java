@@ -1,6 +1,5 @@
 package Domain.Singletons;
 
-import Domain.Objects.Fireable;
 import Domain.Objects.GameObject;
 import Domain.Useful.*;
 
@@ -28,8 +27,8 @@ public class GameConfiguration {
         this.data = data;
     }
 
-    public void setData(ArrayList<GameObject> frameObjects, Health health,
-                        Score score, int remainingTime, Fireable objectInTheTrigger,
+    public void setData(ArrayList<GameObject> frameObjects, int health,
+                        int score, double remainingTime, GameObject objectInTheTrigger,
                         HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
                         HashMap<String, HashMap<String, Integer>> ammunition,
                         HashMap<String, HashMap<String, Integer>> remainingObjects,

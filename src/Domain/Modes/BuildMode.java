@@ -1,6 +1,9 @@
 package Domain.Modes;
 
+import Domain.Functionalities.Load;
+import Domain.Objects.Shooter;
 import Domain.Singletons.GameConfiguration;
+import Domain.Player.Player;
 import Domain.Useful.*;
 
 import java.util.HashMap;
@@ -10,12 +13,19 @@ public class BuildMode {
     public void startNewGame(HashMap<String, String> configMap) {
         GameData gameData = hashToConfigData(configMap);
         GameConfiguration.getInstance().setData(gameData);
+        RunningMode runningMode=new RunningMode();
     }
 
     public void loadTheGame(String fileName) {
         Load load = new Load(fileName);
         GameData gameData = load.LoadTheGame();
         GameConfiguration.getInstance().setData(gameData);
+        Player.getInstance().setHealth(gameData.getHealth());
+        Player.getInstance().setScore(gameData.getScore());
+        //Time will be set
+
+
+        RunningMode runningMode=new RunningMode(gameData);
     }
 
     public GameData hashToConfigData(HashMap<String, String> configMap) {

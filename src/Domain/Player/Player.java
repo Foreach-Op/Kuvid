@@ -1,8 +1,4 @@
-package Domain.Singletons;
-
-import Domain.Objects.Shooter;
-import Domain.Useful.Health;
-import Domain.Useful.Score;
+package Domain.Player;
 
 public class Player {
     private static Player player;
@@ -22,16 +18,16 @@ public class Player {
         return health;
     }
 
-    public void setHealth(Health health) {
-        this.health = health;
+    public void setHealth(int health) {
+        this.health.setHealthLevel(health);
     }
 
-    public Score getScore() {
-        return score;
+    public double getScore() {
+        return score.getTotalScore();
     }
 
-    public void setScore(Score score) {
-        this.score = score;
+    public void setScore(double score) {
+        this.score.setTotalScore(score);
     }
 
     public void getDamage(int a){

@@ -2,13 +2,14 @@ package UI;
 
 import Domain.Useful.GameData;
 
+import Domain.Statistics.StaticWindowListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StatisticsWindow {
-
+public class StatisticsWindow implements StaticWindowListener {
     private JPanel panelMain;
 
     private JPanel panelGameInfo;
@@ -139,5 +140,9 @@ public class StatisticsWindow {
                 System.out.println("Gamma selected");
             }
         });
+    }
+
+    @Override
+    public void onChange() {
     }
 }

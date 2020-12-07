@@ -10,10 +10,10 @@ public class GameData implements Serializable {
 
     //If it is loaded
     private ArrayList<GameObject> frameObjects = null;
-    private Health health = null;
-    private Score score = null;
-    private int remainingTime = 10;
-    private Fireable objectInTheTrigger = null;
+    private int health = 100;
+    private double score = 0;
+    private double remainingTime = 10;
+    private GameObject objectInTheTrigger = null;
     private HashMap<String, HashMap<String, Integer>> powerUps=null;
     //Always
     //If it is saved, these will be updated
@@ -41,8 +41,8 @@ public class GameData implements Serializable {
         this.alphaBetaMovementType = alphaBetaMovementType;
     }
 
-    public GameData(ArrayList<GameObject> frameObjects, Health health,
-                    Score score, int remainingTime, Fireable objectInTheTrigger,
+    public GameData(ArrayList<GameObject> frameObjects, int health,
+                    double score, double remainingTime, GameObject objectInTheTrigger,
                     HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
@@ -71,23 +71,23 @@ public class GameData implements Serializable {
         this.frameObjects = frameObjects;
     }
 
-    public Health getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public void setHealth(Health health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
-    public Score getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
-    public int getRemainingTime() {
+    public double getRemainingTime() {
         return remainingTime;
     }
 
@@ -95,11 +95,11 @@ public class GameData implements Serializable {
         this.remainingTime = remainingTime;
     }
 
-    public Fireable getObjectInTheTrigger() {
+    public GameObject getObjectInTheTrigger() {
         return objectInTheTrigger;
     }
 
-    public void setObjectInTheTrigger(Fireable objectInTheTrigger) {
+    public void setObjectInTheTrigger(GameObject objectInTheTrigger) {
         this.objectInTheTrigger = objectInTheTrigger;
     }
 

@@ -14,26 +14,7 @@ public class Molecule extends GameObject{
     }
 
 
- /*   public void collision(GameObject obj){
-        if(obj.type=="Atom"){
-            if(this.equals(obj)){
-                this.getDestroy();
-                obj.getDestroy();
-            } else{
-                obj.getDestroy();
-            }
-        } else if(obj.type=="Blocker"){
-            this.getDestroy();
-        }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        GameObject gameObj=(GameObject) obj;
-        return this.subType.equals(gameObj.subType);
-    }
-
-
+/*
     @Override
     public HashMap<Integer, HashMap<Subtype, Integer>> getCollected() {
         HashMap<Integer, HashMap<Subtype, Integer>> mapToReturn = new HashMap<Integer, HashMap<Subtype, Integer>>();

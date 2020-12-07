@@ -1,4 +1,4 @@
-package Domain.Useful;
+package Domain.Player;
 
 public class Health {
 
@@ -21,7 +21,9 @@ public class Health {
     public void setHealthLevel(int healthLevel) {
         this.healthLevel = healthLevel;
     }*/
-
+    public void setHealthLevel(int healthLevel){
+        this.healthLevel=healthLevel;
+    }
     public double getHealthLevel(){
         return this.healthLevel;
     }
