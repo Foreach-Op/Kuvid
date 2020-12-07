@@ -1,6 +1,6 @@
 package Domain.Objects;
 
-public class Blocker extends GameObject implements Fallable {
+public class Blocker extends GameObject{
     public Blocker(String type) {
         super();
     }

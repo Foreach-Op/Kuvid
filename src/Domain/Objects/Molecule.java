@@ -4,15 +4,9 @@ import Domain.Useful.Subtype;
 
 import java.util.HashMap;
 
-public class Molecule extends GameObject implements Fallable, Collectable{
+public class Molecule extends GameObject{
     public Molecule(Subtype type) {
         super();
-
-    }
-
-    @Override
-    public HashMap<Integer, HashMap<Subtype, Integer>> getCollected() {
-        return null;
     }
 
 

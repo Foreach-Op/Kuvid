@@ -1,8 +1,6 @@
 package Domain.Objects;
 
 import Domain.Useful.Subtype;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Shooter extends GameObject {
