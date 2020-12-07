@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ObjectPanel extends JPanel implements ObjectListener {
+public class ObjectPanel extends JPanel{
 
     private BufferedImage image;
     private Position position;
@@ -27,30 +27,9 @@ public class ObjectPanel extends JPanel implements ObjectListener {
         //addOnGameScreen();
     }
 
-    //public void initialize(GameObject obj){obj.setPanel(this);}
-
-    @Override
-    public void onCreate(GameObject obj) {
-
-    }
-
-    @Override
-    public void addOnGameScreen() {
-        this.setBounds(position.getX(),position.getY(),100,100);
-        GameScreen.getInstance().addObjectPanel(this);
-    }
-
-    @Override
-    public void onLocationChange() {
-        this.setBounds(position.getX(),position.getY(),100,100);
-        //GameScreen.getInstance().addObjectPanel(this);
-        repaint();
-    }
-
-    @Override
-    public void onDestroy(){
-        GameScreen.getInstance().remove(this);
-        repaint();
+    public void updatePosition(Position newPosition){
+        this.position=newPosition;
+        //repaint();
     }
 
     @Override

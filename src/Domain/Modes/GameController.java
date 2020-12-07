@@ -15,12 +15,12 @@ public class GameController {
 
     public void startGame(HashMap<String, String> configurationInfo){
         buildMode.startNewGame(configurationInfo);
-        runningMode.startGame();
+        //runningMode.startGame();
     }
 
     public void LoadGame(String FileName){
         buildMode.loadTheGame(FileName);
-        runningMode.startGame();
+        //runningMode.startGame();
     }
 
     public void KeyAction(KeyEvent keyEvent){
