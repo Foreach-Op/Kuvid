@@ -1,7 +1,6 @@
 package UI;
 
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -62,7 +61,7 @@ public class ConfigureScreen2 {
 
     public ConfigureScreen2() {
         configurationInfo = new HashMap<>();
-        gameController=new GameController();
+        gameController = new GameController();
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
@@ -71,11 +70,9 @@ public class ConfigureScreen2 {
     private void CreateUIElements() {
         JFrame frame = new JFrame("Game Configuration");
         frame.setContentPane(panelMain);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(500, 500);
-        // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         frame.setResizable(false);
 
         radioButtonLinear.setText(MoleculeStructure.LINEAR.toString());
