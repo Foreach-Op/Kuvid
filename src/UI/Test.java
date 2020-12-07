@@ -2,7 +2,7 @@ package UI;
 
 public class Test {
     public static void main(String[] args) {
-        new ConfigureScreen2();
+        new ConfigureScreen();
 
     }
 }

@@ -37,7 +37,7 @@ public class HomeScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseHomeScreen();
-                new ConfigureScreen2();
+                new ConfigureScreen();
             }
         });
 
