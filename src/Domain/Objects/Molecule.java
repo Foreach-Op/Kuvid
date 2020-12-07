@@ -18,7 +18,7 @@ public class Molecule extends GameObject implements Collectable{
 
     public String[] getCollected() {
       String[] result = new String[2];
-      result[0] = this.getType();
+      result[0] = FinalValues.ATOM;
       result[1] = this.getSubType();
         return result;
     }

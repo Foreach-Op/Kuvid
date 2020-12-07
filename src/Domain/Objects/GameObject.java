@@ -8,7 +8,6 @@ import Domain.Useful.Subtype;
 public abstract class GameObject {
     //Position
     //movementPerFrame(+-y,+-x)
-    //rectangle
     public Position position;
     public Rectangle rectangle;
     public MovementofObject movementofObject;
@@ -41,19 +40,7 @@ public abstract class GameObject {
         //objPanel.onDestroy();
     }
 
-    public abstract void collision(GameObject collider);
-
-    //public void updatePosition(){ objPanel.onLocationChange(); }
-
-    public void setPanel(ObjectListener objPanel){
-        this.objPanel=objPanel;
-    }
-
-    public void putOnScreen(){
-        objPanel.addOnGameScreen();
-    }
-
-     */
+ */
 
     //dışardan yönetilecek gerek yok, ama şimdilik dursun
     public void move(int x,int y){

@@ -1,6 +1,7 @@
 package Domain.ObjectCreator;
 
 import Domain.Objects.*;
+import Domain.Useful.FinalValues;
 
 public class ObjectFactory {
 
@@ -17,22 +18,18 @@ public class ObjectFactory {
 
 
     public GameObject createObject(String type,String subtype){
-        GameObject gameObject=null;
+
         switch (type){
-            case "Molecule":
-                gameObject=new Molecule(subtype);
-                break;
-            case "Blocker":
-                gameObject=new Blocker(subtype);
-                break;
-            case "Powerup":
-                gameObject=new Powerup(subtype);
-                break;
-            case "Atom":
-                gameObject=new Atom(subtype);
-                break;
+            case FinalValues.MOLECULE:
+                return MoleculeFactory.getInstance().createMolecule(subtype);
+            case FinalValues.BLOCKER:
+                return BlockerFactory.getInstance().createBlocker(subtype);
+            case FinalValues.POWERUP:
+                return PowerupFactory.getInstance().createPowerup(subtype);
+            default:
+               return AtomFactory.getInstance().createAtom(subtype);
         }
-        return gameObject;
+
     }
 
 }
