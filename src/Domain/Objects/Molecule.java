@@ -3,7 +3,7 @@ package Domain.Objects;
 
 import Domain.Useful.FinalValues;
 
-public class Molecule extends GameObject{
+public class Molecule extends GameObject implements Collectable{
 
     /*public Molecule(Subtype type) {
         super();
@@ -14,13 +14,12 @@ public class Molecule extends GameObject{
     }
 
 
-/*
-    @Override
-    public HashMap<Integer, HashMap<Subtype, Integer>> getCollected() {
-        HashMap<Integer, HashMap<Subtype, Integer>> mapToReturn = new HashMap<Integer, HashMap<Subtype, Integer>>();
-        HashMap<Subtype, Integer> map = new HashMap<Subtype, Integer>();
-        map.put(this.subType, this.subType.getNumOfAtoms());
-        mapToReturn.put(0, map);
-        return mapToReturn;
-    }*/
+
+
+    public String[] getCollected() {
+      String[] result = new String[2];
+      result[0] = this.getType();
+      result[1] = this.getSubType();
+        return result;
+    }
 }
