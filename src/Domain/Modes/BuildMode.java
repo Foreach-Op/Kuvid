@@ -1,10 +1,7 @@
 package Domain.Modes;
 
 import Domain.Singletons.GameConfiguration;
-import Domain.Useful.GameData;
-import Domain.Useful.Difficulty;
-import Domain.Useful.Load;
-import Domain.Useful.MovementType;
+import Domain.Useful.*;
 
 import java.util.HashMap;
 
@@ -27,17 +24,17 @@ public class BuildMode {
         boolean isLoaded = false;
 
         HashMap<String, HashMap<String, Integer>> ammunition=new HashMap<>();
-        int atomAmount=Integer.parseInt(configMap.get("atom"));
+        int atomAmount=Integer.parseInt(configMap.get(GameDataTypes.ATOM.toString()));
 
 
         HashMap<String, HashMap<String, Integer>> remainingObjects=new HashMap<>();
-        int moleculeAmount=Integer.parseInt(configMap.get("molecule"));
-        int blockerAmount=Integer.parseInt(configMap.get("blocker"));
-        int powerupAmount=Integer.parseInt(configMap.get("powerup"));
+        int moleculeAmount=Integer.parseInt(configMap.get(GameDataTypes.MOLECULE.toString()));
+        int blockerAmount=Integer.parseInt(configMap.get(GameDataTypes.REACTION_BLOCKER.toString()));
+        int powerupAmount=Integer.parseInt(configMap.get(GameDataTypes.POWER_UP.toString()));
 
 
         //----Difficulty
-        String difficultyStr=configMap.get("difficulty");
+        String difficultyStr=configMap.get(GameDataTypes.DIFFICULTY.toString());
         Difficulty difficulty;
         if(difficultyStr.equals("Hard")){
             difficulty=Difficulty.HARD;
@@ -48,14 +45,14 @@ public class BuildMode {
         }
 
         //---L
-        int L=Integer.getInteger(configMap.get("length"));
+        int L=Integer.getInteger(configMap.get(GameDataTypes.LENGTH.toString()));
 
         //---Type
-        String alphaBetaType=configMap.get("structure");
+        String alphaBetaType=configMap.get(GameDataTypes.MOLECULE_STRUCTURE.toString());
 
         //---Movement
         MovementType alphaBetaMovementType;
-        String movementType=configMap.get("type");
+        String movementType=configMap.get(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString());
         if(movementType.equals("Spinning")){
             alphaBetaMovementType=MovementType.SPINNING;
         }else {

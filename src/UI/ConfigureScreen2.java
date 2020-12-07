@@ -10,6 +10,10 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Modes.*;  //Domain.Modes.GameController does not work
+import Domain.Useful.Difficulty;
+import Domain.Useful.GameDataTypes;
+import Domain.Useful.MoleculeStructure;
+import Domain.Useful.MovementType;
 
 public class ConfigureScreen2 {
 
@@ -74,6 +78,16 @@ public class ConfigureScreen2 {
         // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         frame.setResizable(false);
 
+        radioButtonLinear.setText(MoleculeStructure.LINEAR.toString());
+        radioButtonTriangle.setText(MoleculeStructure.TRIANGLE.toString());
+
+        radioButtonSpinning.setText(MovementType.SPINNING.toString());
+        radioButtonStationary.setText(MovementType.STATIONARY.toString());
+
+        radioButtonEasy.setText(Difficulty.EASY.toString());
+        radioButtonNormal.setText(Difficulty.NORMAL.toString());
+        radioButtonHard.setText(Difficulty.HARD.toString());
+
         CenterFrame(frame);
     }
 
@@ -127,11 +141,11 @@ public class ConfigureScreen2 {
                     int length = Integer.parseUnsignedInt(textFieldLength.getText());
 
                     // Put object amounts and length into hashmap as String
-                    configurationInfo.put("atom", textFieldNumberOfAtoms.getText());
-                    configurationInfo.put("blocker", textFieldNumberOfBlockers.getText());
-                    configurationInfo.put("powerup", textFieldNumberOfPowerups.getText());
-                    configurationInfo.put("molecule", textFieldNumberOfMolecules.getText());
-                    configurationInfo.put("length", textFieldLength.getText());
+                    configurationInfo.put(GameDataTypes.ATOM.toString(), textFieldNumberOfAtoms.getText());
+                    configurationInfo.put(GameDataTypes.REACTION_BLOCKER.toString(), textFieldNumberOfBlockers.getText());
+                    configurationInfo.put(GameDataTypes.POWER_UP.toString(), textFieldNumberOfPowerups.getText());
+                    configurationInfo.put(GameDataTypes.MOLECULE.toString(), textFieldNumberOfMolecules.getText());
+                    configurationInfo.put(GameDataTypes.LENGTH.toString(), textFieldLength.getText());
 
                     String moleculeStructure = new String();
                     String fallingType = new String();
@@ -157,9 +171,9 @@ public class ConfigureScreen2 {
                     }
 
                     // Put those strings into hashmap
-                    configurationInfo.put("structure", moleculeStructure);
-                    configurationInfo.put("type", fallingType);
-                    configurationInfo.put("difficulty", gameDifficulty);
+                    configurationInfo.put(GameDataTypes.MOLECULE_STRUCTURE.toString(), moleculeStructure);
+                    configurationInfo.put(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString(), fallingType);
+                    configurationInfo.put(GameDataTypes.DIFFICULTY.toString(), gameDifficulty);
 
                     System.out.println(configurationInfo);
 
