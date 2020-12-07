@@ -23,6 +23,7 @@ public class Shooter extends GameObject {
     public void collision(GameObject collider) {
 
     }
+
     public HashMap<Subtype, Integer> getNumOfAtoms(){
         return numOfAtoms;
     }
