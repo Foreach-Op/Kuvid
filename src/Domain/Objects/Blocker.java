@@ -8,6 +8,4 @@ public class Blocker extends GameObject{
         super(FinalValues.BLOCKER,subType);
     }
 
-
-
 }

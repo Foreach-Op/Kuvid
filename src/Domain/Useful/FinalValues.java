@@ -9,7 +9,7 @@ public interface FinalValues {
 
     String ALPHA="Alpha";
     String BETA="Beta";
-    String GAMA="Gama";
+    String GAMMA="Gama";
     String SIGMA="Sigma";
 
 

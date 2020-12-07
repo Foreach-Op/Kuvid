@@ -1,6 +1,9 @@
 package Domain.Objects;
 
 import Domain.Useful.FinalValues;
+import Domain.Useful.Subtype;
+
+
 
 
 public class Atom extends GameObject {
