@@ -45,7 +45,7 @@ public class BuildMode {
         }
 
         //---L
-        int L = Integer.getInteger(configMap.get(GameDataTypes.LENGTH.toString()));
+        //int L = Integer.getInteger(configMap.get(GameDataTypes.LENGTH.toString()));
 
         //---Type
         String alphaBetaType = configMap.get(GameDataTypes.MOLECULE_STRUCTURE.toString());
@@ -60,6 +60,5 @@ public class BuildMode {
         }
 
         return gameData;
-
     }
 }

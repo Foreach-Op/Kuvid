@@ -13,27 +13,30 @@ public class HomeScreen {
     private JButton buttonCredits;
     private JButton buttonExit;
 
+    private JFrame homeScreenFrame;
+
     public HomeScreen() {
         Initialize();
         ActionListener();
     }
 
     private void Initialize(){
-        JFrame frame = new JFrame("KUVID GAME");
-        frame.setContentPane(panelMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        homeScreenFrame= new JFrame("KUVID GAME");
+        homeScreenFrame.setContentPane(panelMain);
+        homeScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        homeScreenFrame.pack();
+        homeScreenFrame.setVisible(true);
         //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        frame.setSize(1920, 1080);
-        frame.setResizable(false);
-        CenterFrame(frame);
+        homeScreenFrame.setSize(1920, 1080);
+        homeScreenFrame.setResizable(false);
+        CenterFrame(homeScreenFrame);
     }
 
     private void ActionListener(){
         buttonPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                CloseHomeScreen();
                 new ConfigureScreen2();
             }
         });
@@ -67,5 +70,9 @@ public class HomeScreen {
         int y = (dim.height - frame.getSize().height) / 2;
 
         frame.setLocation(x, y);
+    }
+
+    private void CloseHomeScreen(){
+        homeScreenFrame.dispose();
     }
 }

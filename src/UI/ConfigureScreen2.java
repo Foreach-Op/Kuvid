@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Enumeration;
 import java.util.HashMap;
 
@@ -59,21 +61,31 @@ public class ConfigureScreen2 {
     private HashMap<String, String> configurationInfo;
     private GameController gameController;
 
+    private JFrame configureScreenFrame;
+
     public ConfigureScreen2() {
         configurationInfo = new HashMap<>();
         gameController = new GameController();
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
+
+        configureScreenFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new HomeScreen();
+                e.getWindow().dispose();
+            }
+        });
     }
 
     private void CreateUIElements() {
-        JFrame frame = new JFrame("Game Configuration");
-        frame.setContentPane(panelMain);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(500, 500);
-        frame.setResizable(false);
+        configureScreenFrame = new JFrame("Game Configuration");
+        configureScreenFrame.setContentPane(panelMain);
+        configureScreenFrame.pack();
+        configureScreenFrame.setVisible(true);
+        configureScreenFrame.setSize(500, 500);
+        configureScreenFrame.setResizable(false);
 
         radioButtonLinear.setText(MoleculeStructure.LINEAR.toString());
         radioButtonTriangle.setText(MoleculeStructure.TRIANGLE.toString());
@@ -85,7 +97,7 @@ public class ConfigureScreen2 {
         radioButtonNormal.setText(Difficulty.NORMAL.toString());
         radioButtonHard.setText(Difficulty.HARD.toString());
 
-        CenterFrame(frame);
+        CenterFrame(configureScreenFrame);
     }
 
     private void InitializeRBGroups() {
@@ -176,6 +188,10 @@ public class ConfigureScreen2 {
 
                     // SEND HASHMAP TO THE DOMAIN
                     gameController.startGame(configurationInfo);
+
+                    CloseConfigureScreen();
+                    new StatisticsWindow();
+
                     //LOAD GAME?
 
                 } catch (NumberFormatException ex) {
@@ -218,6 +234,8 @@ public class ConfigureScreen2 {
                 radioButtonSpinning.setEnabled(true);
             }
         });
+
+
     }
 
     private void CenterFrame(JFrame frame) {
@@ -227,5 +245,9 @@ public class ConfigureScreen2 {
         int y = (dim.height - frame.getSize().height) / 2;
 
         frame.setLocation(x, y);
+    }
+
+    private void CloseConfigureScreen() {
+        configureScreenFrame.dispose();
     }
 }

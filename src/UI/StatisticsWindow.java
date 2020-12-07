@@ -1,5 +1,7 @@
 package UI;
 
+import Domain.Useful.GameData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,45 +10,51 @@ import java.awt.event.ActionListener;
 public class StatisticsWindow {
 
     private JPanel panelMain;
-    private JPanel panelAtomInfo;
-    private JPanel panelPowerupInfo;
+
     private JPanel panelGameInfo;
     private JTextArea textAreaScore;
     private JTextArea textAreaTime;
     private JTextArea textAreaHealth;
+
+    private JPanel panelPowerupInfo;
     private JButton powerupSigma;
     private JTextArea textAreaSigmaPowerupAmount;
     private JButton powerupBeta;
-    private JButton powerupAlpha;
-    private JButton powerupGamma;
     private JTextArea textAreaBetaPowerupAmount;
+    private JButton powerupAlpha;
     private JTextArea textAreaAlphaPowerupAmount;
+    private JButton powerupGamma;
     private JTextArea textAreaGammaPowerupAmount;
-    private JLabel atomIconAlpha;
-    private JLabel atomIconGamma;
-    private JLabel atomIconSigma;
-    private JLabel atomIconBeta;
-    private JTextArea textAreaAlphaAtomAmount;
-    private JTextArea textAreaGammaAtomAmount;
-    private JTextArea textAreaSigmaAtomAmount;
-    private JTextArea textAreaBetaAtomAmount;
+
+    private JPanel panelAtomInfo;
     private JLabel blendIcon;
+    private JLabel atomIconAlpha;
+    private JTextArea textAreaAlphaAtomAmount;
+    private JLabel atomIconGamma;
+    private JTextArea textAreaGammaAtomAmount;
+    private JLabel atomIconSigma;
+    private JTextArea textAreaSigmaAtomAmount;
+    private JLabel atomIconBeta;
+    private JTextArea textAreaBetaAtomAmount;
+
+    private GameData gameData;
 
     public StatisticsWindow(){
         CreateUIElements();
         SetPowerupIcons();
         SetAtomIcons();
         ActionListener();
+
+        SetData();
     }
 
     private void CreateUIElements() {
         JFrame frame = new JFrame("Game Configuration");
         frame.setContentPane(panelMain);
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         //frame.setSize(180, 720);
-        // frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         frame.setResizable(false);
     }
 
@@ -90,6 +98,22 @@ public class StatisticsWindow {
         blendIcon.setIcon(new ImageIcon(newBlendIcon));
     }
 
+    private void SetData(){
+        //textAreaScore.setText(gameData.getScore().toString());
+        //textAreaTime.setText(""+gameData.getRemainingTime());
+        //textAreaHealth.setText(gameData.getHealth().toString());
+
+        textAreaSigmaPowerupAmount.setText("1");
+        textAreaBetaPowerupAmount.setText("2");
+        textAreaAlphaPowerupAmount.setText("3");
+        textAreaGammaPowerupAmount.setText("4");
+
+        textAreaAlphaAtomAmount.setText("5");
+        textAreaGammaAtomAmount.setText("6");
+        textAreaSigmaAtomAmount.setText("7");
+        textAreaBetaAtomAmount.setText("8");
+
+    }
     private void ActionListener(){
         powerupSigma.addActionListener(new ActionListener() {
             @Override
