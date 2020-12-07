@@ -15,7 +15,7 @@ public class ObjectPanel extends JPanel implements ObjectListener {
 
     private BufferedImage image;
     private Position position;
-
+    //
     public ObjectPanel(String type,String subtype ,Position position) {
         this.position=position;
         this.setBounds(position.getX(),position.getY(),100,100);
