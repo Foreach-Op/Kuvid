@@ -3,11 +3,11 @@ package Domain.Useful;
 import java.awt.event.KeyEvent;
 
 public enum HotKeys {
-    MOVE_RIGHT(KeyEvent.VK_KP_RIGHT), // D
-    MOVE_LEFT(KeyEvent.VK_KP_LEFT), // A
+    MOVE_RIGHT(KeyEvent.VK_RIGHT), // D
+    MOVE_LEFT(KeyEvent.VK_LEFT), // A
     ROTATE_RIGHT(KeyEvent.VK_A), // SCROLL WHEEL
     ROTATE_LEFT(KeyEvent.VK_D), // SCROLL WHEEL
-    SHOOT(KeyEvent.VK_KP_UP), // LEFT CLICK
+    SHOOT(KeyEvent.VK_UP), // LEFT CLICK
     PICK_ATOM(KeyEvent.VK_C), // SPACE
     BLEND(KeyEvent.VK_B), // ALT + ATOM TYPE
     ATOM_TYPE1(KeyEvent.VK_1),
@@ -25,5 +25,9 @@ public enum HotKeys {
 
     HotKeys(int id) {
         this.id = id;
+    }
+
+    public int getValue(){
+        return id;
     }
 }

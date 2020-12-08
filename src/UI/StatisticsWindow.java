@@ -1,15 +1,17 @@
 package UI;
 
+import Domain.Modes.BuildMode;
 import Domain.Useful.GameData;
 
 import Domain.Statistics.StaticWindowListener;
+import Domain.Useful.GameDataTypes;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StatisticsWindow implements StaticWindowListener {
+public class StatisticsWindow extends JFrame implements StaticWindowListener {
     private JPanel panelMain;
 
     private JPanel panelGameInfo;
