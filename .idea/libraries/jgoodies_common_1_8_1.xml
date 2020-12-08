@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="jgoodies-common-1.8.1">
-    <CLASSES>
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-common-1.8.1.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>

@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class StatisticsWindow extends JFrame implements StaticWindowListener {
+public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JPanel panelMain;
 
     private JPanel panelGameInfo;
