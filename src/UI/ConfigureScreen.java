@@ -184,7 +184,7 @@ public class ConfigureScreen {
                     configurationInfo.put(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString(), fallingType);
                     configurationInfo.put(GameDataTypes.DIFFICULTY.toString(), gameDifficulty);
 
-                    System.out.println(configurationInfo);
+
 
                     // SEND HASHMAP TO THE DOMAIN
                     gameController.startGame(configurationInfo);
