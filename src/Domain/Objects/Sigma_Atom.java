@@ -10,11 +10,9 @@ public class Sigma_Atom extends Atom{
     public MovementofObject movementofObject;
     public Rectangle rectangle;
 
-    private MovementType movement = MovementType.UPWARDS_STATIONARY;
+
     public Sigma_Atom(Position position) {
         super(FinalValues.SIGMA,position);
     }
-    public MovementType getMovementType(){
-        return this.movement;
-    }
+
 }

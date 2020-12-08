@@ -6,13 +6,22 @@ public class MovementofObject {
     //for powerup movement can up or down;
     int shiftY; //-N to +N
     int shiftX; //-N to +N
-    MovementType movementType;
     int angle;
 
-    public MovementofObject(int shiftX, int shiftY, MovementType movementType){
+
+    public MovementofObject(int shiftX, int shiftY){
         this.shiftX=shiftX;
         this.shiftY=shiftY;
-        this.movementType=movementType;
+        angle = 0;
+    }
+    public MovementofObject(int shiftX, int shiftY, int angle){
+        this.shiftX = shiftX;
+        this.shiftY = shiftY;
+        this.angle = angle;
+    }
+
+    public int getAngle() {
+        return angle;
     }
 
     public void setShiftY(int shiftY) {
@@ -23,21 +32,15 @@ public class MovementofObject {
         this.shiftX = shiftX;
     }
 
-    public void setMovementType(MovementType movementType) {
-        this.movementType = movementType;
-    }
 
-    public int getShiftY() {
+    public int getShiftY(int y) {
         return shiftY;
     }
 
-    public int getShiftX() {
+    public int getShiftX(int y) {
         return shiftX;
     }
 
-    public MovementType getMovementType() {
-        return movementType;
-    }
 
 
 

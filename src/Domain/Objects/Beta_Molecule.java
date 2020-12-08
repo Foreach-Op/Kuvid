@@ -7,7 +7,7 @@ import Domain.Useful.Rectangle;
 
 public class Beta_Molecule extends Molecule{
 
-    public MovementofObject movementofObject;
+    public MovementofObject movementofObject= MovementType.QUARTER_STATIONARY_THEN_ZIGZAG.getMovement();
     public Rectangle rectangle;
 
     MovementType movement = MovementType.QUARTER_STATIONARY_THEN_ZIGZAG;

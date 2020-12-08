@@ -7,13 +7,10 @@ import Domain.Useful.Rectangle;
 
 public class Gamma_Molecule extends Molecule{
 
-    public MovementofObject movementofObject;
+    public MovementofObject movementofObject =  MovementType.HALF_STATIONARY_THEN_ZIGZAG.getMovement();
     public Rectangle rectangle;
-    MovementType movement = MovementType.HALF_STATIONARY_THEN_ZIGZAG;
     public Gamma_Molecule(Position position) {
         super(FinalValues.GAMMA,position);
     }
-    public MovementType getMovementType(){
-        return this.movement;
-    }
+
 }

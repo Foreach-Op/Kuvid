@@ -11,11 +11,7 @@ public class Gamma_Atom extends Atom{
     public Rectangle rectangle;
 
 
-    private MovementType movement = MovementType.UPWARDS_STATIONARY;
     public Gamma_Atom(Position position) {
         super(FinalValues.GAMMA,position);
-    }
-    public MovementType getMovementType(){
-        return this.movement;
     }
 }

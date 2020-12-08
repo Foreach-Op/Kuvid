@@ -17,7 +17,8 @@ import java.util.HashMap;
 
 
 public class RunningMode {
-
+    public static double L; //???
+    public static int screenHeight;//??
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;

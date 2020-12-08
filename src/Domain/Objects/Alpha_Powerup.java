@@ -7,7 +7,7 @@ import Domain.Useful.Rectangle;
 
 public class Alpha_Powerup extends Powerup{
 
-    public MovementofObject movementofObject;
+    public MovementofObject movementofObject = MovementType.STATIONARY.getMovement();
     public Rectangle rectangle;
 
     private MovementType movement = MovementType.STATIONARY;

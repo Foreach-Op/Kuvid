@@ -6,7 +6,7 @@ import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
 public class Sigma_Powerup extends Powerup{
-    public MovementofObject movementofObject;
+    public MovementofObject movementofObject = MovementType.STATIONARY.getMovement();
     public Rectangle rectangle;
     private MovementType movement = MovementType.STATIONARY;
     public Sigma_Powerup(Position position) {
