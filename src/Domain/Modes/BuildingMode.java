@@ -37,23 +37,21 @@ public class BuildingMode {
         HashMap<String, HashMap<String, Integer>> ammunition = new HashMap<>();
 
         int atomAmount = Integer.parseInt(configHash.get(GameDataTypes.ATOM.toString()));
-        HashMap<String, Integer> atomAmountHash = new HashMap<>();
-        atomAmountHash.put(GameDataTypes.ATOM_ALPHA.toString(), atomAmount);
-        atomAmountHash.put(GameDataTypes.ATOM_BETA.toString(), atomAmount);
-        atomAmountHash.put(GameDataTypes.ATOM_GAMMA.toString(), atomAmount);
-        atomAmountHash.put(GameDataTypes.ATOM_SIGMA.toString(), atomAmount);
+        HashMap<String, Integer> initialAtomAmountHash = new HashMap<>();
+        initialAtomAmountHash.put(GameDataTypes.ATOM_ALPHA.toString(), atomAmount);
+        initialAtomAmountHash.put(GameDataTypes.ATOM_BETA.toString(), atomAmount);
+        initialAtomAmountHash.put(GameDataTypes.ATOM_GAMMA.toString(), atomAmount);
+        initialAtomAmountHash.put(GameDataTypes.ATOM_SIGMA.toString(), atomAmount);
 
-        int powerupAmount = Integer.parseInt(configHash.get(GameDataTypes.POWER_UP.toString()));
-        HashMap<String, Integer> powerupAmountHash = new HashMap<>();
-        powerupAmountHash.put(GameDataTypes.POWERUP_ALPHA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_BETA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_GAMMA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), powerupAmount);
+        HashMap<String, Integer> initialPowerupAmountHash = new HashMap<>();
+        initialPowerupAmountHash.put(GameDataTypes.POWERUP_ALPHA.toString(), 0);
+        initialPowerupAmountHash.put(GameDataTypes.POWERUP_BETA.toString(), 0);
+        initialPowerupAmountHash.put(GameDataTypes.POWERUP_GAMMA.toString(), 0);
+        initialPowerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), 0);
 
-        ammunition.put(GameDataTypes.ATOM.toString(), atomAmountHash);
-        //ammunition.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash);
+        ammunition.put(GameDataTypes.ATOM.toString(), initialAtomAmountHash);
+        ammunition.put(GameDataTypes.POWER_UP.toString(), initialPowerupAmountHash);
         gameData.setAmmunition(ammunition);
-
 
         //----Remaining Objects (Falling)
         HashMap<String, HashMap<String, Integer>> remainingObjects = new HashMap<>();
@@ -72,9 +70,16 @@ public class BuildingMode {
         blockerAmountHash.put(GameDataTypes.BLOCKER_GAMMA.toString(), blockerAmount);
         blockerAmountHash.put(GameDataTypes.BLOCKER_SIGMA.toString(), blockerAmount);
 
+        int powerupAmount = Integer.parseInt(configHash.get(GameDataTypes.POWER_UP.toString()));
+        HashMap<String, Integer> powerupAmountHash = new HashMap<>();
+        powerupAmountHash.put(GameDataTypes.POWERUP_ALPHA.toString(), powerupAmount);
+        powerupAmountHash.put(GameDataTypes.POWERUP_BETA.toString(), powerupAmount);
+        powerupAmountHash.put(GameDataTypes.POWERUP_GAMMA.toString(), powerupAmount);
+        powerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), powerupAmount);
+
         remainingObjects.put(GameDataTypes.MOLECULE.toString(), moleculeAmountHash);
         remainingObjects.put(GameDataTypes.REACTION_BLOCKER.toString(), blockerAmountHash);
-        remainingObjects.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash); ///ilk oluşanlar bizde or tepeden ?
+        remainingObjects.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash);
         gameData.setRemainingObjects(remainingObjects);
 
         //----Difficulty

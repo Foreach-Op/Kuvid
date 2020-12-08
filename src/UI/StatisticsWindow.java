@@ -3,6 +3,7 @@ package UI;
 import Domain.Statistics.GameData;
 
 import Domain.Statistics.StaticWindowListener;
+import Domain.Useful.GameDataTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +15,9 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JPanel panelMain;
 
     private JPanel panelGameInfo;
-    private JTextArea textAreaScore;
-    private JTextArea textAreaTime;
-    private JTextArea textAreaHealth;
+    private JTextArea textAreaStaticScore;
+    private JTextArea textAreaStaticTime;
+    private JTextArea textAreaStaticHealth;
 
     private JPanel panelPowerupInfo;
     private JButton powerupSigma;
@@ -38,16 +39,15 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JTextArea textAreaSigmaAtomAmount;
     private JLabel atomIconBeta;
     private JTextArea textAreaBetaAtomAmount;
-
-    private GameData gameData;
+    private JTextArea textAreaScore;
+    private JTextArea textAreaTime;
+    private JTextArea textAreaHealth;
 
     public StatisticsWindow(){
         CreateUIElements();
         SetPowerupIcons();
         SetAtomIcons();
         ActionListener();
-
-        SetData();
     }
 
     private void CreateUIElements() {
@@ -100,22 +100,22 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         blendIcon.setIcon(new ImageIcon(newBlendIcon));
     }
 
-    private void SetData(){
-        //textAreaScore.setText(gameData.getScore().toString());
-        //textAreaTime.setText(""+gameData.getRemainingTime());
-        //textAreaHealth.setText(gameData.getHealth().toString());
+    public void SetData(GameData gameData){
+        textAreaScore.setText(String.valueOf(gameData.getScore()));
+        textAreaTime.setText(String.valueOf(gameData.getRemainingTime()));
+        textAreaHealth.setText(String.valueOf(gameData.getHealth()));
 
-        textAreaSigmaPowerupAmount.setText("1");
-        textAreaBetaPowerupAmount.setText("2");
-        textAreaAlphaPowerupAmount.setText("3");
-        textAreaGammaPowerupAmount.setText("4");
+        textAreaAlphaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_ALPHA.toString())));
+        textAreaBetaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_BETA.toString())));
+        textAreaGammaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_GAMMA.toString())));
+        textAreaSigmaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_SIGMA.toString())));
 
-        textAreaAlphaAtomAmount.setText("5");
-        textAreaGammaAtomAmount.setText("6");
-        textAreaSigmaAtomAmount.setText("7");
-        textAreaBetaAtomAmount.setText("8");
-
+        textAreaAlphaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_ALPHA.toString())));
+        textAreaBetaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_BETA.toString())));
+        textAreaGammaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_GAMMA.toString())));
+        textAreaSigmaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_SIGMA.toString())));
     }
+
     private void ActionListener(){
         powerupSigma.addActionListener(new ActionListener() {
             @Override
@@ -145,21 +145,29 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     @Override
     public void onTimeChange(double time) {
-
+        textAreaStaticTime.setText(String.valueOf(time));
     }
 
     @Override
     public void onHealthChange(int health) {
-
+        textAreaStaticHealth.setText(String.valueOf(health));
     }
 
     @Override
     public void onScoreChange(double score) {
-
+        textAreaStaticHealth.setText(String.valueOf(score));
     }
 
     @Override
     public void onAmmunitionChange(HashMap<String, HashMap<String, Integer>> map) {
+        textAreaAlphaPowerupAmount.setText(String.valueOf(map.get("powerup").get("alpha")));
+        textAreaBetaPowerupAmount.setText(String.valueOf(map.get("powerup").get("beta")));
+        textAreaGammaPowerupAmount.setText(String.valueOf(map.get("powerup").get("gamma")));
+        textAreaSigmaPowerupAmount.setText(String.valueOf(map.get("powerup").get("sigma")));
 
+        textAreaAlphaAtomAmount.setText(String.valueOf(map.get("atom").get("alpha")));
+        textAreaBetaAtomAmount.setText(String.valueOf(map.get("atom").get("beta")));
+        textAreaGammaAtomAmount.setText(String.valueOf(map.get("atom").get("gamma")));
+        textAreaSigmaAtomAmount.setText(String.valueOf(map.get("atom").get("sigma")));
     }
 }

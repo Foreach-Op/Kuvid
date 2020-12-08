@@ -1,9 +1,5 @@
 package UI;
 
-import Domain.Modes.GameController;
-import Domain.Modes.RunningMode;
-import Domain.Statistics.GameConfiguration;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,34 +16,26 @@ public class HomeScreen {
     private JFrame homeScreenFrame;
 
     public HomeScreen() {
-        Initialize();
+        CreateUIElements();
         ActionListener();
     }
 
-    private void Initialize(){
-        homeScreenFrame= new JFrame("KUVID GAME");
+    private void CreateUIElements() {
+        homeScreenFrame = new JFrame("KUVID GAME");
         homeScreenFrame.setContentPane(panelMain);
         homeScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         homeScreenFrame.pack();
         homeScreenFrame.setVisible(true);
-        //frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        homeScreenFrame.setSize(1920, 1080);
+        homeScreenFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         homeScreenFrame.setResizable(false);
-        CenterFrame(homeScreenFrame);
     }
 
-    private void ActionListener(){
+    private void ActionListener() {
         buttonPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseHomeScreen();
-                StatisticsWindow statisticsWindow=new StatisticsWindow();
-                GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
-                GameScreen screen=new GameScreen(statisticsWindow);
-                RunningMode runningMode=new RunningMode(screen);
-                screen.initialize(runningMode);
-                GameController gameController=new GameController(runningMode);
-                new ConfigureScreen(gameController);
+                new ConfigureScreen();
             }
         });
 
@@ -73,16 +61,7 @@ public class HomeScreen {
         });
     }
 
-    private void CenterFrame(JFrame frame){
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-        int x = (dim.width - frame.getSize().width) / 2;
-        int y = (dim.height - frame.getSize().height) / 2;
-
-        frame.setLocation(x, y);
-    }
-
-    private void CloseHomeScreen(){
+    private void CloseHomeScreen() {
         homeScreenFrame.dispose();
     }
 }

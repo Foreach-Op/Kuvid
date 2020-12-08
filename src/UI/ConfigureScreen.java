@@ -1,6 +1,5 @@
 package UI;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +10,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Modes.*;  //Domain.Modes.GameController does not work
+import Domain.Statistics.GameConfiguration;
 import Domain.Useful.Difficulty;
 import Domain.Useful.GameDataTypes;
 import Domain.Useful.MoleculeStructure;
@@ -63,20 +63,20 @@ public class ConfigureScreen {
 
     private JFrame configureScreenFrame;
 
-    public ConfigureScreen(GameController controller) {
+    public ConfigureScreen() {
         configurationInfo = new HashMap<>();
-        this.gameController = controller;
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
+    }
 
-        configureScreenFrame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                new HomeScreen();
-                e.getWindow().dispose();
-            }
-        });
+    private void InitiateGame(HashMap<String, String> configurationInfo) {
+        GameScreen screen = new GameScreen();
+        RunningMode runningMode = new RunningMode(screen);
+        screen.initialize(runningMode);
+        gameController = new GameController(runningMode);
+        gameController.startGame(configurationInfo);
+        screen.SetInitialData();
     }
 
     private void CreateUIElements() {
@@ -184,14 +184,9 @@ public class ConfigureScreen {
                     configurationInfo.put(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString(), fallingType);
                     configurationInfo.put(GameDataTypes.DIFFICULTY.toString(), gameDifficulty);
 
-                    // SEND HASHMAP TO THE DOMAIN
-                    gameController.startGame(configurationInfo);
-
+                    // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    new StatisticsWindow();
-
-                    //LOAD GAME?
-
+                    InitiateGame(configurationInfo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
@@ -233,7 +228,13 @@ public class ConfigureScreen {
             }
         });
 
-
+        configureScreenFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                new HomeScreen();
+                e.getWindow().dispose();
+            }
+        });
     }
 
     private void CenterFrame(JFrame frame) {
