@@ -1,7 +1,7 @@
 package Domain.Functionalities;
 
-import Domain.Singletons.GameConfiguration;
-import Domain.Useful.GameData;
+import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;

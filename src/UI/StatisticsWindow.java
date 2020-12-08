@@ -1,10 +1,8 @@
 package UI;
 
-import Domain.Modes.BuildMode;
-import Domain.Useful.GameData;
+import Domain.Statistics.GameData;
 
 import Domain.Statistics.StaticWindowListener;
-import Domain.Useful.GameDataTypes;
 
 import javax.swing.*;
 import java.awt.*;

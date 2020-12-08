@@ -1,6 +1,8 @@
-package Domain.Useful;
+package Domain.Statistics;
 
 import Domain.Objects.*;
+import Domain.Useful.Difficulty;
+import Domain.Useful.MovementType;
 
 import java.io.Serializable;
 import java.util.ArrayList;

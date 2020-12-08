@@ -1,4 +1,4 @@
-package Domain.Listeners;
+package Domain.Objects;
 
 import Domain.Objects.GameObject;
 import Domain.Objects.Position;

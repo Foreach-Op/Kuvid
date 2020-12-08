@@ -1,13 +1,14 @@
 package Domain.Modes;
 
 import Domain.Functionalities.Load;
-import Domain.Singletons.GameConfiguration;
+import Domain.Statistics.GameConfiguration;
 import Domain.Player.Player;
+import Domain.Statistics.GameData;
 import Domain.Useful.*;
 
 import java.util.HashMap;
 
-public class BuildMode {
+public class BuildingMode {
 
     public void startNewGame(HashMap<String, String> configMap) {
         GameData gameData = hashToGameData(configMap);

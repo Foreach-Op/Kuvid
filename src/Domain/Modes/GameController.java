@@ -5,21 +5,21 @@ import java.util.HashMap;
 
 public class GameController {
 
-    BuildMode buildMode;
+    BuildingMode buildingMode;
     RunningMode runningMode;
 
     public GameController(RunningMode runningMode){
         this.runningMode=runningMode;
-        buildMode=new BuildMode();
+        buildingMode =new BuildingMode();
     }
 
     public void startGame(HashMap<String, String> configurationInfo){
-        buildMode.startNewGame(configurationInfo);
+        buildingMode.startNewGame(configurationInfo);
         runningMode.startGame();
     }
 
     public void LoadGame(String FileName){
-        buildMode.loadTheGame(FileName);
+        buildingMode.loadTheGame(FileName);
         runningMode.startGame();
     }
 

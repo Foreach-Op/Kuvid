@@ -1,6 +1,6 @@
 package Domain.Functionalities;
 
-import Domain.Useful.GameData;
+import Domain.Statistics.GameData;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

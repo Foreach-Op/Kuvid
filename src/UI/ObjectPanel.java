@@ -1,7 +1,5 @@
 package UI;
 
-import Domain.Listeners.ObjectListener;
-import Domain.Objects.GameObject;
 import Domain.Objects.Position;
 
 import javax.imageio.ImageIO;

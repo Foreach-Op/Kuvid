@@ -1,7 +1,7 @@
 package Domain.TimerBased;
 
 
-import Domain.Listeners.ObjectListener;
+import Domain.Objects.ObjectListener;
 import Domain.ObjectCreator.ObjectFactory;
 import Domain.Objects.GameObject;
 

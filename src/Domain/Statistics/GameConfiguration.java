@@ -1,8 +1,4 @@
-package Domain.Singletons;
-
-import Domain.Objects.GameObject;
-import Domain.Statistics.StaticWindowListener;
-import Domain.Useful.*;
+package Domain.Statistics;
 
 import java.util.HashMap;
 

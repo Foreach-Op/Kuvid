@@ -1,6 +1,6 @@
 package UI;
 
-import Domain.Listeners.ObjectListener;
+import Domain.Objects.ObjectListener;
 import Domain.Modes.RunningMode;
 import Domain.Objects.GameObject;
 

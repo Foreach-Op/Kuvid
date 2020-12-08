@@ -2,7 +2,7 @@ package UI;
 
 import Domain.Modes.GameController;
 import Domain.Modes.RunningMode;
-import Domain.Singletons.GameConfiguration;
+import Domain.Statistics.GameConfiguration;
 
 import javax.swing.*;
 import java.awt.*;

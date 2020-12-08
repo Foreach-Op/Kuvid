@@ -1,12 +1,11 @@
 package Domain.Modes;
 
 
-import Domain.Listeners.ObjectListener;
 import Domain.Objects.GameObject;
+import Domain.Objects.ObjectListener;
 import Domain.TimerBased.CollisionHandler;
 import Domain.TimerBased.MovementHandler;
 import Domain.TimerBased.ObjectCreationHandler;
-import Domain.Useful.GameData;
 
 import java.util.ArrayList;
 import java.util.HashMap;

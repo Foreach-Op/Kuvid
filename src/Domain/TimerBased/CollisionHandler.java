@@ -3,9 +3,8 @@ package Domain.TimerBased;
 import Domain.CollisionStrategy.Collision;
 import Domain.CollisionStrategy.CollisionStrategy;
 import Domain.CollisionStrategy.CollisionStrategyFactory;
-import Domain.Listeners.ObjectListener;
+import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
-import UI.ObjectPanel;
 
 import java.util.ArrayList;
 

@@ -1,9 +1,7 @@
 package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
-import Domain.Listeners.ObjectListener;
 import Domain.Useful.Rectangle;
-import Domain.Useful.Subtype;
 
 public abstract class GameObject {
     //Position
@@ -36,12 +34,6 @@ public abstract class GameObject {
 
     /*
     bu yorumdakiler silinecek static yapılacak objectler,
-
-    public void getDestroy(){
-        // RunningMode.getInstance().killObj(this);
-        //objPanel.onDestroy();
-    }
-
  */
 
     //dışardan yönetilecek gerek yok, ama şimdilik dursun

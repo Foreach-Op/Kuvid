@@ -1,6 +1,6 @@
 package Domain.TimerBased;
 
-import Domain.Listeners.ObjectListener;
+import Domain.Objects.ObjectListener;
 import Domain.MovementStrategy.Movement;
 import Domain.MovementStrategy.MovementStrategy;
 import Domain.MovementStrategy.MovementStrategyFactory;
