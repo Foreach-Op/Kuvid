@@ -2,8 +2,8 @@ package Domain.Player;
 
 public class Player {
     private static Player player;
-    private Health health=new Health();
-    private Score score=new Score();
+    private final Health health=new Health();
+    private final Score score=new Score();
 
     private Player(){}
 

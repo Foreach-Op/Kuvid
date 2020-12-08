@@ -1,6 +1,7 @@
 package Domain.Modes;
 
 
+import Domain.Listeners.ObjectListener;
 import Domain.Objects.GameObject;
 import Domain.TimerBased.CollisionHandler;
 import Domain.TimerBased.MovementHandler;
@@ -11,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RunningMode {
+
+    private ObjectListener frame;
 
     private ArrayList<GameObject> frameObjects;
 
@@ -23,7 +26,6 @@ public class RunningMode {
 
     public RunningMode(GameData data){
         frameObjects=data.getFrameObjects();
-
     }
 
     public RunningMode(){
