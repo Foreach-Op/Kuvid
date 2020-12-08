@@ -14,11 +14,24 @@ public class Shooter extends GameObject {
     private GameObject currentBullet = null; //bullet of the shooter.
     public Rectangle rectangle;
 
-    public Shooter(){
-        initializeBullets();
 
+    private static Shooter shooter;
+
+    private Shooter(){}
+
+    public static Shooter getInstance(){
+        if(shooter ==null){
+            shooter =new Shooter();
+            shooter.initializeShooter();
+        }
+        return shooter;
+    }
+
+    public void initializeShooter(){
+        initializeBullets();
         rectangle=new Rectangle(5,5,5,5,5); //düzelt
     }
+
 
     public GameObject getCurrentBullet() {
         return currentBullet;

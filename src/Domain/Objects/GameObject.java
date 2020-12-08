@@ -9,6 +9,7 @@ public abstract class GameObject {
     private boolean isAlive;
     private String type;
     private String subType;
+    //rectangle buraya gelecek
 
 
     public GameObject(){

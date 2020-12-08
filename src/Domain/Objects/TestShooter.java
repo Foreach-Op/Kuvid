@@ -19,6 +19,7 @@ public class TestShooter {
         atoms2.put(FinalValues.SIGMA, 15);
         map.put(FinalValues.ATOM, atoms);
         map.put(FinalValues.POWERUP, atoms2);
+        /*
         Shooter.getInstance().initializeBullets(map);
         Shooter.getInstance().changeBullet();
         System.out.println(Shooter.getInstance().getCurrentBullet().toString());
@@ -33,6 +34,8 @@ public class TestShooter {
         Shooter.getInstance().fire();
         System.out.println(Shooter.getInstance().getNumOfBullets());
         System.out.println(Shooter.getInstance().getCurrentBullet().toString());
+
+         */
 
     }
 }
