@@ -50,7 +50,6 @@ public class GameScreen extends JFrame implements ObjectListener {
         }
     }
 
-
     public void initialize(RunningMode runningMode){
         runningMode.setFrame(this);
     }

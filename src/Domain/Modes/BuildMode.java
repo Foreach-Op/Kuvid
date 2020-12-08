@@ -12,7 +12,7 @@ public class BuildMode {
     public void startNewGame(HashMap<String, String> configMap) {
         GameData gameData = hashToGameData(configMap);
         GameConfiguration.getInstance().setData(gameData);
-        RunningMode runningMode = new RunningMode();
+        //RunningMode runningMode = new RunningMode();
     }
 
     public void loadTheGame(String fileName) {
@@ -23,7 +23,7 @@ public class BuildMode {
         Player.getInstance().setScore(gameData.getScore());
         //Time will be set
 
-        RunningMode runningMode = new RunningMode(gameData);
+        //RunningMode runningMode = new RunningMode(gameData);
     }
 
     public GameData hashToGameData(HashMap<String, String> configHash) {

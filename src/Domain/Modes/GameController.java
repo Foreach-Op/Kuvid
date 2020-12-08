@@ -10,7 +10,7 @@ public class GameController {
 
     public GameController(){
         buildMode=new BuildMode();
-        runningMode=new RunningMode();
+        //runningMode=new RunningMode();
     }
 
     public void startGame(HashMap<String, String> configurationInfo){
