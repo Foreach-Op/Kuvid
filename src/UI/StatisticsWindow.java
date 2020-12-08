@@ -50,7 +50,7 @@ public class StatisticsWindow implements StaticWindowListener {
     }
 
     private void CreateUIElements() {
-        JFrame frame = new JFrame("Game Configuration");
+        JFrame frame = new JFrame();
         frame.setContentPane(panelMain);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -144,5 +144,6 @@ public class StatisticsWindow implements StaticWindowListener {
 
     @Override
     public void onChange() {
+        SetData();
     }
 }

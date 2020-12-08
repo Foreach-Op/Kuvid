@@ -1,22 +1,33 @@
 package Domain.Useful;
 
 public enum GameDataTypes {
-    ATOM("atom"),
-    MOLECULE("molecule"),
-    REACTION_BLOCKER("blocker"),
-    POWER_UP("powerup"),
-    DIFFICULTY("difficulty"),
-    LENGTH("length"),
-    MOLECULE_STRUCTURE("structure"),
-    MOLECULE_MOVEMENT_TYPE("movementType");
+    ATOM,
+    ATOM_ALPHA,
+    ATOM_BETA,
+    ATOM_GAMMA,
+    ATOM_SIGMA,
 
-    private String info;
-    GameDataTypes(String info) {
-        this.info = info;
-    }
+    MOLECULE,
+    MOLECULE_ALPHA,
+    MOLECULE_BETA,
+    MOLECULE_GAMMA,
+    MOLECULE_SIGMA,
+    MOLECULE_STRUCTURE,
+    MOLECULE_MOVEMENT_TYPE,
 
-    @Override
-    public String toString() {
-        return info;
-    }
+    REACTION_BLOCKER,
+    BLOCKER_ALPHA,
+    BLOCKER_BETA,
+    BLOCKER_GAMMA,
+    BLOCKER_SIGMA,
+
+    POWER_UP,
+    POWERUP_ALPHA,
+    POWERUP_BETA,
+    POWERUP_GAMMA,
+    POWERUP_SIGMA,
+
+    DIFFICULTY,
+    LENGTH;
+
 }
