@@ -1,6 +1,7 @@
 package Domain.ObjectCreator;
 
 import Domain.Objects.*;
+import Domain.Useful.Position;
 
 public class MoleculeFactory {
     private static MoleculeFactory moleculeFactory;
@@ -15,20 +16,20 @@ public class MoleculeFactory {
     }
 
 
-    public GameObject createMolecule(String subtype) {
+    public GameObject createMolecule(String subtype, Position position) {
 
         switch (subtype) {
             case "Alpha":
-                return new Alpha_Molecule();
+                return new Alpha_Molecule(position);
 
             case "Beta":
-                return new Beta_Molecule();
+                return new Beta_Molecule(position);
 
             case "Gamma":
-                return new Gamma_Molecule();
+                return new Gamma_Molecule(position);
 
             default:
-                return new Sigma_Molecule();
+                return new Sigma_Molecule(position);
 
         }
 

@@ -1,6 +1,7 @@
 package Domain.Objects;
 
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 import Domain.Useful.Subtype;
 
 import java.util.HashMap;
@@ -12,8 +13,8 @@ public class Powerup extends GameObject implements Collectable{
     }
      */
 
-    public Powerup(String subType){
-        super(FinalValues.POWERUP,subType);
+    public Powerup(String subType, Position position){
+        super(FinalValues.POWERUP,subType,position);
     }
 
 

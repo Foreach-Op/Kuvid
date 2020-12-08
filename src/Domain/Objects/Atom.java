@@ -1,6 +1,7 @@
 package Domain.Objects;
 
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 import Domain.Useful.Subtype;
 
 
@@ -12,8 +13,8 @@ public class Atom extends GameObject {
         super();
     }*/
 
-    public Atom(String subType){
-        super(FinalValues.ATOM,subType);
+    public Atom(String subType, Position position){
+        super(FinalValues.ATOM,subType,position);
     }
 
 

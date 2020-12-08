@@ -2,6 +2,7 @@ package Domain.ObjectCreator;
 
 import Domain.Objects.*;
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 
 public class BlockerFactory {
     private static BlockerFactory blockerFactory;
@@ -16,20 +17,20 @@ public class BlockerFactory {
     }
 
 
-    public GameObject createBlocker(String subtype) {
+    public GameObject createBlocker(String subtype, Position position) {
 
         switch (subtype) {
             case FinalValues.ALPHA:
-                return new Alpha_Blocker();
+                return new Alpha_Blocker(position);
 
             case FinalValues.BETA:
-                return new Beta_Blocker();
+                return new Beta_Blocker(position);
 
             case FinalValues.GAMMA:
-                return new Gamma_Blocker();
+                return new Gamma_Blocker(position);
 
             default:
-                return new Sigma_Blocker();
+                return new Sigma_Blocker(position);
 
         }
 

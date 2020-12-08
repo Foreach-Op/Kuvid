@@ -2,6 +2,7 @@ package Domain.Objects;
 
 
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 
 public class Molecule extends GameObject implements Collectable{
 
@@ -9,8 +10,8 @@ public class Molecule extends GameObject implements Collectable{
         super();
     }*/
 
-    public Molecule(String subType){
-        super(FinalValues.MOLECULE,subType);
+    public Molecule(String subType, Position position){
+        super(FinalValues.MOLECULE,subType,position);
     }
 
 

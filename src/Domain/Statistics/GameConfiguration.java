@@ -48,4 +48,13 @@ public class GameConfiguration {
         staticWindowListener.onAmmunitionChange(ammo);
     }
 
+    public void setRemainingObjects(String type,String subtype){
+        getData().getRemainingObjects().get(type).replace(subtype,getData().getRemainingObjects().get(type).get(subtype)-1);
+    }
+
+    public HashMap<String, HashMap<String, Integer>> getRemainingObjects(){
+        return getData().getRemainingObjects();
+    }
+
+
 }

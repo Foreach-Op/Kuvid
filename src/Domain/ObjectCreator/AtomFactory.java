@@ -2,6 +2,7 @@ package Domain.ObjectCreator;
 
 import Domain.Objects.*;
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 
 public class AtomFactory {
     private static AtomFactory atomFactory;
@@ -15,20 +16,20 @@ public class AtomFactory {
     }
 
 
-    public GameObject createAtom(String subtype) {
+    public GameObject createAtom(String subtype, Position position) {
 
         switch (subtype) {
             case FinalValues.ALPHA:
-                return new Alpha_Atom();
+                return new Alpha_Atom(position);
 
             case FinalValues.BETA:
-                return new Beta_Atom();
+                return new Beta_Atom(position);
 
             case FinalValues.GAMMA:
-                return new Gamma_Atom();
+                return new Gamma_Atom(position);
 
             default:
-                return new Sigma_Atom();
+                return new Sigma_Atom(position);
 
         }
 

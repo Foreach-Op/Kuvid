@@ -2,6 +2,7 @@ package Domain.ObjectCreator;
 
 import Domain.Objects.*;
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 
 public class PowerupFactory {
     private static PowerupFactory powerupFactory;
@@ -16,20 +17,20 @@ public class PowerupFactory {
     }
 
 
-    public GameObject createPowerup(String subtype) {
+    public GameObject createPowerup(String subtype, Position position) {
 
         switch (subtype) {
             case FinalValues.ALPHA:
-                return new Alpha_Powerup();
+                return new Alpha_Powerup(position);
 
             case FinalValues.BETA:
-                return new Beta_Powerup();
+                return new Beta_Powerup(position);
 
             case FinalValues.GAMMA:
-                return new Gamma_Powerup();
+                return new Gamma_Powerup(position);
 
             default:
-                return new Sigma_Powerup();
+                return new Sigma_Powerup(position);
 
         }
 

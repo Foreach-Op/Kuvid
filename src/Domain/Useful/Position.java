@@ -1,4 +1,4 @@
-package Domain.Objects;
+package Domain.Useful;
 
 public class Position {
     private int x;

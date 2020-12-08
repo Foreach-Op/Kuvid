@@ -51,7 +51,7 @@ public class BuildingMode {
         powerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), powerupAmount);
 
         ammunition.put(GameDataTypes.ATOM.toString(), atomAmountHash);
-        ammunition.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash);
+        //ammunition.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash);
         gameData.setAmmunition(ammunition);
 
 
@@ -74,6 +74,7 @@ public class BuildingMode {
 
         remainingObjects.put(GameDataTypes.MOLECULE.toString(), moleculeAmountHash);
         remainingObjects.put(GameDataTypes.REACTION_BLOCKER.toString(), blockerAmountHash);
+        remainingObjects.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash); ///ilk oluşanlar bizde or tepeden ?
         gameData.setRemainingObjects(remainingObjects);
 
         //----Difficulty

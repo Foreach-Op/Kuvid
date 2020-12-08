@@ -2,6 +2,7 @@ package Domain.ObjectCreator;
 
 import Domain.Objects.*;
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 
 public class ObjectFactory {
 
@@ -17,17 +18,17 @@ public class ObjectFactory {
     }
 
 
-    public GameObject createObject(String type,String subtype){
+    public GameObject createObject(String type, String subtype, Position position){
 
         switch (type){
             case FinalValues.MOLECULE:
-                return MoleculeFactory.getInstance().createMolecule(subtype);
+                return MoleculeFactory.getInstance().createMolecule(subtype,position);
             case FinalValues.BLOCKER:
-                return BlockerFactory.getInstance().createBlocker(subtype);
+                return BlockerFactory.getInstance().createBlocker(subtype,position);
             case FinalValues.POWERUP:
-                return PowerupFactory.getInstance().createPowerup(subtype);
+                return PowerupFactory.getInstance().createPowerup(subtype,position);
             default:
-               return AtomFactory.getInstance().createAtom(subtype);
+               return AtomFactory.getInstance().createAtom(subtype,position);
         }
 
     }

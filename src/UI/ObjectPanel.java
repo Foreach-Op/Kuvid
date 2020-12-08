@@ -1,6 +1,6 @@
 package UI;
 
-import Domain.Objects.Position;
+import Domain.Useful.Position;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
