@@ -6,7 +6,6 @@ import Domain.Objects.GameObject;
 
 import javax.swing.*;
 import java.util.HashMap;
-import java.util.List;
 
 public class GameScreen extends JFrame implements ObjectListener {
 
