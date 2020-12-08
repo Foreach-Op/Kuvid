@@ -33,14 +33,24 @@ public class Blender {
         BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
         BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
         BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
-        blendBreak.executeBlend(blendRules.get("Atom"));
+        boolean isBlended=blendBreak.executeBlend(blendRules.get("Atom"));
+        if(isBlended){
+
+        }else {
+
+        }
     }
 
     public void Break(String fromType, String toType){
         BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
         BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(toType,fromType);
         BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
-        blendBreak.executeBreak(blendRules.get("Atom"));
+        boolean isBroke=blendBreak.executeBreak(blendRules.get("Atom"));
+        if(isBroke){
+
+        }else {
+
+        }
     }
 
     // Normal Method

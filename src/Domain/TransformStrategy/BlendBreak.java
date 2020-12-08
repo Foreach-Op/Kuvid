@@ -12,11 +12,11 @@ public class BlendBreak {
         this.blendBreakStrategy=blendBreakStrategy;
     }
 
-    public void executeBlend(HashMap<String,Integer> map){
-        blendBreakStrategy.Blend(map);
+    public boolean executeBlend(HashMap<String,Integer> map){
+        return blendBreakStrategy.Blend(map);
     }
 
-    public void executeBreak(HashMap<String,Integer> map){
-        blendBreakStrategy.Break(map);
+    public boolean executeBreak(HashMap<String,Integer> map){
+        return blendBreakStrategy.Break(map);
     }
 }
