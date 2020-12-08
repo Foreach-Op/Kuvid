@@ -1,8 +1,8 @@
 package UI;
 
 import Domain.Listeners.ObjectListener;
+import Domain.Modes.RunningMode;
 import Domain.Objects.GameObject;
-import Domain.Objects.Position;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -43,5 +43,9 @@ public class GameScreen extends JFrame implements ObjectListener {
             ObjectPanel panel=hashMap.remove(object);
             this.remove(panel);
         }
+    }
+
+    public void initialize(RunningMode runningMode){
+
     }
 }
