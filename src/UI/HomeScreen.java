@@ -1,5 +1,9 @@
 package UI;
 
+import Domain.Modes.GameController;
+import Domain.Modes.RunningMode;
+import Domain.Singletons.GameConfiguration;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,7 +41,13 @@ public class HomeScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseHomeScreen();
-                new ConfigureScreen();
+                StatisticsWindow statisticsWindow=new StatisticsWindow();
+                GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
+                GameScreen screen=new GameScreen(statisticsWindow);
+                RunningMode runningMode=new RunningMode(screen);
+                screen.initialize(runningMode);
+                GameController gameController=new GameController(runningMode);
+                new ConfigureScreen(gameController);
             }
         });
 

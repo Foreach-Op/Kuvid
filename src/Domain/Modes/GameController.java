@@ -8,19 +8,19 @@ public class GameController {
     BuildMode buildMode;
     RunningMode runningMode;
 
-    public GameController(){
+    public GameController(RunningMode runningMode){
+        this.runningMode=runningMode;
         buildMode=new BuildMode();
-        //runningMode=new RunningMode();
     }
 
     public void startGame(HashMap<String, String> configurationInfo){
         buildMode.startNewGame(configurationInfo);
-        //runningMode.startGame();
+        runningMode.startGame();
     }
 
     public void LoadGame(String FileName){
         buildMode.loadTheGame(FileName);
-        //runningMode.startGame();
+        runningMode.startGame();
     }
 
     public void KeyAction(KeyEvent keyEvent){

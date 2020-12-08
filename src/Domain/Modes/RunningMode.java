@@ -24,10 +24,6 @@ public class RunningMode {
     MovementHandler movementHandler;
     ObjectCreationHandler objectCreationHandler;
 
-    public RunningMode(GameData data){
-        frameObjects=data.getFrameObjects();
-    }
-
     public RunningMode(ObjectListener frame){
         setFrame(frame);
         frameObjects=new ArrayList<>();

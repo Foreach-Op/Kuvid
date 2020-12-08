@@ -11,8 +11,12 @@ import java.util.List;
 public class GameScreen extends JFrame implements ObjectListener {
 
     public HashMap<GameObject,ObjectPanel> hashMap=new HashMap<>();
+    private StatisticsWindow statisticsWindow;
 
-    public GameScreen(){}
+    public GameScreen(StatisticsWindow statisticsWindow){
+        this.statisticsWindow=statisticsWindow;
+        this.add(statisticsWindow);
+    }
 
     public void addObjectPanel(ObjectPanel objectPanel) {
         this.add(objectPanel);

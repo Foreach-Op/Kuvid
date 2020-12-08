@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class StatisticsWindow extends JFrame implements StaticWindowListener {
     private JPanel panelMain;
@@ -145,7 +146,22 @@ public class StatisticsWindow extends JFrame implements StaticWindowListener {
     }
 
     @Override
-    public void onChange() {
-        SetData();
+    public void onTimeChange(double time) {
+
+    }
+
+    @Override
+    public void onHealthChange(int health) {
+
+    }
+
+    @Override
+    public void onScoreChange(double score) {
+
+    }
+
+    @Override
+    public void onAmmunitionChange(HashMap<String, HashMap<String, Integer>> map) {
+
     }
 }

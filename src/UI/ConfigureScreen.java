@@ -63,9 +63,9 @@ public class ConfigureScreen {
 
     private JFrame configureScreenFrame;
 
-    public ConfigureScreen() {
+    public ConfigureScreen(GameController controller) {
         configurationInfo = new HashMap<>();
-        gameController = new GameController();
+        this.gameController = controller;
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
@@ -183,8 +183,6 @@ public class ConfigureScreen {
                     configurationInfo.put(GameDataTypes.MOLECULE_STRUCTURE.toString(), moleculeStructure);
                     configurationInfo.put(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString(), fallingType);
                     configurationInfo.put(GameDataTypes.DIFFICULTY.toString(), gameDifficulty);
-
-
 
                     // SEND HASHMAP TO THE DOMAIN
                     gameController.startGame(configurationInfo);

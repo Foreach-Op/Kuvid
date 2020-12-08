@@ -28,11 +28,14 @@ public class CollisionHandler {
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
                     Collision collision=new Collision(collisionStrategy);
                     collision.executeCollision(obj1,obj2);
+                    if(!obj1.isAlive()){
+                        frameObjects.remove(obj1);
+                    }
+                    if(!obj2.isAlive()){
+                        frameObjects.remove(obj2);
+                    }
                     frame.onDestroy(obj1,obj2);
                 }
-                //if(current.getBounds().intersects(temp.getBounds())){
-                //    frameObjects.get(i).collision(frameObjects.get(j));
-                //}
             }
         }
     }

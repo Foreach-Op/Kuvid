@@ -91,7 +91,7 @@ public class GameData implements Serializable {
         return remainingTime;
     }
 
-    public void setRemainingTime(int remainingTime) {
+    public void setRemainingTime(double remainingTime) {
         this.remainingTime = remainingTime;
     }
 

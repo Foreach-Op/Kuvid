@@ -1,14 +1,15 @@
 package Domain.Singletons;
 
 import Domain.Objects.GameObject;
+import Domain.Statistics.StaticWindowListener;
 import Domain.Useful.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameConfiguration {
     private static GameConfiguration gameConfiguration;
     private GameData data;
+    private StaticWindowListener staticWindowListener;
 
     private GameConfiguration(){}
 
@@ -19,6 +20,10 @@ public class GameConfiguration {
         return gameConfiguration;
     }
 
+    public void setStaticWindowListener(StaticWindowListener staticWindowListener){
+        this.staticWindowListener=staticWindowListener;
+    }
+
     public GameData getData() {
         return this.data;
     }
@@ -27,15 +32,24 @@ public class GameConfiguration {
         this.data = data;
     }
 
-    public void setData(ArrayList<GameObject> frameObjects, int health,
-                        int score, double remainingTime, GameObject objectInTheTrigger,
-                        HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
-                        HashMap<String, HashMap<String, Integer>> ammunition,
-                        HashMap<String, HashMap<String, Integer>> remainingObjects,
-                        Difficulty difficulty, int l, String alphaBetaType,
-                        MovementType alphaBetaMovementType) {
-    this.data=new GameData(frameObjects, health, score, remainingTime, objectInTheTrigger, powerUps, isLoaded, ammunition, remainingObjects, difficulty, l, alphaBetaType, alphaBetaMovementType);
+    public void setTime(double time){
+        data.setRemainingTime(time);
+        staticWindowListener.onTimeChange(time);
     }
 
+    public void setScore(double score){
+        data.setScore(score);
+        staticWindowListener.onScoreChange(score);
+    }
+
+    public void setHealth(int health){
+        data.setHealth(health);
+        staticWindowListener.onHealthChange(health);
+    }
+
+    public void setAmmunition(HashMap<String,HashMap<String,Integer>> ammo){
+        data.setAmmunition(ammo);
+        staticWindowListener.onAmmunitionChange(ammo);
+    }
 
 }

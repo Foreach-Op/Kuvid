@@ -33,10 +33,12 @@ public class Shooter extends GameObject {
         if(numOfBullets.get(FinalValues.POWERUP).get(subtype)>0)
             currentBullet =  ObjectFactory.getInstance().createObject(FinalValues.POWERUP, subtype);
     }
+
     public void fire(){
         reduceTheBullet();
         changeBullet();
     }
+
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
         numOfBullets.get(currentBullet.getType()).replace(currentBullet.getSubType(),
                 numOfBullets.get(currentBullet.getType()).get(currentBullet.getSubType())-1);
@@ -59,7 +61,7 @@ public class Shooter extends GameObject {
         return numOfBullets.get(FinalValues.ATOM);
     }
     public void setNumOfAtoms(HashMap<String, Integer> set){
-        numOfBullets.replace("Atom", set);
+        numOfBullets.replace(FinalValues.ATOM, set);
     }
 
     public void collect(Collectable c){
