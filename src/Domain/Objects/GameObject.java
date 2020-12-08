@@ -11,6 +11,8 @@ public abstract class GameObject {
     public Position position;
     public Rectangle rectangle;
     public MovementofObject movementofObject;
+    // To destroy object
+    private boolean isAlive=true;
 
     //bu ikisi silinecek gibi ya da bilgi olarak tutulacak sadece
     private String type;
@@ -63,5 +65,13 @@ public abstract class GameObject {
 
     public void setSubType(String subType) {
         this.subType = subType;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void destroy() {
+        isAlive = false;
     }
 }

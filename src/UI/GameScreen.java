@@ -38,14 +38,20 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     @Override
-    public void onDestroy(List<GameObject> objects) {
-        for (GameObject object:objects) {
+    public void onDestroy(GameObject obj1, GameObject obj2) {
+        removeFromScreen(obj1);
+        removeFromScreen(obj2);
+    }
+
+    public void removeFromScreen(GameObject object){
+        if(!object.isAlive()){
             ObjectPanel panel=hashMap.remove(object);
             this.remove(panel);
         }
     }
 
-    public void initialize(RunningMode runningMode){
 
+    public void initialize(RunningMode runningMode){
+        runningMode.setFrame(this);
     }
 }

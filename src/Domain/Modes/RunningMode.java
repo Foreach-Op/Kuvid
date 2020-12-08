@@ -28,11 +28,12 @@ public class RunningMode {
         frameObjects=data.getFrameObjects();
     }
 
-    public RunningMode(){
+    public RunningMode(ObjectListener frame){
+        setFrame(frame);
         frameObjects=new ArrayList<>();
-        objectCreationHandler=new ObjectCreationHandler(frameObjects);
-        movementHandler=new MovementHandler(frameObjects);
-        collisionHandler=new CollisionHandler(frameObjects);
+        objectCreationHandler=new ObjectCreationHandler(frameObjects,frame);
+        movementHandler=new MovementHandler(frameObjects,frame);
+        collisionHandler=new CollisionHandler(frameObjects,frame);
     }
 
     public void startGame() {
@@ -40,6 +41,10 @@ public class RunningMode {
     }
 
     public void moveObjects(){
+    }
+
+    public void setFrame(ObjectListener frame){
+        this.frame=frame;
     }
 
 

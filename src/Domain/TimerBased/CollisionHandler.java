@@ -3,6 +3,7 @@ package Domain.TimerBased;
 import Domain.CollisionStrategy.Collision;
 import Domain.CollisionStrategy.CollisionStrategy;
 import Domain.CollisionStrategy.CollisionStrategyFactory;
+import Domain.Listeners.ObjectListener;
 import Domain.Objects.GameObject;
 import UI.ObjectPanel;
 
@@ -10,10 +11,12 @@ import java.util.ArrayList;
 
 public class CollisionHandler {
 
-    private ArrayList<GameObject> frameObjects;
+    private final ArrayList<GameObject> frameObjects;
+    private final ObjectListener frame;
 
-    public CollisionHandler(ArrayList<GameObject> frameObjects) {
+    public CollisionHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
+        this.frame=frame;
     }
 
     public void collisionDetect(){
@@ -25,6 +28,7 @@ public class CollisionHandler {
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
                     Collision collision=new Collision(collisionStrategy);
                     collision.executeCollision(obj1,obj2);
+                    frame.onDestroy(obj1,obj2);
                 }
                 //if(current.getBounds().intersects(temp.getBounds())){
                 //    frameObjects.get(i).collision(frameObjects.get(j));

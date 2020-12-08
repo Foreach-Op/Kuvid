@@ -1,5 +1,6 @@
 package Domain.TimerBased;
 
+import Domain.Listeners.ObjectListener;
 import Domain.MovementStrategy.Movement;
 import Domain.MovementStrategy.MovementStrategy;
 import Domain.MovementStrategy.MovementStrategyFactory;
@@ -9,10 +10,12 @@ import java.util.ArrayList;
 
 public class MovementHandler {
 
-    ArrayList<GameObject> frameObjects;
+    private final ArrayList<GameObject> frameObjects;
+    private final ObjectListener frame;
 
-    public MovementHandler(ArrayList<GameObject> frameObjects) {
+    public MovementHandler(ArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
+        this.frame=frame;
     }
 
     public void move(){
@@ -20,6 +23,7 @@ public class MovementHandler {
             MovementStrategy movementStrategy= MovementStrategyFactory.getInstance().getStrategy(object);
             Movement movement=new Movement(movementStrategy);
             movement.executeMovement(object);
+            frame.onLocationChange();
         }
     }
 
