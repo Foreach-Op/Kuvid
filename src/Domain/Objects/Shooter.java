@@ -4,6 +4,7 @@ import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
 import Domain.TimerBased.ObjectCreationHandler;
 import Domain.Useful.FinalValues;
+import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
 import java.util.HashMap;
@@ -17,12 +18,14 @@ public class Shooter extends GameObject {
 
     private static Shooter shooter;
 
-    private Shooter(){}
+    private Shooter(){
+        super(null,null,new Position()); //poziyon atanacak
+        initializeShooter();
+    }
 
     public static Shooter getInstance(){
         if(shooter ==null){
             shooter =new Shooter();
-            shooter.initializeShooter();
         }
         return shooter;
     }
