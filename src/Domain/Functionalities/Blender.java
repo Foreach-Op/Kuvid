@@ -1,6 +1,9 @@
 package Domain.Functionalities;
 
 import Domain.Objects.Shooter;
+import Domain.TransformStrategy.BlendBreak;
+import Domain.TransformStrategy.BlendBreakStrategy;
+import Domain.TransformStrategy.BlendBreakStrategyFactory;
 import Domain.Useful.FinalValues;
 import Domain.Useful.Subtype;
 
@@ -24,7 +27,30 @@ public class Blender {
         blendRules.put(FinalValues.GAMMA, gammaMap);
     }
 
+    // Strategy Method
+
+    public void Blend(String fromType, String toType){
+        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
+        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
+        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
+        blendBreak.executeBlend(blendRules.get("Atom"));
+    }
+
+    public void Break(String fromType, String toType){
+        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
+        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(toType,fromType);
+        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
+        blendBreak.executeBreak(blendRules.get("Atom"));
+    }
+
+    // Normal Method
+
     public void blend(String fromType, String toType){
+        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
+        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
+        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
+        blendBreak.executeBlend(blendRules.get("Atom"));
+
         if(blendRules.get(fromType) != null && blendRules.get(fromType).get(toType)!= null){
             int use = blendRules.get(fromType).get(toType);
             HashMap<String, Integer> shooterMap = Shooter.getInstance().getNumOfAtoms();
@@ -36,6 +62,11 @@ public class Blender {
         }
     }
     public void breakAtom(String fromType, String toType){
+        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
+        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
+        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
+        blendBreak.executeBreak(blendRules.get("Atom"));
+
         if(blendRules.get(toType) != null && blendRules.get(toType).get(fromType)!= null){
             int add = blendRules.get(toType).get(fromType);
             HashMap<String, Integer> shooterMap = Shooter.getInstance().getNumOfAtoms();
