@@ -30,11 +30,6 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     @Override
-    public void addOnGameScreen() {
-
-    }
-
-    @Override
     public void onLocationChange() {
         for (GameObject object:hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.position);
