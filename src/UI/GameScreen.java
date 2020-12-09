@@ -22,7 +22,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     private GameController gameController;
 
     private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
-    private static final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
+    public final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
     private static final int GAME_SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public GameScreen() {
@@ -41,11 +41,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //gameScreen.setResizable(false);
-        gameScreen.setVisible(true);
 
         JPanel gamePanel = new JPanel();
         gamePanel.setBackground(Color.CYAN);
-        gameScreen.add(gamePanel, BorderLayout.WEST);
+        //gameScreen.add(gamePanel, BorderLayout.WEST);
         gamePanel.setPreferredSize(new Dimension(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGHT));
 
 
@@ -58,9 +57,13 @@ public class GameScreen extends JFrame implements ObjectListener {
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
 
-        //gameScreen.add(statisticsWindow, BorderLayout.EAST);
+        //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
+
         //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
         //gameScreen.repaint();
+
+        //gameScreen.pack();
+        gameScreen.setVisible(true);
 
     }
 

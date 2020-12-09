@@ -30,6 +30,7 @@ public class GameData implements Serializable {
     private String alphaBetaType;
     private MovementType alphaBetaMovementType;
 
+    private int gameScreenLength;
 
     public GameData(){}
 
@@ -170,5 +171,13 @@ public class GameData implements Serializable {
 
     public void setAlphaBetaMovementType(MovementType alphaBetaMovementType) {
         this.alphaBetaMovementType = alphaBetaMovementType;
+    }
+
+    public int getGameScreenLength(){
+        return gameScreenLength;
+    }
+
+    public void setGameScreenLength(int gameScreenLength){
+        this.gameScreenLength = gameScreenLength;
     }
 }
