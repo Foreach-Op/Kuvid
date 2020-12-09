@@ -21,22 +21,31 @@ public class BlendBreakStrategyFactory {
         switch (from){
             case "Alpha":
                 switch (to) {
-                    case "Beta": blendBreakStrategy = new AlphaToBeta();
-                    case "Gamma": blendBreakStrategy = new AlphaToGamma();
-                    case "Sigma": blendBreakStrategy = new AlphaToSigma();
+                    case "Beta":
+                        blendBreakStrategy = new AlphaToBeta();
+                        break;
+                    case "Gamma":
+                        blendBreakStrategy = new AlphaToGamma();
+                        break;
+                    case "Sigma":
+                        blendBreakStrategy = new AlphaToSigma();
+                        break;
                 }
                 break;
             case "Beta":
-                switch (to){
-                    case "Gamma": blendBreakStrategy=new BetaToGamma();
-                    case "Sigma" : blendBreakStrategy=new BetaToSigma();
+                switch (to) {
+                    case "Gamma":
+                        blendBreakStrategy = new BetaToGamma();
+                        break;
+                    case "Sigma":
+                        blendBreakStrategy = new BetaToSigma();
+                        break;
                 }
                 break;
             case "Gamma":
                 blendBreakStrategy=new GammaToSigma();
                 break;
         }
-
         return blendBreakStrategy;
     }
 
