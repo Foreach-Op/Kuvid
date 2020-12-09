@@ -20,7 +20,7 @@ public class TestShooter {
         System.out.println(molecule.getPosition().getX() + " " + molecule.getPosition().getY());
         molecule.getRectangle().applyMovement(molecule.getMovement());
         System.out.println(molecule.getPosition().getX() + " " + molecule.getPosition().getY());
-
+        Shooter s = new Shooter();
 
 
 

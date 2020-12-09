@@ -18,7 +18,7 @@ public class Shooter extends GameObject {
     private final double heightCoef = 1;
     private final double widthCoef = 0.5;
     public Shooter(){
-        super(null,null,new Position()); //poziyon atanacak
+        super(); //poziyon atanacak
         setRectangle(new Rectangle(new Position((int)((GameData.screenWidth/2) - widthCoef*GameData.L/2),
                 (int)((GameData.screenHeight) - heightCoef*GameData.L)), widthCoef,heightCoef,0)
         );
@@ -29,7 +29,6 @@ public class Shooter extends GameObject {
 
     public void initializeShooter(){
         initializeBullets();
-
     }
 
 
