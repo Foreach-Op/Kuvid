@@ -48,17 +48,17 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.add(gamePanel, BorderLayout.WEST);
         gamePanel.setPreferredSize(new Dimension(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGHT));
 
-        /*
+
         JPanel panel2 = new JPanel();
+        panel2.setBackground(Color.BLACK);
         gameScreen.add(panel2, BorderLayout.EAST);
         panel2.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
 
-         */
-
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
-        //GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
-        gameScreen.add(statisticsWindow, BorderLayout.EAST);
+        GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
+
+        //gameScreen.add(statisticsWindow, BorderLayout.EAST);
         //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
         //gameScreen.repaint();
 

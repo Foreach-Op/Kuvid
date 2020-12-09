@@ -83,7 +83,7 @@ public class BuildingMode {
         gameData.setRemainingObjects(remainingObjects);
 
         //----Difficulty
-        String difficultyStr = configHash.get(GameDataTypes.DIFFICULTY.toString());
+        String difficultyStr = configHash.get("difficulty");
         Difficulty difficulty;
         if (difficultyStr.equals(Difficulty.HARD.toString())) {
             difficulty = Difficulty.HARD;
@@ -95,16 +95,16 @@ public class BuildingMode {
         gameData.setDifficulty(difficulty);
 
         //---Length
-        int length = Integer.parseInt(configHash.get(GameDataTypes.LENGTH.toString()));
+        int length = Integer.parseInt(configHash.get("length"));
         gameData.setL(length);
 
         //---Type
-        String alphaBetaType = configHash.get(GameDataTypes.MOLECULE_STRUCTURE.toString());
+        String alphaBetaType = configHash.get("structure");
         gameData.setAlphaBetaType(alphaBetaType);
 
         //---Movement
         MovementType alphaBetaMovementType;
-        String movementType = configHash.get(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString());
+        String movementType = configHash.get("fallingType");
         if (movementType.equals(MovementType.SPINNING.toString())) {
             alphaBetaMovementType = MovementType.SPINNING;
         } else {

@@ -150,7 +150,7 @@ public class ConfigureScreen {
                     configurationInfo.put(FinalValues.BLOCKER, textFieldNumberOfBlockers.getText());
                     configurationInfo.put(FinalValues.POWERUP, textFieldNumberOfPowerups.getText());
                     configurationInfo.put(FinalValues.MOLECULE, textFieldNumberOfMolecules.getText());
-                    configurationInfo.put(GameDataTypes.LENGTH.toString(), textFieldLength.getText());
+                    configurationInfo.put("length", textFieldLength.getText());
 
                     String moleculeStructure = new String();
                     String fallingType = new String();
@@ -176,9 +176,9 @@ public class ConfigureScreen {
                     }
 
                     // Put those strings into hashmap
-                    configurationInfo.put(GameDataTypes.MOLECULE_STRUCTURE.toString(), moleculeStructure);
-                    configurationInfo.put(GameDataTypes.MOLECULE_MOVEMENT_TYPE.toString(), fallingType);
-                    configurationInfo.put(GameDataTypes.DIFFICULTY.toString(), gameDifficulty);
+                    configurationInfo.put("structure", moleculeStructure);
+                    configurationInfo.put("fallingType", fallingType);
+                    configurationInfo.put("difficulty", gameDifficulty);
 
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
