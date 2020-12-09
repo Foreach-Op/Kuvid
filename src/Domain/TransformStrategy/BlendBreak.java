@@ -1,22 +1,15 @@
 package Domain.TransformStrategy;
 
-import Domain.CollisionStrategy.CollisionStrategy;
-import Domain.Objects.GameObject;
-
 import java.util.HashMap;
 
 public class BlendBreak {
-    private BlendBreakStrategy blendBreakStrategy;
+    private TransformStrategy transformStrategy;
 
-    public BlendBreak(BlendBreakStrategy blendBreakStrategy){
-        this.blendBreakStrategy=blendBreakStrategy;
+    public BlendBreak(TransformStrategy transformStrategy){
+        this.transformStrategy = transformStrategy;
     }
 
-    public boolean executeBlend(HashMap<String,Integer> map){
-        return blendBreakStrategy.Blend(map);
-    }
-
-    public boolean executeBreak(HashMap<String,Integer> map){
-        return blendBreakStrategy.Break(map);
+    public boolean executeTransform(HashMap<String,Integer> map){
+        return transformStrategy.Transform(map);
     }
 }
