@@ -1,12 +1,16 @@
 package UI;
 
+import Domain.Modes.GameController;
 import Domain.Objects.ObjectListener;
 import Domain.Modes.RunningMode;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
+import Domain.Useful.GameActionHandler;
+import Domain.Useful.HotKeys;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
 public class GameScreen extends JFrame implements ObjectListener {
@@ -14,25 +18,30 @@ public class GameScreen extends JFrame implements ObjectListener {
     public HashMap<GameObject, ObjectPanel> hashMap = new HashMap<>();
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
+    private GameController gameController;
 
     public GameScreen() {
         CreateUIElements();
-        GameActionListener();
     }
 
-    public void SetInitialData(){
+    public void InitializeGameScreen(GameController gameController){
+        this.gameController = gameController;
         statisticsWindow.SetData(GameConfiguration.getInstance().getData());
+        GameActionListener();
     }
 
     private void CreateUIElements() {
         gameScreen = new JFrame();
         gameScreen.setSize(600, 400);
+        gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        gameScreen.setResizable(false);
         gameScreen.setVisible(true);
 
         statisticsWindow = new StatisticsWindow();
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
-
-        gameScreen.add(statisticsWindow);
+        gameScreen.setContentPane(statisticsWindow);
+        //gameScreen.add(statisticsWindow);
     }
 
     private void GameActionListener() {
@@ -40,31 +49,49 @@ public class GameScreen extends JFrame implements ObjectListener {
 
         JPanel contentPane = (JPanel) gameScreen.getContentPane();
 
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("LEFT"), "move left");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("RIGHT"), "move right");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("A"), "rotate left");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("D"), "rotate right");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("UP"), "fire");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("C"), "pick atom");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("B"), "blend");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_LEFT.getValue(), 0, true), "move left"); // TRUE'da action almadı
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_RIGHT.getValue(),0, false), "move right");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ROTATE_LEFT.getValue(),0), "rotate left");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ROTATE_RIGHT.getValue(), 0), "rotate right");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.SHOOT.getValue(),0), "fire");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICK_ATOM.getValue(),0), "pick atom");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.BLEND.getValue(),0), "blend");
 
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("P"), "pause");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("R"), "resume");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PAUSE.getValue(),0), "pause");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.RESUME.getValue(),0), "resume");
 
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("S"), "save");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("L"), "load");
 
-        contentPane.getActionMap().put("fire", new DummyAction("fire"));
-        contentPane.getActionMap().put("move left", new DummyAction("move left"));
-        contentPane.getActionMap().put("move right", new DummyAction("move right"));
-        contentPane.getActionMap().put("rotate left", new DummyAction("rotate left"));
-        contentPane.getActionMap().put("rotate right", new DummyAction("rotate right"));
-        contentPane.getActionMap().put("pick atom", new DummyAction("pick atom"));
-        contentPane.getActionMap().put("blend", new DummyAction("blend"));
-        contentPane.getActionMap().put("pause", new DummyAction("pause"));
-        contentPane.getActionMap().put("resume", new DummyAction("resume"));
-    }
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), 0), "atom 1");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), 0), "atom 2");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), 0), "atom 3");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), 0), "atom 4");
 
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), KeyEvent.ALT_MASK), "choose powerup 1");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.ALT_MASK), "choose powerup 2");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.ALT_MASK), "choose powerup 3");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.ALT_MASK), "choose powerup 4");
+
+
+        contentPane.getActionMap().put("move right", new GameActionHandler("move right", gameController));
+        contentPane.getActionMap().put("rotate left", new GameActionHandler("rotate left", gameController));
+        contentPane.getActionMap().put("rotate right", new GameActionHandler("rotate right", gameController));
+        contentPane.getActionMap().put("pick atom", new GameActionHandler("pick atom", gameController));
+        contentPane.getActionMap().put("fire", new GameActionHandler("fire", gameController));
+        contentPane.getActionMap().put("blend", new GameActionHandler("blend", gameController));
+        contentPane.getActionMap().put("pause", new GameActionHandler("pause", gameController));
+        contentPane.getActionMap().put("resume", new GameActionHandler("resume", gameController));
+        contentPane.getActionMap().put("choose powerup 1", new GameActionHandler("choose powerup 1", gameController));
+        contentPane.getActionMap().put("choose powerup 2", new GameActionHandler("choose powerup 2", gameController));
+        contentPane.getActionMap().put("choose powerup 3", new GameActionHandler("choose powerup 3", gameController));
+        contentPane.getActionMap().put("choose powerup 4", new GameActionHandler("choose powerup 5", gameController));
+
+        contentPane.getActionMap().put("atom 1", new GameActionHandler("atom 1", gameController));
+        contentPane.getActionMap().put("atom 2", new GameActionHandler("atom 2", gameController));
+        contentPane.getActionMap().put("atom 3", new GameActionHandler("atom 3", gameController));
+        contentPane.getActionMap().put("atom 4", new GameActionHandler("atom 4", gameController));
+    }
     public void addObjectPanel(ObjectPanel objectPanel) {
         this.add(objectPanel);
     }
@@ -98,20 +125,5 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     public void initialize(RunningMode runningMode) {
         runningMode.setFrameListener(this);
-    }
-
-
-
-    private class DummyAction extends AbstractAction {
-        private String action;
-
-        DummyAction(String action) {
-            this.action = action;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println(action);
-        }
     }
 }

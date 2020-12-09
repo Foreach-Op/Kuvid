@@ -53,11 +53,13 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private void CreateUIElements() {
         JFrame frame = new JFrame();
         frame.setContentPane(panelMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+
         //frame.setSize(180, 720);
+        frame.setUndecorated(true);
         frame.setResizable(false);
+        frame.setVisible(true);
+        frame.pack();
+
     }
 
     private void SetPowerupIcons(){

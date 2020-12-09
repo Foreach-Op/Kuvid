@@ -5,8 +5,8 @@ import java.awt.event.KeyEvent;
 public enum HotKeys {
     MOVE_RIGHT(KeyEvent.VK_RIGHT), // D
     MOVE_LEFT(KeyEvent.VK_LEFT), // A
-    ROTATE_RIGHT(KeyEvent.VK_A), // SCROLL WHEEL
-    ROTATE_LEFT(KeyEvent.VK_D), // SCROLL WHEEL
+    ROTATE_RIGHT(KeyEvent.VK_D), // SCROLL WHEEL
+    ROTATE_LEFT(KeyEvent.VK_A), // SCROLL WHEEL
     SHOOT(KeyEvent.VK_UP), // LEFT CLICK
     PICK_ATOM(KeyEvent.VK_C), // SPACE
     BLEND(KeyEvent.VK_B), // ALT + ATOM TYPE
@@ -16,6 +16,7 @@ public enum HotKeys {
     ATOM_TYPE4(KeyEvent.VK_4),
     PAUSE(KeyEvent.VK_P),
     RESUME(KeyEvent.VK_R),
+
     SAVE(KeyEvent.VK_S),
     LOAD(KeyEvent.VK_L);
 

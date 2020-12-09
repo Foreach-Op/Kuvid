@@ -10,7 +10,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Modes.*;  //Domain.Modes.GameController does not work
-import Domain.Statistics.GameConfiguration;
 import Domain.Useful.Difficulty;
 import Domain.Useful.GameDataTypes;
 import Domain.Useful.MoleculeStructure;
@@ -76,7 +75,7 @@ public class ConfigureScreen {
         screen.initialize(runningMode);
         gameController = new GameController(runningMode);
         gameController.startGame(configurationInfo);
-        screen.SetInitialData();
+        screen.InitializeGameScreen(gameController);
     }
 
     private void CreateUIElements() {
