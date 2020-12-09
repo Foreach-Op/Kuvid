@@ -24,9 +24,10 @@ public class GameData implements Serializable {
     private HashMap<String, HashMap<String, Integer>> remainingObjects;
     //Even if it is saved, these will be same
     private Difficulty difficulty;
-    private int L;
+    public static int L;/////// make it visible
     private String alphaBetaType;
     private MovementType alphaBetaMovementType;
+
 
     public GameData(){}
 

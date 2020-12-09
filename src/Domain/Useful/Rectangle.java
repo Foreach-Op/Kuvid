@@ -1,5 +1,8 @@
 package Domain.Useful;
 
+import Domain.Objects.MovementofObject;
+import Domain.Statistics.GameData;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,24 +10,24 @@ import java.util.Collections;
 public class Rectangle {
     int locationX;
     int locationY;
-    int length;
-    int width;
-    double angle;
+    double length;
+    double width;
+    int angle;
     ArrayList<Point> pointList;
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
-    public Rectangle(int locationX, int locationY, int width, int length, double angle){
-        this.locationX = locationX;
-        this.locationY = locationY;
-        this.length = length;
-        this.width = width;
+    public Rectangle(Position p, double widthCoef, double heightCoef, int angle){
+        this.locationX = p.getX();
+        this.locationY = p.getY();
+        this.length = heightCoef*GameData.L;
+        this.width = widthCoef * GameData.L;
         this.angle = angle;
-        initializePointList();
+        initializePointList(angle);
     }
-    public void initializePointList(){
+    public void initializePointList(int angle){
         pointList = new ArrayList<Point>();
-        for(int x = 0; x<width ;x++){
-            for(int y = 0; y<length; y++){
+        for(int x = -((int)width/2); x<width/2 ;x++){
+            for(int y = -((int)length/2); y<length/2; y++){
                 int rotatedX = (int) (x*Math.cos(angle) - y*Math.sin(angle)) ;
                 int rotatedY = (int) (x*Math.sin(angle) + y* Math.cos(angle)) ;
                 pointList.add(new Point(rotatedX + locationX, rotatedY+locationY));
@@ -34,6 +37,13 @@ public class Rectangle {
     public boolean intersects(Rectangle second){
         if (Collections.disjoint(second.pointList, this.pointList)) return false;
         return true;
+    }
+    public void applyMovement(MovementofObject movement){
+        locationX += movement.getShiftX(locationY);
+        locationY += movement.getShiftY(locationY);
+        angle += movement.getAngle();
+        initializePointList(angle);
+
     }
 
     public int getLocationX() {
@@ -68,12 +78,15 @@ public class Rectangle {
         this.width = width;
     }
 
-    public double getAngle() {
+    public int getAngle() {
         return angle;
     }
 
-    public void setAngle(double angle) {
+    public void setAngle(int angle) {
         this.angle = angle;
     }
 
+    public Position getPosition(){
+        return new Position(getLocationX(), getLocationY());
+    }
 }

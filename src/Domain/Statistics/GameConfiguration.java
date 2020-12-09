@@ -1,12 +1,15 @@
 package Domain.Statistics;
 
+import Domain.Objects.Shooter;
+import Domain.Useful.Rectangle;
+
 import java.util.HashMap;
 
 public class GameConfiguration {
     private static GameConfiguration gameConfiguration;
     private GameData data;
     private StaticWindowListener staticWindowListener;
-
+    private Shooter shooter;
     private GameConfiguration(){}
 
     public static GameConfiguration getInstance(){
@@ -14,6 +17,10 @@ public class GameConfiguration {
             gameConfiguration=new GameConfiguration();
         }
         return gameConfiguration;
+    }
+
+    public Shooter getShooter() {
+        return shooter;
     }
 
     public void setStaticWindowListener(StaticWindowListener staticWindowListener){

@@ -7,10 +7,9 @@ import Domain.Useful.Rectangle;
 
 public class Sigma_Blocker extends Blocker{
 
-    public MovementofObject movementofObject = MovementType.STATIONARY.getMovement();
-    public Rectangle rectangle;
 
     public Sigma_Blocker(Position position) {
         super(FinalValues.SIGMA, position);
+        setMovement(MovementType.STATIONARY.getMovement());
     }
 }

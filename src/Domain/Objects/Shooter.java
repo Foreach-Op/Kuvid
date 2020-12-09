@@ -1,46 +1,33 @@
 package Domain.Objects;
 
+import Domain.Modes.RunningMode;
 import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
 import Domain.TimerBased.ObjectCreationHandler;
-import Domain.Useful.FinalValues;
-import Domain.Useful.MovementType;
-import Domain.Useful.Position;
-import Domain.Useful.Rectangle;
+import Domain.Useful.*;
 
 import java.util.HashMap;
 
 import static Domain.Useful.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
-    private int angle;
     private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
     private String currentBulletType = null;
     private String currentBulletSubtype = null;//bullet of the shooter.
-    public Rectangle rectangle;
-    private MovementofObject leftMovement = MovementType.SHOOTER_MOVEMENT_LEFT.getMovement();
-    private MovementofObject rightMovement = MovementType.SHOOTER_MOVEMENT_RIGHT.getMovement();
-    private MovementofObject leftRotation = MovementType.SHOOTER_ROTATE_LEFT.getMovement();
-    private MovementofObject rightRotation = MovementType.SHOOTER_ROTATE_RIGHT.getMovement();
 
 
-    private static Shooter shooter;
+
 
     private Shooter(){
         super(null,null,new Position()); //poziyon atanacak
         initializeShooter();
     }
 
-    public static Shooter getInstance(){
-        if(shooter ==null){
-            shooter =new Shooter();
-        }
-        return shooter;
-    }
+
 
     public void initializeShooter(){
         initializeBullets();
-        rectangle=new Rectangle(5,5,5,5,5); //düzelt
+
     }
 
 
@@ -59,11 +46,11 @@ public class Shooter extends GameObject {
         }
     }
 
-    public GameObject fire(){
-        GameObject fired = ObjectFactory.getInstance().createFireableObject(currentBulletType,currentBulletSubtype,angle);
+    public void fire(){
+        RunningMode.objectCreationHandler.createFiredGameObject(currentBulletType, currentBulletSubtype);
         reduceTheBullet();
         changeBullet();
-        return fired;
+
     }
 
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
@@ -110,6 +97,7 @@ public class Shooter extends GameObject {
     public void setAmmunition(HashMap<String, HashMap<String, Integer>> numOfBullets){
         GameConfiguration.getInstance().getData().setAmmunition(numOfBullets);
     }
+
 
 
 }

@@ -5,14 +5,10 @@ import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
-public class Sigma_Atom extends Atom{
+public class Sigma_Atom extends Atom {
 
-    public MovementofObject movementofObject;
-    public Rectangle rectangle;
-
-
-    public Sigma_Atom(int angle) {
-        super(FinalValues.SIGMA,angle);
+    public Sigma_Atom() {
+        super(FinalValues.SIGMA);
     }
 
 }

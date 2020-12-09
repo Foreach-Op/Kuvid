@@ -55,36 +55,5 @@ public class Blender {
 
     // Normal Method
 
-    public void blend(String fromType, String toType){
-        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
-        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
-        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
-        blendBreak.executeBlend(blendRules.get("Atom"));
 
-        if(blendRules.get(fromType) != null && blendRules.get(fromType).get(toType)!= null){
-            int use = blendRules.get(fromType).get(toType);
-            HashMap<String, Integer> shooterMap = Shooter.getInstance().getNumOfAtoms();
-            if (shooterMap.get(fromType)>=use) {
-                shooterMap.replace(fromType, shooterMap.get(fromType) - use);
-                shooterMap.replace(toType, shooterMap.get(toType) + 1);
-                Shooter.getInstance().setNumOfAtoms(shooterMap);
-            }
-        }
-    }
-    public void breakAtom(String fromType, String toType){
-        BlendBreakStrategyFactory blendBreakStrategyFactory=BlendBreakStrategyFactory.getInstance();
-        BlendBreakStrategy blendBreakStrategy=blendBreakStrategyFactory.getStrategy(fromType,toType);
-        BlendBreak blendBreak=new BlendBreak(blendBreakStrategy);
-        blendBreak.executeBreak(blendRules.get("Atom"));
-
-        if(blendRules.get(toType) != null && blendRules.get(toType).get(fromType)!= null){
-            int add = blendRules.get(toType).get(fromType);
-            HashMap<String, Integer> shooterMap = Shooter.getInstance().getNumOfAtoms();
-            if (shooterMap.get(fromType)>=1) {
-                shooterMap.replace(toType, shooterMap.get(toType) + add);
-                shooterMap.replace(fromType, shooterMap.get(fromType) - 1);
-                Shooter.getInstance().setNumOfAtoms(shooterMap);
-            }
-        }
-    }
 }

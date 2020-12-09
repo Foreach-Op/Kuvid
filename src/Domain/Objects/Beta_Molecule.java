@@ -5,16 +5,11 @@ import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
-public class Beta_Molecule extends Molecule{
+public class Beta_Molecule extends Molecule {
 
-    public MovementofObject movementofObject= MovementType.QUARTER_STATIONARY_THEN_ZIGZAG.getMovement();
-    public Rectangle rectangle;
-
-    MovementType movement = MovementType.QUARTER_STATIONARY_THEN_ZIGZAG;
     public Beta_Molecule(Position position) {
-        super(FinalValues.BETA,position);
+        super(FinalValues.BETA, position);
+        this.setMovement(MovementType.QUARTER_STATIONARY_THEN_ZIGZAG.getMovement());
     }
-    public MovementType getMovementType(){
-        return this.movement;
-    }
+
 }

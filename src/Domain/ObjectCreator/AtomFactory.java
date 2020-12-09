@@ -16,20 +16,20 @@ public class AtomFactory {
     }
 
 
-    public GameObject createAtom(String subtype,int angle) {
+    public GameObject createAtom(String subtype) {
 
         switch (subtype) {
             case FinalValues.ALPHA:
-                return new Alpha_Atom(angle);
+                return new Alpha_Atom();
 
             case FinalValues.BETA:
-                return new Beta_Atom(angle);
+                return new Beta_Atom();
 
             case FinalValues.GAMMA:
-                return new Gamma_Atom(angle);
+                return new Gamma_Atom();
 
             default:
-                return new Sigma_Atom(angle);
+                return new Sigma_Atom();
 
         }
 

@@ -1,6 +1,7 @@
 package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
+
 import Domain.Modes.RunningMode;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
@@ -12,14 +13,15 @@ public abstract class GameObject {
     private String type;
     private String subType;
     private Rectangle rect;
+    private MovementofObject movement;
 
-
-    public GameObject(){
+    public GameObject() {
     }
 
-    public GameObject(String type,String subType, Position position){
-        this.type=type;
-        this.subType=subType;
+    public GameObject(String type, String subType, Position position) {
+        this.type = type;
+        this.subType = subType;
+
     }
 
     public String getType() {
@@ -37,7 +39,29 @@ public abstract class GameObject {
     public void destroy() {
         isAlive = false;
     }
-    public Position position() {
-        return new Position(rect.getLocationX(), rect.getLocationY());
+
+    public Position getPosition() {
+        return rect.getPosition();
     }
+
+    public void setMovement(MovementofObject movement) {
+        this.movement = movement;
+    }
+
+    public MovementofObject getMovement() {
+        return movement;
+    }
+
+    public Rectangle getRectangle() {
+        return rect;
+    }
+
+    public int getAngle() {
+        return rect.getAngle();
+    }
+
+    public void setRectangle(Rectangle r) {
+        this.rect = r;
+    }
+
 }

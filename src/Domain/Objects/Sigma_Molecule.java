@@ -5,17 +5,13 @@ import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
-public class Sigma_Molecule extends Molecule{
+public class Sigma_Molecule extends Molecule {
 
-    public MovementofObject movementofObject = MovementType.STATIONARY.getMovement();
-    public Rectangle rectangle;
-    private MovementType movement = MovementType.STATIONARY;
 
-    public Sigma_Molecule(Position position ) {
+    public Sigma_Molecule(Position position) {
         super(FinalValues.SIGMA, position);
+        setMovement(MovementType.STATIONARY.getMovement());
     }
 
-    public MovementType getMovementType(){
-        return this.movement;
-    }
+
 }

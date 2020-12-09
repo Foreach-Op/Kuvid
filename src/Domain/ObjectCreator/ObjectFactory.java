@@ -31,12 +31,12 @@ public class ObjectFactory {
         }
 
     }
-    public GameObject createFireableObject(String type, String subtype, int angle){
+    public GameObject createFireableObject(String type, String subtype){
         switch (type){
             case FinalValues.POWERUP:
-                return PowerupFactory.getInstance().createPowerup(subtype,angle);
+                return PowerupFactory.getInstance().createPowerup(subtype);
             default:
-                return AtomFactory.getInstance().createAtom(subtype,angle);
+                return AtomFactory.getInstance().createAtom(subtype);
         }
     }
 

@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RunningMode {
-    public static double L; //???
-    public static int screenHeight;//??
+    public static double L = 15;
+    public static int screenHeight = 100;
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
@@ -23,7 +23,7 @@ public class RunningMode {
 
     CollisionHandler collisionHandler;
     MovementHandler movementHandler;
-    ObjectCreationHandler objectCreationHandler;
+    public static ObjectCreationHandler objectCreationHandler;
 
     private int refreshRate;
 

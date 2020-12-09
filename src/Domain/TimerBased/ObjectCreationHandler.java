@@ -39,6 +39,11 @@ public class ObjectCreationHandler {
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
     }
+    public void createFiredGameObject(String type, String subtype){
+        GameObject gameObject=ObjectFactory.getInstance().createFireableObject(type,subtype);
+        frameObjects.add(gameObject);
+        frame.onCreate(gameObject);
+    }
 
     private String getRandomType() {
 
