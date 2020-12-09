@@ -16,16 +16,11 @@ public class Powerup extends GameObject implements Collectable {
 
     public Powerup(String subType, Position position) {
         super(FinalValues.POWERUP, subType, position);
-        setRectangle(new Rectangle(position, widthCoef, heightCoef, 0));
-    }
-
-    public Powerup(String subtype) {
-        super(FinalValues.POWERUP, subtype, GameConfiguration.getInstance().getShooter().getPosition());
-        Position p = GameConfiguration.getInstance().getShooter().getPosition();
+        int L=GameConfiguration.getInstance().getData().getL();
         int angle = GameConfiguration.getInstance().getShooter().getAngle();
-        setMovement(new MovementofObject((int) (-RunningMode.L / Math.tan(angle)),
-                (int) RunningMode.L, 0));
-        setRectangle(new Rectangle(p, widthCoef, heightCoef, angle));
+        setMovement(new MovementofObject((int) (-L / Math.tan(angle)),
+                (int) L, 0));
+        setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
 
     @Override

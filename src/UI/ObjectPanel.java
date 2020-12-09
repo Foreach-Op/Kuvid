@@ -18,7 +18,8 @@ public class ObjectPanel extends JPanel{
         this.position=position;
         this.setBounds(position.getX(),position.getY(),100,100);
         try {
-            image = ImageIO.read(new File("assets/"+type+"s/"+subtype));
+            System.out.println("/assets/"+type+"s/"+subtype);
+            image = ImageIO.read(new File("assets/"+type+"s/"+subtype+".png"));
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

@@ -17,8 +17,7 @@ public class GameData implements Serializable {
     private double remainingTime = 10.00;
     private GameObject objectInTheTrigger = null;
     private HashMap<String, HashMap<String, Integer>> powerUps=null;
-    public static int screenHeight = 100;
-    public static int screenWidth=100;
+
     //Always
     //If it is saved, these will be updated
     private boolean isLoaded = false;
@@ -30,8 +29,8 @@ public class GameData implements Serializable {
     private String alphaBetaType;
     private MovementType alphaBetaMovementType;
 
-    private int gameScreenWidth;
-    private int gameScreenHeight;
+    private int gameScreenWidth=1000;
+    private int gameScreenHeight=1000;
 
     public GameData(){}
 

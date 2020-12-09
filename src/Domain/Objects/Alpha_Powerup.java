@@ -13,9 +13,5 @@ public class Alpha_Powerup extends Powerup {
         this.setMovement(MovementType.STATIONARY.getMovement());
     }
 
-    public Alpha_Powerup() {
-        super(FinalValues.ALPHA);
-    }
-
 
 }

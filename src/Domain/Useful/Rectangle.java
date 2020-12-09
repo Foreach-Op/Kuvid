@@ -1,6 +1,7 @@
 package Domain.Useful;
 
 import Domain.Objects.MovementofObject;
+import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
 
 import java.awt.*;
@@ -16,15 +17,15 @@ public class Rectangle {
     ArrayList<Point> pointList;
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
-    public Rectangle(Position p, double widthCoef, double heightCoef, int angle){
+    public Rectangle(Position p, double width, double height, int angle){
         this.locationX = p.getX();
         this.locationY = p.getY();
-        this.length = heightCoef*GameData.L;
-        this.width = widthCoef * GameData.L;
+        this.length = height;
+        this.width = width;
         this.angle = angle;
-        initializePointList(angle);
+        setPointList(angle);
     }
-    public void initializePointList(int angle){
+    public void setPointList(int angle){
         pointList = new ArrayList<Point>();
         for(int x = -((int)width/2); x<width/2 ;x++){
             for(int y = -((int)length/2); y<length/2; y++){
@@ -38,8 +39,9 @@ public class Rectangle {
         if (Collections.disjoint(second.pointList, this.pointList)) return false;
         return true;
     }
+
     public void applyMovement(MovementofObject movement){
-        if (locationX + movement.getShiftX(locationY)>GameData.screenWidth || locationX + movement.getShiftX(locationY) <0 ){
+        if (locationX + movement.getShiftX(locationY)> 1000 || locationX + movement.getShiftX(locationY) <0 ){
             if(movement.isReflectable()){
                 movement.reflect();
             }
@@ -47,7 +49,7 @@ public class Rectangle {
         locationX += movement.getShiftX(locationY);
         locationY += movement.getShiftY(locationY);
         angle += movement.getAngle();
-        initializePointList(angle);
+        setPointList(angle);
     }
 
     public int getLocationX() {

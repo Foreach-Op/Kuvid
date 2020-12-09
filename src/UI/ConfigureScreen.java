@@ -199,7 +199,7 @@ public class ConfigureScreen {
                 textFieldNumberOfBlockers.setText("10");
                 textFieldNumberOfPowerups.setText("20");
                 textFieldNumberOfMolecules.setText("100");
-                textFieldLength.setText("1000");
+                textFieldLength.setText("10");
                 radioButtonLinear.setSelected(true);
                 radioButtonStationary.setSelected(true);
                 radioButtonNormal.setSelected(true);

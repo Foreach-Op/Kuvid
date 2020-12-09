@@ -14,7 +14,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class RunningMode {
-    public static double L = 15; //for testing
     public static int screenHeight = 100;//for testing
     public static int screenWidth = 100;
     private ObjectListener frameListener;
@@ -35,14 +34,15 @@ public class RunningMode {
     public RunningMode(ObjectListener frameListener) {
         setFrameListener(frameListener);
         frameObjects = new ArrayList<>();
+    }
+
+    public void startGame() {
         objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
         movementHandler = new MovementHandler(frameObjects, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
-    }
 
-    public void startGame() {
         refreshRate = 10;
         int creationTime = setCreationTime();
         TimerTask timerTask1 = createObject();
@@ -74,8 +74,8 @@ public class RunningMode {
         return new TimerTask() {
             @Override
             public void run() {
-                //ObjectCreation Randomizer needed
-                //objectCreationHandler.createGameObject("Atom","Alpha");
+
+                objectCreationHandler.createRandomFallingObject();
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }

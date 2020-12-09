@@ -10,20 +10,29 @@ import Domain.Useful.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class ObjectCreationHandler {
 
     private final ArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
+    private final HashMap<String, HashMap<String, Integer>> remainingObjects;
+    private final int L;
+    //private final int gamescreenheight;
+    private final int gamescreenwidth;
 
     public ObjectCreationHandler(ArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
+        L=GameConfiguration.getInstance().getData().getL();
+        gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
+        remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
+
     }
 
 
     public void createRandomFallingObject(){
-        HashMap<String, HashMap<String, Integer>> remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
+
         String type=null;
         String subtype=null;
         while (subtype == null) {
@@ -36,11 +45,6 @@ public class ObjectCreationHandler {
 
     public void createGameObject(String type, String subtype, Position position){
         GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position);
-        frameObjects.add(gameObject);
-        frame.onCreate(gameObject);
-    }
-    public void createFiredGameObject(String type, String subtype){
-        GameObject gameObject=ObjectFactory.getInstance().createFireableObject(type,subtype);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
     }
@@ -65,7 +69,12 @@ public class ObjectCreationHandler {
     }
 
     private Position randomInitialPosition(){
-        return new Position(); /// randomize position
+
+        int y=-L;
+        System.out.println(gamescreenwidth);
+        System.out.println(L);
+        int x= (new Random()).nextInt(gamescreenwidth*4/5-L);
+        return new Position(x,y); /// randomize position
     }
 
 

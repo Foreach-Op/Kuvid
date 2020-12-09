@@ -11,8 +11,5 @@ public class Sigma_Powerup extends Powerup{
         super(FinalValues.SIGMA, position);
         setMovement(MovementType.STATIONARY.getMovement());
     }
-    public Sigma_Powerup() {
-        super(FinalValues.SIGMA);
-    }
 
 }

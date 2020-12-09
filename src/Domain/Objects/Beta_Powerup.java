@@ -13,8 +13,4 @@ public class Beta_Powerup extends Powerup {
         this.setMovement(MovementType.STATIONARY.getMovement());
     }
 
-    public Beta_Powerup() {
-        super(FinalValues.BETA);
-    }
-
 }

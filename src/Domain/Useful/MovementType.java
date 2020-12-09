@@ -4,7 +4,9 @@ import Domain.Modes.RunningMode;
 import Domain.Objects.AlteredMovementofObject;
 import Domain.Objects.MovementofObject;
 
-import static Domain.Modes.RunningMode.L;
+
+import static Domain.Statistics.GameData.L;
+
 
 public enum MovementType {
     SPINNING(new MovementofObject(0 , (int) L, 10)),

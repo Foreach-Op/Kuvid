@@ -25,19 +25,13 @@ public class ObjectFactory {
                 return MoleculeFactory.getInstance().createMolecule(subtype, position);
             case FinalValues.BLOCKER:
                 return BlockerFactory.getInstance().createBlocker(subtype, position);
+            case FinalValues.ATOM:
+                return AtomFactory.getInstance().createAtom(subtype,position);
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position);
 
         }
 
-    }
-    public GameObject createFireableObject(String type, String subtype){
-        switch (type){
-            case FinalValues.POWERUP:
-                return PowerupFactory.getInstance().createPowerup(subtype);
-            default:
-                return AtomFactory.getInstance().createAtom(subtype);
-        }
     }
 
 }

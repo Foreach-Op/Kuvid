@@ -1,33 +1,47 @@
 package Domain.Objects;
 
-import Domain.Modes.RunningMode;
 import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
-import Domain.Statistics.GameData;
 import Domain.TimerBased.ObjectCreationHandler;
-import Domain.Useful.*;
+import Domain.Useful.FinalValues;
+import Domain.Useful.MovementType;
+import Domain.Useful.Position;
+import Domain.Useful.Rectangle;
 
 import java.util.HashMap;
 
 import static Domain.Useful.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
-    private HashMap<String, HashMap<String, Integer>>  numOfBullets;
+    private int angle;
+    private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
     private String currentBulletType = null;
-    private String currentBulletSubtype = null;
-    private final double heightCoef = 1;
-    private final double widthCoef = 0.5;
-    public Shooter(){
-        super(); //poziyon atanacak
-        numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
-        setRectangle(new Rectangle(new Position((int)((GameData.screenWidth/2) - widthCoef*GameData.L/2),
-                (int)((GameData.screenHeight) - heightCoef*GameData.L)), widthCoef,heightCoef,0)
-        );
+    private String currentBulletSubtype = null;//bullet of the shooter.
+    public Rectangle rectangle;
+    private Position position;
+    private MovementofObject leftMovement = MovementType.SHOOTER_MOVEMENT_LEFT.getMovement();
+    private MovementofObject rightMovement = MovementType.SHOOTER_MOVEMENT_RIGHT.getMovement();
+    private MovementofObject leftRotation = MovementType.SHOOTER_ROTATE_LEFT.getMovement();
+    private MovementofObject rightRotation = MovementType.SHOOTER_ROTATE_RIGHT.getMovement();
+    private int L=GameConfiguration.getInstance().getData().getL();
+
+
+    public Shooter() {
+
+        super(null,null,new Position(GameConfiguration.getInstance().getData().getGameScreenWidth()/2
+                -(GameConfiguration.getInstance().getData().getL()/2),
+                GameConfiguration.getInstance().getData().getGameScreenHeight()-GameConfiguration.getInstance().getData().getL()));
         initializeShooter();
     }
 
     public void initializeShooter(){
         initializeBullets();
+        rectangle=new Rectangle(super.getPosition(),L,L,90); //düzelt, angle neye göre? o düzelilsin
+    }
+
+
+    public void collision(GameObject collider) {
+
     }
 
     public void initializeBullets(){
@@ -41,10 +55,11 @@ public class Shooter extends GameObject {
         }
     }
 
-    public void fire(){
-        RunningMode.objectCreationHandler.createFiredGameObject(currentBulletType, currentBulletSubtype);
+    public GameObject fire(){
+        GameObject fired = ObjectFactory.getInstance().createObject(currentBulletType,currentBulletSubtype,super.getPosition());
         reduceTheBullet();
         changeBullet();
+        return fired;
     }
 
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
@@ -52,7 +67,6 @@ public class Shooter extends GameObject {
                 numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
         setAmmunition(numOfBullets);
     }
-
     public void changeBullet(){ // randomly change bullet to different kind of atoms
         String subtype = null;
         while (subtype == null) {
@@ -69,9 +83,20 @@ public class Shooter extends GameObject {
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
         return numOfBullets;
     }
-
     public HashMap<String, Integer> getNumOfAtoms(){
         return numOfBullets.get(ATOM);
+    }
+    public void setNumOfAtoms(HashMap<String, Integer> set){
+        numOfBullets.replace(ATOM, set);
+        setAmmunition(numOfBullets);
+    }
+
+    public void collect(Collectable c){
+        String type = c.getCollected()[0];
+        String subtype = c.getCollected()[1];
+        System.out.println(type);
+        numOfBullets.get(type).replace(subtype, numOfBullets.get(type).get(subtype)+1);
+        setAmmunition(numOfBullets);
     }
 
     public HashMap<String, HashMap<String, Integer>> getAmmunition(){
@@ -81,4 +106,6 @@ public class Shooter extends GameObject {
     public void setAmmunition(HashMap<String, HashMap<String, Integer>> numOfBullets){
         GameConfiguration.getInstance().getData().setAmmunition(numOfBullets);
     }
+
+
 }

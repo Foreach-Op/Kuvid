@@ -34,27 +34,5 @@ public class PowerupFactory {
 
         }
 
-
-    }
-    public GameObject createPowerup(String subtype){
-
-
-            switch (subtype) {
-                case FinalValues.ALPHA:
-                    return new Alpha_Powerup();
-
-                case FinalValues.BETA:
-                    return new Beta_Powerup();
-
-                case FinalValues.GAMMA:
-                    return new Gamma_Powerup();
-
-                default:
-                    return new Sigma_Powerup();
-
-            }
-
-
-
     }
 }

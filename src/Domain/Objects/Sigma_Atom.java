@@ -7,8 +7,8 @@ import Domain.Useful.Rectangle;
 
 public class Sigma_Atom extends Atom {
 
-    public Sigma_Atom() {
-        super(FinalValues.SIGMA);
+    public Sigma_Atom(Position position) {
+        super(FinalValues.SIGMA,position);
     }
 
 }

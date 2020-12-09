@@ -13,9 +13,5 @@ public class Gamma_Powerup extends Powerup {
         setMovement(MovementType.STATIONARY.getMovement());
     }
 
-    public Gamma_Powerup() {
-        super(FinalValues.GAMMA);
-    }
-
 
 }

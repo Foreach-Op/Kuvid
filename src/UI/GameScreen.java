@@ -57,6 +57,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
 
+
+        panel2.add(statisticsWindow);
+        panel2.repaint();
+        repaint();
         //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
         //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
