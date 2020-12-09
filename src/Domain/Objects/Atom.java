@@ -8,19 +8,15 @@ import Domain.Useful.Position;
 
 
 
-public class Atom extends GameObject implements Fireable {
+public class Atom extends GameObject {
 
     /*public Atom(Subtype type) {
         super();
     }*/
     private MovementofObject movement;
 
-    public Atom(String subType, Position position){
-        super(FinalValues.ATOM,subType,position);
-    }
-
-    @Override
-    public void beFired(int angle) {
+    public Atom(String subType, int angle){
+        super(FinalValues.ATOM, subType, Shooter.getInstance().position());
         this.movement = new MovementofObject((int) (-RunningMode.L/Math.tan(angle)), (int) RunningMode.L, 0 );
     }
 

@@ -71,7 +71,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.position);
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.position());
         hashMap.put(obj, objectPanel);
         this.add(objectPanel);
     }
@@ -79,7 +79,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     @Override
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
-            hashMap.get(object).updatePosition(object.position);
+            hashMap.get(object).updatePosition(object.position());
         }
     }
 

@@ -17,7 +17,7 @@ public class BlockerFactory {
     }
 
 
-    public GameObject createBlocker(String subtype, Position position) {
+    public GameObject createBlocker(String subtype, Position position ) {
 
         switch (subtype) {
             case FinalValues.ALPHA:

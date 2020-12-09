@@ -11,8 +11,8 @@ public class Sigma_Molecule extends Molecule{
     public Rectangle rectangle;
     private MovementType movement = MovementType.STATIONARY;
 
-    public Sigma_Molecule(Position position) {
-        super(FinalValues.SIGMA,position);
+    public Sigma_Molecule(Position position ) {
+        super(FinalValues.SIGMA, position);
     }
 
     public MovementType getMovementType(){

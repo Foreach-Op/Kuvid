@@ -11,6 +11,6 @@ public class Gamma_Blocker extends Blocker{
     public Rectangle rectangle;
 
     public Gamma_Blocker(Position position) {
-        super(FinalValues.GAMMA,position);
+        super(FinalValues.GAMMA, position);
     }
 }

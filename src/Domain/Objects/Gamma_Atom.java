@@ -11,7 +11,7 @@ public class Gamma_Atom extends Atom{
     public Rectangle rectangle;
 
 
-    public Gamma_Atom(Position position) {
-        super(FinalValues.GAMMA,position);
+    public Gamma_Atom(int angle) {
+        super(FinalValues.GAMMA,angle);
     }
 }

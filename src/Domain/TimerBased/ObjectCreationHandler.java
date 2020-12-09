@@ -31,11 +31,11 @@ public class ObjectCreationHandler {
             subtype = getRandomSubType(type,subtype,remainingObjects);
         }
         GameConfiguration.getInstance().setRemainingObjects(type,subtype);
-        createGameObject(type,subtype,randomInitialPosition());
+        createGameObject(type,subtype, randomInitialPosition());
     }
 
     public void createGameObject(String type, String subtype, Position position){
-        GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype,position);
+        GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
     }

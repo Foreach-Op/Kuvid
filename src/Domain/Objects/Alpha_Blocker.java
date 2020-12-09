@@ -11,6 +11,6 @@ public class Alpha_Blocker extends Blocker{
     public Rectangle rectangle;
 
     public Alpha_Blocker(Position position) {
-        super(FinalValues.ALPHA,position);
+        super(FinalValues.ALPHA, position);
     }
 }

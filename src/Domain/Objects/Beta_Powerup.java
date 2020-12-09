@@ -12,8 +12,12 @@ public class Beta_Powerup extends Powerup{
 
     private MovementType movement = MovementType.STATIONARY;
     public Beta_Powerup(Position position) {
-        super(FinalValues.BETA,position);
+        super(FinalValues.BETA, position);
     }
+    public Beta_Powerup(int angle) {
+        super(FinalValues.BETA, angle);
+    }
+
     public MovementType getMovementType(){
         return this.movement;
     }

@@ -11,8 +11,8 @@ public class Beta_Atom extends Atom{
     public Rectangle rectangle;
 
 
-    public Beta_Atom(Position position) {
-        super(FinalValues.BETA,position);
+    public Beta_Atom(int angle) {
+        super(FinalValues.BETA,angle);
     }
 
 }

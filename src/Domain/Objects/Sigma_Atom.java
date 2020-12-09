@@ -11,8 +11,8 @@ public class Sigma_Atom extends Atom{
     public Rectangle rectangle;
 
 
-    public Sigma_Atom(Position position) {
-        super(FinalValues.SIGMA,position);
+    public Sigma_Atom(int angle) {
+        super(FinalValues.SIGMA,angle);
     }
 
 }
