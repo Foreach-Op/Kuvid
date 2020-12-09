@@ -24,6 +24,7 @@ public class MovementHandler {
             Movement movement=new Movement(movementStrategy);
             movement.executeMovement(object);
             frame.onLocationChange();
+            System.out.println("Movement Handler,move");
         }
     }
 
