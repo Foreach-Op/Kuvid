@@ -36,4 +36,25 @@ public class PowerupFactory {
 
 
     }
+    public GameObject createPowerup(String subtype, int angle){
+
+
+            switch (subtype) {
+                case FinalValues.ALPHA:
+                    return new Alpha_Powerup(angle);
+
+                case FinalValues.BETA:
+                    return new Beta_Powerup(angle);
+
+                case FinalValues.GAMMA:
+                    return new Gamma_Powerup(angle);
+
+                default:
+                    return new Sigma_Powerup(angle);
+
+            }
+
+
+
+    }
 }

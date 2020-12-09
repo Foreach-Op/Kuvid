@@ -13,7 +13,10 @@ public class Alpha_Powerup extends Powerup{
     private MovementType movement = MovementType.STATIONARY;
 
     public Alpha_Powerup(Position position) {
-        super(FinalValues.ALPHA,position);
+        super(FinalValues.ALPHA, position);
+    }
+    public Alpha_Powerup(int angle) {
+        super(FinalValues.ALPHA, angle);
     }
 
     public MovementType getMovementType(){

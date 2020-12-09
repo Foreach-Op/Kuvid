@@ -22,15 +22,22 @@ public class ObjectFactory {
 
         switch (type){
             case FinalValues.MOLECULE:
-                return MoleculeFactory.getInstance().createMolecule(subtype,position);
+                return MoleculeFactory.getInstance().createMolecule(subtype, position);
             case FinalValues.BLOCKER:
-                return BlockerFactory.getInstance().createBlocker(subtype,position);
-            case FinalValues.POWERUP:
-                return PowerupFactory.getInstance().createPowerup(subtype,position);
+                return BlockerFactory.getInstance().createBlocker(subtype, position);
             default:
-               return AtomFactory.getInstance().createAtom(subtype,position);
+                return PowerupFactory.getInstance().createPowerup(subtype, position);
+
         }
 
+    }
+    public GameObject createFireableObject(String type, String subtype, int angle){
+        switch (type){
+            case FinalValues.POWERUP:
+                return PowerupFactory.getInstance().createPowerup(subtype,angle);
+            default:
+                return AtomFactory.getInstance().createAtom(subtype,angle);
+        }
     }
 
 }

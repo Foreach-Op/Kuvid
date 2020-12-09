@@ -12,7 +12,7 @@ public class Alpha_Molecule extends Molecule{
 
 
     public Alpha_Molecule(Position position) {
-        super(FinalValues.ALPHA,position);
+        super(FinalValues.ALPHA, position);
     }
 
 

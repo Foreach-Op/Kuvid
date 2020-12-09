@@ -11,6 +11,6 @@ public class Beta_Blocker extends Blocker{
     public Rectangle rectangle;
 
     public Beta_Blocker(Position position) {
-        super(FinalValues.BETA,position);
+        super(FinalValues.BETA, position);
     }
 }

@@ -11,6 +11,6 @@ public class Sigma_Blocker extends Blocker{
     public Rectangle rectangle;
 
     public Sigma_Blocker(Position position) {
-        super(FinalValues.SIGMA,position);
+        super(FinalValues.SIGMA, position);
     }
 }

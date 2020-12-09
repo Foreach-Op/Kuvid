@@ -7,10 +7,9 @@ import Domain.Useful.Rectangle;
 
 public class Alpha_Atom extends Atom{
 
-    public MovementofObject movementofObject;
     public Rectangle rectangle;
 
-    public Alpha_Atom(Position position) {
-        super(FinalValues.ALPHA,position);
+    public Alpha_Atom(int angle) {
+        super(FinalValues.ALPHA, angle);
     }
 }

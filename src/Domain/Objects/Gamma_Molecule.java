@@ -9,8 +9,8 @@ public class Gamma_Molecule extends Molecule{
 
     public MovementofObject movementofObject =  MovementType.HALF_STATIONARY_THEN_ZIGZAG.getMovement();
     public Rectangle rectangle;
-    public Gamma_Molecule(Position position) {
-        super(FinalValues.GAMMA,position);
+    public Gamma_Molecule(Position position ) {
+        super(FinalValues.GAMMA, position);
     }
 
 }
