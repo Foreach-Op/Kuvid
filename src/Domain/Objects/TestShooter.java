@@ -22,5 +22,8 @@ public class TestShooter {
         System.out.println(molecule.getPosition().getX() + " " + molecule.getPosition().getY());
 
 
+
+
+
     }
 }

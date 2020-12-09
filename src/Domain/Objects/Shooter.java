@@ -3,6 +3,7 @@ package Domain.Objects;
 import Domain.Modes.RunningMode;
 import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 import Domain.TimerBased.ObjectCreationHandler;
 import Domain.Useful.*;
 
@@ -13,13 +14,14 @@ import static Domain.Useful.FinalValues.ATOM;
 public class Shooter extends GameObject {
     private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
     private String currentBulletType = null;
-    private String currentBulletSubtype = null;//bullet of the shooter.
-
-
-
-
-    private Shooter(){
+    private String currentBulletSubtype = null;
+    private final double heightCoef = 1;
+    private final double widthCoef = 0.5;
+    public Shooter(){
         super(null,null,new Position()); //poziyon atanacak
+        setRectangle(new Rectangle(new Position((int)((GameData.screenWidth/2) - widthCoef*GameData.L/2),
+                (int)((GameData.screenHeight) - heightCoef*GameData.L)), widthCoef,heightCoef,0)
+        );
         initializeShooter();
     }
 

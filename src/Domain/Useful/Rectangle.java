@@ -30,7 +30,7 @@ public class Rectangle {
             for(int y = -((int)length/2); y<length/2; y++){
                 int rotatedX = (int) (x*Math.cos(angle) - y*Math.sin(angle)) ;
                 int rotatedY = (int) (x*Math.sin(angle) + y* Math.cos(angle)) ;
-                pointList.add(new Point(rotatedX + locationX, rotatedY+locationY));
+                pointList.add(new Point(rotatedX + locationX +(int)width/2, rotatedY+locationY + (int) length/2));
             }
         }
     }
@@ -39,11 +39,15 @@ public class Rectangle {
         return true;
     }
     public void applyMovement(MovementofObject movement){
+        if (locationX + movement.getShiftX(locationY)>GameData.screenWidth || locationX + movement.getShiftX(locationY) <0 ){
+            if(movement.isReflectable()){
+                movement.reflect();
+            }
+        }
         locationX += movement.getShiftX(locationY);
         locationY += movement.getShiftY(locationY);
         angle += movement.getAngle();
         initializePointList(angle);
-
     }
 
     public int getLocationX() {

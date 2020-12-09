@@ -7,6 +7,7 @@ public class MovementofObject {
     int shiftY; //-N to +N
     int shiftX; //-N to +N
     int angle;
+    boolean reflectable = false;
 
 
     public MovementofObject(int shiftX, int shiftY){
@@ -18,6 +19,19 @@ public class MovementofObject {
         this.shiftX = shiftX;
         this.shiftY = shiftY;
         this.angle = angle;
+    }
+    public MovementofObject(int shiftX, int shiftY, int angle, boolean reflectable){
+        this.shiftX = shiftX;
+        this.shiftY = shiftY;
+        this.angle = angle;
+        this.reflectable = reflectable;
+    }
+
+    public boolean isReflectable() {
+        return reflectable;
+    }
+    public void reflect(){
+        shiftX = -shiftX;
     }
 
     public int getAngle() {

@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RunningMode {
-    public static double L = 15;
-    public static int screenHeight = 100;
+    public static double L = 15; //for testing
+    public static int screenHeight = 100;//for testing
+    public static int screenWidth = 100;
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
