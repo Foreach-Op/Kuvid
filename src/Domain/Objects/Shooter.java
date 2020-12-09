@@ -4,16 +4,21 @@ import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
 import Domain.TimerBased.ObjectCreationHandler;
 import Domain.Useful.FinalValues;
+import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
 import java.util.HashMap;
 
 public class Shooter extends GameObject {
-
+    private int angle;
     private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
     private GameObject currentBullet = null; //bullet of the shooter.
     public Rectangle rectangle;
+    private MovementofObject leftMovement = MovementType.SHOOTER_MOVEMENT_LEFT.getMovement();
+    private MovementofObject rightMovement = MovementType.SHOOTER_MOVEMENT_RIGHT.getMovement();
+    private MovementofObject leftRotation = MovementType.SHOOTER_ROTATE_LEFT.getMovement();
+    private MovementofObject rightRotation = MovementType.SHOOTER_ROTATE_RIGHT.getMovement();
 
 
     private static Shooter shooter;
@@ -36,6 +41,7 @@ public class Shooter extends GameObject {
     }
 
 
+
     public GameObject getCurrentBullet() {
         return currentBullet;
     }
@@ -46,17 +52,20 @@ public class Shooter extends GameObject {
     }
 
     public void initializeBullets(){
-        numOfBullets = getAmumunition();
+        numOfBullets = getAmmunition();
     }
 
     public void changeBulletToPowerup(String subtype){ //change the bullet to desired type powerup object
         if(numOfBullets.get(FinalValues.POWERUP).get(subtype)>0)
-            currentBullet =  ObjectFactory.getInstance().createObject(FinalValues.POWERUP, subtype,super.position);
+            currentBullet = ObjectFactory.getInstance().createObject(FinalValues.POWERUP, subtype,super.position);
     }
 
-    public void fire(){
+    public GameObject fire(){
+        GameObject fired = this.getCurrentBullet();
         reduceTheBullet();
+        ((Fireable) currentBullet).beFired(angle);
         changeBullet();
+        return fired;
     }
 
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
@@ -73,7 +82,7 @@ public class Shooter extends GameObject {
                 else if (random == 2){ if(getNumOfAtoms().get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}
                 else {if(getNumOfAtoms().get(FinalValues.SIGMA)>0) subtype =FinalValues.SIGMA;}
             }
-        currentBullet = ObjectFactory.getInstance().createObject(FinalValues.ATOM, subtype,super.position);
+        currentBullet =ObjectFactory.getInstance().createObject(FinalValues.ATOM, subtype,super.position);
     }
 
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
@@ -95,7 +104,7 @@ public class Shooter extends GameObject {
         setAmmunition(numOfBullets);
     }
 
-    public HashMap<String, HashMap<String, Integer>> getAmumunition(){
+    public HashMap<String, HashMap<String, Integer>> getAmmunition(){
         return GameConfiguration.getInstance().getData().getAmmunition();
     }
 
