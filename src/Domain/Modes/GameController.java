@@ -7,7 +7,13 @@ public class GameController {
     BuildingMode buildingMode;
     RunningMode runningMode;
 
-    public boolean isBlendModeActive = false;
+    private boolean isBlendModeActive = false;
+    private boolean isFirstAtomSelected = false;
+    private boolean isSecondAtomSelected = false;
+
+    private int blenderCounter = 0;
+    private String firstAtomForBlender = "";
+    private String secondAtomForBlender = "";
 
     public GameController(RunningMode runningMode) {
         this.runningMode = runningMode;
@@ -57,9 +63,30 @@ public class GameController {
         System.out.println("resume");
     }
 
-    public void ChooseAtomForBlender(int type){
-        if(isBlendModeActive) {
-            System.out.println("Atom " + type);
+    public void ChooseAtomForBlender(int type) {
+        blenderCounter++;
+        if (isBlendModeActive) {
+            if (blenderCounter == 1) {
+                // SET FIRST ATOM
+                firstAtomForBlender = "atom " + type;
+                isFirstAtomSelected = true;
+            } else if (blenderCounter == 2) {
+                // SET SECOND ATOM
+                secondAtomForBlender = "atom " + type;
+                isSecondAtomSelected = true;
+            }
+        }
+        if (isFirstAtomSelected && isSecondAtomSelected) {
+            System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
+            // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
+            // BLEND(first, second)
+
+            // THEN RESET BLEND VALUES
+            blenderCounter = 0;
+            firstAtomForBlender = "";
+            secondAtomForBlender = "";
+            isSecondAtomSelected = false;
+            isSecondAtomSelected = false;
         }
     }
 }
