@@ -9,6 +9,7 @@ import Domain.Useful.GameActionHandler;
 import Domain.Useful.HotKeys;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -19,6 +20,10 @@ public class GameScreen extends JFrame implements ObjectListener {
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
     private GameController gameController;
+
+    private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
+    private static final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
+    private static final int GAME_SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public GameScreen() {
         CreateUIElements();
@@ -31,17 +36,32 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     private void CreateUIElements() {
-        gameScreen = new JFrame();
-        gameScreen.setSize(600, 400);
+        gameScreen = new JFrame("KUVID GAME");
+        gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        gameScreen.setResizable(false);
+        //gameScreen.setResizable(false);
         gameScreen.setVisible(true);
 
-        statisticsWindow = new StatisticsWindow();
-        GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
-        gameScreen.setContentPane(statisticsWindow);
-        //gameScreen.add(statisticsWindow);
+        JPanel gamePanel = new JPanel();
+        gamePanel.setBackground(Color.CYAN);
+        gameScreen.add(gamePanel, BorderLayout.WEST);
+        gamePanel.setPreferredSize(new Dimension(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGHT));
+
+        /*
+        JPanel panel2 = new JPanel();
+        gameScreen.add(panel2, BorderLayout.EAST);
+        panel2.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
+
+
+         */
+
+        statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
+        //GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
+        gameScreen.add(statisticsWindow, BorderLayout.EAST);
+        //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
+        //gameScreen.repaint();
+
     }
 
     private void GameActionListener() {

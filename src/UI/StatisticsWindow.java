@@ -3,6 +3,7 @@ package UI;
 import Domain.Statistics.GameData;
 
 import Domain.Statistics.StaticWindowListener;
+import Domain.Useful.FinalValues;
 import Domain.Useful.GameDataTypes;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
-public class StatisticsWindow extends JPanel implements StaticWindowListener {
+public class StatisticsWindow extends JLabel implements StaticWindowListener {
     private JPanel panelMain;
 
     private JPanel panelGameInfo;
@@ -43,23 +44,22 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JTextArea textAreaTime;
     private JTextArea textAreaHealth;
 
-    public StatisticsWindow(){
-        CreateUIElements();
+    public StatisticsWindow(int width, int height){
+        CreateUIElements(width, height);
         SetPowerupIcons();
         SetAtomIcons();
         ActionListener();
     }
 
-    private void CreateUIElements() {
+    private void CreateUIElements(int width, int height) {
         JFrame frame = new JFrame();
         frame.setContentPane(panelMain);
+        frame.setSize(width, height);
 
-        //frame.setSize(180, 720);
         frame.setUndecorated(true);
         frame.setResizable(false);
         frame.setVisible(true);
-        frame.pack();
-
+        frame.setLocation(width*4,50);
     }
 
     private void SetPowerupIcons(){
@@ -107,15 +107,15 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         textAreaTime.setText(String.valueOf(gameData.getRemainingTime()));
         textAreaHealth.setText(String.valueOf(gameData.getHealth()));
 
-        textAreaAlphaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_ALPHA.toString())));
-        textAreaBetaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_BETA.toString())));
-        textAreaGammaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_GAMMA.toString())));
-        textAreaSigmaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.POWER_UP.toString()).get(GameDataTypes.POWERUP_SIGMA.toString())));
+        textAreaAlphaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.ALPHA)));
+        textAreaBetaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.BETA)));
+        textAreaGammaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.GAMMA)));
+        textAreaSigmaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.SIGMA)));
 
-        textAreaAlphaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_ALPHA.toString())));
-        textAreaBetaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_BETA.toString())));
-        textAreaGammaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_GAMMA.toString())));
-        textAreaSigmaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(GameDataTypes.ATOM.toString()).get(GameDataTypes.ATOM_SIGMA.toString())));
+        textAreaAlphaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.ALPHA)));
+        textAreaBetaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.BETA)));
+        textAreaGammaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.GAMMA)));
+        textAreaSigmaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.SIGMA)));
     }
 
     private void ActionListener(){

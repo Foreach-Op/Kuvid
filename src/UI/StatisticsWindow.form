@@ -14,9 +14,10 @@
     <properties>
       <background color="-1"/>
       <inheritsPopupMenu value="true"/>
-      <maximumSize width="240" height="720"/>
-      <minimumSize width="240" height="720"/>
-      <preferredSize width="240" height="720"/>
+      <maximumSize width="384" height="1080"/>
+      <minimumSize width="160" height="480"/>
+      <opaque value="false"/>
+      <preferredSize width="360" height="1080"/>
     </properties>
     <border type="none"/>
     <children>

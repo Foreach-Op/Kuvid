@@ -10,10 +10,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Modes.*;  //Domain.Modes.GameController does not work
-import Domain.Useful.Difficulty;
-import Domain.Useful.GameDataTypes;
-import Domain.Useful.MoleculeStructure;
-import Domain.Useful.MovementType;
+import Domain.Useful.*;
 
 public class ConfigureScreen {
 
@@ -149,10 +146,10 @@ public class ConfigureScreen {
                     int length = Integer.parseUnsignedInt(textFieldLength.getText());
 
                     // Put object amounts and length into hashmap as String
-                    configurationInfo.put(GameDataTypes.ATOM.toString(), textFieldNumberOfAtoms.getText());
-                    configurationInfo.put(GameDataTypes.REACTION_BLOCKER.toString(), textFieldNumberOfBlockers.getText());
-                    configurationInfo.put(GameDataTypes.POWER_UP.toString(), textFieldNumberOfPowerups.getText());
-                    configurationInfo.put(GameDataTypes.MOLECULE.toString(), textFieldNumberOfMolecules.getText());
+                    configurationInfo.put(FinalValues.ATOM, textFieldNumberOfAtoms.getText());
+                    configurationInfo.put(FinalValues.BLOCKER, textFieldNumberOfBlockers.getText());
+                    configurationInfo.put(FinalValues.POWERUP, textFieldNumberOfPowerups.getText());
+                    configurationInfo.put(FinalValues.MOLECULE, textFieldNumberOfMolecules.getText());
                     configurationInfo.put(GameDataTypes.LENGTH.toString(), textFieldLength.getText());
 
                     String moleculeStructure = new String();

@@ -36,50 +36,50 @@ public class BuildingMode {
         //----Ammunition
         HashMap<String, HashMap<String, Integer>> ammunition = new HashMap<>();
 
-        int atomAmount = Integer.parseInt(configHash.get(GameDataTypes.ATOM.toString()));
+        int atomAmount = Integer.parseInt(configHash.get(FinalValues.ATOM));
         HashMap<String, Integer> initialAtomAmountHash = new HashMap<>();
-        initialAtomAmountHash.put(GameDataTypes.ATOM_ALPHA.toString(), atomAmount);
-        initialAtomAmountHash.put(GameDataTypes.ATOM_BETA.toString(), atomAmount);
-        initialAtomAmountHash.put(GameDataTypes.ATOM_GAMMA.toString(), atomAmount);
-        initialAtomAmountHash.put(GameDataTypes.ATOM_SIGMA.toString(), atomAmount);
+        initialAtomAmountHash.put(FinalValues.ALPHA, atomAmount);
+        initialAtomAmountHash.put(FinalValues.BETA, atomAmount);
+        initialAtomAmountHash.put(FinalValues.GAMMA, atomAmount);
+        initialAtomAmountHash.put(FinalValues.SIGMA, atomAmount);
 
         HashMap<String, Integer> initialPowerupAmountHash = new HashMap<>();
-        initialPowerupAmountHash.put(GameDataTypes.POWERUP_ALPHA.toString(), 0);
-        initialPowerupAmountHash.put(GameDataTypes.POWERUP_BETA.toString(), 0);
-        initialPowerupAmountHash.put(GameDataTypes.POWERUP_GAMMA.toString(), 0);
-        initialPowerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), 0);
+        initialPowerupAmountHash.put(FinalValues.ALPHA, 0);
+        initialPowerupAmountHash.put(FinalValues.BETA, 0);
+        initialPowerupAmountHash.put(FinalValues.GAMMA, 0);
+        initialPowerupAmountHash.put(FinalValues.SIGMA, 0);
 
-        ammunition.put(GameDataTypes.ATOM.toString(), initialAtomAmountHash);
-        ammunition.put(GameDataTypes.POWER_UP.toString(), initialPowerupAmountHash);
+        ammunition.put(FinalValues.ATOM, initialAtomAmountHash);
+        ammunition.put(FinalValues.POWERUP, initialPowerupAmountHash);
         gameData.setAmmunition(ammunition);
 
         //----Remaining Objects (Falling)
         HashMap<String, HashMap<String, Integer>> remainingObjects = new HashMap<>();
 
-        int moleculeAmount = Integer.parseInt(configHash.get(GameDataTypes.MOLECULE.toString()));
+        int moleculeAmount = Integer.parseInt(configHash.get(FinalValues.MOLECULE));
         HashMap<String, Integer> moleculeAmountHash = new HashMap<>();
-        moleculeAmountHash.put(GameDataTypes.MOLECULE_ALPHA.toString(), moleculeAmount);
-        moleculeAmountHash.put(GameDataTypes.MOLECULE_BETA.toString(), moleculeAmount);
-        moleculeAmountHash.put(GameDataTypes.MOLECULE_GAMMA.toString(), moleculeAmount);
-        moleculeAmountHash.put(GameDataTypes.MOLECULE_SIGMA.toString(), moleculeAmount);
+        moleculeAmountHash.put(FinalValues.ALPHA, moleculeAmount);
+        moleculeAmountHash.put(FinalValues.BETA, moleculeAmount);
+        moleculeAmountHash.put(FinalValues.GAMMA, moleculeAmount);
+        moleculeAmountHash.put(FinalValues.SIGMA, moleculeAmount);
 
-        int blockerAmount = Integer.parseInt(configHash.get(GameDataTypes.REACTION_BLOCKER.toString()));
+        int blockerAmount = Integer.parseInt(configHash.get(FinalValues.BLOCKER));
         HashMap<String, Integer> blockerAmountHash = new HashMap<>();
-        blockerAmountHash.put(GameDataTypes.BLOCKER_ALPHA.toString(), blockerAmount);
-        blockerAmountHash.put(GameDataTypes.BLOCKER_BETA.toString(), blockerAmount);
-        blockerAmountHash.put(GameDataTypes.BLOCKER_GAMMA.toString(), blockerAmount);
-        blockerAmountHash.put(GameDataTypes.BLOCKER_SIGMA.toString(), blockerAmount);
+        blockerAmountHash.put(FinalValues.ALPHA, blockerAmount);
+        blockerAmountHash.put(FinalValues.BETA, blockerAmount);
+        blockerAmountHash.put(FinalValues.GAMMA, blockerAmount);
+        blockerAmountHash.put(FinalValues.SIGMA, blockerAmount);
 
-        int powerupAmount = Integer.parseInt(configHash.get(GameDataTypes.POWER_UP.toString()));
+        int powerupAmount = Integer.parseInt(configHash.get(FinalValues.POWERUP));
         HashMap<String, Integer> powerupAmountHash = new HashMap<>();
-        powerupAmountHash.put(GameDataTypes.POWERUP_ALPHA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_BETA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_GAMMA.toString(), powerupAmount);
-        powerupAmountHash.put(GameDataTypes.POWERUP_SIGMA.toString(), powerupAmount);
+        powerupAmountHash.put(FinalValues.ALPHA, powerupAmount);
+        powerupAmountHash.put(FinalValues.BETA, powerupAmount);
+        powerupAmountHash.put(FinalValues.GAMMA, powerupAmount);
+        powerupAmountHash.put(FinalValues.SIGMA, powerupAmount);
 
-        remainingObjects.put(GameDataTypes.MOLECULE.toString(), moleculeAmountHash);
-        remainingObjects.put(GameDataTypes.REACTION_BLOCKER.toString(), blockerAmountHash);
-        remainingObjects.put(GameDataTypes.POWER_UP.toString(), powerupAmountHash);
+        remainingObjects.put(FinalValues.MOLECULE, moleculeAmountHash);
+        remainingObjects.put(FinalValues.BLOCKER, blockerAmountHash);
+        remainingObjects.put(FinalValues.POWERUP, powerupAmountHash);
         gameData.setRemainingObjects(remainingObjects);
 
         //----Difficulty
