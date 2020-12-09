@@ -1,5 +1,6 @@
 package Domain.Modes;
 
+import Domain.Functionalities.GameStatueControl;
 import Domain.Objects.GameObject;
 import Domain.Objects.ObjectListener;
 import Domain.Statistics.GameConfiguration;
@@ -7,9 +8,10 @@ import Domain.TimerBased.CollisionHandler;
 import Domain.TimerBased.MovementHandler;
 import Domain.TimerBased.ObjectCreationHandler;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RunningMode {
     public static double L = 15; //for testing
@@ -24,6 +26,8 @@ public class RunningMode {
 
     CollisionHandler collisionHandler;
     MovementHandler movementHandler;
+    private Timer timerObjectCreation;
+    private Timer timerMoveAndCollision;
     public static ObjectCreationHandler objectCreationHandler;
 
     private int refreshRate;
@@ -34,40 +38,55 @@ public class RunningMode {
         objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
         movementHandler = new MovementHandler(frameObjects, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
+        timerObjectCreation=new Timer();
+        timerMoveAndCollision=new Timer();
     }
 
     public void startGame() {
-
-        Timer timer = CreateObject();
         refreshRate = 10;
-        Timer timer2 = moveandCollide();
-
+        int creationTime = setCreationTime();
+        TimerTask timerTask1 = createObject();
+        TimerTask timerTask2 = moveAndCollide();
+        timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
+        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,0,refreshRate);
     }
 
     public void setFrameListener(ObjectListener frameListener) {
         this.frameListener = frameListener;
     }
 
-    private Timer moveandCollide() {
-        Timer timer = new Timer(refreshRate, e -> {
-            movementHandler.move();
-            collisionHandler.collisionDetect();
-        });
-        timer.start();
-        return timer;
+    private TimerTask moveAndCollide() {
+
+        return new TimerTask() {
+            @Override
+            public void run() {
+                movementHandler.move();
+                collisionHandler.collisionDetect();
+                if(GameStatueControl.getInstance().isGameEnded()){
+                    endGame();
+                }
+            }
+        };
     }
 
+    private TimerTask createObject() {
 
-    private Timer CreateObject() {
+        return new TimerTask() {
+            @Override
+            public void run() {
+                //ObjectCreation Randomizer needed
+                //objectCreationHandler.createGameObject("Atom","Alpha");
+                if(GameStatueControl.getInstance().isGameEnded()){
+                    endGame();
+                }
+            }
+        };
+    }
 
-        int time = setCreationTime();
-        Timer timer = new Timer(time, e -> {
-            //ObjectCreation Randomizer needed
-            //objectCreationHandler.createGameObject("Atom","Alpha");
-        });
-
-        timer.start();
-        return timer;
+    private void endGame(){
+        timerObjectCreation.cancel();
+        timerMoveAndCollision.cancel();
+        //GameOver()
     }
 
     private int setCreationTime() {

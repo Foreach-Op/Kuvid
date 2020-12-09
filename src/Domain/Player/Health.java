@@ -1,5 +1,7 @@
 package Domain.Player;
 
+import Domain.Statistics.GameConfiguration;
+
 public class Health {
 
     //We start from 100 health.
@@ -14,6 +16,7 @@ public class Health {
     //(game width / distance between blocker and shooter) from the current total health.
     public void updateHealthLevel(double distance){
         healthLevel -= game_width/distance;
+        GameConfiguration.getInstance().setHealth(healthLevel);
     }
 
     // Unnecessary at the moment
@@ -21,7 +24,7 @@ public class Health {
     public void setHealthLevel(int healthLevel) {
         this.healthLevel = healthLevel;
     }*/
-    public void setHealthLevel(int healthLevel){
+    public void setHealthLevel(double healthLevel){
         this.healthLevel=healthLevel;
     }
     public double getHealthLevel(){

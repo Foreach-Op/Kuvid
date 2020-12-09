@@ -12,28 +12,22 @@ import java.util.HashMap;
 import static Domain.Useful.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
-    private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
+    private HashMap<String, HashMap<String, Integer>>  numOfBullets;
     private String currentBulletType = null;
     private String currentBulletSubtype = null;
     private final double heightCoef = 1;
     private final double widthCoef = 0.5;
     public Shooter(){
         super(); //poziyon atanacak
+        numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
         setRectangle(new Rectangle(new Position((int)((GameData.screenWidth/2) - widthCoef*GameData.L/2),
                 (int)((GameData.screenHeight) - heightCoef*GameData.L)), widthCoef,heightCoef,0)
         );
         initializeShooter();
     }
 
-
-
     public void initializeShooter(){
         initializeBullets();
-    }
-
-
-    public void collision(GameObject collider) {
-
     }
 
     public void initializeBullets(){
@@ -51,7 +45,6 @@ public class Shooter extends GameObject {
         RunningMode.objectCreationHandler.createFiredGameObject(currentBulletType, currentBulletSubtype);
         reduceTheBullet();
         changeBullet();
-
     }
 
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
@@ -59,6 +52,7 @@ public class Shooter extends GameObject {
                 numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
         setAmmunition(numOfBullets);
     }
+
     public void changeBullet(){ // randomly change bullet to different kind of atoms
         String subtype = null;
         while (subtype == null) {
@@ -75,20 +69,9 @@ public class Shooter extends GameObject {
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
         return numOfBullets;
     }
+
     public HashMap<String, Integer> getNumOfAtoms(){
         return numOfBullets.get(ATOM);
-    }
-    public void setNumOfAtoms(HashMap<String, Integer> set){
-        numOfBullets.replace(ATOM, set);
-        setAmmunition(numOfBullets);
-    }
-
-    public void collect(Collectable c){
-        String type = c.getCollected()[0];
-        String subtype = c.getCollected()[1];
-        System.out.println(type);
-        numOfBullets.get(type).replace(subtype, numOfBullets.get(type).get(subtype)+1);
-        setAmmunition(numOfBullets);
     }
 
     public HashMap<String, HashMap<String, Integer>> getAmmunition(){
@@ -98,7 +81,4 @@ public class Shooter extends GameObject {
     public void setAmmunition(HashMap<String, HashMap<String, Integer>> numOfBullets){
         GameConfiguration.getInstance().getData().setAmmunition(numOfBullets);
     }
-
-
-
 }

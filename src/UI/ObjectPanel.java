@@ -22,7 +22,6 @@ public class ObjectPanel extends JPanel{
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        //addOnGameScreen();
     }
 
     public void updatePosition(Position newPosition){

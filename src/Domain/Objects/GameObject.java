@@ -1,14 +1,12 @@
 package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
-
 import Domain.Modes.RunningMode;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
 public abstract class GameObject {
 
-    // To destroy object
     private boolean isAlive;
     private String type;
     private String subType;

@@ -12,9 +12,9 @@ public class GameData implements Serializable {
 
     //If it is loaded
     private ArrayList<GameObject> frameObjects = null;
-    private int health = 100;
+    private double health = 100;
     private double score = 0;
-    private double remainingTime = 10;
+    private double remainingTime = 10.00;
     private GameObject objectInTheTrigger = null;
     private HashMap<String, HashMap<String, Integer>> powerUps=null;
     public static int screenHeight = 100;
@@ -46,7 +46,7 @@ public class GameData implements Serializable {
         this.alphaBetaMovementType = alphaBetaMovementType;
     }
 
-    public GameData(ArrayList<GameObject> frameObjects, int health,
+    public GameData(ArrayList<GameObject> frameObjects, double health,
                     double score, double remainingTime, GameObject objectInTheTrigger,
                     HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
@@ -76,11 +76,11 @@ public class GameData implements Serializable {
         this.frameObjects = frameObjects;
     }
 
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 

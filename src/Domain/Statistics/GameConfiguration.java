@@ -45,7 +45,7 @@ public class GameConfiguration {
         staticWindowListener.onScoreChange(score);
     }
 
-    public void setHealth(int health){
+    public void setHealth(double health){
         data.setHealth(health);
         staticWindowListener.onHealthChange(health);
     }

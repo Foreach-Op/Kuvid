@@ -151,7 +151,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     @Override
-    public void onHealthChange(int health) {
+    public void onHealthChange(double health) {
         textAreaStaticHealth.setText(String.valueOf(health));
     }
 

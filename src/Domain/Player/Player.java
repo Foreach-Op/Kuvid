@@ -1,5 +1,7 @@
 package Domain.Player;
 
+import Domain.Functionalities.GameStatueControl;
+
 public class Player {
     private static Player player;
     private final Health health=new Health();
@@ -18,7 +20,7 @@ public class Player {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health.setHealthLevel(health);
     }
 
@@ -30,8 +32,11 @@ public class Player {
         this.score.setTotalScore(score);
     }
 
-    public void getDamage(int a){
-        health.updateHealthLevel(a);
+    public void hit(int distance){
+        health.updateHealthLevel(distance);
+        if(health.getHealthLevel()<=0){
+            GameStatueControl.getInstance().setGameEnded();
+        }
     }
 
     // Method changed according to the score formula.

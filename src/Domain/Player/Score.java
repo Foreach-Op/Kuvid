@@ -1,5 +1,7 @@
 package Domain.Player;
 
+import Domain.Statistics.GameConfiguration;
+
 public class Score {
 
     //Obviously we start from 0 score.
@@ -14,6 +16,7 @@ public class Score {
 
     public void updateTotalScore(int collected_molecules, int collection_time){
         totalScore = collected_molecules + (1/collection_time);
+        GameConfiguration.getInstance().setScore(totalScore);
     }
 
     public void setTotalScore(double score){
@@ -24,8 +27,4 @@ public class Score {
         return totalScore;
     }
 
-    // Unnecessary at the moment
-   /* public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
-    } */
 }
