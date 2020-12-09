@@ -23,7 +23,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
     public final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
-    private static final int GAME_SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+    public static final int GAME_SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
 
     public GameScreen() {
         CreateUIElements();

@@ -30,8 +30,9 @@ public class BuildingMode {
     public GameData hashToGameData(HashMap<String, String> configHash) {
         GameData gameData = new GameData();
 
-        gameData.setGameScreenLength(Integer.parseInt(configHash.get("width")));
-        System.out.println(gameData.getGameScreenLength());
+        gameData.setGameScreenWidth(Integer.parseInt(configHash.get("width")));
+        gameData.setGameScreenHeight(Integer.parseInt(configHash.get("height")));
+        System.out.println(gameData.getGameScreenHeight());
 
         boolean isLoaded = false;
         gameData.setLoaded(isLoaded);

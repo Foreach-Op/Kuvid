@@ -69,6 +69,7 @@ public class ConfigureScreen {
     private void InitiateGame(HashMap<String, String> configurationInfo) {
         GameScreen screen = new GameScreen();
         configurationInfo.put("width", String.valueOf(screen.GAME_SCREEN_WIDTH));
+        configurationInfo.put("height", String.valueOf(screen.GAME_SCREEN_HEIGHT));
         RunningMode runningMode = new RunningMode(screen);
         screen.initialize(runningMode);
         gameController = new GameController(runningMode);
