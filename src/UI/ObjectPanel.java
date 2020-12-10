@@ -35,6 +35,7 @@ public class ObjectPanel extends JPanel{
         positionX=(int) newPosition.getX();
         positionY=(int) newPosition.getY();
         //System.out.println(positionX+" "+positionY);
+        //aaa
     }
 
     @Override
