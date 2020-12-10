@@ -75,8 +75,6 @@ public class ObjectCreationHandler {
     private Position randomInitialPosition(){
 
         int y=-L;
-        System.out.println(gamescreenwidth);
-        System.out.println(L);
         int x= (new Random()).nextInt(gamescreenwidth*4/5-L);
         return new Position(x,y); /// randomize position
     }
