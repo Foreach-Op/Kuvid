@@ -7,6 +7,7 @@ import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Useful.GameActionHandler;
 import Domain.Useful.HotKeys;
+import Domain.Useful.Position;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,8 @@ import java.util.HashMap;
 public class GameScreen extends JFrame implements ObjectListener {
 
     public HashMap<GameObject, ObjectPanel> hashMap = new HashMap<>();
+    private GameObject shooter;
+    private ObjectPanel shooterPanel;
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
     private GameController gameController;
@@ -107,7 +110,8 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getRectangle());
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition());
+        System.out.println("Created");
         hashMap.put(obj, objectPanel);
         gameScreen.add(objectPanel);
         gameScreen.repaint();
@@ -116,7 +120,10 @@ public class GameScreen extends JFrame implements ObjectListener {
     @Override
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
-            hashMap.get(object).updatePosition(object.getPosition());
+            hashMap.get(object).updatePosition(object.getCurrentPosition());
+            System.out.println(object.getType());
+            gameScreen.repaint();
+            hashMap.get(object).repaint();
         }
     }
 
@@ -126,10 +133,27 @@ public class GameScreen extends JFrame implements ObjectListener {
         removeFromScreen(obj2);
     }
 
+    @Override
+    public void onCreateShooter(GameObject shooter) {
+        this.shooter=shooter;
+        this.shooterPanel=new ObjectPanel(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
+    }
+
+    @Override
+    public void onShooterTriggerBulletChange() {
+
+    }
+
+    @Override
+    public void onShooterPositionChange() {
+
+    }
+
     public void removeFromScreen(GameObject object) {
         if (!object.isAlive()) {
             ObjectPanel panel = hashMap.remove(object);
             this.remove(panel);
+            gameScreen.repaint();
         }
     }
 

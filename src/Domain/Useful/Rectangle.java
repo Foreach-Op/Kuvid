@@ -9,23 +9,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Rectangle {
-    int locationX;
-    int locationY;
-    double length;
-    double width;
-    int angle;
-    ArrayList<Point> pointList;
+    private int locationX;
+    private int locationY;
+    private double length;
+    private double width;
+    private int angle;
+    private ArrayList<Point> pointList;
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
     public Rectangle(Position p, double width, double height, int angle){
-        this.locationX = p.getX();
-        this.locationY = p.getY();
+        this.locationX = (int) p.getX();
+        this.locationY = (int) p.getY();
         this.length = height;
         this.width = width;
         this.angle = angle;
         setPointList(angle);
     }
-    public void setPointList(int angle){
+    public void setPointList(double angle){
         pointList = new ArrayList<Point>();
         for(int x = -((int)width/2); x<width/2 ;x++){
             for(int y = -((int)length/2); y<length/2; y++){
@@ -38,18 +38,6 @@ public class Rectangle {
     public boolean intersects(Rectangle second){
         if (Collections.disjoint(second.pointList, this.pointList)) return false;
         return true;
-    }
-
-    public void applyMovement(MovementofObject movement){
-        if (locationX + movement.getShiftX(locationY)> 1000 || locationX + movement.getShiftX(locationY) <0 ){
-            if(movement.isReflectable()){
-                movement.reflect();
-            }
-        }
-        locationX += movement.getShiftX(locationY);
-        locationY += movement.getShiftY(locationY);
-        angle += movement.getAngle();
-        setPointList(angle);
     }
 
     public int getLocationX() {

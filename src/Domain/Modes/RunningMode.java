@@ -1,17 +1,18 @@
 package Domain.Modes;
 
 import Domain.Functionalities.GameStatueControl;
-import Domain.Objects.GameObject;
-import Domain.Objects.ObjectListener;
+import Domain.Objects.*;
 import Domain.Statistics.GameConfiguration;
 import Domain.TimerBased.CollisionHandler;
 import Domain.TimerBased.MovementHandler;
 import Domain.TimerBased.ObjectCreationHandler;
+import Domain.Useful.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class RunningMode {
     public static int screenHeight = 100;//for testing
@@ -19,6 +20,8 @@ public class RunningMode {
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
+    CopyOnWriteArrayList<GameObject> frameObjects2=new CopyOnWriteArrayList<>();
+
 
     private HashMap<String, HashMap<String, Integer>> objectsToBeProduced = new HashMap<>();
     private HashMap<String, HashMap<String, Integer>> ammunition = new HashMap<>();
@@ -37,18 +40,26 @@ public class RunningMode {
     }
 
     public void startGame() {
-        objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
-        movementHandler = new MovementHandler(frameObjects, frameListener);
+        objectCreationHandler = new ObjectCreationHandler(frameObjects2, frameListener);
+        movementHandler = new MovementHandler(frameObjects2, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
-
+        GameObject object=new Gamma_Molecule(new Position(250,50));
+        frameObjects2.add(object);
+        frameListener.onCreate(object);
+        /*GameObject object2=new Alpha_Molecule(new Position(500,50));
+        frameObjects2.add(object2);
+        frameListener.onCreate(object2);*/
+        /*GameObject object3=new Alpha_Blocker(new Position(500,50));
+        frameObjects2.add(object3);
+        frameListener.onCreate(object3);*/
         refreshRate = 10;
         int creationTime = setCreationTime();
         TimerTask timerTask1 = createObject();
         TimerTask timerTask2 = moveAndCollide();
-        timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
-        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,0,refreshRate);
+        //timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
+        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
     }
 
     public void setFrameListener(ObjectListener frameListener) {
@@ -61,7 +72,7 @@ public class RunningMode {
             @Override
             public void run() {
                 movementHandler.move();
-                collisionHandler.collisionDetect();
+                //collisionHandler.collisionDetect();
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }

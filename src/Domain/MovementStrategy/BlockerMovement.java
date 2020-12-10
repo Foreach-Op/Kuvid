@@ -8,10 +8,22 @@ import Domain.Useful.Rectangle;
 public class BlockerMovement implements MovementStrategy{
     @Override
     public void doMovement(GameObject obj) {
-        obj.setRectangle(applyMovement(obj.getMovement(),obj.getRectangle()));
+
+        double currentY=obj.getY();
+        double yPos=obj.getVelocityY()* Math.sin(obj.getAngle())+currentY;
+        obj.setY(yPos);
+        killObj(obj);
+    }
+
+    public void killObj(GameObject obj){
+        int height=GameConfiguration.getInstance().getData().getGameScreenHeight();
+        if(height<obj.getY()){
+            obj.destroy();
+        }
     }
 
 
+    /*
     public Rectangle applyMovement(MovementofObject movement, Rectangle rectangle){
         int gameWitdh=GameConfiguration.getInstance().getData().getGameScreenWidth();
         //int gameWitdh=1000; // for demo purpose, delete after using
@@ -32,4 +44,6 @@ public class BlockerMovement implements MovementStrategy{
         rectangle.setPointList(rectangle.getAngle());
         return rectangle;
     }
+    */
+
 }

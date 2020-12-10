@@ -28,15 +28,15 @@ public class Shooter extends GameObject {
 
     public Shooter() {
 
-        super(null,null,new Position(GameConfiguration.getInstance().getData().getGameScreenWidth()/2
+        super("Shooter","1",new Position(GameConfiguration.getInstance().getData().getGameScreenWidth()/2
                 -(GameConfiguration.getInstance().getData().getL()/2),
-                GameConfiguration.getInstance().getData().getGameScreenHeight()-GameConfiguration.getInstance().getData().getL()));
+                GameConfiguration.getInstance().getData().getGameScreenHeight()-GameConfiguration.getInstance().getData().getL()),90);
         initializeShooter();
     }
 
     public void initializeShooter(){
         initializeBullets();
-        rectangle=new Rectangle(super.getPosition(),L,L,90); //düzelt, angle neye göre? o düzelilsin
+        rectangle=new Rectangle(super.getCurrentPosition(),L,L,90); //düzelt, angle neye göre? o düzelilsin
     }
 
 
@@ -56,7 +56,7 @@ public class Shooter extends GameObject {
     }
 
     public GameObject fire(){
-        GameObject fired = ObjectFactory.getInstance().createObject(currentBulletType,currentBulletSubtype,super.getPosition(),false);
+        GameObject fired = ObjectFactory.getInstance().createObject(currentBulletType,currentBulletSubtype,super.getCurrentPosition(),false);
         reduceTheBullet();
         changeBullet();
         return fired;
@@ -88,14 +88,6 @@ public class Shooter extends GameObject {
     }
     public void setNumOfAtoms(HashMap<String, Integer> set){
         numOfBullets.replace(ATOM, set);
-        setAmmunition(numOfBullets);
-    }
-
-    public void collect(Collectable c){
-        String type = c.getCollected()[0];
-        String subtype = c.getCollected()[1];
-        System.out.println(type);
-        numOfBullets.get(type).replace(subtype, numOfBullets.get(type).get(subtype)+1);
         setAmmunition(numOfBullets);
     }
 

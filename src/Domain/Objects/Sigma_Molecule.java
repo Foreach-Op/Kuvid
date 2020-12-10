@@ -9,8 +9,7 @@ public class Sigma_Molecule extends Molecule {
 
 
     public Sigma_Molecule(Position position) {
-        super(FinalValues.SIGMA, position);
-        setMovement(MovementType.STATIONARY.getMovement());
+        super(FinalValues.SIGMA, position,90);
     }
 
 

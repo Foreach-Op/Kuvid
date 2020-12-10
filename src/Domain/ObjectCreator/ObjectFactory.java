@@ -1,6 +1,7 @@
 package Domain.ObjectCreator;
 
 import Domain.Objects.*;
+import Domain.Statistics.GameConfiguration;
 import Domain.Useful.FinalValues;
 import Domain.Useful.Position;
 
@@ -26,7 +27,7 @@ public class ObjectFactory {
             case FinalValues.BLOCKER:
                 return BlockerFactory.getInstance().createBlocker(subtype, position);
             case FinalValues.ATOM:
-                return AtomFactory.getInstance().createAtom(subtype,position);
+                return AtomFactory.getInstance().createAtom(subtype,position, GameConfiguration.getInstance().getShooter().getAngle());
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
 

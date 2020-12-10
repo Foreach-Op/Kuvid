@@ -13,16 +13,11 @@ public class Atom extends GameObject {
     private final double widthCoef = 0.5;
 
 
-    public Atom(String subType,Position position) {
-        super(FinalValues.ATOM, subType, GameConfiguration.getInstance().getShooter().getPosition());
+    public Atom(String subType,Position position,int angle) {
+        super(FinalValues.ATOM, subType, GameConfiguration.getInstance().getShooter().getCurrentPosition(),angle);
         int L=GameConfiguration.getInstance().getData().getL();
-        int angle = GameConfiguration.getInstance().getShooter().getAngle();
-        setMovement(new MovementofObject((int) (-L / Math.tan(angle)),
-                GameConfiguration.getInstance().getData().getL(), 0,true));
 
-        setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
+        //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
 
     }
-
-
 }

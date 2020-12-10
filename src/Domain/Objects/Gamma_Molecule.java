@@ -8,9 +8,8 @@ import Domain.Useful.Rectangle;
 public class Gamma_Molecule extends Molecule{
 
 
-    public Gamma_Molecule(Position position ) {
-        super(FinalValues.GAMMA, position);
-        setMovement(MovementType.HALF_STATIONARY_THEN_ZIGZAG.getMovement());
+    public Gamma_Molecule(Position position) {
+        super(FinalValues.GAMMA, position,90);
     }
 
 }

@@ -10,9 +10,9 @@ public class Blocker extends GameObject {
     private final double widthCoef = 1;
 
     public Blocker(String subType, Position position) {
-        super(FinalValues.BLOCKER, subType, position);
+        super(FinalValues.BLOCKER, subType, position,90);
         int L= GameConfiguration.getInstance().getData().getL();
-        setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
+        //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
 
 }

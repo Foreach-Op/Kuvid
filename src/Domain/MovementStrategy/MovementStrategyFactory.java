@@ -16,7 +16,7 @@ public class MovementStrategyFactory {
     }
 
     public MovementStrategy getStrategy(GameObject obj){
-        MovementStrategy movementStrategy;
+        MovementStrategy movementStrategy=null;
 
         switch (obj.getType()){
             case "Atom":
@@ -26,14 +26,28 @@ public class MovementStrategyFactory {
                 movementStrategy=new BlockerMovement();
                 break;
             case "Molecule":
-                movementStrategy=new MoleculeMovement();
+                switch (obj.getSubType()){
+                    case "Alpha":
+                        movementStrategy=new AlphaMoleculeMovement();
+                        break;
+                    case "Beta":
+                        movementStrategy=new BetaMoleculeMovement();
+                        break;
+                    case "Gamma":
+                        movementStrategy=new GammaMoleculeMovement();
+                        break;
+                    case "Sigma":
+                        movementStrategy=new SigmaMoleculeMovement();
+                        break;
+                }
                 break;
             case "Powerup":
                 movementStrategy=new PowerupMovement();
                 break;
             default:
                 //How to handle Shooter...
-                throw new IllegalStateException("Unexpected value: " + obj.getType());
+                movementStrategy=new SigmaMoleculeMovement();
+                //throw new IllegalStateException("Unexpected value: " + obj.getType());
         }
         return  movementStrategy;
     }

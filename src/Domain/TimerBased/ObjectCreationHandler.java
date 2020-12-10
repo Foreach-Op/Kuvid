@@ -11,17 +11,18 @@ import Domain.Useful.Position;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectCreationHandler {
 
-    private final ArrayList<GameObject> frameObjects;
+    private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
     private final HashMap<String, HashMap<String, Integer>> remainingObjects;
     private final int L;
     //private final int gamescreenheight;
     private final int gamescreenwidth;
 
-    public ObjectCreationHandler(ArrayList<GameObject> frameObjects,ObjectListener frame) {
+    public ObjectCreationHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
         L=GameConfiguration.getInstance().getData().getL();

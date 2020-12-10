@@ -8,10 +8,34 @@ import Domain.Useful.Rectangle;
 public class PowerupMovement implements MovementStrategy{
     @Override
     public void doMovement(GameObject obj) {
-        obj.setRectangle(applyMovement(obj.getMovement(),obj.getRectangle()));
+
+        changeTheVelocity(obj);
+
+        double currentX=obj.getX();
+        double currentY=obj.getY();
+        double xPos=obj.getVelocityX()* Math.cos(obj.getAngle())+currentX;
+        double yPos= obj.getVelocityY()* Math.sin(obj.getAngle())+currentY;
+
+        obj.setX(xPos);
+        obj.setY(yPos);
+        killObj(obj);
     }
 
+    private void changeTheVelocity(GameObject obj){
+        int screenWidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
+        if(obj.getX()<=0||obj.getX()>=screenWidth) {
+            obj.setVelocityX(-obj.getVelocityX());
+        }
+    }
 
+    public void killObj(GameObject obj){
+        int height=GameConfiguration.getInstance().getData().getGameScreenHeight();
+        if(obj.getY()>height||obj.getY()<0){
+            obj.destroy();
+        }
+    }
+
+/*
     public Rectangle applyMovement(MovementofObject movement, Rectangle rectangle){
         int gameWitdh=GameConfiguration.getInstance().getData().getGameScreenWidth();
         //int gameWitdh=1000; // for demo purpose, delete after using
@@ -32,4 +56,6 @@ public class PowerupMovement implements MovementStrategy{
         rectangle.setPointList(rectangle.getAngle());
         return rectangle;
     }
+
+ */
 }

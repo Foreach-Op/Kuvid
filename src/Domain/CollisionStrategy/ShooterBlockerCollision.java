@@ -8,7 +8,7 @@ import Domain.Statistics.GameConfiguration;
 public class ShooterBlockerCollision implements CollisionStrategy{
     @Override
     public void doCollision(GameObject object1, GameObject object2) {
-        Player.getInstance().hit(object2.getPosition().getY()-object1.getPosition().getY());
+        Player.getInstance().hit((int) (object2.getCurrentPosition().getY()-object1.getCurrentPosition().getY()));
         object2.destroy();
     }
 }
