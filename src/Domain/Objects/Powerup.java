@@ -12,7 +12,6 @@ import java.util.HashMap;
 import static Domain.Statistics.GameData.L;
 
 public class Powerup extends GameObject implements Collectable {
-    private MovementofObject movement;
     private int angle;
     private final double widthCoef = 1;
     private final double heightCoef = 1;
@@ -28,6 +27,8 @@ public class Powerup extends GameObject implements Collectable {
             angle = GameConfiguration.getInstance().getShooter().getAngle();
             setMovement(new MovementofObject((int) (-L / Math.tan(angle)),
                     (int) L, 0));
+        } else{
+            setMovement(MovementType.STATIONARY.getMovement());
         }
         setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
 
