@@ -104,7 +104,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getPosition());
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getRectangle());
         hashMap.put(obj, objectPanel);
         this.add(objectPanel);
     }
