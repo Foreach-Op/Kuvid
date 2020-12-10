@@ -13,6 +13,7 @@ import java.io.IOException;
 public class ObjectPanel extends JPanel{
 
     private BufferedImage image;
+    private Image newImage;
     private int positionX;
     private int positionY;
     //
@@ -24,6 +25,7 @@ public class ObjectPanel extends JPanel{
         try {
             System.out.println("/assets/"+type+"s/"+subtype);
             image = ImageIO.read(new File("assets/"+type+"s/"+subtype+".png"));
+            newImage = image.getScaledInstance(100, 200, Image.SCALE_DEFAULT);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -38,6 +40,6 @@ public class ObjectPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(image, positionX, positionY, this);
+        g.drawImage(newImage, positionX, positionY, this);
     }
 }

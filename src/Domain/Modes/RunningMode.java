@@ -31,7 +31,7 @@ public class RunningMode {
     MovementHandler movementHandler;
     private Timer timerObjectCreation;
     private Timer timerMoveAndCollision;
-    public static ObjectCreationHandler objectCreationHandler;
+    public ObjectCreationHandler objectCreationHandler; //static?
     ShooterHandler shooterHandler;
 
 

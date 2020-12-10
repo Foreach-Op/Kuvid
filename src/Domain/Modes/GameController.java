@@ -41,12 +41,17 @@ public class GameController {
     }
 
     public void PickAtom() {
-        runningMode.shooterHandler.pickAtom();
+        runningMode.shooterHandler.changeBullet();
         System.out.println("Atom changed randomly.");
     }
 
+    public void PickPowerup(String subtype){
+        runningMode.shooterHandler.changeBulletToPowerup(subtype);
+        System.out.println("Bullet changed to selected powerup:"+subtype);
+    }
+
     public void Shoot() {
-        runningMode.shooterHandler.fire();
+        runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
         System.out.println("SHOOT");
     }
 
