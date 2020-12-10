@@ -46,8 +46,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
         statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
+
         pack();
         gameScreen.setVisible(true);
+
     }
 
     private void GameActionListener() {
@@ -98,6 +100,7 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getActionMap().put("atom 3", new GameActionHandler("atom 3", gameController));
         contentPane.getActionMap().put("atom 4", new GameActionHandler("atom 4", gameController));
     }
+
     public void addObjectPanel(ObjectPanel objectPanel) {
         this.add(objectPanel);
     }
@@ -106,7 +109,8 @@ public class GameScreen extends JFrame implements ObjectListener {
     public void onCreate(GameObject obj) {
         ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getRectangle());
         hashMap.put(obj, objectPanel);
-        this.add(objectPanel);
+        gameScreen.add(objectPanel);
+        gameScreen.repaint();
     }
 
     @Override
