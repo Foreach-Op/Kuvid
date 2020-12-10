@@ -20,11 +20,12 @@ public class MovementHandler {
 
     public void move(){
         for (GameObject object: frameObjects) {
+            System.out.println("Movement Handler,move:"+object.getRectangle().getLocationX()+" "+object.getRectangle().getLocationY());
             MovementStrategy movementStrategy= MovementStrategyFactory.getInstance().getStrategy(object);
             Movement movement=new Movement(movementStrategy);
             movement.executeMovement(object);
             frame.onLocationChange();
-            System.out.println("Movement Handler,move");
+            System.out.println("Movement Handler,move:"+object.getRectangle().getLocationX()+" "+object.getRectangle().getLocationY());
         }
     }
 

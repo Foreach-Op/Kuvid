@@ -56,7 +56,7 @@ public class Shooter extends GameObject {
     }
 
     public GameObject fire(){
-        GameObject fired = ObjectFactory.getInstance().createObject(currentBulletType,currentBulletSubtype,super.getPosition());
+        GameObject fired = ObjectFactory.getInstance().createObject(currentBulletType,currentBulletSubtype,super.getPosition(),false);
         reduceTheBullet();
         changeBullet();
         return fired;

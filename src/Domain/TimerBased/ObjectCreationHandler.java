@@ -44,7 +44,11 @@ public class ObjectCreationHandler {
     }
 
     public void createGameObject(String type, String subtype, Position position){
-        GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position);
+        createGameObject(type,subtype,position,true);
+    }
+
+    public void createGameObject(String type,String subtype,Position position,boolean isFallable){
+        GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position,isFallable);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
     }

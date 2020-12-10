@@ -19,7 +19,6 @@ public abstract class GameObject {
     public GameObject(String type, String subType, Position position) {
         this.type = type;
         this.subType = subType;
-
     }
 
     public String getType() {

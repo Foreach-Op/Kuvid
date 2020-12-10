@@ -18,7 +18,7 @@ public class ObjectFactory {
     }
 
 
-    public GameObject createObject(String type, String subtype, Position position){
+    public GameObject createObject(String type, String subtype, Position position,boolean isFallable){
 
         switch (type){
             case FinalValues.MOLECULE:
@@ -28,7 +28,7 @@ public class ObjectFactory {
             case FinalValues.ATOM:
                 return AtomFactory.getInstance().createAtom(subtype,position);
             default:
-                return PowerupFactory.getInstance().createPowerup(subtype, position);
+                return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
 
         }
 

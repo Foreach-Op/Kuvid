@@ -19,7 +19,9 @@ public class Atom extends GameObject {
         int angle = GameConfiguration.getInstance().getShooter().getAngle();
         setMovement(new MovementofObject((int) (-L / Math.tan(angle)),
                 (int) GameConfiguration.getInstance().getData().getL(), 0,true));
+
         setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
+
     }
 
 

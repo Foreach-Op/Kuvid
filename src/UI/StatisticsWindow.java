@@ -93,22 +93,22 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private void SetPowerupIcons(){
         int iconHeight = height/15;
 
-        ImageIcon sigmaIcon = new ImageIcon("./assets/powerups/+sigma-b.png");
+        ImageIcon sigmaIcon = new ImageIcon("./assets/Powerups/Sigma.png");
         Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance((int) (iconHeight*0.76), iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupSigma.setIcon(new ImageIcon(newSigmaIcon));
         powerupSigma.setPreferredSize(new Dimension(iconHeight, iconHeight));
 
-        ImageIcon betaIcon = new ImageIcon("./assets/powerups/+beta-b.png");
+        ImageIcon betaIcon = new ImageIcon("./assets/Powerups/Beta.png");
         Image newBetaIcon = betaIcon.getImage().getScaledInstance(iconHeight, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupBeta.setIcon(new ImageIcon(newBetaIcon));
         powerupBeta.setPreferredSize(new Dimension(iconHeight, iconHeight));
 
-        ImageIcon alphaIcon = new ImageIcon("./assets/powerups/+alpha-b.png");
+        ImageIcon alphaIcon = new ImageIcon("./assets/Powerups/Alpha.png");
         Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(65, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupAlpha.setIcon(new ImageIcon(newAlphaIcon));
         powerupAlpha.setPreferredSize(new Dimension(iconHeight, iconHeight));
 
-        ImageIcon gammaIcon = new ImageIcon("./assets/powerups/+gamma-b.png");
+        ImageIcon gammaIcon = new ImageIcon("./assets/Powerups/Gamma.png");
         Image newGammaIcon = gammaIcon.getImage().getScaledInstance(32, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupGamma.setIcon(new ImageIcon(newGammaIcon));
         powerupGamma.setPreferredSize(new Dimension(iconHeight, iconHeight));
@@ -116,27 +116,27 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     private void SetAtomIcons(){
         int atomHeight = height/20;
-        ImageIcon alphaIcon = new ImageIcon("./assets/atoms/alpha.png");
+        ImageIcon alphaIcon = new ImageIcon("./assets/Atoms/Alpha.png");
         Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(atomHeight, atomHeight,  java.awt.Image.SCALE_SMOOTH);
         atomIconAlpha.setIcon(new ImageIcon(newAlphaIcon));
         atomIconAlpha.setPreferredSize(new Dimension(atomHeight, atomHeight));
 
-        ImageIcon betaIcon = new ImageIcon("./assets/atoms/beta.png");
+        ImageIcon betaIcon = new ImageIcon("./assets/Atoms/Beta.png");
         Image newBetaIcon = betaIcon.getImage().getScaledInstance(atomHeight, atomHeight,  java.awt.Image.SCALE_SMOOTH);
         atomIconBeta.setIcon(new ImageIcon(newBetaIcon));
         atomIconBeta.setPreferredSize(new Dimension(atomHeight, atomHeight));
 
-        ImageIcon gammaIcon = new ImageIcon("./assets/atoms/gamma.png");
+        ImageIcon gammaIcon = new ImageIcon("./assets/Atoms/Gamma.png");
         Image newGammaIcon = gammaIcon.getImage().getScaledInstance(atomHeight, atomHeight,  java.awt.Image.SCALE_SMOOTH);
         atomIconGamma.setIcon(new ImageIcon(newGammaIcon));
         atomIconGamma.setPreferredSize(new Dimension(atomHeight, atomHeight));
 
-        ImageIcon sigmaIcon = new ImageIcon("./assets/atoms/sigma.png");
+        ImageIcon sigmaIcon = new ImageIcon("./assets/Atoms/Sigma.png");
         Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance(atomHeight, atomHeight,  java.awt.Image.SCALE_SMOOTH);
         atomIconSigma.setIcon(new ImageIcon(newSigmaIcon));
         atomIconSigma.setPreferredSize(new Dimension(atomHeight, atomHeight));
 
-        ImageIcon blendIconLocal = new ImageIcon("./assets/mixer.png");
+        ImageIcon blendIconLocal = new ImageIcon("./Assets/mixer.png");
         Image newBlendIcon = blendIconLocal.getImage().getScaledInstance(atomHeight*2, atomHeight*2,  java.awt.Image.SCALE_SMOOTH);
         blendIcon.setIcon(new ImageIcon(newBlendIcon));
         blendIcon.setPreferredSize(new Dimension(atomHeight*2, atomHeight*2));

@@ -17,20 +17,20 @@ public class PowerupFactory {
     }
 
 
-    public GameObject createPowerup(String subtype, Position position) {
+    public GameObject createPowerup(String subtype, Position position,boolean isFallable) {
 
         switch (subtype) {
             case FinalValues.ALPHA:
-                return new Alpha_Powerup(position);
+                return new Alpha_Powerup(position,isFallable);
 
             case FinalValues.BETA:
-                return new Beta_Powerup(position);
+                return new Beta_Powerup(position,isFallable);
 
             case FinalValues.GAMMA:
-                return new Gamma_Powerup(position);
+                return new Gamma_Powerup(position,isFallable);
 
             default:
-                return new Sigma_Powerup(position);
+                return new Sigma_Powerup(position,isFallable);
 
         }
 
