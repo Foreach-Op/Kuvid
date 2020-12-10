@@ -32,7 +32,6 @@ public class BuildingMode {
 
         gameData.setGameScreenWidth(Integer.parseInt(configHash.get("width")));
         gameData.setGameScreenHeight(Integer.parseInt(configHash.get("height")));
-        System.out.println(gameData.getGameScreenHeight());
 
         boolean isLoaded = false;
         gameData.setLoaded(isLoaded);

@@ -39,36 +39,15 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen = new JFrame("KUVID GAME");
         gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        //gameScreen.setResizable(false);
-
-        JPanel gamePanel = new JPanel();
-        gamePanel.setBackground(Color.CYAN);
-        //gameScreen.add(gamePanel, BorderLayout.WEST);
-        gamePanel.setPreferredSize(new Dimension(GAME_SCREEN_WIDTH, GAME_SCREEN_HEIGHT));
-
-
-        JPanel panel2 = new JPanel();
-        panel2.setBackground(Color.BLACK);
-        gameScreen.add(panel2, BorderLayout.EAST);
-        panel2.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
-
+        gameScreen.setResizable(false);
 
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
+        gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
+        statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
-
-        panel2.add(statisticsWindow);
-        panel2.repaint();
-        repaint();
-        //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
-
-        //statisticsWindow.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
-        //gameScreen.repaint();
-
-        //gameScreen.pack();
+        pack();
         gameScreen.setVisible(true);
-
     }
 
     private void GameActionListener() {
