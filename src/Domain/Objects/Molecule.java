@@ -6,7 +6,7 @@ import Domain.Useful.FinalValues;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
-public class Molecule extends GameObject implements Collectable {
+public class Molecule extends GameObject{
 
 
     private final double widthCoef = 0.5;
@@ -17,13 +17,5 @@ public class Molecule extends GameObject implements Collectable {
         int L=10; //for test purpose
         //int L= GameConfiguration.getInstance().getData().getL();
         setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
-    }
-
-
-    public String[] getCollected() {
-        String[] result = new String[2];
-        result[0] = FinalValues.ATOM;
-        result[1] = this.getSubType();
-        return result;
     }
 }

@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 import static Domain.Statistics.GameData.L;
 
-public class Powerup extends GameObject implements Collectable {
+public class Powerup extends GameObject{
     private int angle;
     private final double widthCoef = 1;
     private final double heightCoef = 1;
@@ -40,16 +40,6 @@ public class Powerup extends GameObject implements Collectable {
 
     public void setFallable(boolean fallable) {
         isFallable = fallable;
-    }
-
-
-
-    @Override
-    public String[] getCollected() {
-        String[] result = new String[2];
-        result[0] = this.getType();
-        result[1] = this.getSubType();
-        return result;
     }
 
 
