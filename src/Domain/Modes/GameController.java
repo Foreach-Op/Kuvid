@@ -31,18 +31,22 @@ public class GameController {
     }
 
     public void Move(String direction) {
+        runningMode.shooterHandler.moveShooter(direction);
         System.out.println("Moving through " + direction);
     }
 
     public void Rotate(String direction) {
+        runningMode.shooterHandler.rotateShooter(direction);
         System.out.println("Rotating through " + direction);
     }
 
     public void PickAtom() {
+        runningMode.shooterHandler.pickAtom();
         System.out.println("Atom changed randomly.");
     }
 
     public void Shoot() {
+        runningMode.shooterHandler.fire();
         System.out.println("SHOOT");
     }
 

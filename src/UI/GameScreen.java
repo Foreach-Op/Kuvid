@@ -60,8 +60,8 @@ public class GameScreen extends JFrame implements ObjectListener {
 
         JPanel contentPane = (JPanel) gameScreen.getContentPane();
 
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_LEFT.getValue(), 0, false), "move left"); // TRUE'da action almadı
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_RIGHT.getValue(),0, false), "move right");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_LEFT.getValue(), 0), "move left"); // TRUE'da action almadı
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.MOVE_RIGHT.getValue(),0), "move right");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ROTATE_LEFT.getValue(),0), "rotate left");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ROTATE_RIGHT.getValue(), 0), "rotate right");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.SHOOT.getValue(),0), "fire");
@@ -86,6 +86,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
 
         contentPane.getActionMap().put("move right", new GameActionHandler("move right", gameController));
+        contentPane.getActionMap().put("move left", new GameActionHandler("move left", gameController));
         contentPane.getActionMap().put("rotate left", new GameActionHandler("rotate left", gameController));
         contentPane.getActionMap().put("rotate right", new GameActionHandler("rotate right", gameController));
         contentPane.getActionMap().put("pick atom", new GameActionHandler("pick atom", gameController));
@@ -121,7 +122,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.getCurrentPosition());
-            System.out.println(object.getType());
+            //System.out.println(object.getType());
             gameScreen.repaint();
             hashMap.get(object).repaint();
         }
@@ -136,7 +137,11 @@ public class GameScreen extends JFrame implements ObjectListener {
     @Override
     public void onCreateShooter(GameObject shooter) {
         this.shooter=shooter;
+        System.out.println(shooter.getX()+" "+shooter.getY());
         this.shooterPanel=new ObjectPanel(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
+        gameScreen.add(this.shooterPanel);
+        shooterPanel.repaint();
+        gameScreen.repaint();
     }
 
     @Override
@@ -146,7 +151,10 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onShooterPositionChange() {
-
+        shooterPanel.updatePosition(shooter.getCurrentPosition());
+        System.out.println(shooter.getCurrentPosition().getX());
+        System.out.println(shooter.getCurrentPosition().getY());
+        gameScreen.repaint();
     }
 
     public void removeFromScreen(GameObject object) {

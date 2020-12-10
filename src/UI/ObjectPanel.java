@@ -2,7 +2,6 @@ package UI;
 
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
-import javafx.geometry.Pos;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -2,6 +2,7 @@ package Domain.Objects;
 
 import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 import Domain.TimerBased.ObjectCreationHandler;
 import Domain.Useful.FinalValues;
 import Domain.Useful.MovementType;
@@ -13,7 +14,6 @@ import java.util.HashMap;
 import static Domain.Useful.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
-    private int angle;
     private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
     private String currentBulletType = null;
     private String currentBulletSubtype = null;//bullet of the shooter.
@@ -24,13 +24,13 @@ public class Shooter extends GameObject {
     private MovementofObject leftRotation = MovementType.SHOOTER_ROTATE_LEFT.getMovement();
     private MovementofObject rightRotation = MovementType.SHOOTER_ROTATE_RIGHT.getMovement();
     private int L=GameConfiguration.getInstance().getData().getL();
+    private static GameData gameData=GameConfiguration.getInstance().getData();
 
 
     public Shooter() {
 
-        super("Shooter","1",new Position(GameConfiguration.getInstance().getData().getGameScreenWidth()/2
-                -(GameConfiguration.getInstance().getData().getL()/2),
-                GameConfiguration.getInstance().getData().getGameScreenHeight()-GameConfiguration.getInstance().getData().getL()),90);
+        super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
+                gameData.getGameScreenHeight()-gameData.getL()),90);
         initializeShooter();
     }
 

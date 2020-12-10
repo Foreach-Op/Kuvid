@@ -6,6 +6,7 @@ import Domain.Statistics.GameConfiguration;
 import Domain.TimerBased.CollisionHandler;
 import Domain.TimerBased.MovementHandler;
 import Domain.TimerBased.ObjectCreationHandler;
+import Domain.TimerBased.ShooterHandler;
 import Domain.Useful.Position;
 
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class RunningMode {
     private Timer timerObjectCreation;
     private Timer timerMoveAndCollision;
     public static ObjectCreationHandler objectCreationHandler;
+    ShooterHandler shooterHandler;
+
 
     private int refreshRate;
 
@@ -39,21 +42,26 @@ public class RunningMode {
         frameObjects = new ArrayList<>();
     }
 
+
     public void startGame() {
+        shooterHandler=new ShooterHandler(frameListener);
+        Shooter shooter=shooterHandler.createShooter();
+        frameObjects.add(shooter);
+
         objectCreationHandler = new ObjectCreationHandler(frameObjects2, frameListener);
         movementHandler = new MovementHandler(frameObjects2, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
-        GameObject object=new Gamma_Molecule(new Position(250,50));
+        GameObject object=new Gamma_Molecule(new Position(250,0));
         frameObjects2.add(object);
         frameListener.onCreate(object);
-        /*GameObject object2=new Alpha_Molecule(new Position(500,50));
+        GameObject object2=new Alpha_Molecule(new Position(500,50));
         frameObjects2.add(object2);
-        frameListener.onCreate(object2);*/
-        /*GameObject object3=new Alpha_Blocker(new Position(500,50));
+        frameListener.onCreate(object2);
+        GameObject object3=new Alpha_Blocker(new Position(500,50));
         frameObjects2.add(object3);
-        frameListener.onCreate(object3);*/
+        frameListener.onCreate(object3);
         refreshRate = 10;
         int creationTime = setCreationTime();
         TimerTask timerTask1 = createObject();
@@ -79,6 +87,7 @@ public class RunningMode {
             }
         };
     }
+
 
     private TimerTask createObject() {
 
