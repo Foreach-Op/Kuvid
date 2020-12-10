@@ -202,7 +202,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     @Override
     public void onAmmunitionChange(HashMap<String, HashMap<String, Integer>> map) {
-        textAreaAlphaPowerupAmount.setText(String.valueOf(map.get(FinalValues.POWERUP).get(FinalValues.ATOM)));
+        textAreaAlphaPowerupAmount.setText(String.valueOf(map.get(FinalValues.POWERUP).get(FinalValues.ALPHA)));
         textAreaBetaPowerupAmount.setText(String.valueOf(map.get(FinalValues.POWERUP).get(FinalValues.BETA)));
         textAreaGammaPowerupAmount.setText(String.valueOf(map.get(FinalValues.POWERUP).get(FinalValues.GAMMA)));
         textAreaSigmaPowerupAmount.setText(String.valueOf(map.get(FinalValues.POWERUP).get(FinalValues.SIGMA)));

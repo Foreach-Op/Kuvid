@@ -1,5 +1,7 @@
 package Domain.Modes;
 
+import Domain.Functionalities.Blender;
+
 import java.util.HashMap;
 
 public class GameController {
@@ -72,16 +74,16 @@ public class GameController {
         System.out.println("resume");
     }
 
-    public void ChooseAtomForBlender(int type) {
+    public void ChooseAtomForBlender(String type) {
         blenderCounter++;
         if (isBlendModeActive) {
             if (blenderCounter == 1) {
                 // SET FIRST ATOM
-                firstAtomForBlender = "atom " + type;
+                firstAtomForBlender = type;
                 isFirstAtomSelected = true;
             } else if (blenderCounter == 2) {
                 // SET SECOND ATOM
-                secondAtomForBlender = "atom " + type;
+                secondAtomForBlender = type;
                 isSecondAtomSelected = true;
             }
         }
@@ -89,7 +91,8 @@ public class GameController {
             System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
             // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
             // BLEND(first, second)
-
+            Blender blender=new Blender();
+            blender.Transform(firstAtomForBlender,secondAtomForBlender);
             // THEN RESET BLEND VALUES
             blenderCounter = 0;
             firstAtomForBlender = "";

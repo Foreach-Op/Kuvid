@@ -14,10 +14,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GameScreen extends JFrame implements ObjectListener {
 
-    public HashMap<GameObject, ObjectPanel> hashMap = new HashMap<>();
+    public ConcurrentHashMap<GameObject, ObjectPanel> hashMap = new ConcurrentHashMap<>();
     private GameObject shooter;
     private ObjectPanel shooterPanel;
     private StatisticsWindow statisticsWindow;
@@ -122,10 +123,11 @@ public class GameScreen extends JFrame implements ObjectListener {
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.getCurrentPosition());
-            //System.out.println(object.getType());
+            System.out.print(object.getY()+" ");
             gameScreen.repaint();
             hashMap.get(object).repaint();
         }
+        System.out.println(" ");
     }
 
     @Override

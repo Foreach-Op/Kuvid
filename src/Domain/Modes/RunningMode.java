@@ -31,8 +31,10 @@ public class RunningMode {
     MovementHandler movementHandler;
     private Timer timerObjectCreation;
     private Timer timerMoveAndCollision;
+    private Timer timerClock;
     public ObjectCreationHandler objectCreationHandler; //static?
     ShooterHandler shooterHandler;
+    public double clock;
 
 
     private int refreshRate;
@@ -44,6 +46,7 @@ public class RunningMode {
 
 
     public void startGame() {
+        clock=100.00;
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=shooterHandler.createShooter();
         frameObjects.add(shooter);
@@ -53,6 +56,8 @@ public class RunningMode {
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
+        timerClock=new Timer();
+        /*
         GameObject object=new Gamma_Molecule(new Position(250,0));
         frameObjects2.add(object);
         frameListener.onCreate(object);
@@ -62,12 +67,17 @@ public class RunningMode {
         GameObject object3=new Alpha_Blocker(new Position(500,50));
         frameObjects2.add(object3);
         frameListener.onCreate(object3);
+
+         */
         refreshRate = 10;
         int creationTime = setCreationTime();
-        TimerTask timerTask1 = createObject();
-        TimerTask timerTask2 = moveAndCollide();
+        //TimerTask timerTask1 = createObject();
+        //TimerTask timerTask2 = moveAndCollide();
+        TimerTask timerTask3=clock();
         //timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
-        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
+        //timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
+        timerClock.scheduleAtFixedRate(timerTask3,0,100);
+
     }
 
     public void setFrameListener(ObjectListener frameListener) {
@@ -96,6 +106,22 @@ public class RunningMode {
             public void run() {
 
                 objectCreationHandler.createRandomFallingObject();
+                if(GameStatueControl.getInstance().isGameEnded()){
+                    endGame();
+                }
+            }
+        };
+    }
+
+
+    private TimerTask clock() {
+
+        return new TimerTask() {
+            @Override
+            public void run() {
+
+                clock=clock-0.1;
+                GameConfiguration.getInstance().setTime(clock);
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }

@@ -26,6 +26,7 @@ public class ShooterHandler {
 
     public Shooter createShooter() {
         this.shooter=new Shooter();
+        changeBullet();
         frameListener.onCreateShooter(shooter);
         return shooter;
     }
@@ -36,13 +37,14 @@ public class ShooterHandler {
         double currentY=shooter.getY();
         //şu anda her talepte L kadar gidecek
         double xPos=0;
+
         if (direction.equals("right") && gameData.getGameScreenWidth()-gameData.getL()>currentX+shooter.getVelocityX()){
             xPos=currentX+shooter.getVelocityX();
             System.out.println("yeni X:"+xPos);
         } else if(direction.equals("left") && 0<currentX-shooter.getVelocityX()){
             xPos=currentX-shooter.getVelocityX();
         }
-
+        System.out.println("xPos: "+xPos+" YPos:"+currentY);
         Position newPos=new Position(xPos,currentY);
         shooter.setCurrentPosition(newPos);
         frameListener.onLocationChange();

@@ -47,16 +47,16 @@ public class GameActionHandler extends AbstractAction {
                 gameController.Blend();
                 break;
             case "atom 1":
-                gameController.ChooseAtomForBlender(1);
+                gameController.ChooseAtomForBlender("Alpha");
                 break;
             case "atom 2":
-                gameController.ChooseAtomForBlender(2);
+                gameController.ChooseAtomForBlender("Beta");
                 break;
             case "atom 3":
-                gameController.ChooseAtomForBlender(3);
+                gameController.ChooseAtomForBlender("Gamma");
                 break;
             case "atom 4":
-                gameController.ChooseAtomForBlender(4);
+                gameController.ChooseAtomForBlender("Sigma");
                 break;
         }
     }

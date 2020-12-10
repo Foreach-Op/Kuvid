@@ -32,6 +32,7 @@ public class Shooter extends GameObject {
 
         super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
                 gameData.getGameScreenHeight()-gameData.getL()),90);
+        setVelocity(new Position(100,100));
         initializeShooter();
     }
 
@@ -39,6 +40,8 @@ public class Shooter extends GameObject {
         initializeBullets();
         rectangle=new Rectangle(super.getCurrentPosition(),L,L,90); //düzelt, angle neye göre? o düzelilsin
     }
+
+
 
 
     public void collision(GameObject collider) {
@@ -77,7 +80,7 @@ public class Shooter extends GameObject {
                 numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
         setAmmunition(numOfBullets);
     }
-
+    /*
     public void changeBullet(){ // randomly change bullet to different kind of atoms
         String subtype = null;
         while (subtype == null) {
@@ -90,6 +93,8 @@ public class Shooter extends GameObject {
         currentBulletType = ATOM;
         currentBulletSubtype = subtype;
     }
+
+     */
 
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
         return numOfBullets;
