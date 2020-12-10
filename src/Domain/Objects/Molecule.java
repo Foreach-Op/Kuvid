@@ -16,7 +16,6 @@ public class Molecule extends GameObject implements Collectable {
         super(FinalValues.MOLECULE, subType, position);
         int L= GameConfiguration.getInstance().getData().getL();
         //int L=10; // for test purpose;
-        setMovement(new MovementofObject(0, (int) L));
         System.out.println("molecul içinde: "+getMovement().getShiftY(10));
         setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }

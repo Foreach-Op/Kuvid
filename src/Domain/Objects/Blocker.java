@@ -12,7 +12,6 @@ public class Blocker extends GameObject {
     public Blocker(String subType, Position position) {
         super(FinalValues.BLOCKER, subType, position);
         int L= GameConfiguration.getInstance().getData().getL();
-        setMovement(new MovementofObject(0, (int) L));
         setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
 

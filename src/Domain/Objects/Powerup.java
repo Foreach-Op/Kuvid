@@ -24,15 +24,12 @@ public class Powerup extends GameObject implements Collectable {
         this.isFallable=isFallable;
         int L=GameConfiguration.getInstance().getData().getL();
         int angle;
-        if(isFallable){
-            setMovement(new MovementofObject(0, (int) L));
-            setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
-        } else {
+        if(!isFallable){
             angle = GameConfiguration.getInstance().getShooter().getAngle();
             setMovement(new MovementofObject((int) (-L / Math.tan(angle)),
                     (int) L, 0));
-            setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
         }
+        setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
 
     }
 
