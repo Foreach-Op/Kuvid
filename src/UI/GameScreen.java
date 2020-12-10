@@ -24,6 +24,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
     private GameController gameController;
+    private JPanel gamePanel;
 
     private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
     public final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
@@ -50,6 +51,19 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
         statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
+        /*
+        gamePanel = new JPanel();
+        gamePanel.setBackground(Color.BLACK);
+        gameScreen.add(gamePanel);
+
+        JPanel panel1 = new JPanel();
+        panel1.setSize(200,200);
+        panel1.setLocation(500,500);
+        panel1.setBackground(Color.RED);
+        gamePanel.add(panel1);
+
+
+         */
 
         pack();
         gameScreen.setVisible(true);
@@ -124,7 +138,7 @@ public class GameScreen extends JFrame implements ObjectListener {
         for (GameObject object : hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.getCurrentPosition());
             System.out.print(object.getY()+" ");
-            gameScreen.repaint();
+            //gamePanel.repaint();
             hashMap.get(object).repaint();
         }
         System.out.println(" ");
@@ -142,8 +156,9 @@ public class GameScreen extends JFrame implements ObjectListener {
         System.out.println(shooter.getX()+" "+shooter.getY());
         this.shooterPanel=new ObjectPanel(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
         gameScreen.add(this.shooterPanel);
+        //shooterPanel.setBounds(100,100,75,75);
         shooterPanel.repaint();
-        gameScreen.repaint();
+        //gameScreen.repaint();
     }
 
     @Override

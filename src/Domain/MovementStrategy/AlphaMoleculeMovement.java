@@ -13,8 +13,8 @@ public class AlphaMoleculeMovement implements MovementStrategy{
         double currentX=obj.getX();
         double currentY=obj.getY();
         //Sorun çözülecek
-        double xPos=obj.getVelocityX()* Math.cos(obj.getAngle())+currentX;
-        double yPos= obj.getVelocityY()* Math.sin(obj.getAngle())+currentY;
+        double xPos=obj.getVelocityX()* Math.cos(Math.toRadians(obj.getAngle()))+currentX;
+        double yPos= obj.getVelocityY()* Math.sin(Math.toRadians(obj.getAngle()))+currentY;
         //System.out.print(obj.getType()+" "+obj.getSubType()+" "+ obj.getAngle()+" ");
         Position newPos=new Position(xPos,yPos);
         obj.setCurrentPosition(newPos);

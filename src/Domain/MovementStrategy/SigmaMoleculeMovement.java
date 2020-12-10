@@ -8,7 +8,7 @@ public class SigmaMoleculeMovement implements MovementStrategy{
     public void doMovement(GameObject obj) {
 
         double currentY=obj.getY();
-        double yPos=obj.getVelocityY()* Math.sin(obj.getAngle())+currentY;
+        double yPos= obj.getVelocityY()* Math.sin(Math.toRadians(obj.getAngle()))+currentY;
         obj.setY(yPos);
         killObj(obj);
     }

@@ -12,8 +12,8 @@ public class GammaMoleculeMovement implements MovementStrategy{
 
         double currentX=obj.getX();
         double currentY=obj.getY();
-        double xPos=obj.getVelocityX()* Math.cos(obj.getAngle())+currentX;
-        double yPos=obj.getVelocityY()* Math.sin(obj.getAngle())+currentY;
+        double xPos=obj.getVelocityX()* Math.cos(Math.toRadians(obj.getAngle()))+currentX;
+        double yPos= obj.getVelocityY()* Math.sin(Math.toRadians(obj.getAngle()))+currentY;
 
         obj.setX(xPos);
         obj.setY(yPos);

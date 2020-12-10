@@ -20,8 +20,8 @@ public class ObjectPanel extends JPanel{
     public ObjectPanel(String type, String subtype, Position position) {
         positionX=(int) position.getX();
         positionY=(int) position.getY();
-        
-        this.setBounds(positionX,positionY,100,100);
+
+        //this.setBounds(positionX,positionY,100,100);
         try {
             System.out.println("/assets/"+type+"s/"+subtype);
             image = ImageIO.read(new File("assets/"+type+"s/"+subtype+".png"));
@@ -29,6 +29,7 @@ public class ObjectPanel extends JPanel{
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+        //this.setBounds(positionX,positionY,100,100);
     }
 
     public void updatePosition(Position newPosition){
@@ -41,6 +42,7 @@ public class ObjectPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //this.setBackground(Color.CYAN);
         g.drawImage(newImage, positionX, positionY, this);
     }
 }

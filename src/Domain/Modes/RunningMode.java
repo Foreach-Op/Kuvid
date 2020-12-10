@@ -47,9 +47,9 @@ public class RunningMode {
 
     public void startGame() {
         clock=100.00;
-        shooterHandler=new ShooterHandler(frameListener);
-        Shooter shooter=shooterHandler.createShooter();
-        frameObjects.add(shooter);
+        //shooterHandler=new ShooterHandler(frameListener);
+        //Shooter shooter=shooterHandler.createShooter();
+        //frameObjects.add(shooter);
 
         objectCreationHandler = new ObjectCreationHandler(frameObjects2, frameListener);
         movementHandler = new MovementHandler(frameObjects2, frameListener);
@@ -61,21 +61,26 @@ public class RunningMode {
         GameObject object=new Gamma_Molecule(new Position(250,0));
         frameObjects2.add(object);
         frameListener.onCreate(object);
+
+         */
         GameObject object2=new Alpha_Molecule(new Position(500,50));
         frameObjects2.add(object2);
         frameListener.onCreate(object2);
-        GameObject object3=new Alpha_Blocker(new Position(500,50));
+
+        GameObject object3=new Alpha_Blocker(new Position(700,50));
         frameObjects2.add(object3);
         frameListener.onCreate(object3);
 
-         */
+
+
+
         refreshRate = 10;
         int creationTime = setCreationTime();
         //TimerTask timerTask1 = createObject();
-        //TimerTask timerTask2 = moveAndCollide();
+        TimerTask timerTask2 = moveAndCollide();
         TimerTask timerTask3=clock();
         //timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
-        //timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
+        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
         timerClock.scheduleAtFixedRate(timerTask3,0,100);
 
     }
