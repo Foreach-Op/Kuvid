@@ -168,10 +168,11 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onShooterPositionChange() {
+        //shooterPanel.setBounds((int)shooter.getX(),(int)shooter.getY(),200,100);
         shooterPanel.updatePosition(shooter.getCurrentPosition());
         System.out.println(shooter.getCurrentPosition().getX());
         System.out.println(shooter.getCurrentPosition().getY());
-        gameScreen.repaint();
+        shooterPanel.repaint();
     }
 
     public void removeFromScreen(GameObject object) {
