@@ -22,9 +22,9 @@ public class Shooter extends GameObject {
 
 
     public Shooter() {
-
-        super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
-                gameData.getGameScreenHeight()-gameData.getL()),90);
+        super("Shooter","1",new Position(500,500),90);
+        //super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
+        //        gameData.getGameScreenHeight()-gameData.getL()),90);
         setVelocity(new Position(100,100));
         initializeShooter();
     }
