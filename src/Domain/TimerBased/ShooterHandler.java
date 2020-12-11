@@ -11,6 +11,7 @@ import Domain.Useful.FinalValues;
 import Domain.Useful.Position;
 
 import static Domain.Useful.FinalValues.ATOM;
+import static Domain.Useful.FinalValues.POWERUP;
 
 
 public class ShooterHandler {
@@ -98,6 +99,11 @@ public class ShooterHandler {
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
             shooter.setCurrentBulletType(FinalValues.POWERUP);
             shooter.setCurrentBulletSubtype(subtype);
+            int x=(int) shooter.getX()+20;
+            int y=(int) shooter.getY()-20;
+            GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,new Position(x,y),false);
+            shooter.setObjectInTrigger(object);
+            frameListener.onShooterTriggerBulletChange();
         }
     }
 }

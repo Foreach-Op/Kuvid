@@ -23,9 +23,7 @@ public class Powerup extends GameObject{
         return isFallable();
     }
 
-    //public void setFallable(boolean fallable) {
-      //  isFallable = fallable;
-    //}
+
 
 
 }

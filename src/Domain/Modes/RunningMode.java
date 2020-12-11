@@ -49,7 +49,7 @@ public class RunningMode {
 
 
     public void startGame() {
-        clock=100.00;
+        clock=10.00;
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=shooterHandler.createShooter();
         frameObjects2.add(shooter);
@@ -130,6 +130,10 @@ public class RunningMode {
 
                 clock=clock-0.1;
                 GameConfiguration.getInstance().setTime(clock);
+                if(clock<=0){
+                    GameConfiguration.getInstance().setTime(0.0);
+                    GameStatueControl.getInstance().setGameEnded();
+                }
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }
@@ -160,8 +164,7 @@ public class RunningMode {
     }
 
     private void endGame(){
-        timerObjectCreation.cancel();
-        timerMoveAndCollision.cancel();
+        pauseGame();
         //GameOver()
     }
 
