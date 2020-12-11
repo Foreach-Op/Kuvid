@@ -24,7 +24,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
     private GameController gameController;
-    private JPanel gamePanel;
+    private GamePanel gamePanel;
 
     private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
     public final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
@@ -41,6 +41,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     private void CreateUIElements() {
+        //?
         gameScreen = new JFrame("KUVID GAME");
         gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -51,19 +52,13 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
         statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
-        /*
-        gamePanel = new JPanel();
+
+        gamePanel = new GamePanel();
         gamePanel.setBackground(Color.BLACK);
         gameScreen.add(gamePanel);
 
-        JPanel panel1 = new JPanel();
-        panel1.setSize(200,200);
-        panel1.setLocation(500,500);
-        panel1.setBackground(Color.RED);
-        gamePanel.add(panel1);
 
 
-         */
 
         pack();
         gameScreen.setVisible(true);
@@ -126,39 +121,46 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition());
-        System.out.println("Created");
+        /*ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition());
+        //System.out.println("Created");
         hashMap.put(obj, objectPanel);
         gameScreen.add(objectPanel);
-        gameScreen.repaint();
+        gameScreen.repaint();*/
+        gamePanel.onCreate(obj);
+
     }
 
     @Override
     public void onLocationChange() {
-        for (GameObject object : hashMap.keySet()) {
+        /*for (GameObject object : hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.getCurrentPosition());
-            System.out.print(object.getY()+" ");
+            //System.out.print(object.getY()+" ");
             //gamePanel.repaint();
             hashMap.get(object).repaint();
-        }
-        System.out.println(" ");
+        }*/
+        gamePanel.onLocationChange();
+        //System.out.println(" ");
     }
 
     @Override
     public void onDestroy(GameObject obj1, GameObject obj2) {
-        removeFromScreen(obj1);
-        removeFromScreen(obj2);
+        /*removeFromScreen(obj1);
+        removeFromScreen(obj2);*/
+        gamePanel.onDestroy(obj1,obj2);
     }
 
     @Override
     public void onCreateShooter(GameObject shooter) {
-        this.shooter=shooter;
-        System.out.println(shooter.getX()+" "+shooter.getY());
+        gamePanel.onCreateShooter(shooter);
+        /*this.shooter=shooter;
+        //System.out.println(shooter.getX()+" "+shooter.getY());
         this.shooterPanel=new ObjectPanel(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
         gameScreen.add(this.shooterPanel);
         //shooterPanel.setBounds(100,100,75,75);
         shooterPanel.repaint();
         //gameScreen.repaint();
+        */
+
     }
 
     @Override
@@ -168,10 +170,11 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     @Override
     public void onShooterPositionChange() {
-        shooterPanel.updatePosition(shooter.getCurrentPosition());
-        System.out.println(shooter.getCurrentPosition().getX());
-        System.out.println(shooter.getCurrentPosition().getY());
-        gameScreen.repaint();
+        gamePanel.onShooterPositionChange();
+        //shooterPanel.updatePosition(shooter.getCurrentPosition());
+        //System.out.println(shooter.getCurrentPosition().getX());
+        //System.out.println(shooter.getCurrentPosition().getY());
+        //gameScreen.repaint();
     }
 
     public void removeFromScreen(GameObject object) {

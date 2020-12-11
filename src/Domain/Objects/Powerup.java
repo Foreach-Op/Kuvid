@@ -1,15 +1,8 @@
 package Domain.Objects;
 
-import Domain.Modes.RunningMode;
 import Domain.Useful.FinalValues;
-import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Statistics.GameConfiguration;
-import Domain.Useful.Rectangle;
-
-import java.util.HashMap;
-
-import static Domain.Statistics.GameData.L;
 
 public class Powerup extends GameObject{
 

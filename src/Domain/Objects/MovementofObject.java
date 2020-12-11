@@ -1,7 +1,5 @@
 package Domain.Objects;
 
-import Domain.Useful.MovementType;
-
 public class MovementofObject {
     //for powerup movement can up or down;
     int shiftY; //-N to +N

@@ -1,11 +1,8 @@
 package Domain.Objects;
 
-import Domain.ObjectCreator.ObjectFactory;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
-import Domain.TimerBased.ObjectCreationHandler;
 import Domain.Useful.FinalValues;
-import Domain.Useful.MovementType;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
@@ -20,10 +17,6 @@ public class Shooter extends GameObject {
     public Rectangle rectangle;
 
     private Position position;
-    private MovementofObject leftMovement = MovementType.SHOOTER_MOVEMENT_LEFT.getMovement();
-    private MovementofObject rightMovement = MovementType.SHOOTER_MOVEMENT_RIGHT.getMovement();
-    private MovementofObject leftRotation = MovementType.SHOOTER_ROTATE_LEFT.getMovement();
-    private MovementofObject rightRotation = MovementType.SHOOTER_ROTATE_RIGHT.getMovement();
     private int L=GameConfiguration.getInstance().getData().getL();
     private static GameData gameData=GameConfiguration.getInstance().getData();
 

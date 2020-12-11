@@ -14,9 +14,9 @@ public class Atom extends GameObject {
 
 
     public Atom(String subType,Position position,int angle) {
-        super(FinalValues.ATOM, subType, GameConfiguration.getInstance().getShooter().getCurrentPosition(),angle);
+        super(FinalValues.ATOM, subType, position,angle);
         int L=GameConfiguration.getInstance().getData().getL();
-
+        setVelocityY(-getVelocityY());
         //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
 
     }

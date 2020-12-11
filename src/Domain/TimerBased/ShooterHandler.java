@@ -27,7 +27,8 @@ public class ShooterHandler {
     public Shooter createShooter() {
         this.shooter=new Shooter();
         changeBullet();
-        frameListener.onCreateShooter(shooter);
+        shooter.setY(GameConfiguration.getInstance().getData().getGameScreenHeight()-200);
+        frameListener.onCreate(shooter);
         return shooter;
     }
 
@@ -44,10 +45,10 @@ public class ShooterHandler {
         } else if(direction.equals("left") && 0<currentX-shooter.getVelocityX()){
             xPos=currentX-shooter.getVelocityX();
         }
-        System.out.println("xPos: "+xPos+" YPos:"+currentY);
+        //System.out.println("xPos: "+xPos+" YPos:"+currentY);
         Position newPos=new Position(xPos,currentY);
         shooter.setCurrentPosition(newPos);
-        frameListener.onLocationChange();
+        frameListener.onShooterPositionChange();
 
     }
 

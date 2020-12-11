@@ -2,7 +2,6 @@ package Domain.Statistics;
 
 import Domain.Objects.*;
 import Domain.Useful.Difficulty;
-import Domain.Useful.MovementType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,7 +26,6 @@ public class GameData implements Serializable {
     private Difficulty difficulty;
     public static int L;/////// make it visible
     private String alphaBetaType;
-    private MovementType alphaBetaMovementType;
 
     private int gameScreenWidth=1000;
     private int gameScreenHeight=1000;
@@ -36,15 +34,13 @@ public class GameData implements Serializable {
 
     public GameData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
-                    Difficulty difficulty, int l, String alphaBetaType,
-                    MovementType alphaBetaMovementType) {
+                    Difficulty difficulty, int l, String alphaBetaType) {
         this.isLoaded = isLoaded;
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
         this.difficulty = difficulty;
         L = l;
         this.alphaBetaType = alphaBetaType;
-        this.alphaBetaMovementType = alphaBetaMovementType;
     }
 
     public GameData(ArrayList<GameObject> frameObjects, double health,
@@ -52,8 +48,7 @@ public class GameData implements Serializable {
                     HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
-                    Difficulty difficulty, int l, String alphaBetaType,
-                    MovementType alphaBetaMovementType) {
+                    Difficulty difficulty, int l, String alphaBetaType) {
         this.frameObjects = frameObjects;
         this.health = health;
         this.score = score;
@@ -66,7 +61,6 @@ public class GameData implements Serializable {
         this.difficulty = difficulty;
         L = l;
         this.alphaBetaType = alphaBetaType;
-        this.alphaBetaMovementType = alphaBetaMovementType;
     }
 
     public ArrayList<GameObject> getFrameObjects() {
@@ -165,13 +159,6 @@ public class GameData implements Serializable {
         this.alphaBetaType = alphaBetaType;
     }
 
-    public MovementType getAlphaBetaMovementType() {
-        return alphaBetaMovementType;
-    }
-
-    public void setAlphaBetaMovementType(MovementType alphaBetaMovementType) {
-        this.alphaBetaMovementType = alphaBetaMovementType;
-    }
 
     public int getGameScreenWidth(){
         return gameScreenWidth;

@@ -88,8 +88,8 @@ public class ConfigureScreen {
         radioButtonLinear.setText(MoleculeStructure.LINEAR.toString());
         radioButtonTriangle.setText(MoleculeStructure.TRIANGLE.toString());
 
-        radioButtonSpinning.setText(MovementType.SPINNING.toString());
-        radioButtonStationary.setText(MovementType.STATIONARY.toString());
+        radioButtonSpinning.setText("SPINNING");
+        radioButtonStationary.setText("STATIONARY");
 
         radioButtonEasy.setText(Difficulty.EASY.toString());
         radioButtonNormal.setText(Difficulty.NORMAL.toString());

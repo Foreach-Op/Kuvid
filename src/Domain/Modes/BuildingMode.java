@@ -106,14 +106,8 @@ public class BuildingMode {
         gameData.setAlphaBetaType(alphaBetaType);
 
         //---Movement
-        MovementType alphaBetaMovementType;
         String movementType = configHash.get("fallingType");
-        if (movementType.equals(MovementType.SPINNING.toString())) {
-            alphaBetaMovementType = MovementType.SPINNING;
-        } else {
-            alphaBetaMovementType = MovementType.STATIONARY;
-        }
-        gameData.setAlphaBetaMovementType(alphaBetaMovementType);
+
 
         return gameData;
     }

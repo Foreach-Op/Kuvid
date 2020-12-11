@@ -27,7 +27,7 @@ public class ObjectFactory {
             case FinalValues.BLOCKER:
                 return BlockerFactory.getInstance().createBlocker(subtype, position);
             case FinalValues.ATOM:
-                return AtomFactory.getInstance().createAtom(subtype,position, GameConfiguration.getInstance().getShooter().getAngle());
+                return AtomFactory.getInstance().createAtom(subtype,position, 45);
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
 
