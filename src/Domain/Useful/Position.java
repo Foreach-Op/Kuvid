@@ -3,6 +3,7 @@ package Domain.Useful;
 public class Position {
     private double x;
     private double y;
+    private int rotation=0;
 
     public Position(double x, double y) {
         this.x = x;
@@ -27,6 +28,11 @@ public class Position {
         return y;
     }
 
+    public int getRotation() {
+        return rotation;
+    }
 
-
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
+    }
 }

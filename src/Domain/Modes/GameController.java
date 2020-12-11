@@ -1,6 +1,7 @@
 package Domain.Modes;
 
 import Domain.Functionalities.Blender;
+import Domain.Functionalities.GameStatueControl;
 
 import java.util.HashMap;
 
@@ -33,72 +34,93 @@ public class GameController {
     }
 
     public void Move(String direction) {
-        runningMode.shooterHandler.moveShooter(direction);
-        System.out.println("Moving through " + direction);
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            runningMode.shooterHandler.moveShooter(direction);
+            System.out.println("Moving through " + direction);
+        }
     }
 
     public void Rotate(String direction) {
-        runningMode.shooterHandler.rotateShooter(direction);
-        System.out.println("Rotating through " + direction);
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            runningMode.shooterHandler.rotateShooter(direction);
+            System.out.println("Rotating through " + direction);
+        }
     }
 
     public void PickAtom() {
-        runningMode.shooterHandler.changeBullet();
-        System.out.println("Atom changed randomly.");
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            runningMode.shooterHandler.changeBullet();
+            System.out.println("Atom changed randomly.");
+        }
     }
 
     public void PickPowerup(String subtype){
-        runningMode.shooterHandler.changeBulletToPowerup(subtype);
-        System.out.println("Bullet changed to selected powerup:"+subtype);
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            runningMode.shooterHandler.changeBulletToPowerup(subtype);
+            System.out.println("Bullet changed to selected powerup:" + subtype);
+        }
     }
 
     public void Shoot() {
-        runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
-        System.out.println("SHOOT");
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
+            System.out.println("SHOOT");
+        }
     }
 
     public void Blend() {
-        if (isBlendModeActive) {
-            isBlendModeActive = false;
-        } else {
-            isBlendModeActive = true;
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            if (isBlendModeActive) {
+                isBlendModeActive = false;
+            } else {
+                isBlendModeActive = true;
+            }
+            System.out.println("Blend Mode: " + isBlendModeActive);
         }
-        System.out.println("Blend Mode: " + isBlendModeActive);
     }
 
     public void Pause() {
-        System.out.println("pause");
+        if(!GameStatueControl.getInstance().isGamePaused()){
+            System.out.println("pause");
+            runningMode.pauseGame();
+        }
     }
 
     public void Resume() {
-        System.out.println("resume");
+        if(GameStatueControl.getInstance().isGamePaused()){
+            System.out.println("resume");
+            runningMode.resumeGame();
+        }
     }
 
     public void ChooseAtomForBlender(String type) {
-        blenderCounter++;
-        if (isBlendModeActive) {
-            if (blenderCounter == 1) {
-                // SET FIRST ATOM
-                firstAtomForBlender = type;
-                isFirstAtomSelected = true;
-            } else if (blenderCounter == 2) {
-                // SET SECOND ATOM
-                secondAtomForBlender = type;
-                isSecondAtomSelected = true;
+        if(!GameStatueControl.getInstance().isGamePaused()) {
+            System.out.println("Here");
+            blenderCounter++;
+            if (isBlendModeActive) {
+                if (blenderCounter == 1) {
+                    // SET FIRST ATOM
+                    firstAtomForBlender = type;
+                    isFirstAtomSelected = true;
+                } else if (blenderCounter == 2) {
+                    // SET SECOND ATOM
+                    secondAtomForBlender = type;
+                    isSecondAtomSelected = true;
+                }
             }
-        }
-        if (isFirstAtomSelected && isSecondAtomSelected) {
-            System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
-            // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
-            // BLEND(first, second)
-            Blender blender=new Blender();
-            blender.Transform(firstAtomForBlender,secondAtomForBlender);
-            // THEN RESET BLEND VALUES
-            blenderCounter = 0;
-            firstAtomForBlender = "";
-            secondAtomForBlender = "";
-            isSecondAtomSelected = false;
-            isSecondAtomSelected = false;
+            if (isFirstAtomSelected && isSecondAtomSelected) {
+                System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
+                // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
+                // BLEND(first, second)
+                Blender blender = new Blender();
+                blender.Transform(firstAtomForBlender, secondAtomForBlender);
+                // THEN RESET BLEND VALUES
+                blenderCounter = 0;
+                firstAtomForBlender = "";
+                secondAtomForBlender = "";
+                isSecondAtomSelected = false;
+                isSecondAtomSelected = false;
+            }
         }
     }
 }

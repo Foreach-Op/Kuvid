@@ -9,14 +9,11 @@ import Domain.Useful.Rectangle;
 
 public class Atom extends GameObject {
 
-    private final double heightCoef = 1;
-    private final double widthCoef = 0.5;
-
-
     public Atom(String subType,Position position,int angle) {
-        super(FinalValues.ATOM, subType, position,angle);
-        int L=GameConfiguration.getInstance().getData().getL();
+        super(FinalValues.ATOM, subType, position,angle,false);
         setVelocityY(-getVelocityY());
+        setHeight(getL()/10);
+        setWidth(getL()/10);
         //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
 
     }

@@ -18,6 +18,7 @@ public class AlphaMoleculeMovement implements MovementStrategy{
         //System.out.print(obj.getType()+" "+obj.getSubType()+" "+ obj.getAngle()+" ");
         Position newPos=new Position(xPos,yPos);
         obj.setCurrentPosition(newPos);
+
         //obj.setX(xPos);
         //obj.setY(yPos);
         //System.out.println(obj.getType()+" "+obj.getSubType()+" "+obj.getY());
@@ -25,7 +26,7 @@ public class AlphaMoleculeMovement implements MovementStrategy{
     }
 
     private void changeTheVelocity(GameObject obj){
-        if((int) obj.getY()%PositionLimit==0){
+        if((int) (obj.getY()%PositionLimit)==PositionLimit-1){
             obj.setVelocityX(-obj.getVelocityX());
         }
     }

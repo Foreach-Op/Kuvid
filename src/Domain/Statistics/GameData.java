@@ -59,7 +59,7 @@ public class GameData implements Serializable {
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
         this.difficulty = difficulty;
-        L = l;
+        setL(l);
         this.alphaBetaType = alphaBetaType;
     }
 
@@ -148,7 +148,7 @@ public class GameData implements Serializable {
     }
 
     public void setL(int l) {
-        L = l;
+        L=(gameScreenHeight*l)/100;
     }
 
     public String getAlphaBetaType() {

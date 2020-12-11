@@ -6,14 +6,16 @@ import Domain.CollisionStrategy.CollisionStrategyFactory;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CollisionHandler {
 
-    private final ArrayList<GameObject> frameObjects;
+    private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
 
-    public CollisionHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
+    public CollisionHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
     }
@@ -23,17 +25,21 @@ public class CollisionHandler {
             GameObject obj1= frameObjects.get(i);
             for (int j = i; j < frameObjects.size(); j++) {
                 GameObject obj2= frameObjects.get(j);
-                if(true){
+                Rectangle rectangle1=new Rectangle((int) obj1.getX(),(int) obj1.getY(),100,100);
+                Rectangle rectangle2=new Rectangle((int) obj2.getX(),(int) obj2.getY(),100,100);
+                if(rectangle1.intersects(rectangle2)){
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
-                    Collision collision=new Collision(collisionStrategy);
-                    collision.executeCollision(obj1,obj2);
-                    if(!obj1.isAlive()){
-                        frameObjects.remove(obj1);
+                    if(collisionStrategy!=null){
+                        Collision collision=new Collision(collisionStrategy);
+                        collision.executeCollision(obj1,obj2);
+                        if(!obj1.isAlive()){
+                            frameObjects.remove(obj1);
+                        }
+                        if(!obj2.isAlive()){
+                            frameObjects.remove(obj2);
+                        }
+                        frame.onDestroy(obj1,obj2);
                     }
-                    if(!obj2.isAlive()){
-                        frameObjects.remove(obj2);
-                    }
-                    frame.onDestroy(obj1,obj2);
                 }
             }
         }

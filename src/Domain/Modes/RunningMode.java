@@ -32,6 +32,9 @@ public class RunningMode {
     private Timer timerObjectCreation;
     private Timer timerMoveAndCollision;
     private Timer timerClock;
+    private TimerTask createObjectTask;
+    private TimerTask moveAndCollideTask;
+    private TimerTask clockTask;
     public ObjectCreationHandler objectCreationHandler; //static?
     ShooterHandler shooterHandler;
     public double clock;
@@ -53,7 +56,7 @@ public class RunningMode {
 
         objectCreationHandler = new ObjectCreationHandler(frameObjects2, frameListener);
         movementHandler = new MovementHandler(frameObjects2, frameListener);
-        collisionHandler = new CollisionHandler(frameObjects, frameListener);
+        collisionHandler = new CollisionHandler(frameObjects2, frameListener);
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
         timerClock=new Timer();
@@ -76,12 +79,12 @@ public class RunningMode {
 
         refreshRate = 10;
         int creationTime = setCreationTime();
-        TimerTask timerTask1 = createObject();
-        TimerTask timerTask2 = moveAndCollide();
-        TimerTask timerTask3=clock();
-        timerObjectCreation.scheduleAtFixedRate(timerTask1,10,creationTime);
-        timerMoveAndCollision.scheduleAtFixedRate(timerTask2,20,10);
-        timerClock.scheduleAtFixedRate(timerTask3,0,100);
+        createObjectTask = createObject();
+        moveAndCollideTask = moveAndCollide();
+        clockTask=clock();
+        timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,creationTime);
+        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,10);
+        timerClock.scheduleAtFixedRate(clockTask,0,100);
 
     }
 
@@ -95,7 +98,7 @@ public class RunningMode {
             @Override
             public void run() {
                 movementHandler.move();
-                //collisionHandler.collisionDetect();
+                collisionHandler.collisionDetect();
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }
@@ -132,6 +135,28 @@ public class RunningMode {
                 }
             }
         };
+    }
+
+    public void pauseGame(){
+        createObjectTask.cancel();
+        moveAndCollideTask.cancel();
+        clockTask.cancel();
+        timerObjectCreation.cancel();
+        timerMoveAndCollision.cancel();
+        timerClock.cancel();
+        GameStatueControl.getInstance().setPaused();
+    }
+    public void resumeGame(){
+        createObjectTask = createObject();
+        moveAndCollideTask = moveAndCollide();
+        clockTask=clock();
+        timerObjectCreation=new Timer();
+        timerMoveAndCollision=new Timer();
+        timerClock=new Timer();
+        timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,1000);
+        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,10);
+        timerClock.scheduleAtFixedRate(clockTask,0,100);
+        GameStatueControl.getInstance().setResumed();
     }
 
     private void endGame(){

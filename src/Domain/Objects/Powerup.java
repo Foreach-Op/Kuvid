@@ -6,15 +6,11 @@ import Domain.Statistics.GameConfiguration;
 
 public class Powerup extends GameObject{
 
-    private final double widthCoef = 1;
-    private final double heightCoef = 1;
-
-    private boolean isFallable;
 
     public Powerup(String subType, Position position,boolean isFallable) {
-        super(FinalValues.POWERUP, subType, position,90);
-        this.isFallable=isFallable;
-        int L=GameConfiguration.getInstance().getData().getL();
+        super(FinalValues.POWERUP, subType, position,90,isFallable);
+        setWidth(getL()/2);
+        setHeight(getL());
 
         if(!isFallable){
             setAngle(GameConfiguration.getInstance().getShooter().getAngle());
@@ -24,12 +20,12 @@ public class Powerup extends GameObject{
     }
 
     public boolean isFallable() {
-        return isFallable;
+        return isFallable();
     }
 
-    public void setFallable(boolean fallable) {
-        isFallable = fallable;
-    }
+    //public void setFallable(boolean fallable) {
+      //  isFallable = fallable;
+    //}
 
 
 }

@@ -16,22 +16,28 @@ public class Shooter extends GameObject {
     private String currentBulletSubtype = null;//bullet of the shooter.
     public Rectangle rectangle;
 
-    private Position position;
-    private int L=GameConfiguration.getInstance().getData().getL();
     private static GameData gameData=GameConfiguration.getInstance().getData();
 
-
     public Shooter() {
-        super("Shooter","1",new Position(500,500),90);
+        super("Shooter","1",new Position(500,500),90,false);
         //super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
         //        gameData.getGameScreenHeight()-gameData.getL()),90);
-        setVelocity(new Position(100,100));
+        setVelocity(new Position(10,0));
+        setHeight(getL());
+        setWidth(getL()/2);
         initializeShooter();
+    }
+
+    public void setRotationAngle(int rotationAngle){
+        getCurrentPosition().setRotation(rotationAngle);
+    }
+    public int getRotationAngle(){
+        return getCurrentPosition().getRotation();
     }
 
     public void initializeShooter(){
         initializeBullets();
-        rectangle=new Rectangle(super.getCurrentPosition(),L,L,90); //düzelt, angle neye göre? o düzelilsin
+        rectangle=new Rectangle(super.getCurrentPosition(),getL(),getL(),90); //düzelt, angle neye göre? o düzelilsin
     }
 
 

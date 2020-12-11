@@ -1,18 +1,20 @@
 package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
+import Domain.Statistics.GameConfiguration;
 import Domain.Useful.Position;
 import Domain.Useful.Rectangle;
 
 public abstract class GameObject {
 
-    private boolean isAlive;
+    private boolean isAlive=true;
     private String type;
     private String subType;
     //private Rectangle rect;
     private Position currentPosition;
-    private double heightCoef;
-    private double widthCoef;
+    private final int L = GameConfiguration.getInstance().getData().getL();
+    private int height;
+    private int width;
     private Position velocity;
     private int angle;
     private boolean isFallable;
@@ -21,13 +23,24 @@ public abstract class GameObject {
     public GameObject() {
     }
 
-    public GameObject(String type, String subType, Position position,int angle) {
+    public GameObject(String type, String subType, Position position,int angle,boolean isFallable) {
         this.type = type;
         this.subType = subType;
         this.currentPosition=position;
         this.angle=angle;
         velocity =new Position(1,1);
+        this.height=L;
+        this.width=L;
+        this.isFallable=isFallable;
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
+    }
+
+    public boolean isFallable() {
+        return isFallable;
+    }
+
+    public int getL() {
+        return L;
     }
 
     public double getX(){
@@ -85,20 +98,20 @@ public abstract class GameObject {
         return angle;
     }
 
-    public double getHeightCoef() {
-        return heightCoef;
+    public int getHeight() {
+        return height;
     }
 
-    public void setHeightCoef(double heightCoef) {
-        this.heightCoef = heightCoef;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public double getWidthCoef() {
-        return widthCoef;
+    public int getWidth() {
+        return width;
     }
 
-    public void setWidthCoef(double widthCoef) {
-        this.widthCoef = widthCoef;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     public String getType() {

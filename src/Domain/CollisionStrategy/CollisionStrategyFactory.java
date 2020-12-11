@@ -39,6 +39,9 @@ public class CollisionStrategyFactory {
                 } else if (obj2.getType().equals("Powerup")){
                     collisionStrategy=new ShooterPowerupCollision();
                 }
+                break;
+            default:
+                collisionStrategy=null;
         }
 
         return collisionStrategy;

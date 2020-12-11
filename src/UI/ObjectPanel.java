@@ -1,55 +1,70 @@
 package UI;
 
 import Domain.Useful.Position;
-import Domain.Useful.Rectangle;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ObjectPanel extends JPanel{
+public class ObjectPanel {
+    public Image newImage;
+    public int positionX;
+    public int positionY;
+    public int rotation;
+    private int width;
+    private int height;
+    public String type;
+    private BufferedImage bufferedImage;
 
-    private BufferedImage image;
-    private Image newImage;
-    private int positionX;
-    private int positionY;
-    private JLabel imageLabel;
-    //
-    public ObjectPanel(String type, String subtype, Position position) {
-
-        imageLabel=new JLabel();
+    public ObjectPanel(String type, String subtype, Position position,int width,int height) {
+        this.width=width;
+        this.height=height;
         positionX=(int) position.getX();
         positionY=(int) position.getY();
+        rotation=position.getRotation();
+        this.type=type;
 
-        //this.setBounds(positionX,positionY,100,100);
         try {
-            System.out.println("/assets/"+type+"s/"+subtype);
-            image = ImageIO.read(new File("assets/"+type+"s/"+subtype+".png"));
-            newImage = image.getScaledInstance(100, 200, Image.SCALE_DEFAULT);
+            bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + ".png"));
+            BufferedImage rotatedImage=rotateImage();
+            newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-        //Icon imageIcon=new ImageIcon(newImage);
-        //imageLabel.setIcon(imageIcon);
-        //imageLabel.setLocation(positionX,positionY);
-        //this.add(imageLabel);
-        //this.setBounds(positionX,positionY,100,100);
+    }
+
+    private BufferedImage rotateImage() {
+        final double rads = Math.toRadians(rotation);
+        final double sin = Math.abs(Math.sin(rads));
+        final double cos = Math.abs(Math.cos(rads));
+        final int w = (int) Math.floor(bufferedImage.getWidth() * cos + bufferedImage.getHeight() * sin);
+        final int h = (int) Math.floor(bufferedImage.getHeight() * cos + bufferedImage.getWidth() * sin);
+        final BufferedImage rotatedImage = new BufferedImage(w, h, bufferedImage.getType());
+        final AffineTransform at = new AffineTransform();
+        at.translate(w / 2, h / 2);
+        at.rotate(rads,0, 0);
+        at.translate(-bufferedImage.getWidth() / 2, -bufferedImage.getHeight() / 2);
+        final AffineTransformOp rotateOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+        rotateOp.filter(bufferedImage,rotatedImage);
+        return rotatedImage;
     }
 
     public void updatePosition(Position newPosition){
         positionX=(int) newPosition.getX();
         positionY=(int) newPosition.getY();
-        repaint();
-        //System.out.println(positionX+" "+positionY);
+        rotation=newPosition.getRotation();
+        if(type.equals("Shooter")){
+            //System.out.println("Rotation: "+rotation);
+            BufferedImage rotatedImage=rotateImage();
+            newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        }
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        //this.setBackground(Color.CYAN);
-        g.drawImage(newImage, positionX, positionY, this);
+    public void draw(Graphics g){
+        g.drawImage(newImage,positionX,positionY,null);
     }
 }

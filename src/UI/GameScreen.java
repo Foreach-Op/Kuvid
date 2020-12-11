@@ -18,9 +18,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GameScreen extends JFrame implements ObjectListener {
 
-    public ConcurrentHashMap<GameObject, ObjectPanel> hashMap = new ConcurrentHashMap<>();
-    private GameObject shooter;
-    private ObjectPanel shooterPanel;
     private StatisticsWindow statisticsWindow;
     private JFrame gameScreen;
     private GameController gameController;
@@ -115,74 +112,29 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getActionMap().put("atom 4", new GameActionHandler("atom 4", gameController));
     }
 
-    public void addObjectPanel(ObjectPanel objectPanel) {
-        this.add(objectPanel);
-    }
-
     @Override
     public void onCreate(GameObject obj) {
-        /*ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition());
-        //System.out.println("Created");
-        hashMap.put(obj, objectPanel);
-        gameScreen.add(objectPanel);
-        gameScreen.repaint();*/
         gamePanel.onCreate(obj);
-
     }
 
     @Override
     public void onLocationChange() {
-        /*for (GameObject object : hashMap.keySet()) {
-            hashMap.get(object).updatePosition(object.getCurrentPosition());
-            //System.out.print(object.getY()+" ");
-            //gamePanel.repaint();
-            hashMap.get(object).repaint();
-        }*/
         gamePanel.onLocationChange();
-        //System.out.println(" ");
     }
 
     @Override
     public void onDestroy(GameObject obj1, GameObject obj2) {
-        /*removeFromScreen(obj1);
-        removeFromScreen(obj2);*/
         gamePanel.onDestroy(obj1,obj2);
     }
 
     @Override
-    public void onCreateShooter(GameObject shooter) {
-        gamePanel.onCreateShooter(shooter);
-        /*this.shooter=shooter;
-        //System.out.println(shooter.getX()+" "+shooter.getY());
-        this.shooterPanel=new ObjectPanel(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
-        gameScreen.add(this.shooterPanel);
-        //shooterPanel.setBounds(100,100,75,75);
-        shooterPanel.repaint();
-        //gameScreen.repaint();
-        */
-
-    }
-
-    @Override
     public void onShooterTriggerBulletChange() {
-
+        gamePanel.onShooterTriggerBulletChange();
     }
 
     @Override
     public void onShooterPositionChange() {
         gamePanel.onShooterPositionChange();
-        //shooterPanel.updatePosition(shooter.getCurrentPosition());
-        //System.out.println(shooter.getCurrentPosition().getX());
-        //System.out.println(shooter.getCurrentPosition().getY());
-        //gameScreen.repaint();
-    }
-
-    public void removeFromScreen(GameObject object) {
-        if (!object.isAlive()) {
-            ObjectPanel panel = hashMap.remove(object);
-            this.remove(panel);
-            gameScreen.repaint();
-        }
     }
 
     public void initialize(RunningMode runningMode) {

@@ -1,40 +1,32 @@
 package UI;
 
 import Domain.Objects.GameObject;
-import Domain.Objects.ObjectListener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class GamePanel extends JPanel {
-    public ConcurrentHashMap<GameObject, ObjectPanel2> hashMap = new ConcurrentHashMap<>();
+    public ConcurrentHashMap<GameObject, ObjectPanel> hashMap = new ConcurrentHashMap<>();
     public GameObject shooter;
-    public GamePanel(){
-        //this.frame=frame;
-        //Container animContainer = frame.getContentPane();
-        //animContainer.add(this);
-        //frame.setSize(1000, 1000);
-        //frame.setLocation(0,100);
-    }
+    public GamePanel(){}
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        for (ObjectPanel2 panel2:hashMap.values()) {
+        for (ObjectPanel panel2:hashMap.values()) {
             panel2.draw(g);
         }
     }
 
 
     public void onCreate(GameObject obj) {
-        ObjectPanel2 objectPanel2 = new ObjectPanel2(obj.getType(), obj.getSubType(), obj.getCurrentPosition());
-        //System.out.println("Created");
-        hashMap.put(obj, objectPanel2);
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition(),obj.getWidth(),obj.getHeight());
+        hashMap.put(obj, objectPanel);
         if(obj.getType().equals("Shooter")){
             shooter=obj;
             System.out.println("Shooter added");
         }
-
         repaint();
     }
 
@@ -43,7 +35,6 @@ public class GamePanel extends JPanel {
         for (GameObject object : hashMap.keySet()) {
             hashMap.get(object).updatePosition(object.getCurrentPosition());
             //System.out.print(object.getY()+" ");
-            //gamePanel.repaint();
             //System.out.println(shooter.getX());
         }
         repaint();
@@ -57,12 +48,15 @@ public class GamePanel extends JPanel {
     }
 
 
+    /*
     public void onCreateShooter(GameObject shooter) {
         //this.shooter=shooter;
         //shooterPanel=new ObjectPanel2(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
         //repaint();
         onCreate(shooter);
     }
+
+     */
 
 
     public void onShooterTriggerBulletChange() {
@@ -78,9 +72,8 @@ public class GamePanel extends JPanel {
 
     public void removeFromScreen(GameObject object) {
         if (!object.isAlive()) {
-            ObjectPanel2 panel = hashMap.remove(object);
+            ObjectPanel panel = hashMap.remove(object);
             repaint();
         }
-
     }
 }

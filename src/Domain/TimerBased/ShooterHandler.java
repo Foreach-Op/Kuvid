@@ -60,9 +60,10 @@ public class ShooterHandler {
 
     public void rotateShooter(String direction) { //güncellenecek
         if(direction.equals("right")){
-            shooter.setAngle(shooter.getAngle()+10);
+            shooter.setRotationAngle(shooter.getRotationAngle()+10);
+            System.out.println("Burası");
         } else{
-            shooter.setAngle(shooter.getAngle()-10);
+            shooter.setRotationAngle(shooter.getRotationAngle()-10);
         }
         frameListener.onShooterPositionChange();
     }
