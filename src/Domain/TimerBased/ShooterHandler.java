@@ -51,6 +51,7 @@ public class ShooterHandler {
         }
         //System.out.println("xPos: "+xPos+" YPos:"+currentY);
         Position newPos=new Position(xPos,currentY);
+        newPos.setRotation(shooter.getRotationAngle());
         shooter.setCurrentPosition(newPos);
         frameListener.onShooterPositionChange();
 

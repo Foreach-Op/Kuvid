@@ -59,23 +59,9 @@ public class GamePanel extends JPanel {
         removeFromScreen(obj2);
     }
 
-
-    /*
-    public void onCreateShooter(GameObject shooter) {
-        //this.shooter=shooter;
-        //shooterPanel=new ObjectPanel2(shooter.getType(),shooter.getSubType(),shooter.getCurrentPosition());
-        //repaint();
-        onCreate(shooter);
-    }
-
-     */
-
-
     public void onShooterTriggerBulletChange() {
-        //hashMap.remove(triggerObject);
         triggerObject=shooter.getObjectInTrigger();
         triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight());
-        //hashMap.put(triggerObject,triggerPanel);
         repaint();
     }
 
@@ -85,7 +71,6 @@ public class GamePanel extends JPanel {
         int x=(int) shooter.getX()+20;
         int y=(int) shooter.getY()-20;
         triggerPanel.updatePosition(new Position(x,y));
-
         repaint();
     }
 
