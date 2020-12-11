@@ -47,15 +47,7 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameScreen.setResizable(false);
-        BufferedImage img = null;
-        try {
-            img = ImageIO.read(new File("assets/kuvid_bc.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image dimg = img.getScaledInstance(gameScreen.getWidth(), gameScreen.getHeight(), Image.SCALE_SMOOTH);
-        ImageIcon imageIcon = new ImageIcon(dimg);
-        gameScreen.add(new JLabel(imageIcon));
+
 
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
@@ -63,9 +55,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
 
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(GAME_SCREEN_WIDTH,GAME_SCREEN_HEIGHT);
         //gamePanel.setBackground(Color.BLACK);
         gameScreen.add(gamePanel);
+
 
 
 

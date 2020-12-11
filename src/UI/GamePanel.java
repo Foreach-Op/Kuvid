@@ -2,10 +2,15 @@ package UI;
 
 import Domain.Objects.GameObject;
 import Domain.Objects.Shooter;
+import Domain.Statistics.GameConfiguration;
 import Domain.Useful.Position;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class GamePanel extends JPanel {
@@ -13,7 +18,17 @@ public class GamePanel extends JPanel {
     public Shooter shooter;
     public GameObject triggerObject;
     private ObjectPanel triggerPanel;
-    public GamePanel(){}
+    public GamePanel(int gameScreenWidth,int gameScreenHeight){
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("assets/kuvid_bc.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(gameScreenWidth, gameScreenHeight, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        this.add(new JLabel(imageIcon));
+    }
 
     @Override
     public void paint(Graphics g) {
