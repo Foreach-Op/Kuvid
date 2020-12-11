@@ -32,7 +32,7 @@ public class ObjectCreationHandler {
     }
 
 
-    public void createRandomFallingObject(){
+    public GameObject createRandomFallingObject(){
 
         String type=null;
         String subtype=null;
@@ -41,17 +41,18 @@ public class ObjectCreationHandler {
             subtype = getRandomSubType(type,subtype,remainingObjects);
         }
         GameConfiguration.getInstance().setRemainingObjects(type,subtype);
-        createGameObject(type,subtype, randomInitialPosition());
+        return createGameObject(type,subtype, randomInitialPosition());
     }
 
-    public void createGameObject(String type, String subtype, Position position){
-        createGameObject(type,subtype,position,true);
+    public GameObject createGameObject(String type, String subtype, Position position){
+        return createGameObject(type,subtype,position,true);
     }
 
-    public void createGameObject(String type,String subtype,Position position,boolean isFallable){
+    public GameObject createGameObject(String type,String subtype,Position position,boolean isFallable){
         GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position,isFallable);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
+        return gameObject;
     }
 
     private String getRandomType() {

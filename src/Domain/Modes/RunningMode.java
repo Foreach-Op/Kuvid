@@ -16,8 +16,7 @@ import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class RunningMode {
-    public static int screenHeight = 100;//for testing
-    public static int screenWidth = 100;
+
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
@@ -49,7 +48,7 @@ public class RunningMode {
 
 
     public void startGame() {
-        clock=10.00;
+        clock=1000.00;
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=shooterHandler.createShooter();
         frameObjects2.add(shooter);
@@ -60,22 +59,6 @@ public class RunningMode {
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
         timerClock=new Timer();
-
-        /*GameObject object=new Gamma_Molecule(new Position(250,0));
-        frameObjects2.add(object);
-        frameListener.onCreate(object);
-
-
-        GameObject object2=new Alpha_Atom(new Position(500,500),10);
-        frameObjects2.add(object2);
-        frameListener.onCreate(object2);
-
-        GameObject object3=new Alpha_Blocker(new Position(700,50));
-        frameObjects2.add(object3);
-        frameListener.onCreate(object3);*/
-
-
-
 
         refreshRate = 10;
         int creationTime = setCreationTime();

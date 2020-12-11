@@ -24,7 +24,7 @@ public class AtomMovement implements MovementStrategy{
 
     private void changeTheVelocity(GameObject obj){
         int screenWidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
-        if(obj.getX()<=0||obj.getX()>=screenWidth) {
+        if(obj.getX()<=0||obj.getX()+obj.getWidth()>=screenWidth) {
             obj.setVelocityX(-obj.getVelocityX());
         }
     }

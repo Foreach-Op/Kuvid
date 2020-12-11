@@ -30,7 +30,6 @@ public class ObjectFactory {
                 return AtomFactory.getInstance().createAtom(subtype,position,90);
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
-
         }
 
     }

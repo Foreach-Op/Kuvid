@@ -61,7 +61,8 @@ public class ShooterHandler {
     public void fire(ObjectCreationHandler objectCreationHandler){
         int x=(int) shooter.getX()+20;
         int y=(int) shooter.getY()-20;
-        objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
+        GameObject fired=objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
+        fired.setAngle(90-shooter.getRotationAngle());
         shooter.reduceTheBullet();
         changeBullet();
     }
