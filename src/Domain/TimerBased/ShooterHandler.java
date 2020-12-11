@@ -1,6 +1,7 @@
 package Domain.TimerBased;
 
 import Domain.ObjectCreator.ObjectFactory;
+import Domain.Objects.Alpha_Atom;
 import Domain.Objects.GameObject;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.Shooter;
@@ -26,8 +27,11 @@ public class ShooterHandler {
 
     public Shooter createShooter() {
         this.shooter=new Shooter();
-        changeBullet();
+        //changeBullet();
         shooter.setY(GameConfiguration.getInstance().getData().getGameScreenHeight()-200);
+        int x=(int) shooter.getX()+20;
+        int y=(int) shooter.getY()-20;
+        shooter.setObjectInTrigger(new Alpha_Atom(new Position(x,y),90));
         frameListener.onCreate(shooter);
         return shooter;
     }
@@ -53,7 +57,9 @@ public class ShooterHandler {
     }
 
     public void fire(ObjectCreationHandler objectCreationHandler){
-        objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),shooter.getCurrentPosition(),false);
+        int x=(int) shooter.getX()+20;
+        int y=(int) shooter.getY()-20;
+        objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
         shooter.reduceTheBullet();
         changeBullet();
     }
@@ -77,8 +83,13 @@ public class ShooterHandler {
             else if (random == 2){ if(shooter.getNumOfAtoms().get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}
             else {if(shooter.getNumOfAtoms().get(FinalValues.SIGMA)>0) subtype =FinalValues.SIGMA;}
         }
-        shooter.setCurrentBulletType(ATOM);
-        shooter.setCurrentBulletSubtype(subtype);
+        int x=(int) shooter.getX()+20;
+        int y=(int) shooter.getY()-20;
+        GameObject object=ObjectFactory.getInstance().createObject(ATOM,subtype,new Position(x,y),false);
+        shooter.setObjectInTrigger(object);
+        //shooter.setCurrentBulletType(ATOM);
+        //shooter.setCurrentBulletSubtype(subtype);
+        System.out.println(object.getType());
         frameListener.onShooterTriggerBulletChange();
     }
 

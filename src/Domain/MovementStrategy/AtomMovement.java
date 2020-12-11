@@ -12,6 +12,7 @@ public class AtomMovement implements MovementStrategy{
 
         double currentX=obj.getX();
         double currentY=obj.getY();
+
         double xPos=obj.getVelocityX()* Math.cos(Math.toRadians(obj.getAngle()))+currentX;
         double yPos= obj.getVelocityY()* Math.sin(Math.toRadians(obj.getAngle()))+currentY;
 

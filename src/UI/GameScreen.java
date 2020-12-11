@@ -9,10 +9,14 @@ import Domain.Useful.GameActionHandler;
 import Domain.Useful.HotKeys;
 import Domain.Useful.Position;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -43,6 +47,15 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameScreen.setResizable(false);
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("assets/kuvid_bc.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image dimg = img.getScaledInstance(gameScreen.getWidth(), gameScreen.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon(dimg);
+        gameScreen.add(new JLabel(imageIcon));
 
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
@@ -51,7 +64,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
 
         gamePanel = new GamePanel();
-        gamePanel.setBackground(Color.BLACK);
+        //gamePanel.setBackground(Color.BLACK);
         gameScreen.add(gamePanel);
 
 

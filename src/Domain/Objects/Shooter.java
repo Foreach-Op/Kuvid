@@ -11,15 +11,17 @@ import java.util.HashMap;
 import static Domain.Useful.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
-    private HashMap<String, HashMap<String, Integer>>  numOfBullets = new HashMap<String, HashMap<String, Integer>>();
+    private HashMap<String, HashMap<String, Integer>>  numOfBullets;
     private String currentBulletType = null;
     private String currentBulletSubtype = null;//bullet of the shooter.
+    private GameObject objectInTrigger=null;
     public Rectangle rectangle;
 
     private static GameData gameData=GameConfiguration.getInstance().getData();
 
     public Shooter() {
         super("Shooter","1",new Position(500,500),90,false);
+        numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
         //super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
         //        gameData.getGameScreenHeight()-gameData.getL()),90);
         setVelocity(new Position(10,0));
@@ -31,6 +33,7 @@ public class Shooter extends GameObject {
     public void setRotationAngle(int rotationAngle){
         getCurrentPosition().setRotation(rotationAngle);
     }
+
     public int getRotationAngle(){
         return getCurrentPosition().getRotation();
     }
@@ -38,13 +41,6 @@ public class Shooter extends GameObject {
     public void initializeShooter(){
         initializeBullets();
         rectangle=new Rectangle(super.getCurrentPosition(),getL(),getL(),90); //düzelt, angle neye göre? o düzelilsin
-    }
-
-
-
-
-    public void collision(GameObject collider) {
-
     }
 
     public void initializeBullets(){
@@ -56,6 +52,16 @@ public class Shooter extends GameObject {
          currentBulletType = FinalValues.POWERUP;
          currentBulletSubtype = subtype;
         }
+    }
+
+    public GameObject getObjectInTrigger() {
+        return objectInTrigger;
+    }
+
+    public void setObjectInTrigger(GameObject objectInTrigger) {
+        this.currentBulletType=objectInTrigger.getType();
+        this.currentBulletSubtype=objectInTrigger.getSubType();
+        this.objectInTrigger = objectInTrigger;
     }
 
     public String getCurrentBulletType() {
@@ -77,7 +83,8 @@ public class Shooter extends GameObject {
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
         numOfBullets.get(currentBulletType).replace(currentBulletSubtype,
                 numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
-        setAmmunition(numOfBullets);
+        GameConfiguration.getInstance().setAmmunition(numOfBullets);
+        //setAmmunition(numOfBullets);
     }
     /*
     public void changeBullet(){ // randomly change bullet to different kind of atoms

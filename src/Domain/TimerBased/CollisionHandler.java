@@ -25,8 +25,8 @@ public class CollisionHandler {
             GameObject obj1= frameObjects.get(i);
             for (int j = i; j < frameObjects.size(); j++) {
                 GameObject obj2= frameObjects.get(j);
-                Rectangle rectangle1=new Rectangle((int) obj1.getX(),(int) obj1.getY(),100,100);
-                Rectangle rectangle2=new Rectangle((int) obj2.getX(),(int) obj2.getY(),100,100);
+                Rectangle rectangle1=new Rectangle((int) obj1.getX(),(int) obj1.getY(),obj1.getWidth(),obj2.getHeight());
+                Rectangle rectangle2=new Rectangle((int) obj2.getX(),(int) obj2.getY(),obj2.getWidth(),obj2.getHeight());
                 if(rectangle1.intersects(rectangle2)){
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
                     if(collisionStrategy!=null){
