@@ -47,12 +47,7 @@ public class Shooter extends GameObject {
         numOfBullets = getAmmunition();
     }
 
-    public void changeBulletToPowerup(String subtype){ //change the bullet to desired type powerup object
-        if(numOfBullets.get(FinalValues.POWERUP).get(subtype)>0) {
-         currentBulletType = FinalValues.POWERUP;
-         currentBulletSubtype = subtype;
-        }
-    }
+
 
     public GameObject getObjectInTrigger() {
         return objectInTrigger;
@@ -86,21 +81,6 @@ public class Shooter extends GameObject {
         GameConfiguration.getInstance().setAmmunition(numOfBullets);
         //setAmmunition(numOfBullets);
     }
-    /*
-    public void changeBullet(){ // randomly change bullet to different kind of atoms
-        String subtype = null;
-        while (subtype == null) {
-            int random = (int) (Math.random() * 4);
-            if (random == 0) {if (getNumOfAtoms().get(FinalValues.ALPHA) > 0) subtype = FinalValues.ALPHA;}
-                else if (random == 1){ if(getNumOfAtoms().get(FinalValues.BETA)>0) subtype =FinalValues.BETA;}
-                else if (random == 2){ if(getNumOfAtoms().get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}
-                else {if(getNumOfAtoms().get(FinalValues.SIGMA)>0) subtype =FinalValues.SIGMA;}
-            }
-        currentBulletType = ATOM;
-        currentBulletSubtype = subtype;
-    }
-
-     */
 
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
         return numOfBullets;
