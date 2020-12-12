@@ -18,13 +18,13 @@ public enum HotKeys {
     RESUME(KeyEvent.VK_R),
 
     SAVE(KeyEvent.VK_S),
-    LOAD(KeyEvent.VK_L),
+    LOAD(KeyEvent.VK_L);
 
     // PICKING POWERUP, ONLY 1 - 2 - 3 - 4
-    PICKPOWERUP_ALPHA(KeyEvent.VK_H),
-    PICKPOWERUP_BETA(KeyEvent.VK_J),
-    PICKPOWERUP_GAMMA(KeyEvent.VK_K),
-    PICKPOWERUP_SIGMA(KeyEvent.VK_L);
+    //PICKPOWERUP_ALPHA(KeyEvent.VK_H),
+    //PICKPOWERUP_BETA(KeyEvent.VK_J),
+    //PICKPOWERUP_GAMMA(KeyEvent.VK_K),
+    //PICKPOWERUP_SIGMA(KeyEvent.VK_L);
 
 
     private int id;
