@@ -63,7 +63,7 @@ public class ShooterHandler {
         int y=(int) shooter.getY()-20;
         if(shooter.getCurrentBulletType().equals("Powerup")){
             x=(int) shooter.getX()+0;
-            y=(int) shooter.getY()-40;
+            y=(int) shooter.getY()-100;
         }
 
         GameObject fired=objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
@@ -72,7 +72,7 @@ public class ShooterHandler {
         changeBullet();
     }
 
-    public void rotateShooter(String direction) { //güncellenecek
+    public void rotateShooter(String direction) {
         if(direction.equals("right")){
             shooter.setRotationAngle(shooter.getRotationAngle()+10);
         } else{
