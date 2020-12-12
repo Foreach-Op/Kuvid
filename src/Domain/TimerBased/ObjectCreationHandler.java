@@ -93,7 +93,6 @@ public class ObjectCreationHandler {
         @Override
         public void run() {
             gameObject.setCollectible(true);
-            System.out.println("Timer is up");
         }
     }
 }
