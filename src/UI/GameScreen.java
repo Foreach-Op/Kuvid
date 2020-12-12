@@ -80,7 +80,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.SHOOT.getValue(),0), "fire");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICK_ATOM.getValue(),0), "pick atom");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.BLEND.getValue(),0), "blend");
-
+        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_ALPHA.getValue(),0), "pick powerup alpha");
+        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_BETA.getValue(),0), "pick powerup beta");
+        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_GAMMA.getValue(),0), "pick powerup gamma");
+        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_SIGMA.getValue(),0), "pick powerup sigma");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PAUSE.getValue(),0), "pause");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.RESUME.getValue(),0), "resume");
 
@@ -92,10 +95,10 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), 0), "atom 3");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), 0), "atom 4");
 
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), KeyEvent.ALT_MASK), "choose powerup 1");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.ALT_MASK), "choose powerup 2");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.ALT_MASK), "choose powerup 3");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.ALT_MASK), "choose powerup 4");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 1");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 2");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 3");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 4");
 
 
         contentPane.getActionMap().put("move right", new GameActionHandler("move right", gameController));
@@ -110,7 +113,7 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getActionMap().put("choose powerup 1", new GameActionHandler("choose powerup 1", gameController));
         contentPane.getActionMap().put("choose powerup 2", new GameActionHandler("choose powerup 2", gameController));
         contentPane.getActionMap().put("choose powerup 3", new GameActionHandler("choose powerup 3", gameController));
-        contentPane.getActionMap().put("choose powerup 4", new GameActionHandler("choose powerup 5", gameController));
+        contentPane.getActionMap().put("choose powerup 4", new GameActionHandler("choose powerup 4", gameController));
 
         contentPane.getActionMap().put("atom 1", new GameActionHandler("atom 1", gameController));
         contentPane.getActionMap().put("atom 2", new GameActionHandler("atom 2", gameController));

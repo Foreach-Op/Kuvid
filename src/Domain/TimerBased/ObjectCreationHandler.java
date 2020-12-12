@@ -8,9 +8,7 @@ import Domain.Statistics.GameConfiguration;
 import Domain.Useful.FinalValues;
 import Domain.Useful.Position;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectCreationHandler {
@@ -21,10 +19,12 @@ public class ObjectCreationHandler {
     private final int L;
     //private final int gamescreenheight;
     private final int gamescreenwidth;
+    Timer timer;
 
     public ObjectCreationHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
+        this.timer=new Timer();
         L=GameConfiguration.getInstance().getData().getL();
         gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
         remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
@@ -52,6 +52,7 @@ public class ObjectCreationHandler {
         GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position,isFallable);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
+        timer.schedule(new RemindTask(gameObject),1000);
         return gameObject;
     }
 
@@ -70,7 +71,6 @@ public class ObjectCreationHandler {
         else if (random == 1){ if(remainingObjects.get(type).get(FinalValues.BETA)>0) subtype =FinalValues.BETA;}
         else if (random == 2){ if(remainingObjects.get(type).get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}
         else {if(remainingObjects.get(type).get(FinalValues.SIGMA)>0) subtype =FinalValues.SIGMA;}
-
         return subtype;
     }
 
@@ -83,4 +83,17 @@ public class ObjectCreationHandler {
     }
 
 
+    private class RemindTask extends TimerTask {
+
+        GameObject gameObject;
+        public RemindTask(GameObject gameObject) {
+            this.gameObject=gameObject;
+        }
+
+        @Override
+        public void run() {
+            gameObject.setCollectible(true);
+            System.out.println("Timer is up");
+        }
+    }
 }

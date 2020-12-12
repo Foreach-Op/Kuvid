@@ -11,6 +11,6 @@ public class Collision {
     }
 
     public void executeCollision(GameObject object1,GameObject object2){
-        collisionStrategy.doCollision(object1,object2);
+        if(object1.isCollectible() && object2.isCollectible()) collisionStrategy.doCollision(object1,object2);
     }
 }

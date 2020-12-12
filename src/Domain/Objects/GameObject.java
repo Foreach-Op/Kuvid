@@ -18,6 +18,7 @@ public abstract class GameObject {
     private Position velocity;
     private int angle;
     private boolean isFallable;
+    private boolean isCollectible;
 
 
     public GameObject() {
@@ -32,6 +33,7 @@ public abstract class GameObject {
         this.height=L;
         this.width=L;
         this.isFallable=isFallable;
+        this.isCollectible=false;
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }
 
@@ -128,6 +130,14 @@ public abstract class GameObject {
 
     public void destroy() {
         isAlive = false;
+    }
+
+    public boolean isCollectible() {
+        return isCollectible;
+    }
+
+    public void setCollectible(boolean collectible) {
+        isCollectible = collectible;
     }
     /*
     public Rectangle getRectangle() {

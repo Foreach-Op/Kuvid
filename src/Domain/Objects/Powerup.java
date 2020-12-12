@@ -13,11 +13,11 @@ public class Powerup extends GameObject{
         setHeight(getL());
 
         if(!isFallable){
-            setAngle(GameConfiguration.getInstance().getShooter().getAngle());
             setVelocityY(-getVelocityY());
         }
         //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
+
 
     public boolean isFallable() {
         return isFallable();

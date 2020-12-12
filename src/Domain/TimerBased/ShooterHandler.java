@@ -28,6 +28,7 @@ public class ShooterHandler {
 
     public Shooter createShooter() {
         this.shooter=new Shooter();
+        shooter.setCollectible(true);
         //changeBullet();
         shooter.setY(GameConfiguration.getInstance().getData().getGameScreenHeight()-200);
         int x=(int) shooter.getX()+20;
@@ -46,11 +47,10 @@ public class ShooterHandler {
 
         if (direction.equals("right") && gameData.getGameScreenWidth()-gameData.getL()>currentX+shooter.getVelocityX()){
             xPos=currentX+shooter.getVelocityX();
-            System.out.println("yeni X:"+xPos);
         } else if(direction.equals("left") && 0<currentX-shooter.getVelocityX()){
             xPos=currentX-shooter.getVelocityX();
         }
-        //System.out.println("xPos: "+xPos+" YPos:"+currentY);
+
         Position newPos=new Position(xPos,currentY);
         newPos.setRotation(shooter.getRotationAngle());
         shooter.setCurrentPosition(newPos);
@@ -61,6 +61,11 @@ public class ShooterHandler {
     public void fire(ObjectCreationHandler objectCreationHandler){
         int x=(int) shooter.getX()+20;
         int y=(int) shooter.getY()-20;
+        if(shooter.getCurrentBulletType().equals("Powerup")){
+            x=(int) shooter.getX()+0;
+            y=(int) shooter.getY()-40;
+        }
+
         GameObject fired=objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
         fired.setAngle(90-shooter.getRotationAngle());
         shooter.reduceTheBullet();
@@ -70,7 +75,6 @@ public class ShooterHandler {
     public void rotateShooter(String direction) { //güncellenecek
         if(direction.equals("right")){
             shooter.setRotationAngle(shooter.getRotationAngle()+10);
-            System.out.println("Burası");
         } else{
             shooter.setRotationAngle(shooter.getRotationAngle()-10);
         }
@@ -100,8 +104,8 @@ public class ShooterHandler {
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
             shooter.setCurrentBulletType(FinalValues.POWERUP);
             shooter.setCurrentBulletSubtype(subtype);
-            int x=(int) shooter.getX()+20;
-            int y=(int) shooter.getY()-20;
+            int x=(int) shooter.getX()+0;
+            int y=(int) shooter.getY()-40;
             GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,new Position(x,y),false);
             shooter.setObjectInTrigger(object);
             frameListener.onShooterTriggerBulletChange();

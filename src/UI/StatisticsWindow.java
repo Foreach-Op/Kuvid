@@ -23,14 +23,14 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JTextArea textAreaHealth;
 
     private JPanel panelPowerupInfo;
-    private JButton powerupSigma;
-    private JTextArea textAreaSigmaPowerupAmount;
-    private JButton powerupBeta;
-    private JTextArea textAreaBetaPowerupAmount;
     private JButton powerupAlpha;
     private JTextArea textAreaAlphaPowerupAmount;
+    private JButton powerupBeta;
+    private JTextArea textAreaBetaPowerupAmount;
     private JButton powerupGamma;
     private JTextArea textAreaGammaPowerupAmount;
+    private JButton powerupSigma;
+    private JTextArea textAreaSigmaPowerupAmount;
 
     private JPanel panelAtomInfo;
     private JLabel blendIcon;
@@ -93,25 +93,25 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private void SetPowerupIcons(){
         int iconHeight = height/15;
 
-        ImageIcon sigmaIcon = new ImageIcon("./assets/Powerups/Sigma.png");
-        Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance((int) (iconHeight*0.76), iconHeight,  java.awt.Image.SCALE_SMOOTH);
-        powerupSigma.setIcon(new ImageIcon(newSigmaIcon));
-        powerupSigma.setPreferredSize(new Dimension(iconHeight, iconHeight));
+        ImageIcon alphaIcon = new ImageIcon("./assets/Powerups/Alpha.png");
+        Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(65, iconHeight,  java.awt.Image.SCALE_SMOOTH);
+        powerupAlpha.setIcon(new ImageIcon(newAlphaIcon));
+        powerupAlpha.setPreferredSize(new Dimension(iconHeight, iconHeight));
 
         ImageIcon betaIcon = new ImageIcon("./assets/Powerups/Beta.png");
         Image newBetaIcon = betaIcon.getImage().getScaledInstance(iconHeight, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupBeta.setIcon(new ImageIcon(newBetaIcon));
         powerupBeta.setPreferredSize(new Dimension(iconHeight, iconHeight));
 
-        ImageIcon alphaIcon = new ImageIcon("./assets/Powerups/Alpha.png");
-        Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(65, iconHeight,  java.awt.Image.SCALE_SMOOTH);
-        powerupAlpha.setIcon(new ImageIcon(newAlphaIcon));
-        powerupAlpha.setPreferredSize(new Dimension(iconHeight, iconHeight));
-
         ImageIcon gammaIcon = new ImageIcon("./assets/Powerups/Gamma.png");
         Image newGammaIcon = gammaIcon.getImage().getScaledInstance(32, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupGamma.setIcon(new ImageIcon(newGammaIcon));
         powerupGamma.setPreferredSize(new Dimension(iconHeight, iconHeight));
+
+        ImageIcon sigmaIcon = new ImageIcon("./assets/Powerups/Sigma.png");
+        Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance((int) (iconHeight*0.76), iconHeight,  java.awt.Image.SCALE_SMOOTH);
+        powerupSigma.setIcon(new ImageIcon(newSigmaIcon));
+        powerupSigma.setPreferredSize(new Dimension(iconHeight, iconHeight));
     }
 
     private void SetAtomIcons(){
@@ -162,7 +162,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         powerupSigma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Sigma selected");
+                System.out.println("Alpha selected");
             }
         });
         powerupBeta.addActionListener(new ActionListener() {
@@ -174,13 +174,13 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         powerupAlpha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Alpha selected");
+                System.out.println("Gamma selected");
             }
         });
         powerupGamma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Gamma selected");
+                System.out.println("Sigma selected");
             }
         });
     }

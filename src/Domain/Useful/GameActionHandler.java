@@ -58,6 +58,18 @@ public class GameActionHandler extends AbstractAction {
             case "atom 4":
                 gameController.ChooseAtomForBlender("Sigma");
                 break;
+            case "choose powerup 1":
+                gameController.PickPowerup("Alpha");
+                break;
+            case "choose powerup 2":
+                gameController.PickPowerup("Beta");
+                break;
+            case "choose powerup 3":
+                gameController.PickPowerup("Gamma");
+                break;
+            case "choose powerup 4":
+                gameController.PickPowerup("Sigma");
+                break;
         }
     }
 }
