@@ -17,6 +17,7 @@ public class GamePanel extends JPanel {
     public Shooter shooter;
     public GameObject triggerObject;
     private ObjectPanel triggerPanel;
+
     public GamePanel(int gameScreenWidth,int gameScreenHeight){
         BufferedImage img = null;
         try {

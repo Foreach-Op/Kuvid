@@ -8,9 +8,13 @@ import Domain.Statistics.GameConfiguration;
 import Domain.Utils.GameActionHandler;
 import Domain.Utils.HotKeys;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class GameScreen extends JFrame implements ObjectListener {
 
@@ -34,30 +38,21 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     private void CreateUIElements() {
-        //?
         gameScreen = new JFrame("KUVID GAME");
         gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameScreen.setResizable(false);
-
 
         statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
         gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
         statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
 
-
         gamePanel = new GamePanel(GAME_SCREEN_WIDTH,GAME_SCREEN_HEIGHT);
-        //gamePanel.setBackground(Color.BLACK);
         gameScreen.add(gamePanel);
-
-
-
-
 
         pack();
         gameScreen.setVisible(true);
-
     }
 
     private void GameActionListener() {
@@ -87,7 +82,6 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 2");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 3");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 4");
-
 
         contentPane.getActionMap().put("move right", new GameActionHandler("move right", gameController));
         contentPane.getActionMap().put("move left", new GameActionHandler("move left", gameController));
