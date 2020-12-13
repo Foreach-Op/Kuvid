@@ -81,11 +81,11 @@ public class GamePanel extends JPanel {
 
     public void onShooterPositionChange() {
         hashMap.get(shooter).updatePosition(shooter.getCurrentPosition());
-        int x=(int) shooter.getX()+20;
-        int y=(int) shooter.getY()-20;
+        int x=(int) shooter.getX()+shooter.getWidth()/3;
+        int y=(int) shooter.getY()-shooter.getHeight()/4;
         if(triggerObject.getType().equals("Powerup")){
-            x=(int) shooter.getX()+0;
-            y=(int) shooter.getY()-40;
+            x=(int) shooter.getX();
+            y=(int) shooter.getY()-shooter.getHeight()/2;
         }
         triggerPanel.updatePosition(new Position(x,y));
         repaint();

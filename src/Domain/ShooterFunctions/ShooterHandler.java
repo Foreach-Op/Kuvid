@@ -31,8 +31,8 @@ public class ShooterHandler {
         shooter.setCollectible(true);
         //changeBullet();
         shooter.setY(GameConfiguration.getInstance().getData().getGameScreenHeight()-200);
-        int x=(int) shooter.getX()+20;
-        int y=(int) shooter.getY()-20;
+        int x=(int) shooter.getX()+shooter.getWidth()/3;
+        int y=(int) shooter.getY()-shooter.getHeight()/4;
         shooter.setObjectInTrigger(new Alpha_Atom(new Position(x,y),90));
         frameListener.onCreate(shooter);
         return shooter;
@@ -59,8 +59,8 @@ public class ShooterHandler {
     }
 
     public void fire(ObjectCreationHandler objectCreationHandler){
-        int x=(int) shooter.getX()+20;
-        int y=(int) shooter.getY()-20;
+        int x=(int) shooter.getX()+shooter.getWidth()/3;
+        int y=(int) shooter.getY()-shooter.getHeight()/4;
         if(shooter.getCurrentBulletType().equals("Powerup")){
             x=(int) shooter.getX()+0;
             y=(int) shooter.getY()-shooter.getHeight();
@@ -90,8 +90,8 @@ public class ShooterHandler {
             else if (random == 2){ if(shooter.getNumOfAtoms().get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}
             else {if(shooter.getNumOfAtoms().get(FinalValues.SIGMA)>0) subtype =FinalValues.SIGMA;}
         }
-        int x=(int) shooter.getX()+20;
-        int y=(int) shooter.getY()-20;
+        int x=(int) shooter.getX()+shooter.getWidth()/3;
+        int y=(int) shooter.getY()-shooter.getHeight()/4;
         GameObject object=ObjectFactory.getInstance().createObject(ATOM,subtype,new Position(x,y),false);
         shooter.setObjectInTrigger(object);
         //shooter.setCurrentBulletType(ATOM);
@@ -104,8 +104,8 @@ public class ShooterHandler {
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
             shooter.setCurrentBulletType(FinalValues.POWERUP);
             shooter.setCurrentBulletSubtype(subtype);
-            int x=(int) shooter.getX()+0;
-            int y=(int) shooter.getY()-40;
+            int x=(int) shooter.getX();
+            int y=(int) shooter.getY()-shooter.getHeight()/2;
             GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,new Position(x,y),false);
             shooter.setObjectInTrigger(object);
             frameListener.onShooterTriggerBulletChange();
