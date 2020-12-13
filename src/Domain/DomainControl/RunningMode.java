@@ -66,7 +66,7 @@ public class RunningMode {
         moveAndCollideTask = moveAndCollide();
         clockTask=clock();
         timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,creationTime);
-        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,10);
+        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
         timerClock.scheduleAtFixedRate(clockTask,0,100);
 
     }
@@ -141,7 +141,7 @@ public class RunningMode {
         timerMoveAndCollision=new Timer();
         timerClock=new Timer();
         timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,setCreationTime());
-        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,50);
+        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
         timerClock.scheduleAtFixedRate(clockTask,0,100);
         GameStatueControl.getInstance().setResumed();
     }
