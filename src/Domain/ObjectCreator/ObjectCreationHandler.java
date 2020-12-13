@@ -57,10 +57,15 @@ public class ObjectCreationHandler {
 
     private String getRandomType() {
 
-        int random = (int) (Math.random() * 3);
-        if (random == 0) { return FinalValues.MOLECULE; }
-        else if (random == 1){return FinalValues.BLOCKER;}
-        else {return FinalValues.POWERUP;}
+        int random=(int) (Math.random() * 130);
+        if (random<100 && random>=0){
+            return FinalValues.MOLECULE;
+        }
+        else if(random<110 && random>=100) {
+            return FinalValues.BLOCKER;
+        } else {
+            return FinalValues.POWERUP;
+        }
     }
 
     private String getRandomSubType(String type,String subtype,HashMap<String, HashMap<String, Integer>> remainingObjects) {
@@ -80,6 +85,7 @@ public class ObjectCreationHandler {
 
         return new Position(x,y); /// randomize position
     }
+
 
 
     private class RemindTask extends TimerTask {
