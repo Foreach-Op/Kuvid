@@ -5,7 +5,7 @@ Game Control Keys:(Some Keys are different because of practical usage)
 * Fire->Space
 * Change Atom Randomly->C
 * Blend Mode Activate/DeActivate ->B
-* Transform(if Blend mode is activated): (1,2,3,4) then (1,2,3,4) 
+* Transform(if Blend mode is activated)-> (1,2,3,4) then (1,2,3,4) 
 * Pick Powerup -> (alt)+(1,2,3,4)
 * Pause -> P
 * Resume -> R
