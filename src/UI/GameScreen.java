@@ -5,20 +5,12 @@ import Domain.Objects.ObjectListener;
 import Domain.Modes.RunningMode;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
-import Domain.Useful.GameActionHandler;
-import Domain.Useful.HotKeys;
-import Domain.Useful.Position;
+import Domain.Utils.GameActionHandler;
+import Domain.Utils.HotKeys;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class GameScreen extends JFrame implements ObjectListener {
 
@@ -80,10 +72,6 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.SHOOT.getValue(),0), "fire");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICK_ATOM.getValue(),0), "pick atom");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.BLEND.getValue(),0), "blend");
-        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_ALPHA.getValue(),0), "pick powerup alpha");
-        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_BETA.getValue(),0), "pick powerup beta");
-        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_GAMMA.getValue(),0), "pick powerup gamma");
-        //contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICKPOWERUP_SIGMA.getValue(),0), "pick powerup sigma");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PAUSE.getValue(),0), "pause");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.RESUME.getValue(),0), "resume");
 

@@ -1,8 +1,8 @@
 package Domain.ObjectCreator;
 
 import Domain.Objects.*;
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class BlockerFactory {
     private static BlockerFactory blockerFactory;

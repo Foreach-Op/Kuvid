@@ -10,7 +10,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Modes.*;  //Domain.Modes.GameController does not work
-import Domain.Useful.*;
+import Domain.Utils.*;
 
 public class ConfigureScreen {
 

@@ -1,8 +1,7 @@
 package Domain.Objects;
 
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
-import Domain.Useful.Rectangle;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Molecule extends GameObject{
 

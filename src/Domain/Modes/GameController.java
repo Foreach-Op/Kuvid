@@ -1,6 +1,6 @@
 package Domain.Modes;
 
-import Domain.Functionalities.Blender;
+import Domain.Blend.Blender;
 import Domain.Functionalities.GameStatueControl;
 
 import java.util.HashMap;

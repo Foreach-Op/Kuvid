@@ -1,9 +1,8 @@
 package UI;
 
 import Domain.Objects.GameObject;
-import Domain.Objects.Shooter;
-import Domain.Statistics.GameConfiguration;
-import Domain.Useful.Position;
+import Domain.ShooterFunctions.Shooter;
+import Domain.Utils.Position;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -65,7 +64,6 @@ public class GamePanel extends JPanel {
             //System.out.println(shooter.getX());
         }
         repaint();
-        //System.out.println(" ");
     }
 
 
@@ -85,6 +83,10 @@ public class GamePanel extends JPanel {
         hashMap.get(shooter).updatePosition(shooter.getCurrentPosition());
         int x=(int) shooter.getX()+20;
         int y=(int) shooter.getY()-20;
+        if(triggerObject.getType().equals("Powerup")){
+            x=(int) shooter.getX()+0;
+            y=(int) shooter.getY()-40;
+        }
         triggerPanel.updatePosition(new Position(x,y));
         repaint();
     }

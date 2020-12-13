@@ -1,13 +1,6 @@
 package Domain.Objects;
 
-import Domain.MovementStrategy.Movement;
-import Domain.MovementStrategy.MovementStrategy;
-import Domain.MovementStrategy.MovementStrategyFactory;
-import Domain.TimerBased.MovementHandler;
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
-
-import java.util.HashMap;
+import Domain.Utils.Position;
 
 public class TestShooter {
     public static void main(String[] args) {

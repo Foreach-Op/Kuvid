@@ -1,7 +1,7 @@
 package Domain.Objects;
 
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Gamma_Blocker extends Blocker {
 

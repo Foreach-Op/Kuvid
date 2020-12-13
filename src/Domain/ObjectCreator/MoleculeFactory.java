@@ -1,7 +1,7 @@
 package Domain.ObjectCreator;
 
 import Domain.Objects.*;
-import Domain.Useful.Position;
+import Domain.Utils.Position;
 
 public class MoleculeFactory {
     private static MoleculeFactory moleculeFactory;

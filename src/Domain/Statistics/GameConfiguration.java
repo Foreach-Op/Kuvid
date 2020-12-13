@@ -1,7 +1,6 @@
 package Domain.Statistics;
 
-import Domain.Objects.Shooter;
-import Domain.Useful.Rectangle;
+import Domain.ShooterFunctions.Shooter;
 
 import java.util.HashMap;
 

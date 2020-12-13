@@ -2,12 +2,12 @@ package Domain.Modes;
 
 import Domain.Functionalities.GameStatueControl;
 import Domain.Objects.*;
+import Domain.ShooterFunctions.Shooter;
 import Domain.Statistics.GameConfiguration;
-import Domain.TimerBased.CollisionHandler;
-import Domain.TimerBased.MovementHandler;
-import Domain.TimerBased.ObjectCreationHandler;
-import Domain.TimerBased.ShooterHandler;
-import Domain.Useful.Position;
+import Domain.Collision.CollisionHandler;
+import Domain.Movement.MovementHandler;
+import Domain.ObjectCreator.ObjectCreationHandler;
+import Domain.ShooterFunctions.ShooterHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -140,8 +140,8 @@ public class RunningMode {
         timerObjectCreation=new Timer();
         timerMoveAndCollision=new Timer();
         timerClock=new Timer();
-        timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,1000);
-        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,10);
+        timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,setCreationTime());
+        timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,50);
         timerClock.scheduleAtFixedRate(clockTask,0,100);
         GameStatueControl.getInstance().setResumed();
     }

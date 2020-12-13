@@ -2,8 +2,7 @@ package Domain.Objects;
 
 //import Domain.Modes.RunningMode;
 import Domain.Statistics.GameConfiguration;
-import Domain.Useful.Position;
-import Domain.Useful.Rectangle;
+import Domain.Utils.Position;
 
 public abstract class GameObject {
 

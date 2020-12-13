@@ -1,8 +1,7 @@
 package Domain.Objects;
 
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
-import Domain.Statistics.GameConfiguration;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Powerup extends GameObject{
 

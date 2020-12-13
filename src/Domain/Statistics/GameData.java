@@ -1,7 +1,7 @@
 package Domain.Statistics;
 
 import Domain.Objects.*;
-import Domain.Useful.Difficulty;
+import Domain.Utils.Difficulty;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import Domain.Functionalities.Load;
 import Domain.Statistics.GameConfiguration;
 import Domain.Player.Player;
 import Domain.Statistics.GameData;
-import Domain.Useful.*;
+import Domain.Utils.*;
 
 import java.util.HashMap;
 

@@ -1,9 +1,7 @@
 package Domain.Objects;
 
-import Domain.Statistics.GameConfiguration;
-import Domain.Useful.FinalValues;
-import Domain.Useful.Position;
-import Domain.Useful.Rectangle;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Blocker extends GameObject {
 
