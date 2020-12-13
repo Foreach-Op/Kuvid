@@ -11,6 +11,7 @@ public class Rectangle {
     private double width;
     private int angle;
     private ArrayList<Point> pointList;
+    ArrayList<Position> cornerList;
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
     public Rectangle(Position p, double width, double height, int angle){
@@ -19,21 +20,29 @@ public class Rectangle {
         this.length = height;
         this.width = width;
         this.angle = angle;
-        setPointList(angle);
+        cornerList = new ArrayList<Position>();
+        cornerList.add(p);
+        cornerList.add(new Position(locationX + width, locationY));
+        cornerList.add(new Position(locationX, locationY + length));
+        cornerList.add(new Position(locationX+width, locationY + length));
+
     }
-    public void setPointList(double angle){
-        pointList = new ArrayList<Point>();
-        for(int x = -((int)width/2); x<width/2 ;x++){
-            for(int y = -((int)length/2); y<length/2; y++){
-                int rotatedX = (int) (x*Math.cos(angle) - y*Math.sin(angle)) ;
-                int rotatedY = (int) (x*Math.sin(angle) + y* Math.cos(angle)) ;
-                pointList.add(new Point(rotatedX + locationX +(int)width/2, rotatedY+locationY + (int) length/2));
-            }
-        }
+
+    public ArrayList<Position> getCornerList() {
+        return cornerList;
     }
+
     public boolean intersects(Rectangle second){
-        if (Collections.disjoint(second.pointList, this.pointList)) return false;
-        return true;
+
+      for (Position p: cornerList){
+          if(second.isIn(p)) return true;
+        }
+
+        for (Position p: second.getCornerList()){
+            if(this.isIn(p)) return true;
+        }
+
+        return false;
     }
 
     public int getLocationX() {
@@ -78,5 +87,9 @@ public class Rectangle {
 
     public Position getPosition(){
         return new Position(getLocationX(), getLocationY());
+    }
+
+    public boolean isIn(Position p){
+        return p.getX()>= this.locationX && p.getX()<= this.locationX+width && p.getY()>=this.locationY && p.getY()<=this.locationY+length;
     }
 }
