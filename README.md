@@ -11,3 +11,17 @@ Game Control Keys:(Some Keys are different because of practical usage)
 * Resume -> R
 * Save -> S (not functioning now)
 * Load -> L (not functioning now)
+
+Active Functions so Far: 
+
+*  Shooter Move
+*  Shooter Rotate
+*  Object Creation(all objects)
+*  Object Move
+*  Collect Powerup increase number of powerup(Shooter-Powerup Collision)
+*  Fire(both Powerup and Atom)
+*  Change Atom
+*  Choose powerup
+*  GameObject Reflections
+*  Blocker-Shooter Collision(not Health-Score)
+*  Other Collisions(not working well for now)
