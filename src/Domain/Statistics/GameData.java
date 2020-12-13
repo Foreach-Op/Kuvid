@@ -26,6 +26,7 @@ public class GameData implements Serializable {
     private Difficulty difficulty;
     public static int L;/////// make it visible
     private String alphaBetaType;
+    private String movementType;
 
     private int gameScreenWidth=1000;
     private int gameScreenHeight=1000;
@@ -174,5 +175,13 @@ public class GameData implements Serializable {
 
     public void setGameScreenHeight(int gameScreenHeight){
         this.gameScreenHeight = gameScreenHeight;
+    }
+
+    public String getMovementType() {
+        return movementType;
+    }
+
+    public void setMovementType(String movementType) {
+        this.movementType = movementType;
     }
 }

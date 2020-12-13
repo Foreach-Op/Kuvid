@@ -107,7 +107,7 @@ public class BuildingMode {
 
         //---Movement
         String movementType = configHash.get("fallingType");
-
+        gameData.setMovementType(movementType);
 
         return gameData;
     }

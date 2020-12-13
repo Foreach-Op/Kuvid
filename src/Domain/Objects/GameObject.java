@@ -18,6 +18,7 @@ public abstract class GameObject {
     private int angle;
     private boolean isFallable;
     private boolean isCollectible;
+    private String alphaBetaType;
 
 
     public GameObject() {
@@ -33,6 +34,7 @@ public abstract class GameObject {
         this.width=L;
         this.isFallable=isFallable;
         this.isCollectible=false;
+        this.setAlphaBetaType(" ");
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }
 
@@ -138,6 +140,15 @@ public abstract class GameObject {
     public void setCollectible(boolean collectible) {
         isCollectible = collectible;
     }
+
+    public String getAlphaBetaType() {
+        return alphaBetaType;
+    }
+
+    public void setAlphaBetaType(String alphaBetaType) {
+        this.alphaBetaType = alphaBetaType;
+    }
+
     /*
     public Rectangle getRectangle() {
         return rect;

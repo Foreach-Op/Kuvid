@@ -19,17 +19,22 @@ public class ObjectPanel {
     private int height;
     public String type;
     private BufferedImage bufferedImage;
+    private String alphaBetaType;
 
-    public ObjectPanel(String type, String subtype, Position position,int width,int height) {
+    public ObjectPanel(String type, String subtype, Position position,int width,int height,String alphaBetaType) {
         this.width=width;
         this.height=height;
         positionX=(int) position.getX();
         positionY=(int) position.getY();
         rotation=position.getRotation();
         this.type=type;
+        this.alphaBetaType=alphaBetaType;
 
         try {
             bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + ".png"));
+            if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta")) && alphaBetaType.equals("LINEAR")){
+                bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + "2" + ".png"));
+            }
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         } catch (IOException ioException) {
