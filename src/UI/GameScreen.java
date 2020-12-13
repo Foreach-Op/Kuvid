@@ -1,8 +1,8 @@
 package UI;
 
-import Domain.Modes.GameController;
+import Domain.DomainControl.GameController;
 import Domain.Objects.ObjectListener;
-import Domain.Modes.RunningMode;
+import Domain.DomainControl.RunningMode;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Utils.GameActionHandler;

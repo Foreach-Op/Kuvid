@@ -1,4 +1,4 @@
-package Domain.Modes;
+package Domain.DomainControl;
 
 import Domain.Functionalities.GameStatueControl;
 import Domain.Objects.*;

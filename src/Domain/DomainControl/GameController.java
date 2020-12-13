@@ -1,4 +1,4 @@
-package Domain.Modes;
+package Domain.DomainControl;
 
 import Domain.Blend.Blender;
 import Domain.Functionalities.GameStatueControl;

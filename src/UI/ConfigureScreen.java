@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 import java.util.Enumeration;
 import java.util.HashMap;
 
-import Domain.Modes.*;  //Domain.Modes.GameController does not work
+import Domain.DomainControl.*;  //Domain.Modes.GameController does not work
 import Domain.Utils.*;
 
 public class ConfigureScreen {

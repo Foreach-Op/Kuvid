@@ -1,7 +1,7 @@
 package Domain.Utils;
 
 
-import Domain.Modes.GameController;
+import Domain.DomainControl.GameController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

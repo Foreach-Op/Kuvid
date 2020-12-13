@@ -1,4 +1,4 @@
-package Domain.Modes;
+package Domain.DomainControl;
 
 import Domain.Functionalities.Load;
 import Domain.Statistics.GameConfiguration;
