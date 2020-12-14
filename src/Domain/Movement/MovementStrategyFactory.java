@@ -4,18 +4,8 @@ package Domain.Movement;
 import Domain.Objects.GameObject;
 
 public class MovementStrategyFactory {
-    private static MovementStrategyFactory movementStrategyFactory;
 
-    private MovementStrategyFactory(){}
-
-    public static MovementStrategyFactory getInstance(){
-        if(movementStrategyFactory==null){
-            movementStrategyFactory=new MovementStrategyFactory();
-        }
-        return movementStrategyFactory;
-    }
-
-    public MovementStrategy getStrategy(GameObject obj){
+    public static MovementStrategy getStrategy(GameObject obj){
         MovementStrategy movementStrategy=null;
 
         switch (obj.getType()){

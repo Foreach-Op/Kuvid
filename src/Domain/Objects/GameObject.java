@@ -3,13 +3,14 @@ package Domain.Objects;
 //import Domain.Modes.RunningMode;
 import Domain.Statistics.GameConfiguration;
 import Domain.Utils.Position;
+import Domain.Utils.Rectangle;
 
 public abstract class GameObject {
 
     private boolean isAlive=true;
     private String type;
     private String subType;
-    //private Rectangle rect;
+    private Rectangle rect;
     private Position currentPosition;
     private final int L = GameConfiguration.getInstance().getData().getL();
     private int height;
@@ -21,8 +22,7 @@ public abstract class GameObject {
     private String alphaBetaType;
 
 
-    public GameObject() {
-    }
+    public GameObject() {}
 
     public GameObject(String type, String subType, Position position,int angle,boolean isFallable) {
         this.type = type;

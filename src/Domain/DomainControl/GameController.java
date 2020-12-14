@@ -17,10 +17,14 @@ public class GameController {
     private int blenderCounter = 0;
     private String firstAtomForBlender = "";
     private String secondAtomForBlender = "";
+    private final GameStatueControl statueControl;
+    private long lastTimeShoot=0;
+    private final int FIRE_RATE=2000;
 
     public GameController(RunningMode runningMode) {
         this.runningMode = runningMode;
         buildingMode = new BuildingMode();
+        statueControl=GameStatueControl.getInstance();
     }
 
     public void startGame(HashMap<String, String> configurationInfo) {
@@ -34,68 +38,69 @@ public class GameController {
     }
 
     public void Move(String direction) {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.moveShooter(direction);
-            System.out.println("Moving through " + direction);
+            //System.out.println("Moving through " + direction);
         }
     }
 
     public void Rotate(String direction) {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.rotateShooter(direction);
-            System.out.println("Rotating through " + direction);
+            //System.out.println("Rotating through " + direction);
         }
     }
 
     public void PickAtom() {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBullet();
-            System.out.println("Atom changed randomly.");
+            //System.out.println("Atom changed randomly.");
         }
     }
 
     public void PickPowerup(String subtype){
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBulletToPowerup(subtype);
-            System.out.println("Bullet changed to selected powerup:" + subtype);
+            //System.out.println("Bullet changed to selected powerup:" + subtype);
         }
     }
 
     public void Shoot() {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()&&(System.currentTimeMillis()-lastTimeShoot)>=FIRE_RATE) {
             runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
-            System.out.println("SHOOT");
+            lastTimeShoot=System.currentTimeMillis();
+            //System.out.println("SHOOT");
         }
     }
 
     public void Blend() {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
+        if(!statueControl.isGamePaused()) {
             if (isBlendModeActive) {
                 isBlendModeActive = false;
             } else {
                 isBlendModeActive = true;
             }
-            System.out.println("Blend Mode: " + isBlendModeActive);
+            //System.out.println("Blend Mode: " + isBlendModeActive);
         }
     }
 
     public void Pause() {
         if(!GameStatueControl.getInstance().isGamePaused()){
-            System.out.println("pause");
+            //System.out.println("pause");
             runningMode.pauseGame();
         }
     }
 
     public void Resume() {
         if(GameStatueControl.getInstance().isGamePaused()){
-            System.out.println("resume");
+            //System.out.println("resume");
             runningMode.resumeGame();
         }
     }
 
     public void ChooseAtomForBlender(String type) {
         if(!GameStatueControl.getInstance().isGamePaused()) {
-            System.out.println("Here");
+            //System.out.println("Here");
             blenderCounter++;
             if (isBlendModeActive) {
                 if (blenderCounter == 1) {
@@ -109,7 +114,7 @@ public class GameController {
                 }
             }
             if (isFirstAtomSelected && isSecondAtomSelected) {
-                System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
+                //System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
                 // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
                 // BLEND(first, second)
                 Blender blender = new Blender();

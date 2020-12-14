@@ -4,18 +4,9 @@ package Domain.Collision;
 import Domain.Objects.GameObject;
 
 public class CollisionStrategyFactory {
-    private static CollisionStrategyFactory collisionStrategyFactory;
 
-    private CollisionStrategyFactory(){}
 
-    public static CollisionStrategyFactory getInstance(){
-        if(collisionStrategyFactory==null){
-            collisionStrategyFactory=new CollisionStrategyFactory();
-        }
-        return collisionStrategyFactory;
-    }
-
-    public CollisionStrategy getStrategy(GameObject obj1,GameObject obj2){
+    public static CollisionStrategy getStrategy(GameObject obj1,GameObject obj2){
         CollisionStrategy collisionStrategy=null;
         switch (obj1.getType()){
            

@@ -1,8 +1,5 @@
 package Domain.Collision;
 
-import Domain.Collision.Collision;
-import Domain.Collision.CollisionStrategy;
-import Domain.Collision.CollisionStrategyFactory;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 import Domain.Utils.Position;
@@ -29,7 +26,7 @@ public class CollisionHandler {
                 Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0);
                 Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0);
                 if(rectangle1.intersects(rectangle2)){
-                    CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
+                    CollisionStrategy collisionStrategy= CollisionStrategyFactory.getStrategy(obj1,obj2);
                     if(collisionStrategy!=null){
                         Collision collision=new Collision(collisionStrategy);
                         collision.executeCollision(obj1,obj2);
