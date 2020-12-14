@@ -26,7 +26,7 @@ public class Shooter extends GameObject {
         //        gameData.getGameScreenHeight()-gameData.getL()),90);
         setVelocity(new Position(10,0));
         setHeight(getL());
-        setWidth(getL()/2);
+        setWidth(getL()/3);
         initializeShooter();
     }
 

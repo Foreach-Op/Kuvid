@@ -48,10 +48,10 @@ public class GamePanel extends JPanel {
 
             triggerObject=shooter.getObjectInTrigger();
             triggerPanel=new ObjectPanel(triggerObject.getType(),triggerObject.getSubType(),triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight()," ");
-            System.out.println(triggerObject.getX());
+            //System.out.println(triggerObject.getX());
             //ObjectPanel triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight());
             //hashMap.put(triggerObject,triggerPanel);
-            System.out.println("Shooter added");
+            //System.out.println("Shooter added");
         }
         repaint();
     }
@@ -59,10 +59,7 @@ public class GamePanel extends JPanel {
 
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
-            //if(object.equals(triggerObject)) continue;
             hashMap.get(object).updatePosition(object.getCurrentPosition());
-            //System.out.print(object.getY()+" ");
-            //System.out.println(shooter.getX());
         }
         repaint();
     }
