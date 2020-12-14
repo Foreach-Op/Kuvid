@@ -24,7 +24,7 @@ public class Shooter extends GameObject {
         numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
         //super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
         //        gameData.getGameScreenHeight()-gameData.getL()),90);
-        setVelocity(new Position(10,0));
+        setVelocity(new Position(getL()/20,0));
         setHeight(getL());
         setWidth(getL()/3);
         initializeShooter();
