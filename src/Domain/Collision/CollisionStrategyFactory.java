@@ -18,11 +18,7 @@ public class CollisionStrategyFactory {
     public CollisionStrategy getStrategy(GameObject obj1,GameObject obj2){
         CollisionStrategy collisionStrategy=null;
         switch (obj1.getType()){
-            case "Atom":
-                if(obj2.getType().equals("Molecule")){
-                    collisionStrategy=new AtomMoleculeCollision();
-                }
-                break;
+           
             case "Blocker":
                 if(obj2.getType().equals("Atom") || obj2.getType().equals("Molecule")){
                     collisionStrategy=new BlockerAtomMoleculeCollision();
@@ -38,6 +34,11 @@ public class CollisionStrategyFactory {
                     collisionStrategy=new ShooterBlockerCollision();
                 } else if (obj2.getType().equals("Powerup")){
                     collisionStrategy=new ShooterPowerupCollision();
+                }
+                break;
+            case "Molecule":
+                if(obj2.getType().equals("Atom")){
+                    collisionStrategy=new AtomMoleculeCollision();
                 }
                 break;
             default:

@@ -5,8 +5,10 @@ import Domain.Collision.CollisionStrategy;
 import Domain.Collision.CollisionStrategyFactory;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
+import Domain.Utils.Position;
+import Domain.Utils.Rectangle;
 
-import java.awt.*;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CollisionHandler {
@@ -24,8 +26,8 @@ public class CollisionHandler {
             GameObject obj1= frameObjects.get(i);
             for (int j = i; j < frameObjects.size(); j++) {
                 GameObject obj2= frameObjects.get(j);
-                Rectangle rectangle1=new Rectangle((int) obj1.getX(),(int) obj1.getY(),obj1.getWidth(),obj2.getHeight());
-                Rectangle rectangle2=new Rectangle((int) obj2.getX(),(int) obj2.getY(),obj2.getWidth(),obj2.getHeight());
+                Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0);
+                Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0);
                 if(rectangle1.intersects(rectangle2)){
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getInstance().getStrategy(obj1,obj2);
                     if(collisionStrategy!=null){
