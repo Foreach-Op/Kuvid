@@ -22,7 +22,7 @@ Active Functions so Far:
 *  Fire(both Powerup and Atom)
 *  Change Atom
 *  Choose powerup
-*  GameObject Reflections
+*  Game Object Reflections
 *  Blocker-Shooter Collision(not Health-Score)
-*  Atom-Molecule(not Health-Score)
-*  Poweup-Blocker(not working well for now)
+*  Atom-Molecule Collisino(not Health-Score)
+*  Poweup-Blocker Collision(not working well for now)
