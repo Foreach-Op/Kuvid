@@ -24,4 +24,5 @@ Active Functions so Far:
 *  Choose powerup
 *  GameObject Reflections
 *  Blocker-Shooter Collision(not Health-Score)
-*  Other Collisions(not working well for now)
+*  Atom-Molecule(not Health-Score)
+*  Poweup-Blocker(not working well for now)
