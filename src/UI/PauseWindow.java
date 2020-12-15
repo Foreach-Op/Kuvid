@@ -73,7 +73,7 @@ public class PauseWindow {
         buttonSettings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // SETTINGS WINDOW
+                new SettingsWindow();
             }
         });
 

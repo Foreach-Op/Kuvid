@@ -16,7 +16,7 @@ public enum HotKeys {
     ATOM_TYPE4(KeyEvent.VK_4),
     // ALT + ATOM TYPE -> PICKING POWERUP
 
-    PAUSE(KeyEvent.VK_P),
+    PAUSE(KeyEvent.VK_ESCAPE),
     RESUME(KeyEvent.VK_R),
     SAVE(KeyEvent.VK_S),
     LOAD(KeyEvent.VK_L);
