@@ -8,13 +8,9 @@ import Domain.Statistics.GameConfiguration;
 import Domain.Utils.GameActionHandler;
 import Domain.Utils.HotKeys;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class GameScreen extends JFrame implements ObjectListener {
 

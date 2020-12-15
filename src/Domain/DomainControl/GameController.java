@@ -40,28 +40,24 @@ public class GameController {
     public void Move(String direction) {
         if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.moveShooter(direction);
-            //System.out.println("Moving through " + direction);
         }
     }
 
     public void Rotate(String direction) {
         if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.rotateShooter(direction);
-            //System.out.println("Rotating through " + direction);
         }
     }
 
     public void PickAtom() {
         if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBullet();
-            //System.out.println("Atom changed randomly.");
         }
     }
 
     public void PickPowerup(String subtype){
         if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBulletToPowerup(subtype);
-            //System.out.println("Bullet changed to selected powerup:" + subtype);
         }
     }
 
@@ -69,7 +65,6 @@ public class GameController {
         if(!statueControl.isGamePaused()&&(System.currentTimeMillis()-lastTimeShoot)>=FIRE_RATE) {
             runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
             lastTimeShoot=System.currentTimeMillis();
-            //System.out.println("SHOOT");
         }
     }
 
@@ -80,27 +75,23 @@ public class GameController {
             } else {
                 isBlendModeActive = true;
             }
-            //System.out.println("Blend Mode: " + isBlendModeActive);
         }
     }
 
     public void Pause() {
-        if(!GameStatueControl.getInstance().isGamePaused()){
-            //System.out.println("pause");
+        if(!statueControl.isGamePaused()){
             runningMode.pauseGame();
         }
     }
 
     public void Resume() {
-        if(GameStatueControl.getInstance().isGamePaused()){
-            //System.out.println("resume");
+        if(statueControl.isGamePaused()){
             runningMode.resumeGame();
         }
     }
 
     public void ChooseAtomForBlender(String type) {
-        if(!GameStatueControl.getInstance().isGamePaused()) {
-            //System.out.println("Here");
+        if(!statueControl.isGamePaused()) {
             blenderCounter++;
             if (isBlendModeActive) {
                 if (blenderCounter == 1) {
@@ -114,12 +105,10 @@ public class GameController {
                 }
             }
             if (isFirstAtomSelected && isSecondAtomSelected) {
-                //System.out.println("Blend " + firstAtomForBlender + " to\t" + secondAtomForBlender);
-                // ATOMS ARE SELECTED. RUN ACTUAL BLEND METHOD ACCORDINGLY
-                // BLEND(first, second)
                 Blender blender = new Blender();
                 blender.Transform(firstAtomForBlender, secondAtomForBlender);
-                // THEN RESET BLEND VALUES
+
+                // RESET BLEND VALUES
                 blenderCounter = 0;
                 firstAtomForBlender = "";
                 secondAtomForBlender = "";
@@ -127,5 +116,9 @@ public class GameController {
                 isSecondAtomSelected = false;
             }
         }
+    }
+
+    public boolean isGamePaused(){
+        return statueControl.isGamePaused();
     }
 }
