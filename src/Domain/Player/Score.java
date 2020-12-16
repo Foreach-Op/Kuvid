@@ -14,13 +14,11 @@ public class Score {
     // Total score formula. We add total collected molecules and (1/collection time in seconds)
     // so that faster player gets more score.
 
-    public void updateTotalScore(int collected_molecules, int collection_time){
-        totalScore = collected_molecules + (1/collection_time);
-        GameConfiguration.getInstance().setScore(totalScore);
-    }
+    //Collection time is the current Y / speed of the molecule
 
-    public void setTotalScore(double score){
-        this.totalScore=score;
+    public double updateTotalScore(double current_score, int collection_time){
+        totalScore = current_score + (1/collection_time);
+        return totalScore;
     }
 
     public double getTotalScore() {
