@@ -96,7 +96,7 @@ public class ShooterHandler {
         shooter.setObjectInTrigger(object);
         //shooter.setCurrentBulletType(ATOM);
         //shooter.setCurrentBulletSubtype(subtype);
-        System.out.println(object.getType());
+        //System.out.println(object.getType());
         frameListener.onShooterTriggerBulletChange();
     }
 

@@ -1,7 +1,7 @@
 package Domain.Utils;
 
-
 import Domain.DomainControl.GameController;
+import UI.PauseWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -39,6 +39,8 @@ public class GameActionHandler extends AbstractAction {
                 break;
             case "pause":
                 gameController.Pause();
+                if (gameController.isGamePaused())
+                    new PauseWindow(gameController);
                 break;
             case "resume":
                 gameController.Resume();

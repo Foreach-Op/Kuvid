@@ -59,6 +59,10 @@ public class GamePanel extends JPanel {
 
     public void onLocationChange() {
         for (GameObject object : hashMap.keySet()) {
+            if(!object.isAlive()){
+                hashMap.remove(object);
+                continue;
+            }
             hashMap.get(object).updatePosition(object.getCurrentPosition());
         }
         repaint();
@@ -91,7 +95,7 @@ public class GamePanel extends JPanel {
 
     public void removeFromScreen(GameObject object) {
         if (!object.isAlive()) {
-            ObjectPanel panel = hashMap.remove(object);
+            hashMap.remove(object);
             repaint();
         }
     }

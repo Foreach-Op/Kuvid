@@ -8,6 +8,7 @@ import Domain.Collision.CollisionHandler;
 import Domain.Movement.MovementHandler;
 import Domain.ObjectCreator.ObjectCreationHandler;
 import Domain.ShooterFunctions.ShooterHandler;
+import Domain.Utils.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,6 +67,10 @@ public class RunningMode {
         moveAndCollideTask = moveAndCollide();
         clockTask=clock();
         timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,creationTime);
+        /*GameObject molecule=new Alpha_Blocker(new Position(500,0));
+        frameObjects2.add(molecule);
+        frameListener.onCreate(molecule);*/
+
         timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
         timerClock.scheduleAtFixedRate(clockTask,0,100);
 
