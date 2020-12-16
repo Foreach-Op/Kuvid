@@ -109,6 +109,10 @@ public class BuildingMode {
         String movementType = configHash.get("fallingType");
         gameData.setMovementType(movementType);
 
+        double time=1000.0;
+        gameData.setRemainingTime(time);
+
+
         return gameData;
     }
 }

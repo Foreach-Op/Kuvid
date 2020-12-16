@@ -184,4 +184,6 @@ public class GameData implements Serializable {
     public void setMovementType(String movementType) {
         this.movementType = movementType;
     }
+
+
 }
