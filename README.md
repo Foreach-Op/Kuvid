@@ -7,8 +7,8 @@ Game Control Keys:(Some Keys are different because of practical usage)
 * Blend Mode Activate/DeActivate ->B
 * Transform(if Blend mode is activated)-> (1,2,3,4) then (1,2,3,4) 
 * Pick Powerup -> (alt)+(1,2,3,4)
-* Pause -> P
-* Resume -> R
+* Pause -> Esc
+* Resume -> Click Resume
 * Save -> S (not functioning now)
 * Load -> L (not functioning now)
 
