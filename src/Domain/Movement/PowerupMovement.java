@@ -28,8 +28,7 @@ public class PowerupMovement implements MovementStrategy{
 
     public void killObj(GameObject obj){
         int height=GameConfiguration.getInstance().getData().getGameScreenHeight();
-        int L=GameConfiguration.getInstance().getData().getL();
-        if(obj.getY()>height||obj.getY()<-L){
+        if(obj.getY()>height||obj.getY()<-obj.getL()){
             obj.destroy();
             System.out.println(obj.getType()+" is killed");
         }

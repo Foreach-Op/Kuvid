@@ -33,7 +33,7 @@ public abstract class GameObject {
         this.height=L;
         this.width=L;
         this.isFallable=isFallable;
-        this.isCollectible=false;
+        this.isCollectible=true;
         this.setAlphaBetaType(" ");
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }

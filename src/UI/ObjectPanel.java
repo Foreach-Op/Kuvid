@@ -68,12 +68,16 @@ public class ObjectPanel {
             //System.out.println("Rotation: "+rotation);
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        } else if(alphaBetaType.equals("LINEAR")){
+        }
+        /*
+        else if(alphaBetaType.equals("LINEAR")){
             if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta"))){
                 BufferedImage rotatedImage=rotateImage();
                 newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             }
         }
+
+         */
 
     }
 
