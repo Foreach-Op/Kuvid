@@ -59,14 +59,11 @@ public class ObjectCreationHandler {
 
         int random=(int) (Math.random() * 130);
         if (random<100){
-            System.out.println(random);
             return FinalValues.MOLECULE;
         }
         else if(random<110 && random>=100) {
-            System.out.println(random);
             return FinalValues.BLOCKER;
         } else {
-            System.out.println(random);
             return FinalValues.POWERUP;
         }
     }
