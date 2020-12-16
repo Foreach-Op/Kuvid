@@ -18,12 +18,12 @@ public class ObjectCreationHandler {
     private final int L;
     //private final int gamescreenheight;
     private final int gamescreenwidth;
-    Timer timer;
+    //Timer timer;
 
     public ObjectCreationHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
-        this.timer=new Timer();
+        //this.timer=new Timer();
         L=GameConfiguration.getInstance().getData().getL();
         gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
         remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
@@ -51,7 +51,7 @@ public class ObjectCreationHandler {
         GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position,isFallable);
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
-        timer.schedule(new RemindTask(gameObject),1000);
+        //timer.schedule(new RemindTask(gameObject),1000);
         return gameObject;
     }
 
@@ -88,6 +88,7 @@ public class ObjectCreationHandler {
 
 
 
+    /*
     private class RemindTask extends TimerTask {
 
         GameObject gameObject;
@@ -100,4 +101,6 @@ public class ObjectCreationHandler {
             gameObject.setCollectible(true);
         }
     }
+
+     */
 }

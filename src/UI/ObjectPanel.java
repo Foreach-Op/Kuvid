@@ -62,7 +62,7 @@ public class ObjectPanel {
         positionX=(int) newPosition.getX();
         positionY=(int) newPosition.getY();
         rotation=newPosition.getRotation();
-        if(type.equals("Shooter")){
+        if(type.equals("Shooter") || type.equals("Molecule")){
             //System.out.println("Rotation: "+rotation);
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
