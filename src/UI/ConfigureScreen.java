@@ -102,7 +102,7 @@ public class ConfigureScreen {
         structureGroup = new ButtonGroup();
         structureGroup.add(radioButtonLinear);
         structureGroup.add(radioButtonTriangle);
-        radioButtonLinear.setSelected(true);
+        radioButtonTriangle.setSelected(true);
 
         fallingTypeGroup = new ButtonGroup();
         fallingTypeGroup.add(radioButtonStationary);
@@ -200,7 +200,8 @@ public class ConfigureScreen {
                 textFieldNumberOfPowerups.setText("20");
                 textFieldNumberOfMolecules.setText("100");
                 textFieldLength.setText("10");
-                radioButtonLinear.setSelected(true);
+                radioButtonTriangle.setSelected(true);
+                //radioButtonLinear.setSelected(true);
                 radioButtonStationary.setSelected(true);
                 radioButtonNormal.setSelected(true);
 

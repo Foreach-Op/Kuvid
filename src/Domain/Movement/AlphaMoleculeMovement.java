@@ -21,7 +21,7 @@ public class AlphaMoleculeMovement implements MovementStrategy{
         obj.setX(xPos);
         obj.setY(yPos);
         if(GameConfiguration.getInstance().getData().getMovementType().equals("SPINNING")){
-            obj.getCurrentPosition().setRotation(obj.getCurrentPosition().getRotation()+10);
+            obj.getCurrentPosition().setRotation(obj.getCurrentPosition().getRotation()+5);
         }
         //System.out.println(obj.getType()+" "+obj.getSubType()+" "+obj.getY());
         killObj(obj);

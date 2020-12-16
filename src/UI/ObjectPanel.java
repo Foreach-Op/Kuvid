@@ -18,6 +18,7 @@ public class ObjectPanel {
     private int width;
     private int height;
     public String type;
+    public String subtype;
     private BufferedImage bufferedImage;
     private String alphaBetaType;
 
@@ -28,6 +29,7 @@ public class ObjectPanel {
         positionY=(int) position.getY();
         rotation=position.getRotation();
         this.type=type;
+        this.subtype=subtype;
         this.alphaBetaType=alphaBetaType;
 
         try {
@@ -62,11 +64,17 @@ public class ObjectPanel {
         positionX=(int) newPosition.getX();
         positionY=(int) newPosition.getY();
         rotation=newPosition.getRotation();
-        if(type.equals("Shooter") || type.equals("Molecule")){
+        if(type.equals("Shooter")){
             //System.out.println("Rotation: "+rotation);
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        } else if(alphaBetaType.equals("LINEAR")){
+            if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta"))){
+                BufferedImage rotatedImage=rotateImage();
+                newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            }
         }
+
     }
 
     public void draw(Graphics g){
