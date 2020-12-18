@@ -10,7 +10,7 @@ public class MovementHandler {
 
     private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
-    private HashMap<String, MovementStrategy> moveStrategyMap;
+
 
     public MovementHandler(CopyOnWriteArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
