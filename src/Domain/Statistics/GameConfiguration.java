@@ -40,12 +40,14 @@ public class GameConfiguration {
     }
 
     public void setScore(double score){
-        data.setScore(score);
+        //data.getPlayer().setScore(score);
+        //data.setScore(score);
         staticWindowListener.onScoreChange(score);
     }
 
     public void setHealth(double health){
-        data.setHealth(health);
+        //data.getPlayer().setHealth(health);
+        //data.setHealth(health);
         staticWindowListener.onHealthChange(health);
     }
 

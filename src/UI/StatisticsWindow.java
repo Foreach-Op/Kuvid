@@ -143,9 +143,9 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     public void SetData(GameData gameData){
-        textAreaScore.setText(String.valueOf(gameData.getScore()));
+        textAreaScore.setText(String.valueOf(gameData.getPlayer().getScore()));
         textAreaTime.setText(String.valueOf(gameData.getRemainingTime()));
-        textAreaHealth.setText(String.valueOf(gameData.getHealth()));
+        textAreaHealth.setText(String.valueOf(gameData.getPlayer().getHealth()));
 
         textAreaAlphaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.ALPHA)));
         textAreaBetaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.BETA)));
