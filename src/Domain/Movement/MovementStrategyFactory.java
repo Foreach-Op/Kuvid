@@ -4,39 +4,46 @@ package Domain.Movement;
 import Domain.Objects.GameObject;
 
 public class MovementStrategyFactory {
+    private static MovementStrategy atomMovement = new AtomMovement();
+    private static MovementStrategy blockerMovement = new BlockerMovement();
+    private static MovementStrategy alphaMolMovement = new AlphaMoleculeMovement();
+    private static MovementStrategy betaMolMovement = new BetaMoleculeMovement();
+    private static MovementStrategy gammaMolMovement = new GammaMoleculeMovement();
+    private static MovementStrategy sigmaMolMovement = new SigmaMoleculeMovement();
+    private static MovementStrategy powerupMovement = new PowerupMovement();
+
 
     public static MovementStrategy getStrategy(GameObject obj){
         MovementStrategy movementStrategy=null;
-
         switch (obj.getType()){
             case "Atom":
-                movementStrategy=new AtomMovement();
+                movementStrategy = atomMovement;
                 break;
             case "Blocker":
-                movementStrategy=new BlockerMovement();
+                movementStrategy=blockerMovement;
                 break;
             case "Molecule":
                 switch (obj.getSubType()){
                     case "Alpha":
-                        movementStrategy=new AlphaMoleculeMovement();
+                        movementStrategy=alphaMolMovement;
                         break;
                     case "Beta":
-                        movementStrategy=new BetaMoleculeMovement();
+                        movementStrategy=betaMolMovement;
                         break;
                     case "Gamma":
-                        movementStrategy=new GammaMoleculeMovement();
+                        movementStrategy=gammaMolMovement;
                         break;
                     case "Sigma":
-                        movementStrategy=new SigmaMoleculeMovement();
+                        movementStrategy=sigmaMolMovement;
                         break;
                 }
                 break;
             case "Powerup":
-                movementStrategy=new PowerupMovement();
+                movementStrategy=powerupMovement;
                 break;
             default:
                 //How to handle Shooter...
-                movementStrategy=new SigmaMoleculeMovement();
+                movementStrategy=sigmaMolMovement;
                 //throw new IllegalStateException("Unexpected value: " + obj.getType());
         }
         return  movementStrategy;

@@ -10,8 +10,8 @@ public class Atom extends GameObject {
         super(FinalValues.ATOM, subType, position,angle,false);
         setVelocityY(-getVelocityY()*getL()/50);
         setVelocityX(getVelocityX()*getL()/50);
-        setHeight(getL()/5);
-        setWidth(getL()/5);
+        setHeight((int) (getL()/5));
+        setWidth((int) (getL()/5));
         //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
 
     }
