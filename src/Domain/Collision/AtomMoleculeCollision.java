@@ -12,7 +12,6 @@ public class AtomMoleculeCollision implements CollisionStrategy{
     @Override
     public void doCollision(GameObject object1, GameObject object2) {
         if(object1.getSubType().equals(object2.getSubType())){
-            System.out.println("collision");
             GameConfiguration configuration=GameConfiguration.getInstance();
             HashMap<String,HashMap<String,Integer>> ammo=configuration.getData().getAmmunition();
             HashMap<String,Integer> map=ammo.get(FinalValues.ATOM);
