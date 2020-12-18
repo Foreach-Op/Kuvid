@@ -47,7 +47,7 @@ public class Player {
     }
 
     // Method changed according to the score formula.
-    public void increaseScore(int remaining_time_on_frame){
+    public void increaseScore(double remaining_time_on_frame){
         score.updateTotalScore(remaining_time_on_frame);
         GameConfiguration.getInstance().setScore(score.getTotalScore());
     }

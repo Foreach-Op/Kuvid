@@ -20,7 +20,7 @@ public class AtomMoleculeCollision implements CollisionStrategy{
             configuration.setAmmunition(ammo);
             object1.destroy();
             Player player= GameConfiguration.getInstance().getData().getPlayer();
-            player.increaseScore(1);
+            player.increaseScore(object1.getY()/object1.getVelocityY());
         }
         object2.destroy();
     }
