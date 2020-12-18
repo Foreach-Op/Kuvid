@@ -26,4 +26,4 @@ Active Functions so Far:
 *  Score-Health updates
 *  Blocker-Shooter Collision(Health working)
 *  Atom-Molecule Collisino(Score working )
-*  Poweup-Blocker Collision(not working well for now)
+*  Poweup-Blocker Collision
