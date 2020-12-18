@@ -26,6 +26,7 @@ public class CollisionHandler {
                 Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0);
                 Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0);
                 if(rectangle1.intersects(rectangle2)){
+                    //System.out.println(obj1.getType()+" :sorun var detect:  "+obj2.getType());
                     CollisionStrategy collisionStrategy= CollisionStrategyFactory.getStrategy(obj1,obj2);
                     if(collisionStrategy!=null){
                         Collision collision=new Collision(collisionStrategy);

@@ -13,11 +13,8 @@ public class CollisionStrategyFactory {
             case "Blocker":
                 if(obj2.getType().equals("Atom") || obj2.getType().equals("Molecule")){
                     collisionStrategy=new BlockerAtomMoleculeCollision();
-                }
-                break;
-            case "Powerup":
-                if(obj2.getType().equals("Blocker")){
-                    collisionStrategy=new PowerupBlockerCollision();
+                } else if(obj2.getType().equals("Powerup")){
+                    collisionStrategy=new BlockerPoweupCollision();
                 }
                 break;
             case "Shooter":
