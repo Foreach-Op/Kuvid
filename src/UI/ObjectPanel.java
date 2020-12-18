@@ -21,8 +21,9 @@ public class ObjectPanel {
     public String subtype;
     private BufferedImage bufferedImage;
     private String alphaBetaType;
+    private String fallingType;
 
-    public ObjectPanel(String type, String subtype, Position position,int width,int height,String alphaBetaType) {
+    public ObjectPanel(String type, String subtype, Position position,int width,int height,String alphaBetaType,String fallingType) {
         this.width=width;
         this.height=height;
         positionX=(int) position.getX();
@@ -31,6 +32,7 @@ public class ObjectPanel {
         this.type=type;
         this.subtype=subtype;
         this.alphaBetaType=alphaBetaType;
+        this.fallingType=fallingType;
 
         try {
             bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + ".png"));
@@ -69,15 +71,15 @@ public class ObjectPanel {
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         }
-        /*
-        else if(alphaBetaType.equals("LINEAR")){
+
+        else if(alphaBetaType.equals("LINEAR") && fallingType.equals("SPINNING")){
             if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta"))){
                 BufferedImage rotatedImage=rotateImage();
                 newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             }
         }
 
-         */
+
 
     }
 

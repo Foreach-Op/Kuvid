@@ -20,6 +20,7 @@ public abstract class GameObject {
     private boolean isFallable;
     private boolean isCollectible;
     private String alphaBetaType;
+    private String fallingType;
 
 
     public GameObject() {}
@@ -35,6 +36,8 @@ public abstract class GameObject {
         this.isFallable=isFallable;
         this.isCollectible=true;
         this.setAlphaBetaType(" ");
+        this.fallingType=" ";
+
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }
 
@@ -147,6 +150,14 @@ public abstract class GameObject {
 
     public void setAlphaBetaType(String alphaBetaType) {
         this.alphaBetaType = alphaBetaType;
+    }
+
+    public String getFallingType() {
+        return fallingType;
+    }
+
+    public void setFallingType(String fallingType) {
+        this.fallingType = fallingType;
     }
 
     /*

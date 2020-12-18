@@ -18,7 +18,7 @@ public class Health {
 
     public double updateHealthLevel(double distance){
         int game_width = GameConfiguration.getInstance().getData().getGameScreenWidth();
-        healthLevel -= game_width/distance;
+        healthLevel = healthLevel - game_width/distance;
         return healthLevel;
     }
 

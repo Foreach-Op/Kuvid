@@ -41,13 +41,13 @@ public class GamePanel extends JPanel {
 
 
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition(),obj.getWidth(),obj.getHeight(),obj.getAlphaBetaType());
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition(),obj.getWidth(),obj.getHeight(),obj.getAlphaBetaType(),obj.getFallingType());
         hashMap.put(obj, objectPanel);
         if(obj.getType().equals("Shooter")){
             shooter=(Shooter) obj;
-
             triggerObject=shooter.getObjectInTrigger();
-            triggerPanel=new ObjectPanel(triggerObject.getType(),triggerObject.getSubType(),triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight()," ");
+            triggerPanel=new ObjectPanel(triggerObject.getType(),triggerObject.getSubType(),triggerObject.getCurrentPosition(),
+                    triggerObject.getWidth(),triggerObject.getHeight()," "," ");
             //System.out.println(triggerObject.getX());
             //ObjectPanel triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight());
             //hashMap.put(triggerObject,triggerPanel);
@@ -76,7 +76,8 @@ public class GamePanel extends JPanel {
 
     public void onShooterTriggerBulletChange() {
         triggerObject=shooter.getObjectInTrigger();
-        triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight()," ");
+        triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),
+                triggerObject.getWidth(),triggerObject.getHeight()," "," ");
         repaint();
     }
 

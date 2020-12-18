@@ -24,14 +24,16 @@ public class MovementHandler {
     public void move(){
         for (GameObject object: frameObjects) {
             if(object.equals(frameObjects.get(0))) continue;
-
-            //System.out.println("Movement Handler,move:"+object.getRectangle().getLocationX()+" "+object.getRectangle().getLocationY());
+            if(!object.isAlive()){
+                frameObjects.remove(object);
+                continue;
+            }
             MovementStrategy movementStrategy= MovementStrategyFactory.getStrategy(object);
             Movement movement=new Movement(movementStrategy);
             movement.executeMovement(object);
-            frame.onLocationChange();
-            //System.out.println("Movement Handler,move:"+object.getRectangle().getLocationX()+" "+object.getRectangle().getLocationY());
+
         }
+        frame.onLocationChange();
     }
 
     public void collisionDetect(){

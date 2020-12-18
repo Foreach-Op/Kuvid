@@ -10,6 +10,7 @@ public class Beta_Molecule extends Molecule {
     public Beta_Molecule(Position position) {
         super(FinalValues.BETA, position,90);
         setAlphaBetaType(GameConfiguration.getInstance().getData().getAlphaBetaType());
+        setFallingType(GameConfiguration.getInstance().getData().getMovementType());
         setHeightWidth();
     }
 
