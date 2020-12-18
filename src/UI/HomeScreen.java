@@ -24,7 +24,6 @@ public class HomeScreen {
         homeScreenFrame = new JFrame("KUVID GAME");
         homeScreenFrame.setContentPane(panelMain);
         homeScreenFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        homeScreenFrame.pack();
         homeScreenFrame.setVisible(true);
         homeScreenFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         homeScreenFrame.setResizable(false);
@@ -34,8 +33,16 @@ public class HomeScreen {
         buttonPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CloseHomeScreen();
-                new ConfigureScreen();
+                String[] options = new String[2];
+                options[0] = "Create a new game";
+                options[1] = "Load a game";
+                int result = JOptionPane.showOptionDialog(null, "Do you want to create a new game or continue on an existing game?", "", 0, JOptionPane.PLAIN_MESSAGE, null, options, null);
+                if (result == 0) {
+                    CloseHomeScreen();
+                    new ConfigureScreen();
+                } else {
+                    // LOAD WINDOW
+                }
             }
         });
 
@@ -56,7 +63,10 @@ public class HomeScreen {
         buttonExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(-1);
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.YES_OPTION) {
+                    System.exit(-1);
+                }
             }
         });
     }

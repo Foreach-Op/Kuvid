@@ -36,11 +36,11 @@ public class PauseWindow {
         pauseFrame = new JFrame();
         panelMain.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 20));
         pauseFrame.setContentPane(panelMain);
-        pauseFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width/4, 600);
+        pauseFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 4, 600);
         pauseFrame.setResizable(false);
         pauseFrame.setUndecorated(true);
         pauseFrame.setVisible(true);
-        //pauseFrame.pack();
+
         CenterFrame(pauseFrame);
 
         textAreaTitle.setFont(titleFont);
@@ -62,11 +62,28 @@ public class PauseWindow {
             }
         });
 
+        buttonSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // SAVE WINDOW
+            }
+        });
+
+        buttonLoad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // LOAD WINDOW
+            }
+        });
+
         buttonRestart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // END GAME
-                // START GAME
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to restart the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.YES_OPTION) {
+                    // END GAME
+                    // START GAME
+                }
             }
         });
 
@@ -80,15 +97,21 @@ public class PauseWindow {
         buttonMainMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // END GAME
-                // HOME SCREEN
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game and go back to main menu?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.YES_OPTION) {
+                    // END GAME
+                    // HOME SCREEN
+                }
             }
         });
 
         buttonExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(-1);
+                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                if (result == JOptionPane.YES_OPTION) {
+                    System.exit(-1);
+                }
             }
         });
     }

@@ -59,6 +59,7 @@ public class SettingsWindow {
     private JButton buttonFirstBetaPowerup;
     private JButton buttonFirstGammaPowerup;
     private JButton buttonFirstSigmaPowerup;
+    private JScrollPane scrollPane;
 
     private JFrame settingsFrame;
 
@@ -86,6 +87,8 @@ public class SettingsWindow {
         buttonControlSettings.setFont(buttonFont);
         buttonHotKeys.setFont(buttonFont);
         buttonBack.setFont(buttonFont);
+
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
         SetHotKeys();
     }
