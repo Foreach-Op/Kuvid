@@ -4,6 +4,7 @@ import Domain.Movement.Movement;
 import Domain.Movement.MovementStrategy;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
+import Domain.Statistics.GameConfiguration;
 import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 import Domain.Utils.Rectangle;
@@ -44,8 +45,12 @@ public class CollisionHandler {
             GameObject obj1= frameObjects.get(i);
             for (int j = i; j < frameObjects.size(); j++) {
                 GameObject obj2= frameObjects.get(j);
-                Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0);
-                Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0);
+
+                Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0,
+                        obj1.getType() == (FinalValues.BLOCKER));
+                Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0,
+                        obj2.getType() == FinalValues.BLOCKER);
+
                 if(rectangle1.intersects(rectangle2)){
                     if (strategyMap.get(obj1.getType())!= null){
                         CollisionStrategy collisionStrategy= strategyMap.get(obj1.getType()).get(obj2.getType());

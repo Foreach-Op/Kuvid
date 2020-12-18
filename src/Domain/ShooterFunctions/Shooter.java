@@ -40,7 +40,6 @@ public class Shooter extends GameObject {
 
     public void initializeShooter(){
         initializeBullets();
-        rectangle=new Rectangle(super.getCurrentPosition(),getL(),getL(),90); //düzelt, angle neye göre? o düzelilsin
     }
 
     public void initializeBullets(){
