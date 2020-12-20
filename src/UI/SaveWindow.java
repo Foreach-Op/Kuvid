@@ -98,8 +98,8 @@ public class SaveWindow {
 
         AddNewSaveGameArea();
 
-        AddSavedGameArea(hash, Color.CYAN);
-        AddSavedGameArea(hash2, Color.GREEN);
+        //AddSavedGameArea(hash, Color.CYAN);
+        //AddSavedGameArea(hash2, Color.GREEN);
 
         scrollPane = new JScrollPane(panelLoad);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
@@ -117,16 +117,29 @@ public class SaveWindow {
         buttonSaveNewGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
-                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                JTextField textFieldTitle = new JTextField(10);
+                JTextField textFieldUsername = new JTextField(10);
+
+                JPanel myPanel = new JPanel(new GridLayout(2,2));
+
+                JLabel labelTitle = new JLabel("Game Title: ");
+                labelTitle.setHorizontalAlignment(SwingConstants.RIGHT);
+                myPanel.add(labelTitle,0);
+                myPanel.add(textFieldTitle,1);
+
+                JLabel labelUsername = new JLabel("Username: ");
+                labelUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+                myPanel.add(labelUsername,2);
+                myPanel.add(textFieldUsername,3);
+
+                int result = JOptionPane.showConfirmDialog(null, myPanel,
+                        "", JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
-                    // LOAD GAME
+                    System.out.println("Game Title: " + textFieldTitle.getText());
+                    System.out.println("Username: " + textFieldUsername.getText());
+                    // SAVE GAME
                     Close();
                 }
-
-                 */
-                System.out.println("Saved!");
-                Close();
             }
         });
     }
