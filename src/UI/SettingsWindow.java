@@ -1,7 +1,6 @@
 package UI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -63,92 +62,85 @@ public class SettingsWindow {
 
     private JFrame settingsFrame;
 
-    private Font titleFont = new Font("Text Me One", Font.PLAIN, 72);
-    private Font buttonFont = new Font("Text Me One", Font.PLAIN, 48);
-    private Font font = new Font("Text Me One", Font.PLAIN, 36);
-
     public SettingsWindow(){
         CreateUIElements();
         ActionListener();
     }
     private void CreateUIElements() {
         settingsFrame = new JFrame();
-
         settingsFrame.setContentPane(panelMain);
-        settingsFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        settingsFrame.setSize(ScreenInfo.WINDOW_WIDTH, ScreenInfo.WINDOW_HEIGHT);
         settingsFrame.setResizable(false);
         settingsFrame.setUndecorated(true);
         settingsFrame.setVisible(true);
 
-        CenterFrame(settingsFrame);
+        textAreaTitle.setFont(ScreenInfo.titleFont);
+        buttonSoundSettings.setFont(ScreenInfo.buttonFont);
+        buttonControlSettings.setFont(ScreenInfo.buttonFont);
+        buttonHotKeys.setFont(ScreenInfo.buttonFont);
+        buttonBack.setFont(ScreenInfo.buttonFont);
 
-        textAreaTitle.setFont(titleFont);
-        buttonSoundSettings.setFont(buttonFont);
-        buttonControlSettings.setFont(buttonFont);
-        buttonHotKeys.setFont(buttonFont);
-        buttonBack.setFont(buttonFont);
-
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(ScreenInfo.SCROLL_INCREMENT_AMOUNT);
 
         SetHotKeys();
     }
 
     private void SetHotKeys(){
-        textAreaMoveRight.setFont(font);
-        buttonMoveRight.setFont(font);
+        textAreaMoveRight.setFont(ScreenInfo.textFont);
+        buttonMoveRight.setFont(ScreenInfo.textFont);
 
-        textAreaMoveLeft.setFont(font);
-        buttonMoveLeft.setFont(font);
+        textAreaMoveLeft.setFont(ScreenInfo.textFont);
+        buttonMoveLeft.setFont(ScreenInfo.textFont);
 
-        textAreaRotateRight.setFont(font);
-        buttonRotateRight.setFont(font);
+        textAreaRotateRight.setFont(ScreenInfo.textFont);
+        buttonRotateRight.setFont(ScreenInfo.textFont);
 
-        textAreaRotateLeft.setFont(font);
-        buttonRotateLeft.setFont(font);
+        textAreaRotateLeft.setFont(ScreenInfo.textFont);
+        buttonRotateLeft.setFont(ScreenInfo.textFont);
 
-        textAreaChangeAtom.setFont(font);
-        buttonChangeAtom.setFont(font);
+        textAreaChangeAtom.setFont(ScreenInfo.textFont);
+        buttonChangeAtom.setFont(ScreenInfo.textFont);
 
-        textAreaShoot.setFont(font);
-        buttonShoot.setFont(font);
+        textAreaShoot.setFont(ScreenInfo.textFont);
+        buttonShoot.setFont(ScreenInfo.textFont);
 
-        textAreaBlend.setFont(font);
-        buttonBlend.setFont(font);
+        textAreaBlend.setFont(ScreenInfo.textFont);
+        buttonBlend.setFont(ScreenInfo.textFont);
 
-        textAreaAlphaAtom.setFont(font);
-        buttonAlphaAtom.setFont(font);
+        textAreaAlphaAtom.setFont(ScreenInfo.textFont);
+        buttonAlphaAtom.setFont(ScreenInfo.textFont);
 
-        textAreaBetaAtom.setFont(font);
-        buttonBetaAtom.setFont(font);
+        textAreaBetaAtom.setFont(ScreenInfo.textFont);
+        buttonBetaAtom.setFont(ScreenInfo.textFont);
 
-        textAreaGammaAtom.setFont(font);
-        buttonGammaAtom.setFont(font);
+        textAreaGammaAtom.setFont(ScreenInfo.textFont);
+        buttonGammaAtom.setFont(ScreenInfo.textFont);
 
-        textAreaSigmaAtom.setFont(font);
-        buttonSigmaAtom.setFont(font);
+        textAreaSigmaAtom.setFont(ScreenInfo.textFont);
+        buttonSigmaAtom.setFont(ScreenInfo.textFont);
 
-        textAreaPause.setFont(font);
-        buttonPause.setFont(font);
+        textAreaPause.setFont(ScreenInfo.textFont);
+        buttonPause.setFont(ScreenInfo.textFont);
 
-        textAreaAlphaPowerup.setFont(font);
-        buttonFirstAlphaPowerup.setFont(font);
-        textAreaPlus1.setFont(font);
-        buttonSecondAlphaPowerup.setFont(font);
+        textAreaAlphaPowerup.setFont(ScreenInfo.textFont);
+        buttonFirstAlphaPowerup.setFont(ScreenInfo.textFont);
+        textAreaPlus1.setFont(ScreenInfo.textFont);
+        buttonSecondAlphaPowerup.setFont(ScreenInfo.textFont);
 
-        textAreaBetaPowerup.setFont(font);
-        buttonFirstBetaPowerup.setFont(font);
-        textAreaPlus2.setFont(font);
-        buttonSecondBetaPowerup.setFont(font);
+        textAreaBetaPowerup.setFont(ScreenInfo.textFont);
+        buttonFirstBetaPowerup.setFont(ScreenInfo.textFont);
+        textAreaPlus2.setFont(ScreenInfo.textFont);
+        buttonSecondBetaPowerup.setFont(ScreenInfo.textFont);
 
-        textAreaGammaPowerup.setFont(font);
-        buttonFirstGammaPowerup.setFont(font);
-        textAreaPlus3.setFont(font);
-        buttonSecondGammaPowerup.setFont(font);
+        textAreaGammaPowerup.setFont(ScreenInfo.textFont);
+        buttonFirstGammaPowerup.setFont(ScreenInfo.textFont);
+        textAreaPlus3.setFont(ScreenInfo.textFont);
+        buttonSecondGammaPowerup.setFont(ScreenInfo.textFont);
 
-        textAreaSigmaPowerup.setFont(font);
-        buttonFirstSigmaPowerup.setFont(font);
-        textAreaPlus4.setFont(font);
-        buttonSecondSigmaPowerup.setFont(font);
+        textAreaSigmaPowerup.setFont(ScreenInfo.textFont);
+        buttonFirstSigmaPowerup.setFont(ScreenInfo.textFont);
+        textAreaPlus4.setFont(ScreenInfo.textFont);
+        buttonSecondSigmaPowerup.setFont(ScreenInfo.textFont);
     }
 
     private void ActionListener() {
@@ -182,7 +174,7 @@ public class SettingsWindow {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Close();
+                CloseSettingsWindow();
             }
         });
 
@@ -197,16 +189,7 @@ public class SettingsWindow {
         });
     }
 
-    private void CenterFrame(JFrame frame) {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-        int x = (dim.width - frame.getSize().width) / 2;
-        int y = (dim.height - frame.getSize().height) / 2;
-
-        frame.setLocation(x, y);
-    }
-
-    public void Close() {
+    public void CloseSettingsWindow() {
         settingsFrame.dispose();
     }
 }

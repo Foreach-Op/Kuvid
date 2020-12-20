@@ -33,7 +33,7 @@
         <colspec value="left:10dlu:noGrow"/>
         <colspec value="fill:d:noGrow"/>
         <colspec value="left:4dlu:noGrow"/>
-        <colspec value="fill:max(d;4px):noGrow"/>
+        <colspec value="fill:max(d;4px):grow"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms/>
@@ -56,7 +56,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
               <selectedTextColor color="-1"/>
@@ -72,7 +72,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
               <selectedTextColor color="-1"/>
@@ -88,7 +88,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
               <selectedTextColor color="-1"/>
@@ -105,13 +105,13 @@
             <properties>
               <autoscrolls value="true"/>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
-              <preferredSize width="100" height="17"/>
+              <preferredSize width="150" height="17"/>
               <requestFocusEnabled value="false"/>
               <selectedTextColor color="-1"/>
-              <text value="0000"/>
+              <text value="0000000"/>
             </properties>
           </component>
           <component id="4d0b" class="javax.swing.JTextArea" binding="textAreaTime">
@@ -124,10 +124,10 @@
             <properties>
               <autoscrolls value="true"/>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
-              <preferredSize width="100" height="17"/>
+              <preferredSize width="150" height="17"/>
               <requestFocusEnabled value="false"/>
               <selectedTextColor color="-1"/>
               <text value="0000"/>
@@ -143,10 +143,10 @@
             <properties>
               <autoscrolls value="true"/>
               <editable value="false"/>
-              <font name="Arial" size="36"/>
+              <font name="Text Me One" size="36"/>
               <foreground color="-16777216"/>
               <opaque value="false"/>
-              <preferredSize width="100" height="17"/>
+              <preferredSize width="150" height="17"/>
               <requestFocusEnabled value="false"/>
               <selectedTextColor color="-1"/>
               <text value="0000"/>

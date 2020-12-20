@@ -46,7 +46,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private int width;
     private int height;
 
-    private Font defaultFont = new Font("Arial", Font.PLAIN, 36);
+    private Font defaultFont = new Font("Text Me One", Font.PLAIN, 36);
 
     public StatisticsWindow(int width, int height) {
         this.width = width;
