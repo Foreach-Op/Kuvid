@@ -41,7 +41,7 @@ public class HomeScreen {
                     CloseHomeScreen();
                     new ConfigureScreen();
                 } else {
-                    // LOAD WINDOW
+                    new LoadWindow();
                 }
             }
         });

@@ -72,7 +72,7 @@ public class PauseWindow {
         buttonLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // LOAD WINDOW
+                new LoadWindow();
             }
         });
 
