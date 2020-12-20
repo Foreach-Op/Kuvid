@@ -48,167 +48,96 @@
           </component>
         </children>
       </grid>
-      <component id="76320" class="javax.swing.JTextArea" binding="textAreaTitle">
-        <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-          <forms top="0" left="0" bottom="0" right="30" defaultalign-horz="false" defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <editable value="false"/>
-          <text value="Save Game"/>
-        </properties>
-      </component>
       <scrollpane id="76" binding="scrollPane">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <grid id="a9c86" binding="panelLoad" layout-manager="FormLayout">
-            <rowspec value="center:10dlu:noGrow"/>
-            <rowspec value="center:max(d;4px):noGrow"/>
-            <rowspec value="top:4dlu:noGrow"/>
-            <rowspec value="top:4dlu:noGrow"/>
-            <rowspec value="center:max(d;4px):noGrow"/>
-            <rowspec value="center:max(d;4px):noGrow"/>
-            <colspec value="fill:10dlu:noGrow"/>
-            <colspec value="fill:d:grow"/>
-            <colspec value="left:10dlu:noGrow"/>
+            <rowspec value="center:d:noGrow"/>
+            <colspec value="fill:d:noGrow"/>
             <constraints/>
             <properties>
               <background color="-14850944"/>
             </properties>
             <border type="none"/>
             <children>
-              <grid id="c249" binding="savedGamePanel" layout-manager="FormLayout">
-                <rowspec value="center:d:grow"/>
-                <rowspec value="top:4dlu:noGrow"/>
+              <grid id="9f9fb" binding="infoPanel" layout-manager="FormLayout">
+                <rowspec value="center:d:noGrow"/>
+                <rowspec value="top:6dlu:noGrow"/>
                 <rowspec value="center:max(d;4px):noGrow"/>
-                <colspec value="fill:max(d;4px):grow"/>
-                <colspec value="left:4dlu:noGrow"/>
-                <colspec value="fill:200dlu:noGrow"/>
+                <rowspec value="top:5dlu:noGrow"/>
+                <rowspec value="center:max(d;4px):noGrow"/>
+                <rowspec value="top:5dlu:noGrow"/>
+                <rowspec value="center:max(d;4px):noGrow"/>
+                <colspec value="fill:d:noGrow"/>
+                <colspec value="left:10dlu:noGrow"/>
+                <colspec value="fill:d:noGrow"/>
                 <constraints>
-                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <forms/>
                 </constraints>
-                <properties>
-                  <background color="-2991061"/>
-                  <opaque value="false"/>
-                </properties>
-                <border type="none"/>
+                <properties/>
+                <border type="none" title=""/>
                 <children>
-                  <component id="13515" class="javax.swing.JButton" binding="buttonloadGame">
+                  <component id="3e583" class="javax.swing.JTextPane" binding="textAreaGameTitle">
                     <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <forms defaultalign-vert="false"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
                     </constraints>
                     <properties>
-                      <text value="Saved Game On"/>
+                      <text value="Saved Game 1"/>
                     </properties>
                   </component>
-                  <grid id="9f9fb" binding="infoPanel" layout-manager="FormLayout">
-                    <rowspec value="center:d:noGrow"/>
-                    <rowspec value="top:5dlu:noGrow"/>
-                    <rowspec value="center:max(d;4px):noGrow"/>
-                    <rowspec value="top:5dlu:noGrow"/>
-                    <rowspec value="center:max(d;4px):noGrow"/>
-                    <rowspec value="top:5dlu:noGrow"/>
-                    <rowspec value="center:max(d;4px):noGrow"/>
-                    <colspec value="fill:d:noGrow"/>
-                    <colspec value="left:10dlu:noGrow"/>
-                    <colspec value="fill:d:noGrow"/>
+                  <component id="ac526" class="javax.swing.JTextPane" binding="textAreaScore">
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <forms/>
-                    </constraints>
-                    <properties/>
-                    <border type="none" title=""/>
-                    <children>
-                      <component id="3e583" class="javax.swing.JTextArea" binding="textAreaGameTitle">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Saved Game 1"/>
-                        </properties>
-                      </component>
-                      <component id="ac526" class="javax.swing.JTextArea" binding="textAreaScore">
-                        <constraints>
-                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Score:"/>
-                        </properties>
-                      </component>
-                      <component id="7b471" class="javax.swing.JTextArea" binding="textAreaUsername">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Username: "/>
-                        </properties>
-                      </component>
-                      <component id="8497c" class="javax.swing.JTextArea" binding="textAreaTime">
-                        <constraints>
-                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Time"/>
-                        </properties>
-                      </component>
-                      <component id="4c8bb" class="javax.swing.JTextArea" binding="textAreaHealth">
-                        <constraints>
-                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="50"/>
-                          </grid>
-                          <forms defaultalign-horz="false" defaultalign-vert="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Health"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                </children>
-              </grid>
-              <grid id="99753" binding="savedNewGamePanel" layout-manager="FormLayout">
-                <rowspec value="center:d:grow"/>
-                <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
-                <colspec value="fill:200dlu:noGrow"/>
-                <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                  <forms/>
-                </constraints>
-                <properties>
-                  <background color="-2991061"/>
-                  <opaque value="false"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <component id="51e44" class="javax.swing.JButton">
-                    <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                      <forms defaultalign-vert="false"/>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
                     </constraints>
                     <properties>
-                      <text value="Save New Game"/>
+                      <text value="Score:"/>
+                    </properties>
+                  </component>
+                  <component id="7b471" class="javax.swing.JTextPane" binding="textAreaUsername">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Username: "/>
+                    </properties>
+                  </component>
+                  <component id="8497c" class="javax.swing.JTextPane" binding="textAreaTime">
+                    <constraints>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Time"/>
+                    </properties>
+                  </component>
+                  <component id="4c8bb" class="javax.swing.JTextPane" binding="textAreaHealth">
+                    <constraints>
+                      <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Health"/>
                     </properties>
                   </component>
                 </children>

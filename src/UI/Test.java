@@ -2,7 +2,7 @@ package UI;
 
 public class Test {
     public static void main(String[] args) {
-        //new HomeScreen();
-        new LoadWindow();
+        new HomeScreen();
+        //new SaveWindow();
     }
 }

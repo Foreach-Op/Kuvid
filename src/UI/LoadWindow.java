@@ -122,7 +122,6 @@ public class LoadWindow {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Clicked!");
                 int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     // LOAD GAME
