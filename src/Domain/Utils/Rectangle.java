@@ -1,7 +1,6 @@
 package Domain.Utils;
 
 import Domain.Statistics.GameConfiguration;
-import javafx.geometry.Pos;
 
 import java.awt.*;
 import java.util.ArrayList;

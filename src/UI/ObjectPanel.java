@@ -72,7 +72,7 @@ public class ObjectPanel {
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         }
 
-        else if(alphaBetaType.equals("LINEAR") && fallingType.equals("SPINNING")){
+        else if(fallingType.equals("SPINNING")){
             if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta"))){
                 BufferedImage rotatedImage=rotateImage();
                 newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
