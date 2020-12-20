@@ -33,23 +33,23 @@ public class CollisionHandler {
         blockerStrategies.put(FinalValues.MOLECULE, new BlockerAtomMoleculeCollision());
         blockerStrategies.put(FinalValues.ATOM, new BlockerAtomMoleculeCollision());
         blockerStrategies.put(FinalValues.POWERUP, new BlockerPoweupCollision());
+        blockerStrategies.put(FinalValues.SHOOTER, new ShooterBlockerCollision());
         strategyMap.put(FinalValues.BLOCKER, blockerStrategies);
         HashMap<String, CollisionStrategy> shooterStrategies = new HashMap<String, CollisionStrategy>();
         shooterStrategies.put(FinalValues.POWERUP, new ShooterPowerupCollision());
-        shooterStrategies.put(FinalValues.BLOCKER, new ShooterBlockerCollision());
         strategyMap.put(FinalValues.SHOOTER, shooterStrategies);
     }
 
     public void collisionDetect(){
         for (int i=0;i<frameObjects.size();i++) {
             GameObject obj1= frameObjects.get(i);
-            for (int j = i; j < frameObjects.size(); j++) {
+            for (int j = 0; j < frameObjects.size(); j++) {
                 GameObject obj2= frameObjects.get(j);
 
                 Rectangle rectangle1=new Rectangle(new Position((int) obj1.getX(),(int) obj1.getY()),obj1.getWidth(),obj2.getHeight(),0,
-                        obj1.getType() == (FinalValues.BLOCKER));
+                        obj1.getType().equals(FinalValues.BLOCKER));
                 Rectangle rectangle2=new Rectangle(new Position((int) obj2.getX(),(int) obj2.getY()),obj2.getWidth(),obj2.getHeight(),0,
-                        obj2.getType() == FinalValues.BLOCKER);
+                        obj2.getType().equals(FinalValues.BLOCKER));
 
                 if(rectangle1.intersects(rectangle2)){
                     if (strategyMap.get(obj1.getType())!= null){
@@ -57,16 +57,20 @@ public class CollisionHandler {
                         if(collisionStrategy!=null){
                             Collision collision=new Collision(collisionStrategy);
                             collision.executeCollision(obj1,obj2);
-                            if(!obj1.isAlive()){
-                                frameObjects.remove(obj1);
-                            }
+
                             if(!obj2.isAlive()){
                                 frameObjects.remove(obj2);
                             }
-                            frame.onDestroy(obj1,obj2);
+                            frame.onDestroy(obj2);
+
                     }}
                     }
                 }
+            if(!obj1.isAlive()){
+                frameObjects.remove(obj1);
+
+            }
+            frame.onDestroy(obj1);
             }
         }
 

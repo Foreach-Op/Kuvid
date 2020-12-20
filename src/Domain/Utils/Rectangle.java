@@ -26,7 +26,7 @@ public class Rectangle {
         this.width = width;
         this.angle = angle;
         midPointX= locationX + width/2;
-        midPointY = locationY + length/2;
+        midPointY = locationY + height/2;
         this.isBlocker = isBlocker;
         setCorners(p);
 

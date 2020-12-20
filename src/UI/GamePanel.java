@@ -69,9 +69,9 @@ public class GamePanel extends JPanel {
     }
 
 
-    public void onDestroy(GameObject obj1, GameObject obj2) {
+    public void onDestroy(GameObject obj1) {
         removeFromScreen(obj1);
-        removeFromScreen(obj2);
+
     }
 
     public void onShooterTriggerBulletChange() {
