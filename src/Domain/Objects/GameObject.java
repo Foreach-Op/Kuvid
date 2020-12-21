@@ -19,8 +19,8 @@ public abstract class GameObject {
     private int angle;
     private boolean isFallable;
     private boolean isCollectible;
-    private String alphaBetaType;
-    private String fallingType;
+    private String shape;
+    private String rotationType;
 
 
     public GameObject() {}
@@ -29,6 +29,7 @@ public abstract class GameObject {
         this.type = type;
         this.subType = subType;
     }
+
     public GameObject(String type, String subType, Position position,int angle,boolean isFallable) {
         this.type = type;
         this.subType = subType;
@@ -39,8 +40,8 @@ public abstract class GameObject {
         this.width=L;
         this.isFallable=isFallable;
         this.isCollectible=true;
-        this.setAlphaBetaType(" ");
-        this.fallingType=" ";
+        this.setShape(" ");
+        this.rotationType =" ";
 
         //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }
@@ -104,6 +105,7 @@ public abstract class GameObject {
     public void setAngle(int angle) {
         this.angle = angle;
     }
+
     public int getAngle() {
         return angle;
     }
@@ -148,20 +150,21 @@ public abstract class GameObject {
         isCollectible = collectible;
     }
 
-    public String getAlphaBetaType() {
-        return alphaBetaType;
+
+    public String getShape() {
+        return shape;
     }
 
-    public void setAlphaBetaType(String alphaBetaType) {
-        this.alphaBetaType = alphaBetaType;
+    public void setShape(String shape) {
+        this.shape = shape;
     }
 
-    public String getFallingType() {
-        return fallingType;
+    public String getRotationType() {
+        return rotationType;
     }
 
-    public void setFallingType(String fallingType) {
-        this.fallingType = fallingType;
+    public void setRotationType(String rotationType) {
+        this.rotationType = rotationType;
     }
 
     /*

@@ -15,25 +15,21 @@ public class MovementHandler {
     public MovementHandler(CopyOnWriteArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
-        //frameObjects.forEach(s-> System.out.println(s.getType()+" "+s.getSubType()));
     }
 
-
     public void move(){
+        MovementStrategy movementStrategy;
+        Movement movement;
         for (GameObject object: frameObjects) {
             if(object.equals(frameObjects.get(0))) continue;
             if(!object.isAlive()){
                 frameObjects.remove(object);
                 continue;
             }
-            MovementStrategy movementStrategy= MovementStrategyFactory.getStrategy(object);
-            Movement movement=new Movement(movementStrategy);
+            movementStrategy= MovementStrategyFactory.getStrategy(object);
+            movement=new Movement(movementStrategy);
             movement.executeMovement(object);
-
         }
         frame.onLocationChange();
     }
-
-
-
 }

@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
 import javax.imageio.ImageIO;
@@ -55,7 +56,7 @@ public class ObjectPanel {
         final BufferedImage rotatedImage = new BufferedImage(w, h, bufferedImage.getType());
         final AffineTransform at = new AffineTransform();
         at.translate(w / 2, h / 2);
-        at.rotate(rads,0, 0);
+        at.rotate(rads,width/2, height/2);
         at.translate(-bufferedImage.getWidth() / 2, -bufferedImage.getHeight() / 2);
         final AffineTransformOp rotateOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         rotateOp.filter(bufferedImage,rotatedImage);
@@ -73,7 +74,7 @@ public class ObjectPanel {
         }
 
         else if(fallingType.equals("SPINNING")){
-            if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta"))){
+            if(type.equals("Molecule") && (subtype.equals(FinalValues.ALPHA) || subtype.equals(FinalValues.BETA))){
                 BufferedImage rotatedImage=rotateImage();
                 newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             }

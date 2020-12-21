@@ -41,7 +41,7 @@ public class GamePanel extends JPanel {
 
 
     public void onCreate(GameObject obj) {
-        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition(),obj.getWidth(),obj.getHeight(),obj.getAlphaBetaType(),obj.getFallingType());
+        ObjectPanel objectPanel = new ObjectPanel(obj.getType(), obj.getSubType(), obj.getCurrentPosition(),obj.getWidth(),obj.getHeight(),obj.getShape(),obj.getRotationType());
         hashMap.put(obj, objectPanel);
         if(obj.getType().equals("Shooter")){
             shooter=(Shooter) obj;

@@ -5,6 +5,7 @@ import Domain.Statistics.GameConfiguration;
 import Domain.Utils.Position;
 
 public class AlphaMoleculeMovement implements MovementStrategy{
+
     @Override
     public void doMovement(GameObject obj) {
 
@@ -12,7 +13,7 @@ public class AlphaMoleculeMovement implements MovementStrategy{
 
         double currentX=obj.getX();
         double currentY=obj.getY();
-        //Sorun çözülecek
+
         double xPos=obj.getVelocityX()* Math.cos(Math.toRadians(obj.getAngle()))+currentX;
         double yPos= obj.getVelocityY()* Math.sin(Math.toRadians(obj.getAngle()))+currentY;
         //System.out.print(obj.getType()+" "+obj.getSubType()+" "+ obj.getAngle()+" ");
@@ -20,10 +21,11 @@ public class AlphaMoleculeMovement implements MovementStrategy{
         //obj.setCurrentPosition(newPos);
         obj.setX(xPos);
         obj.setY(yPos);
+
         if(GameConfiguration.getInstance().getData().getMovementType().equals("SPINNING")){
             obj.getCurrentPosition().setRotation(obj.getCurrentPosition().getRotation()+5);
         }
-        //System.out.println(obj.getType()+" "+obj.getSubType()+" "+obj.getY());
+
         killObj(obj);
     }
 
@@ -31,7 +33,9 @@ public class AlphaMoleculeMovement implements MovementStrategy{
         if((int) (obj.getY()%PositionLimit)==PositionLimit-1){
             obj.setVelocityX(-obj.getVelocityX());
         }
+
     }
+
     public void killObj(GameObject obj){
         if(GameConfiguration.getInstance().getData().getGameScreenHeight()<=obj.getY()){
             obj.destroy();

@@ -111,10 +111,13 @@ public class RunningMode {
                     clockCounter=0;
                 }
 
+
                 if(creationCounter==objectCreationPeriod){
                     objectCreationHandler.createRandomFallingObject();
                     creationCounter=0;
                 }
+
+
 
                 clockCounter=clockCounter+moveCollidePeriod;
                 creationCounter=creationCounter+moveCollidePeriod;
