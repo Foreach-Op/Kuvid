@@ -25,6 +25,10 @@ public abstract class GameObject {
 
     public GameObject() {}
 
+    public GameObject(String type, String subType){ //Prototype for shield
+        this.type = type;
+        this.subType = subType;
+    }
     public GameObject(String type, String subType, Position position,int angle,boolean isFallable) {
         this.type = type;
         this.subType = subType;

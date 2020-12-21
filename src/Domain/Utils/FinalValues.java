@@ -6,10 +6,14 @@ public interface FinalValues {
     String ATOM="Atom";
     String BLOCKER="Blocker";
     String SHOOTER="Shooter";
+    String SHIELD = "Shield";
     String ALPHA="Alpha";
     String BETA="Beta";
     String GAMMA="Gamma";
     String SIGMA="Sigma";
-
+    String ETA = "Eta";
+    String LOTA = "Lota";
+    String THETA = "Theta";
+    String ZETA = "Zeta";
 
 }
