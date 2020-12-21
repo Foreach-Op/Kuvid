@@ -213,13 +213,13 @@ public class RunningMode {
         int time = 0;
         switch (GameConfiguration.getInstance().getData().getDifficulty()) {
             case HARD:
-                time = 250;
+                time =500; //hard has to be 250, but not working for 250?
                 break;
             case NORMAL:
-                time = 500;
+                time =500;
                 break;
             case EASY:
-                time = 1000;
+                time =1000;
                 break;
         }
         return time;
