@@ -1,21 +1,32 @@
 package Domain.Objects;
 
 import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Eta_Shield extends Shield{
 
+    Fireable contextObj;
+    public final double boost = 0.05;
     private static final int speed_reduction_percentage = 5;
-
-    public Eta_Shield(String subType) {
-        super(FinalValues.ETA);
+    public Eta_Shield(Fireable contextObj) {
+        super(contextObj);
+        this.contextObj = contextObj;
     }
 
-    public static int getSpeed_reduction_percentage() {
-        return speed_reduction_percentage;
-    }
+
     @Override
-    public void improve_efficiency(Atom atom) {
-        super.improve_efficiency(atom);
+    public double getEfficiency() {
+        if(contextObj.getNum_of_neutrons() == contextObj.getNum_of_protons()){
+            return 1- contextObj.getEfficiency()*
+                    Math.abs(contextObj.getNum_of_neutrons() - contextObj.getNum_of_protons())/
+                    contextObj.getNum_of_protons();
+        }
+        return (1- contextObj.getEfficiency())*boost;
     }
 
+    @Override
+    public Position getVelocity() {
+        return new Position(contextObj.getVelocity().getX()*(100-speed_reduction_percentage)/100,
+                contextObj.getVelocity().getY()*(100-speed_reduction_percentage)/100);
+    }
 }

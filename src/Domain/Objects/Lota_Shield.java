@@ -1,19 +1,24 @@
 package Domain.Objects;
 
 import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
 public class Lota_Shield extends Shield{
 
-
+    Fireable contextObj;
     private static final int speed_reduction_percentage = 7;
-    public Lota_Shield(String subType) {
-        super(FinalValues.LOTA);
+    public final double boost = 0.1;
+    public Lota_Shield(Fireable contextObj){
+        super(contextObj);
+        this.contextObj=contextObj;
     }
-    public static int getSpeed_reduction_percentage() {
-        return speed_reduction_percentage;
-    }
+
     @Override
-    public void improve_efficiency(Atom atom) {
-        super.improve_efficiency(atom);
+    public double getEfficiency() {
+        return (1-contextObj.getEfficiency())*boost;
+    }
+    public Position getVelocity() {
+        return new Position(contextObj.getVelocity().getX()*(100-speed_reduction_percentage)/100,
+                contextObj.getVelocity().getY()*(100-speed_reduction_percentage)/100);
     }
 }

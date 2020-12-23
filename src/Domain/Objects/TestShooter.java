@@ -4,7 +4,7 @@ import Domain.Utils.Position;
 
 public class TestShooter {
     public static void main(String[] args) {
-        Gamma_Molecule molecule = new Gamma_Molecule(new Position(0,0));
+
         /*
         MovementStrategy movementStrategy= MovementStrategyFactory.getInstance().getStrategy(molecule);
         Movement movement=new Movement(movementStrategy);
@@ -29,7 +29,13 @@ public class TestShooter {
          */
 
 
-
+        Beta_Atom atom = new Beta_Atom(new Position(1, 2), 0);
+        System.out.println(atom.getEfficiency());
+        System.out.println(atom.getVelocity().getX() + " " + atom.getVelocity().getY());
+        Theta_Shield shield = new Theta_Shield(atom);
+        Eta_Shield shield2 = new Eta_Shield(shield);
+        System.out.println(shield2.getEfficiency());
+        System.out.println(shield2.getVelocity().getX() + " " + shield2.getVelocity().getY());
 
 
     }

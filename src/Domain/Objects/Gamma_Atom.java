@@ -13,20 +13,13 @@ public class Gamma_Atom extends Atom {
 
     public Gamma_Atom(Position position,int angle) {
         super(FinalValues.GAMMA,position,angle);
-        setEfficiency(stability + (Math.abs(num_of_neutrons-num_of_protons)/(2*num_of_protons)));
+        this.setStability(0.8);
+        this.setNum_of_protons(32);
+        this.setNum_of_neutrons(29);
     }
 
-    public double getStability() {
-        return stability;
-    }
-    public static int getNum_of_protons() {
-        return num_of_protons;
-    }
-    public int getNum_of_neutrons() {
-        return num_of_neutrons;
-    }
-
-    public void setNum_of_neutrons(int num_of_neutrons) {
-        this.num_of_neutrons = num_of_neutrons;
+    @Override
+    public double getEfficiency() {
+        return stability + (Math.abs(num_of_neutrons-num_of_protons)/(2*num_of_protons));
     }
 }
