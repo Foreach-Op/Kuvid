@@ -8,7 +8,7 @@ import Domain.Utils.FinalValues;
 
 import java.util.HashMap;
 
-public class AtomMoleculeCollision implements CollisionStrategy{
+public class MoleculeAtomCollision implements CollisionStrategy{
 
     @Override
     public void doCollision(GameObject object1, GameObject object2) {
@@ -21,7 +21,7 @@ public class AtomMoleculeCollision implements CollisionStrategy{
             configuration.setAmmunition(ammo);
             object1.destroy();
             Player player= GameConfiguration.getInstance().getData().getPlayer();
-            player.increaseScore(object1.getEfficiency(),object2.getY()/-object2.getVelocityY());
+            player.increaseScore(object2.getEfficiency(),object1.getY()/object1.getVelocityY());
         }
         object2.destroy();
     }

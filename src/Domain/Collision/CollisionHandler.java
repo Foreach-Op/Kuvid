@@ -1,10 +1,7 @@
 package Domain.Collision;
 
-import Domain.Movement.Movement;
-import Domain.Movement.MovementStrategy;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
-import Domain.Statistics.GameConfiguration;
 import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 import Domain.Utils.Rectangle;
@@ -27,7 +24,7 @@ public class CollisionHandler {
     public void initializeStrategyMap() {
         strategyMap = new HashMap<String, HashMap<String, CollisionStrategy>>();
         HashMap<String, CollisionStrategy> moleculeStrategies = new HashMap<String, CollisionStrategy>();
-        moleculeStrategies.put(FinalValues.ATOM, new AtomMoleculeCollision());
+        moleculeStrategies.put(FinalValues.ATOM, new MoleculeAtomCollision());
         strategyMap.put(FinalValues.MOLECULE, moleculeStrategies);
         HashMap<String, CollisionStrategy> blockerStrategies = new HashMap<String, CollisionStrategy>();
         blockerStrategies.put(FinalValues.MOLECULE, new BlockerAtomMoleculeCollision());
