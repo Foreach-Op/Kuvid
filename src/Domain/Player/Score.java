@@ -16,8 +16,8 @@ public class Score {
 
     //Collection time is the current Y / speed of the molecule
 
-    public double updateTotalScore(double collection_time){
-        totalScore = totalScore + 1 + (1/collection_time);
+    public double updateTotalScore(double efficiency, double collection_time){
+        totalScore = totalScore + efficiency + (1/collection_time);
         return totalScore;
     }
 

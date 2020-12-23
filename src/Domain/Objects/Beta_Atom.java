@@ -11,10 +11,10 @@ public class Beta_Atom extends Atom{
 
     private int num_of_neutrons; //Number of neutrons is a random integer between {15, 16, 17, 18 21}
 
-    private double efficiency = stability-(0.5*Math.abs(num_of_neutrons-num_of_protons)/num_of_protons);
 
     public Beta_Atom(Position position,int angle) {
         super(FinalValues.BETA,position,angle);
+        setEfficiency(stability-(0.5*Math.abs(num_of_neutrons-num_of_protons)/num_of_protons));
     }
 
     public static double getStability() {
@@ -29,12 +29,6 @@ public class Beta_Atom extends Atom{
 
     public void setNum_of_neutrons(int num_of_neutrons) {
         this.num_of_neutrons = num_of_neutrons;
-    }
-    public double getEfficiency() {
-        return efficiency;
-    }
-    public void setEfficiency(double efficiency) {
-        this.efficiency = efficiency;
     }
 
 }

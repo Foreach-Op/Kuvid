@@ -1,5 +1,6 @@
 package Domain.Collision;
 
+import Domain.Objects.Atom;
 import Domain.Objects.GameObject;
 import Domain.Player.Player;
 import Domain.Statistics.GameConfiguration;
@@ -20,7 +21,7 @@ public class AtomMoleculeCollision implements CollisionStrategy{
             configuration.setAmmunition(ammo);
             object1.destroy();
             Player player= GameConfiguration.getInstance().getData().getPlayer();
-            player.increaseScore(object1.getY()/object1.getVelocityY());
+            player.increaseScore(object1.getEfficiency(),object2.getY()/-object2.getVelocityY());
         }
         object2.destroy();
     }

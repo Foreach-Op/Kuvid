@@ -11,10 +11,9 @@ public class Sigma_Atom extends Atom {
 
     private int num_of_neutrons; //Number of neutrons is a random integer between {63, 64, 67}
 
-    private double efficiency = (1 + stability)/ 2 + (Math.abs(num_of_neutrons-num_of_protons)/num_of_protons);
-
     public Sigma_Atom(Position position,int angle) {
         super(FinalValues.SIGMA,position,angle);
+        setEfficiency((1 + stability)/ 2 + (Math.abs(num_of_neutrons-num_of_protons)/num_of_protons));
     }
 
     public double getStability() {
@@ -29,11 +28,5 @@ public class Sigma_Atom extends Atom {
 
     public void setNum_of_neutrons(int num_of_neutrons) {
         this.num_of_neutrons = num_of_neutrons;
-    }
-    public double getEfficiency() {
-        return efficiency;
-    }
-    public void setEfficiency(double efficiency) {
-        this.efficiency = efficiency;
     }
 }

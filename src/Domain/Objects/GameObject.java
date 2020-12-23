@@ -21,6 +21,7 @@ public abstract class GameObject {
     private boolean isCollectible;
     private String shape;
     private String rotationType;
+    private double efficiency; // used for atom
 
 
     public GameObject() {}
@@ -165,6 +166,14 @@ public abstract class GameObject {
 
     public void setRotationType(String rotationType) {
         this.rotationType = rotationType;
+    }
+
+    public double getEfficiency() {
+        return efficiency;
+    }
+
+    public void setEfficiency(double efficiency) {
+        this.efficiency = efficiency;
     }
 
     /*
