@@ -59,14 +59,26 @@
         <border type="none"/>
         <children>
           <grid id="a9c86" binding="panelLoad" layout-manager="FormLayout">
-            <rowspec value="center:d:noGrow"/>
-            <colspec value="fill:d:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <colspec value="fill:d:grow"/>
             <constraints/>
             <properties>
               <background color="-14850944"/>
             </properties>
             <border type="none"/>
             <children>
+              <component id="e1a2f" class="javax.swing.JButton" binding="buttonSaveNewGame">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <borderPainted value="false"/>
+                  <text value="SAVE NEW GAME"/>
+                </properties>
+              </component>
               <grid id="9f9fb" binding="infoPanel" layout-manager="FormLayout">
                 <rowspec value="center:d:noGrow"/>
                 <rowspec value="top:6dlu:noGrow"/>
@@ -79,7 +91,7 @@
                 <colspec value="left:10dlu:noGrow"/>
                 <colspec value="fill:d:noGrow"/>
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                   <forms/>
                 </constraints>
                 <properties/>

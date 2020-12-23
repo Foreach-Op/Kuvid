@@ -13,6 +13,6 @@ public interface ScreenInfo {
     Font textFont = new Font("Text Me One", Font.PLAIN, 24);
 
     Color buttonBackgroundColor = Color.decode("#E1E1E1");
-    Color buttonTextColor = Color.decode("#63ACB5");
+    Color buttonTextColor = Color.BLACK;
     Color borderColor = Color.GRAY;
 }

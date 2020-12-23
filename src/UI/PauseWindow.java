@@ -65,7 +65,7 @@ public class PauseWindow {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // SAVE WINDOW
+                new SaveWindow();
             }
         });
 

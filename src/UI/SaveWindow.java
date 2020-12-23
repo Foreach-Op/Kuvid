@@ -1,15 +1,13 @@
 package UI;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.HashMap;
+import java.io.File;
+import java.io.IOException;
 
 public class SaveWindow {
     private JFrame frame;
@@ -27,6 +25,7 @@ public class SaveWindow {
     private JTextPane textAreaScore;
     private JTextPane textAreaTime;
     private JTextPane textAreaHealth;
+    private JButton buttonSaveNewGame;
 
     private Font titleFont = new Font("Text Me One", Font.PLAIN, 72);
     private Font buttonFont = new Font("Text Me One", Font.PLAIN, 48);
@@ -79,27 +78,12 @@ public class SaveWindow {
 
     private void AddLoadPanel() {
         panelLoad = new JPanel();
-        BoxLayout boxLayout = new BoxLayout(panelLoad, BoxLayout.PAGE_AXIS);
-        panelLoad.setLayout(boxLayout);
+        //BoxLayout boxLayout = new BoxLayout(panelLoad, BoxLayout.PAGE_AXIS);
+        //panelLoad.setLayout(boxLayout);
 
-        HashMap<String, String> hash = new HashMap<>();
-        hash.put("title", "Game 123");
-        hash.put("username", "alperklnc");
-        hash.put("score", "100");
-        hash.put("time", "25.2");
-        hash.put("health", "30");
-
-        HashMap<String, String> hash2 = new HashMap<>();
-        hash2.put("title", "debug");
-        hash2.put("username", "debug");
-        hash2.put("score", "debug");
-        hash2.put("time", "debug");
-        hash2.put("health", "debug");
-
-        AddNewSaveGameArea();
-
-        //AddSavedGameArea(hash, Color.CYAN);
-        //AddSavedGameArea(hash2, Color.GREEN);
+        panelLoad.add(buttonSaveNewGame);
+        buttonSaveNewGame.setFont(ScreenInfo.buttonFont);
+        buttonSaveNewGame.setBackground(Color.GRAY);
 
         scrollPane = new JScrollPane(panelLoad);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
@@ -138,76 +122,65 @@ public class SaveWindow {
                     System.out.println("Game Title: " + textFieldTitle.getText());
                     System.out.println("Username: " + textFieldUsername.getText());
                     // SAVE GAME
-                    Close();
+                    CloseSaveWindow();
                 }
             }
         });
-    }
-
-    private void AddSavedGameArea(HashMap<String, String> hash, Color color){
-        JPanel panel = SetInfoPanel(hash);
-        panel.setBorder(new EmptyBorder(10,10,10,10));
-        panel.setBackground(color);
-        panelLoad.add(panel);
-        panelLoad.add(Box.createRigidArea(new Dimension(0, 20)));
-
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Do you want to save the game on this game? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if (result == JOptionPane.YES_OPTION) {
-                    // LOAD GAME
-                    Close();
-                }
-            }
-        });
-    }
-
-    private JPanel SetInfoPanel(HashMap<String, String> hash) {
-        JPanel myInfoPanel = new JPanel(new GridLayout(2, 3));
-
-        textAreaGameTitle = new JTextPane();
-        textAreaGameTitle.setText("Game: " + hash.get("title"));
-        textAreaGameTitle.setEditable(false);
-        textAreaGameTitle.setFont(font);
-
-        textAreaUsername = new JTextPane();
-        textAreaUsername.setText("Username: " + hash.get("username"));
-        textAreaUsername.setEditable(false);
-        textAreaUsername.setFont(font);
-
-        textAreaScore = new JTextPane();
-        textAreaScore.setText("Score: " + hash.get("score"));
-        textAreaScore.setEditable(false);
-        textAreaScore.setFont(font);
-
-        textAreaTime = new JTextPane();
-        textAreaTime.setText("Time: " + hash.get("time"));
-        textAreaTime.setEditable(false);
-        textAreaTime.setFont(font);
-
-        textAreaHealth = new JTextPane();
-        textAreaHealth.setText("Health: " + hash.get("health"));
-        textAreaHealth.setEditable(false);
-        textAreaHealth.setFont(font);
-
-        myInfoPanel.add(textAreaGameTitle, 0);
-        myInfoPanel.add(textAreaUsername, 1);
-        myInfoPanel.add(new JPanel(), 2); // DUMMY PANEL
-        myInfoPanel.add(textAreaScore, 3);
-        myInfoPanel.add(textAreaTime, 4);
-        myInfoPanel.add(textAreaHealth, 5);
-
-        return myInfoPanel;
     }
 
     private void ActionListener() {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Close();
+                CloseSaveWindow();
             }
         });
+
+        buttonSaveNewGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JTextField textFieldTitle = new JTextField(10);
+                JTextField textFieldUsername = new JTextField(10);
+
+                JPanel myPanel = new JPanel(new GridLayout(2,2));
+
+                JLabel labelTitle = new JLabel("Game Title: ");
+                labelTitle.setHorizontalAlignment(SwingConstants.RIGHT);
+                myPanel.add(labelTitle,0);
+                myPanel.add(textFieldTitle,1);
+
+                JLabel labelUsername = new JLabel("Username: ");
+                labelUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+                myPanel.add(labelUsername,2);
+                myPanel.add(textFieldUsername,3);
+
+                String[] options = new String[1];
+                options[0] = "Save Game";
+
+                int result = JOptionPane.showOptionDialog(null, myPanel,
+                        "", 0, JOptionPane.PLAIN_MESSAGE, null, options, null);
+
+                if (result == 0) {
+                    // SAVE GAME
+                    SaveGame(textFieldTitle.getText(), textFieldUsername.getText());
+                    CloseSaveWindow();
+                }
+            }
+        });
+    }
+
+    private void SaveGame(String saveTitle, String username) {
+        try {
+            File myObj = new File("./save_files/"+saveTitle + "_" + username + ".txt");
+            if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
     private void CenterFrame(JFrame frame) {
@@ -219,7 +192,7 @@ public class SaveWindow {
         frame.setLocation(x, y);
     }
 
-    public void Close() {
+    public void CloseSaveWindow() {
         frame.dispose();
     }
 }
