@@ -48,6 +48,7 @@ public class HomeScreen {
         buttonExit.setBorderPainted(false);
     }
 
+    @SuppressWarnings("Convert2Lambda")
     private void ActionListener() {
         buttonPlay.addActionListener(new ActionListener() {
             @Override
@@ -56,7 +57,7 @@ public class HomeScreen {
                 options[0] = "Create a new game";
                 options[1] = "Load a game";
                 int result = JOptionPane.showOptionDialog(null, "Do you want to create a new game or continue on an existing game?",
-                        "", 0, JOptionPane.PLAIN_MESSAGE, null, options, null);
+                        "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
                 if (result == 0) {
                     CloseHomeScreen();
                     new ConfigureScreen();

@@ -1,13 +1,14 @@
 package UI;
 
+import Domain.Statistics.GameConfiguration;
+
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class SaveWindow {
     private JFrame frame;
@@ -18,7 +19,7 @@ public class SaveWindow {
     private JButton buttonBack;
 
     private JScrollPane scrollPane;
-    private JPanel panelLoad;
+    private JPanel panelSavedGame;
     private JPanel infoPanel;
     private JTextPane textAreaGameTitle;
     private JTextPane textAreaUsername;
@@ -27,12 +28,6 @@ public class SaveWindow {
     private JTextPane textAreaHealth;
     private JButton buttonSaveNewGame;
 
-    private Font titleFont = new Font("Text Me One", Font.PLAIN, 72);
-    private Font buttonFont = new Font("Text Me One", Font.PLAIN, 48);
-    private Font font = new Font("Text Me One", Font.PLAIN, 36);
-
-    private int buttonIndex = 0;
-
     public SaveWindow() {
         CreateUIElements();
         ActionListener();
@@ -40,16 +35,16 @@ public class SaveWindow {
 
     private void CreateUIElements() {
         frame = new JFrame();
-        //loadFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        frame.setSize(1280, 720);
+        frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        //frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setUndecorated(true);
 
         panelMain = new JPanel(new BorderLayout());
 
-        AddTitle();
-        AddMenu();
-        AddLoadPanel();
+        AddTitle(); // to panelMain
+        AddMenu(); // to panelMain
+        AddSavedGamePanel(); // to panelMain
 
         frame.setContentPane(panelMain);
         frame.setVisible(true);
@@ -59,7 +54,7 @@ public class SaveWindow {
     private void AddTitle() {
         JTextPane title = new JTextPane();
         title.setText("SAVE GAME");
-        title.setFont(titleFont);
+        title.setFont(ScreenInfo.titleFont);
         title.setEditable(false);
 
         SimpleAttributeSet right = new SimpleAttributeSet();
@@ -67,65 +62,27 @@ public class SaveWindow {
         title.setParagraphAttributes(right, false);
 
         panelMain.add(title, BorderLayout.NORTH);
-        title.setMargin(new Insets(20, 0, 20, 50));
+        title.setMargin(new Insets(ScreenInfo.titleFont.getSize()/2, 0, ScreenInfo.titleFont.getSize()/2, ScreenInfo.titleFont.getSize()));
     }
 
     private void AddMenu() {
-        buttonBack.setFont(buttonFont);
-        buttonBack.setMargin(new Insets(0, 50, 0, 50));
+        buttonBack.setFont(ScreenInfo.buttonFont);
+        buttonBack.setMargin(new Insets(0, ScreenInfo.buttonFont.getSize(), 0, ScreenInfo.buttonFont.getSize()));
         panelMain.add(panelMenu, BorderLayout.WEST);
     }
 
-    private void AddLoadPanel() {
-        panelLoad = new JPanel();
+    private void AddSavedGamePanel() {
+        panelSavedGame = new JPanel();
         //BoxLayout boxLayout = new BoxLayout(panelLoad, BoxLayout.PAGE_AXIS);
         //panelLoad.setLayout(boxLayout);
 
-        panelLoad.add(buttonSaveNewGame);
+        panelSavedGame.add(buttonSaveNewGame);
         buttonSaveNewGame.setFont(ScreenInfo.buttonFont);
-        buttonSaveNewGame.setBackground(Color.GRAY);
+        buttonSaveNewGame.setBackground(ScreenInfo.buttonBackgroundColor);
 
-        scrollPane = new JScrollPane(panelLoad);
+        scrollPane = new JScrollPane(panelSavedGame);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         panelMain.add(scrollPane);
-    }
-
-    private void AddNewSaveGameArea(){
-        JButton buttonSaveNewGame = new JButton("SAVE GAME");
-        buttonSaveNewGame.setFont(buttonFont);
-        buttonSaveNewGame.setBackground(Color.RED);
-        buttonSaveNewGame.setBorderPainted(false);
-        panelLoad.add(buttonSaveNewGame);
-        panelLoad.add(Box.createRigidArea(new Dimension(0, 20)));
-
-        buttonSaveNewGame.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JTextField textFieldTitle = new JTextField(10);
-                JTextField textFieldUsername = new JTextField(10);
-
-                JPanel myPanel = new JPanel(new GridLayout(2,2));
-
-                JLabel labelTitle = new JLabel("Game Title: ");
-                labelTitle.setHorizontalAlignment(SwingConstants.RIGHT);
-                myPanel.add(labelTitle,0);
-                myPanel.add(textFieldTitle,1);
-
-                JLabel labelUsername = new JLabel("Username: ");
-                labelUsername.setHorizontalAlignment(SwingConstants.RIGHT);
-                myPanel.add(labelUsername,2);
-                myPanel.add(textFieldUsername,3);
-
-                int result = JOptionPane.showConfirmDialog(null, myPanel,
-                        "", JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if (result == JOptionPane.YES_OPTION) {
-                    System.out.println("Game Title: " + textFieldTitle.getText());
-                    System.out.println("Username: " + textFieldUsername.getText());
-                    // SAVE GAME
-                    CloseSaveWindow();
-                }
-            }
-        });
     }
 
     private void ActionListener() {
@@ -142,17 +99,17 @@ public class SaveWindow {
                 JTextField textFieldTitle = new JTextField(10);
                 JTextField textFieldUsername = new JTextField(10);
 
-                JPanel myPanel = new JPanel(new GridLayout(2,2));
+                JPanel myPanel = new JPanel(new GridLayout(2, 2));
 
                 JLabel labelTitle = new JLabel("Game Title: ");
                 labelTitle.setHorizontalAlignment(SwingConstants.RIGHT);
-                myPanel.add(labelTitle,0);
-                myPanel.add(textFieldTitle,1);
+                myPanel.add(labelTitle, 0);
+                myPanel.add(textFieldTitle, 1);
 
                 JLabel labelUsername = new JLabel("Username: ");
                 labelUsername.setHorizontalAlignment(SwingConstants.RIGHT);
-                myPanel.add(labelUsername,2);
-                myPanel.add(textFieldUsername,3);
+                myPanel.add(labelUsername, 2);
+                myPanel.add(textFieldUsername, 3);
 
                 String[] options = new String[1];
                 options[0] = "Save Game";
@@ -170,15 +127,38 @@ public class SaveWindow {
     }
 
     private void SaveGame(String saveTitle, String username) {
+        /*
         try {
-            File myObj = new File("./save_files/"+saveTitle + "_" + username + ".txt");
-            if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
+            FileWriter file = new FileWriter("./save_files/"+saveTitle + "_" + username + ".txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(file);
+
+            GameData gameData = GameConfiguration.getInstance().getData();
+
+            String data = "Save file \"" + saveTitle +"\" by player \"" + username + "\"\n" +
+                    "Score: " + gameData.getPlayer().getScore() + "\n" +
+                    "Health: " + gameData.getPlayer().getHealth() + "\n" +
+                    "Remaining Time: " + gameData.getRemainingTime() + "\n" +
+                    "Movement Patterns: " + gameData.getMovementType() + "\n" +
+                    "Alpha Beta Type: " + gameData.getAlphaBetaType() + "\n" +
+                    "Ammunition: " + gameData.getAmmunition() + "\n" +
+                    "Remaining Objects: " + gameData.getRemainingObjects() + "\n\n\n";
+
+            bufferedWriter.write(data);
+            bufferedWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+         */
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(GameConfiguration.getInstance().getData().getAmmunition());
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved.");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

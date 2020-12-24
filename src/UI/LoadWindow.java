@@ -7,8 +7,9 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 public class LoadWindow {
@@ -28,10 +29,6 @@ public class LoadWindow {
     private JTextPane textAreaTime;
     private JTextPane textAreaHealth;
 
-    private Font titleFont = new Font("Text Me One", Font.PLAIN, 72);
-    private Font buttonFont = new Font("Text Me One", Font.PLAIN, 48);
-    private Font font = new Font("Text Me One", Font.PLAIN, 36);
-
     private int buttonIndex = 0;
 
     public LoadWindow() {
@@ -41,16 +38,18 @@ public class LoadWindow {
 
     private void CreateUIElements() {
         frame = new JFrame();
-        //loadFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        frame.setSize(1280, 720);
+        frame.setSize(ScreenInfo.WINDOW_WIDTH, ScreenInfo.WINDOW_HEIGHT);
+        //frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setUndecorated(true);
 
-        panelMain = new JPanel(new BorderLayout());
+        panelMain = new JPanel();
+        BorderLayout borderLayout = new BorderLayout();
+        panelMain.setLayout(borderLayout);
 
-        AddTitle();
-        AddMenu();
-        AddLoadPanel();
+        AddTitle(); // to panelMain
+        AddMenu(); // to panelMain
+        AddLoadPanel(); // to panelMain
 
         frame.setContentPane(panelMain);
         frame.setVisible(true);
@@ -60,7 +59,7 @@ public class LoadWindow {
     private void AddTitle() {
         JTextPane title = new JTextPane();
         title.setText("LOAD GAME");
-        title.setFont(titleFont);
+        title.setFont(ScreenInfo.titleFont);
         title.setEditable(false);
 
         SimpleAttributeSet right = new SimpleAttributeSet();
@@ -68,17 +67,16 @@ public class LoadWindow {
         title.setParagraphAttributes(right, false);
 
         panelMain.add(title, BorderLayout.NORTH);
-        title.setMargin(new Insets(20, 0, 20, 50));
+        title.setMargin(new Insets(ScreenInfo.titleFont.getSize()/2, 0, ScreenInfo.titleFont.getSize()/2, ScreenInfo.titleFont.getSize()));
     }
 
     private void AddMenu() {
-        buttonBack.setFont(buttonFont);
-        buttonBack.setMargin(new Insets(0, 50, 0, 50));
+        buttonBack.setFont(ScreenInfo.buttonFont);
+        buttonBack.setMargin(new Insets(0, ScreenInfo.buttonFont.getSize(), 0, ScreenInfo.buttonFont.getSize()));
         panelMain.add(panelMenu, BorderLayout.WEST);
     }
 
     private void AddLoadPanel() {
-
         panelLoad = new JPanel();
         BoxLayout boxLayout = new BoxLayout(panelLoad, BoxLayout.PAGE_AXIS);
         panelLoad.setLayout(boxLayout);
@@ -90,74 +88,106 @@ public class LoadWindow {
         hash.put("time", "25.2");
         hash.put("health", "30");
 
-        HashMap<String, String> hash2 = new HashMap<>();
-        hash2.put("title", "debug");
-        hash2.put("username", "debug");
-        hash2.put("score", "debug");
-        hash2.put("time", "debug");
-        hash2.put("health", "debug");
-
-        AddSavedGameArea(hash, Color.CYAN);
-        AddSavedGameArea(hash2, Color.GREEN);
-        AddSavedGameArea(hash2, Color.LIGHT_GRAY);
-        AddSavedGameArea(hash2, Color.BLACK);
-        AddSavedGameArea(hash2, Color.BLUE);
-        AddSavedGameArea(hash2, Color.GREEN);
-        AddSavedGameArea(hash2, Color.LIGHT_GRAY);
-        AddSavedGameArea(hash2, Color.BLACK);
-        AddSavedGameArea(hash2, Color.BLUE);
+        AddSavedGameArea(hash);
 
         scrollPane = new JScrollPane(panelLoad);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         panelMain.add(scrollPane);
     }
 
-    private void AddSavedGameArea(HashMap<String, String> hash, Color color){
-        JPanel panel = SetInfoPanel(hash);
-        panel.setBorder(new EmptyBorder(10,10,10,10));
-        panel.setBackground(color);
+    /**
+     * Adds new button and info panel for a saved game
+     *
+     * @param hash
+     */
+    public void AddSavedGameArea(HashMap<String, String> hash) {
+        JPanel panel = new JPanel(new BorderLayout());
+
+        // Add Button
+        JButton loadGameButton = new JButton("Load Game");
+        loadGameButton.setFont(ScreenInfo.buttonFont);
+        loadGameButton.setBorderPainted(false);
+        loadGameButton.setBackground(ScreenInfo.buttonBackgroundColor);
+        loadGameButton.setForeground(ScreenInfo.buttonTextColor);
+        loadGameButton.setVerticalTextPosition(SwingConstants.CENTER);
+        loadGameButton.setHorizontalTextPosition(SwingConstants.CENTER);
+        panel.add(loadGameButton, BorderLayout.EAST);
+
+        // Add Info Panel
+        panel.add(SetInfoPanel(hash), BorderLayout.WEST);
+
+        // Panel adjustments
+        panel.setBorder(new EmptyBorder(10, 10, 10, 10));
+        panel.setBackground(Color.DARK_GRAY);
+        panel.setMaximumSize(new Dimension(ScreenInfo.WINDOW_WIDTH - panelMenu.getWidth(), ScreenInfo.textFont.getSize()*4));
         panelLoad.add(panel);
         panelLoad.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        panel.addMouseListener(new MouseAdapter() {
+        loadGameButton.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game???? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
-                    // LOAD GAME
-                    Close();
+                    LoadGame();
+                    CloseLoadWindow();
                 }
             }
         });
     }
 
+    private void LoadGame() {
+        HashMap gameData = null;
+        try {
+            FileInputStream fileIn = new FileInputStream("./save_files/" + "deneme1" + "_" + "alperklnc" + ".ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            gameData = (HashMap) in.readObject();
+            in.close();
+            fileIn.close();
+
+            System.out.println(gameData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private JPanel SetInfoPanel(HashMap<String, String> hash) {
-        JPanel myInfoPanel = new JPanel(new GridLayout(2, 3));
+        JPanel myInfoPanel = new JPanel();
+        GridLayout gridLayout = new GridLayout(2,3);
+        gridLayout.setHgap(10);
+        gridLayout.setVgap(10);
+        myInfoPanel.setLayout(gridLayout);
 
         textAreaGameTitle = new JTextPane();
         textAreaGameTitle.setText("Game: " + hash.get("title"));
         textAreaGameTitle.setEditable(false);
-        textAreaGameTitle.setFont(font);
+        textAreaGameTitle.setOpaque(false);
+        textAreaGameTitle.setFont(ScreenInfo.textFont);
 
         textAreaUsername = new JTextPane();
         textAreaUsername.setText("Username: " + hash.get("username"));
         textAreaUsername.setEditable(false);
-        textAreaUsername.setFont(font);
+        textAreaUsername.setOpaque(false);
+        textAreaUsername.setFont(ScreenInfo.textFont);
 
         textAreaScore = new JTextPane();
         textAreaScore.setText("Score: " + hash.get("score"));
         textAreaScore.setEditable(false);
-        textAreaScore.setFont(font);
+        textAreaScore.setOpaque(false);
+        textAreaScore.setFont(ScreenInfo.textFont);
 
         textAreaTime = new JTextPane();
         textAreaTime.setText("Time: " + hash.get("time"));
         textAreaTime.setEditable(false);
-        textAreaTime.setFont(font);
+        textAreaTime.setOpaque(false);
+        textAreaTime.setFont(ScreenInfo.textFont);
 
         textAreaHealth = new JTextPane();
         textAreaHealth.setText("Health: " + hash.get("health"));
         textAreaHealth.setEditable(false);
-        textAreaHealth.setFont(font);
+        textAreaHealth.setOpaque(false);
+        textAreaHealth.setFont(ScreenInfo.textFont);
 
         myInfoPanel.add(textAreaGameTitle, 0);
         myInfoPanel.add(textAreaUsername, 1);
@@ -173,7 +203,7 @@ public class LoadWindow {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Close();
+                CloseLoadWindow();
             }
         });
     }
@@ -187,7 +217,7 @@ public class LoadWindow {
         frame.setLocation(x, y);
     }
 
-    public void Close() {
+    public void CloseLoadWindow() {
         frame.dispose();
     }
 }

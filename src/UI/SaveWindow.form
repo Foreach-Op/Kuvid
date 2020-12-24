@@ -58,7 +58,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="a9c86" binding="panelLoad" layout-manager="FormLayout">
+          <grid id="a9c86" binding="panelSavedGame" layout-manager="FormLayout">
             <rowspec value="center:max(d;4px):noGrow"/>
             <rowspec value="top:4dlu:noGrow"/>
             <rowspec value="center:max(d;4px):noGrow"/>

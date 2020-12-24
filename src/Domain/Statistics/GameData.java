@@ -4,6 +4,9 @@ import Domain.Objects.*;
 import Domain.Player.Player;
 import Domain.Utils.Difficulty;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,7 +169,6 @@ public class GameData implements Serializable {
         this.alphaBetaType = alphaBetaType;
     }
 
-
     public int getGameScreenWidth(){
         return gameScreenWidth;
     }
@@ -197,5 +199,18 @@ public class GameData implements Serializable {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void saveData(String saveTitle, String username) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(this);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
