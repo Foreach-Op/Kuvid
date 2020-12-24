@@ -2,7 +2,9 @@ package Domain.Player;
 
 import Domain.Statistics.GameConfiguration;
 
-public class Score {
+import java.io.Serializable;
+
+public class Score implements Serializable {
 
     //Obviously we start from 0 score.
     private double totalScore;

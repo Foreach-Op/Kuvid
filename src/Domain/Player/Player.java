@@ -3,7 +3,9 @@ package Domain.Player;
 import Domain.Functionalities.GameStatueControl;
 import Domain.Statistics.GameConfiguration;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private Health health=new Health(100.00);
     private Score score=new Score(0.00);
     private String playerName;

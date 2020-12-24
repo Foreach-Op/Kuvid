@@ -154,7 +154,7 @@ public class SaveWindow {
         try {
             FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(GameConfiguration.getInstance().getData().getAmmunition());
+            out.writeObject(GameConfiguration.getInstance().getData());
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved.");

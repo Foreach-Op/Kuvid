@@ -1,5 +1,7 @@
 package UI;
 
+import Domain.Statistics.GameData;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.SimpleAttributeSet;
@@ -136,15 +138,16 @@ public class LoadWindow {
     }
 
     private void LoadGame() {
-        HashMap gameData = null;
+        GameData gameData = null;
         try {
-            FileInputStream fileIn = new FileInputStream("./save_files/" + "deneme1" + "_" + "alperklnc" + ".ser");
+            FileInputStream fileIn = new FileInputStream("./save_files/" + "deneme2" + "_" + "alperklnc" + ".ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            gameData = (HashMap) in.readObject();
+            gameData = (GameData) in.readObject();
             in.close();
             fileIn.close();
 
-            System.out.println(gameData);
+            System.out.println(gameData.getAmmunition());
+            System.out.println(gameData.getRemainingObjects());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException ex) {

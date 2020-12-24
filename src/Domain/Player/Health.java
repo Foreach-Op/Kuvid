@@ -2,7 +2,9 @@ package Domain.Player;
 
 import Domain.Statistics.GameConfiguration;
 
-public class Health {
+import java.io.Serializable;
+
+public class Health implements Serializable {
 
     //We start from 100 health.
 
