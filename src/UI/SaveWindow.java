@@ -127,30 +127,6 @@ public class SaveWindow {
     }
 
     private void SaveGame(String saveTitle, String username) {
-        /*
-        try {
-            FileWriter file = new FileWriter("./save_files/"+saveTitle + "_" + username + ".txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(file);
-
-            GameData gameData = GameConfiguration.getInstance().getData();
-
-            String data = "Save file \"" + saveTitle +"\" by player \"" + username + "\"\n" +
-                    "Score: " + gameData.getPlayer().getScore() + "\n" +
-                    "Health: " + gameData.getPlayer().getHealth() + "\n" +
-                    "Remaining Time: " + gameData.getRemainingTime() + "\n" +
-                    "Movement Patterns: " + gameData.getMovementType() + "\n" +
-                    "Alpha Beta Type: " + gameData.getAlphaBetaType() + "\n" +
-                    "Ammunition: " + gameData.getAmmunition() + "\n" +
-                    "Remaining Objects: " + gameData.getRemainingObjects() + "\n\n\n";
-
-            bufferedWriter.write(data);
-            bufferedWriter.close();
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-         */
-
         try {
             FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);

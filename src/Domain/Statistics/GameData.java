@@ -200,17 +200,4 @@ public class GameData implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
-
-    public void saveData(String saveTitle, String username) {
-        try {
-            FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(this);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

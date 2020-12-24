@@ -59,6 +59,12 @@ public class SettingsWindow {
     private JButton buttonFirstGammaPowerup;
     private JButton buttonFirstSigmaPowerup;
     private JScrollPane scrollPane;
+    private JSlider sliderMenuMusic;
+    private JTextArea textAreaMenuMusic;
+    private JSlider sliderMusicEffects;
+    private JSlider sliderGameMusic;
+    private JTextArea textAreaGameMusic;
+    private JTextArea textAreaMusicEffects;
 
     private JFrame settingsFrame;
 
