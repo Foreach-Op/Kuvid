@@ -14,7 +14,7 @@ public abstract class GameObject implements Serializable {
     private String subType;
     private Rectangle rect;
     private Position currentPosition;
-    private final int L = 50;
+    private final int L = GameConfiguration.getInstance().getData().getL();;
     private int height;
     private int width;
     private Position velocity;
@@ -23,6 +23,7 @@ public abstract class GameObject implements Serializable {
     private boolean isCollectible;
     private String shape;
     private String rotationType;
+    private double efficiency; // used for atom
 
 
 
@@ -170,8 +171,12 @@ public abstract class GameObject implements Serializable {
         this.rotationType = rotationType;
     }
 
-    public double getEfficiency(){
-        return 1;
+    public double getEfficiency() {
+        return efficiency;
+    }
+
+    public void setEfficiency(double efficiency) {
+        this.efficiency = efficiency;
     }
     /*
     public Rectangle getRectangle() {
