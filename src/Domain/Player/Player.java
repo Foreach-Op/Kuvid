@@ -5,8 +5,9 @@ import Domain.Statistics.GameConfiguration;
 
 public class Player {
     private static Player player;
-    private Health health=new Health(100.00);
-    private Score score=new Score(0.00);
+    GameConfiguration gameConfiuration=GameConfiguration.getInstance();
+    private Health health=new Health(gameConfiuration.getData().getHealth());
+    private Score score=new Score(gameConfiuration.getData().getScore());
     //private String playerName;
 
     private Player(){}
@@ -24,7 +25,7 @@ public class Player {
 
     public void setHealth(double healthLevel) {
         this.health.setHealthLevel(healthLevel);
-        GameConfiguration.getInstance().setHealth(healthLevel);
+        gameConfiuration.setHealth(healthLevel);
     }
 
     public double getScore() {
@@ -33,12 +34,12 @@ public class Player {
 
     public void setScore(double score) {
         this.score.setTotalScore(score);
-        GameConfiguration.getInstance().setScore(score);
+        gameConfiuration.setScore(score);
     }
 
     public void hit(int distance){
         health.updateHealthLevel(distance);
-        GameConfiguration.getInstance().setHealth(health.getHealthLevel());
+        gameConfiuration.setHealth(health.getHealthLevel());
         if(health.getHealthLevel()<=0){
             GameStatueControl.getInstance().setGameEnded();
         }
@@ -47,6 +48,6 @@ public class Player {
     // Method changed according to the score formula.
     public void increaseScore(double efficiency, double remaining_time_on_frame){
         score.updateTotalScore(efficiency,remaining_time_on_frame);
-        GameConfiguration.getInstance().setScore(score.getTotalScore());
+        gameConfiuration.setScore(score.getTotalScore());
     }
 }
