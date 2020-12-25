@@ -13,20 +13,13 @@ public class Alpha_Atom extends Atom {
 
     public Alpha_Atom(Position position,int angle) {
         super(FinalValues.ALPHA,position,angle);
-        setEfficiency((1-(Math.abs(num_of_neutrons-num_of_protons)/num_of_protons))*stability);
+       this.setNum_of_protons(8);
+       this.setStability(0.85);
+       this.setNum_of_neutrons(7);
     }
 
-    public static double getStability() {
-        return stability;
-    }
-    public static int getNum_of_protons() {
-        return num_of_protons;
-    }
-    public int getNum_of_neutrons() {
-        return num_of_neutrons;
-    }
-
-    public void setNum_of_neutrons(int num_of_neutrons) {
-        this.num_of_neutrons = num_of_neutrons;
+    @Override
+    public double getEfficiency() {
+        return (1-(Math.abs(num_of_neutrons-num_of_protons)/num_of_protons))*stability;
     }
 }

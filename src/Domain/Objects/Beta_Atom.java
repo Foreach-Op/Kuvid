@@ -14,21 +14,13 @@ public class Beta_Atom extends Atom{
 
     public Beta_Atom(Position position,int angle) {
         super(FinalValues.BETA,position,angle);
-        setEfficiency(stability-(0.5*Math.abs(num_of_neutrons-num_of_protons)/num_of_protons));
+       this.setNum_of_protons(16);
+       this.setStability(0.9);
+       this.setNum_of_neutrons(15);
     }
 
-    public static double getStability() {
-        return stability;
+    @Override
+    public double getEfficiency() {
+        return stability-(0.5*Math.abs(num_of_neutrons-num_of_protons)/num_of_protons);
     }
-    public static int getNum_of_protons() {
-        return num_of_protons;
-    }
-    public int getNum_of_neutrons() {
-        return num_of_neutrons;
-    }
-
-    public void setNum_of_neutrons(int num_of_neutrons) {
-        this.num_of_neutrons = num_of_neutrons;
-    }
-
 }
