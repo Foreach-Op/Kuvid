@@ -3,19 +3,18 @@ package Domain.Player;
 import Domain.Functionalities.GameStatueControl;
 import Domain.Statistics.GameConfiguration;
 
-import java.io.Serializable;
-
-public class Player{
+public class Player {
+    private static Player player;
     private Health health=new Health(100.00);
     private Score score=new Score(0.00);
-    private static Player player=null;
-    private String playerName;
+    //private String playerName;
 
     private Player(){}
 
     public static Player getInstance(){
-        if(player==null)
+        if(player==null){
             player=new Player();
+        }
         return player;
     }
 
@@ -30,14 +29,6 @@ public class Player{
 
     public double getScore() {
         return score.getTotalScore();
-    }
-
-    public String getPlayerName() {
-        return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
     }
 
     public void setScore(double score) {

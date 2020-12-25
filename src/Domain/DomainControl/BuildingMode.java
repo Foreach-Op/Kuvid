@@ -112,9 +112,10 @@ public class BuildingMode {
         double time=1000.0;
         gameData.setRemainingTime(time);
 
-        Player player=Player.getInstance(); //for now playerName
-        player.setPlayerName("Mete");
-        gameData.setUsername("Mete");
+        double score=0.0;
+        gameData.setScore(score);
+        double health=100.0;
+        gameData.setHealth(health);
 
         return gameData;
     }
