@@ -15,13 +15,14 @@ public class GameData implements Serializable {
 
     //If it is loaded
     private ArrayList<GameObject> frameObjects = null;
-    //private double health;
-    //private double score;
-    private Player player;
+    private double health;
+    private double score;
+    private String username;
 
     private double remainingTime;
-    private GameObject objectInTheTrigger = null;
-    private HashMap<String, HashMap<String, Integer>> powerUps=null;
+
+    private HashMap<String,String> objectInTrigger;
+    //private HashMap<String, HashMap<String, Integer>> powerUps=null;
 
     //Always
     //If it is saved, these will be updated
@@ -46,22 +47,19 @@ public class GameData implements Serializable {
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
         this.difficulty = difficulty;
-        L = l;
+        setL(l);
         this.alphaBetaType = alphaBetaType;
     }
 
     public GameData(ArrayList<GameObject> frameObjects, double health,
-                    double score, double remainingTime, GameObject objectInTheTrigger,
-                    HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                    double score, double remainingTime, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
                     Difficulty difficulty, int l, String alphaBetaType) {
         this.frameObjects = frameObjects;
-        //this.health = health;
-        //this.score = score;
+        this.health = health;
+        this.score = score;
         this.remainingTime = remainingTime;
-        this.objectInTheTrigger = objectInTheTrigger;
-        this.powerUps = powerUps;
         this.isLoaded = isLoaded;
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
@@ -78,7 +76,6 @@ public class GameData implements Serializable {
         this.frameObjects = frameObjects;
     }
 
-    /*
     public double getHealth() {
         return health;
     }
@@ -95,7 +92,13 @@ public class GameData implements Serializable {
         this.score = score;
     }
 
-     */
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public double getRemainingTime() {
         return remainingTime;
@@ -103,22 +106,6 @@ public class GameData implements Serializable {
 
     public void setRemainingTime(double remainingTime) {
         this.remainingTime = remainingTime;
-    }
-
-    public GameObject getObjectInTheTrigger() {
-        return objectInTheTrigger;
-    }
-
-    public void setObjectInTheTrigger(GameObject objectInTheTrigger) {
-        this.objectInTheTrigger = objectInTheTrigger;
-    }
-
-    public HashMap<String, HashMap<String, Integer>> getPowerUps() {
-        return powerUps;
-    }
-
-    public void setPowerUps(HashMap<String, HashMap<String, Integer>> powerUps) {
-        this.powerUps = powerUps;
     }
 
     public boolean isLoaded() {
@@ -191,13 +178,5 @@ public class GameData implements Serializable {
 
     public void setMovementType(String movementType) {
         this.movementType = movementType;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 }

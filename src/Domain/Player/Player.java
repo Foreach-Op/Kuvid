@@ -5,13 +5,18 @@ import Domain.Statistics.GameConfiguration;
 
 import java.io.Serializable;
 
-public class Player implements Serializable {
+public class Player{
     private Health health=new Health(100.00);
     private Score score=new Score(0.00);
+    private static Player player=null;
     private String playerName;
 
-    public Player(String playerName){
-        this.playerName=playerName;
+    private Player(){}
+
+    public static Player getInstance(){
+        if(player==null)
+            player=new Player();
+        return player;
     }
 
     public double getHealth() {

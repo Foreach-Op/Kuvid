@@ -112,8 +112,9 @@ public class BuildingMode {
         double time=1000.0;
         gameData.setRemainingTime(time);
 
-        Player player=new Player("mete"); //for now playerName
-        gameData.setPlayer(player);
+        Player player=Player.getInstance(); //for now playerName
+        player.setPlayerName("Mete");
+        gameData.setUsername("Mete");
 
         return gameData;
     }

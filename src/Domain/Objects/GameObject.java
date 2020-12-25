@@ -5,7 +5,9 @@ import Domain.Statistics.GameConfiguration;
 import Domain.Utils.Position;
 import Domain.Utils.Rectangle;
 
-public abstract class GameObject {
+import java.io.Serializable;
+
+public abstract class GameObject implements Serializable {
 
     private boolean isAlive=true;
     private String type;

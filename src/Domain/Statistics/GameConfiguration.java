@@ -40,7 +40,6 @@ public class GameConfiguration {
     }
 
     public void setScore(double score){
-        //data.getPlayer().setScore(score);
         //data.setScore(score);
         staticWindowListener.onScoreChange(score);
     }
