@@ -5,10 +5,10 @@ import Domain.Utils.Position;
 
 public class Eta_Shield extends Shield{
 
-    Fireable contextObj;
+    Atom contextObj;
     public final double boost = 0.05;
     private static final int speed_reduction_percentage = 5;
-    public Eta_Shield(Fireable contextObj) {
+    public Eta_Shield(Atom contextObj) {
         super(contextObj);
         this.contextObj = contextObj;
     }

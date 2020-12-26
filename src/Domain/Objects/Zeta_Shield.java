@@ -5,10 +5,10 @@ import Domain.Utils.Position;
 
 public class Zeta_Shield extends Shield{
 
-    Fireable contextObj;
+    Atom contextObj;
     private final double boost = 0.2;
     private static final int speed_reduction_percentage = 11;
-    public Zeta_Shield(Fireable contextObj) {
+    public Zeta_Shield(Atom contextObj) {
         super(contextObj);
         this.contextObj = contextObj;
     }

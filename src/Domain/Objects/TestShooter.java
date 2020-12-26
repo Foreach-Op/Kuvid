@@ -33,7 +33,7 @@ public class TestShooter {
         System.out.println(atom.getEfficiency());
         System.out.println(atom.getVelocity().getX() + " " + atom.getVelocity().getY());
         Theta_Shield shield = new Theta_Shield(atom);
-        Eta_Shield shield2 = new Eta_Shield(shield);
+        Zeta_Shield shield2 = new Zeta_Shield(shield);
         System.out.println(shield2.getEfficiency());
         System.out.println(shield2.getVelocity().getX() + " " + shield2.getVelocity().getY());
 

@@ -5,10 +5,10 @@ import Domain.Utils.Position;
 
 public class Theta_Shield extends Shield{
 
-    Fireable contextObj;
+    Atom contextObj;
     private final double boost;
     private static final int speed_reduction_percentage = 9;
-    public Theta_Shield(Fireable contextObj) {
+    public Theta_Shield(Atom contextObj) {
         super(contextObj);
         this.contextObj = contextObj;
         boost =0.5+ Math.random()*0.1;

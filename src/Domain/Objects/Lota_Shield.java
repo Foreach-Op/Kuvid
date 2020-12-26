@@ -5,10 +5,10 @@ import Domain.Utils.Position;
 
 public class Lota_Shield extends Shield{
 
-    Fireable contextObj;
+    Atom contextObj;
     private static final int speed_reduction_percentage = 7;
     public final double boost = 0.1;
-    public Lota_Shield(Fireable contextObj){
+    public Lota_Shield(Atom contextObj){
         super(contextObj);
         this.contextObj=contextObj;
     }

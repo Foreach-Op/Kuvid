@@ -23,7 +23,7 @@ public abstract class GameObject implements Serializable {
     private boolean isCollectible;
     private String shape;
     private String rotationType;
-    private double efficiency; // used for atom
+
 
 
 
@@ -47,7 +47,6 @@ public abstract class GameObject implements Serializable {
         this.setShape(" ");
         this.rotationType =" ";
 
-        //this.rect=new Rectangle(position,widthCoef,heightCoef,angle);
     }
 
     public boolean isFallable() {
@@ -154,6 +153,10 @@ public abstract class GameObject implements Serializable {
         isCollectible = collectible;
     }
 
+    public void setSubType(String subType) {
+        this.subType = subType;
+    }
+
 
     public String getShape() {
         return shape;
@@ -171,13 +174,6 @@ public abstract class GameObject implements Serializable {
         this.rotationType = rotationType;
     }
 
-    public double getEfficiency() {
-        return efficiency;
-    }
-
-    public void setEfficiency(double efficiency) {
-        this.efficiency = efficiency;
-    }
     /*
     public Rectangle getRectangle() {
         return rect;

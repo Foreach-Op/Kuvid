@@ -4,13 +4,13 @@ import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
 
-public abstract class Atom extends GameObject implements Fireable {
+public abstract class Atom extends GameObject {
     private double stability;
 
     private int num_of_protons;
 
     private int num_of_neutrons;
-
+    private double efficiency; // used for atom
 
     public Atom(String subType, Position position, int angle) {
         super(FinalValues.ATOM, subType, position,angle,false);
@@ -18,7 +18,7 @@ public abstract class Atom extends GameObject implements Fireable {
         setVelocityX(getVelocityX()*getL()/50);
         setHeight((int) (getL()/5));
         setWidth((int) (getL()/5));
-        //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
+
 
     }
 
@@ -44,5 +44,13 @@ public abstract class Atom extends GameObject implements Fireable {
 
     public void setNum_of_neutrons(int num_of_neutrons) {
         this.num_of_neutrons = num_of_neutrons;
+    }
+
+    public double getEfficiency() {
+        return efficiency;
+    }
+
+    public void setEfficiency(double efficiency) {
+        this.efficiency = efficiency;
     }
 }
