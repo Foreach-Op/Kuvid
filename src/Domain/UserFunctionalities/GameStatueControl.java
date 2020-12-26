@@ -1,4 +1,4 @@
-package Domain.Functionalities;
+package Domain.UserFunctionalities;
 
 public class GameStatueControl {
 

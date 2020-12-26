@@ -1,14 +1,13 @@
 package Domain.DomainControl;
 
-import Domain.Functionalities.GameStatueControl;
+import Domain.UserFunctionalities.GameStatueControl;
 import Domain.Objects.*;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Statistics.GameConfiguration;
 import Domain.Collision.CollisionHandler;
 import Domain.Movement.MovementHandler;
-import Domain.ObjectCreator.ObjectCreationHandler;
+import Domain.ObjectCreation.ObjectCreationHandler;
 import Domain.ShooterFunctions.ShooterHandler;
-import Domain.Utils.Position;
 
 import java.util.ArrayList;
 import java.util.HashMap;

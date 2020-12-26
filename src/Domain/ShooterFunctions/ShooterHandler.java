@@ -1,7 +1,7 @@
 package Domain.ShooterFunctions;
 
-import Domain.ObjectCreator.ObjectCreationHandler;
-import Domain.ObjectCreator.ObjectFactory;
+import Domain.ObjectCreation.ObjectCreationHandler;
+import Domain.ObjectCreation.ObjectFactory;
 import Domain.Objects.Alpha_Atom;
 import Domain.Objects.GameObject;
 import Domain.Objects.ObjectListener;

@@ -1,8 +1,7 @@
 package Domain.DomainControl;
 
-import Domain.Functionalities.Load;
+import Domain.UserFunctionalities.Load;
 import Domain.Statistics.GameConfiguration;
-import Domain.Player.Player;
 import Domain.Statistics.GameData;
 import Domain.Utils.*;
 

@@ -1,4 +1,4 @@
-package Domain.Functionalities;
+package Domain.UserFunctionalities;
 
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;

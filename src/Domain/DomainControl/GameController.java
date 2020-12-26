@@ -1,7 +1,7 @@
 package Domain.DomainControl;
 
 import Domain.Blend.Blender;
-import Domain.Functionalities.GameStatueControl;
+import Domain.UserFunctionalities.GameStatueControl;
 
 import java.util.HashMap;
 

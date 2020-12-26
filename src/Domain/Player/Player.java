@@ -1,6 +1,6 @@
 package Domain.Player;
 
-import Domain.Functionalities.GameStatueControl;
+import Domain.UserFunctionalities.GameStatueControl;
 import Domain.Statistics.GameConfiguration;
 
 public class Player {
