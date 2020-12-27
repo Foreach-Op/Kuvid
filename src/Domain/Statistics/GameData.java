@@ -34,8 +34,8 @@ public class GameData implements Serializable {
     private String alphaBetaType;
     private String movementType;
 
-    private int gameScreenWidth=1000;
-    private int gameScreenHeight=1000;
+    private int gameScreenWidth;
+    private int gameScreenHeight;
 
     public GameData(){}
 

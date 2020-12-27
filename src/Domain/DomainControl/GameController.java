@@ -1,6 +1,7 @@
 package Domain.DomainControl;
 
 import Domain.Blend.Blender;
+import Domain.ShooterFunctions.ShooterHandler;
 import Domain.UserFunctionalities.GameStatueControl;
 
 import java.util.HashMap;
@@ -120,5 +121,10 @@ public class GameController {
 
     public boolean isGamePaused(){
         return statueControl.isGamePaused();
+    }
+
+
+    public void addShield(String shieldtype){
+        runningMode.shooterHandler.addShield(shieldtype);
     }
 }
