@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectCreationHandler {
 
-    private final CopyOnWriteArrayList<GameObject> frameObjects;
+    private final ArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
     private final HashMap<String, HashMap<String, Integer>> remainingObjects;
     private final int L;
@@ -20,7 +20,7 @@ public class ObjectCreationHandler {
     private final int gamescreenwidth;
     //Timer timer;
 
-    public ObjectCreationHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
+    public ObjectCreationHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
         //this.timer=new Timer();

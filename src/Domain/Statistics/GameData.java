@@ -2,6 +2,7 @@ package Domain.Statistics;
 
 import Domain.Objects.*;
 import Domain.Player.Player;
+import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Difficulty;
 
 import java.io.FileOutputStream;
@@ -36,6 +37,8 @@ public class GameData implements Serializable {
 
     private int gameScreenWidth;
     private int gameScreenHeight;
+
+    public Shooter shooter;
 
     public GameData(){}
 
@@ -189,6 +192,14 @@ public class GameData implements Serializable {
 
     public void setMovementType(String movementType) {
         this.movementType = movementType;
+    }
+
+    public Shooter getShooter() {
+        return shooter;
+    }
+
+    public void setShooter(Shooter shooter) {
+        this.shooter = shooter;
     }
 
     /*

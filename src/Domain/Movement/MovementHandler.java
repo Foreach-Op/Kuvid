@@ -3,16 +3,17 @@ package Domain.Movement;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MovementHandler {
 
-    private final CopyOnWriteArrayList<GameObject> frameObjects;
+    private final ArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
 
 
-    public MovementHandler(CopyOnWriteArrayList<GameObject> frameObjects,ObjectListener frame) {
+    public MovementHandler(ArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
     }

@@ -46,8 +46,6 @@ public class Shooter extends GameObject {
         numOfBullets = getAmmunition();
     }
 
-
-
     public GameObject getObjectInTrigger() {
         return objectInTrigger;
     }
@@ -57,30 +55,7 @@ public class Shooter extends GameObject {
         //this.currentBulletSubtype=objectInTrigger.getSubType();
         this.objectInTrigger = objectInTrigger;
     }
-    /*
-    public String getCurrentBulletType() {
-        return currentBulletType;
-    }
 
-    public String getCurrentBulletSubtype() {
-        return currentBulletSubtype;
-    }
-
-    public void setCurrentBulletType(String currentBulletType) {
-        this.currentBulletType = currentBulletType;
-    }
-
-    public void setCurrentBulletSubtype(String currentBulletSubtype) {
-        this.currentBulletSubtype = currentBulletSubtype;
-    }
-
-    public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
-        numOfBullets.get(currentBulletType).replace(currentBulletSubtype,
-                numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
-        GameConfiguration.getInstance().setAmmunition(numOfBullets);
-        //setAmmunition(numOfBullets);
-    }
-     */
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
         numOfBullets.get(objectInTrigger.getType()).replace(objectInTrigger.getSubType(),
                 numOfBullets.get(objectInTrigger.getType()).get(objectInTrigger.getSubType())-1);

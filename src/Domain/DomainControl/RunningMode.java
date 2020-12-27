@@ -20,7 +20,7 @@ public class RunningMode {
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
-    CopyOnWriteArrayList<GameObject> frameObjects2=new CopyOnWriteArrayList<>();
+    ArrayList<GameObject> frameObjects2=new ArrayList<>();
 
 
     private HashMap<String, HashMap<String, Integer>> objectsToBeProduced = new HashMap<>();

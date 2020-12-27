@@ -6,16 +6,17 @@ import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 import Domain.Utils.Rectangle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CollisionHandler {
 
-    private final CopyOnWriteArrayList<GameObject> frameObjects;
+    private final ArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
     private HashMap<String, HashMap<String, CollisionStrategy>> strategyMap;
 
-    public CollisionHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
+    public CollisionHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects = frameObjects;
         this.frame = frame;
         initializeStrategyMap();

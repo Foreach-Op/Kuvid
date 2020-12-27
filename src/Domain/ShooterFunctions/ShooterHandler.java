@@ -33,6 +33,7 @@ public class ShooterHandler {
         int y=(int) shooter.getY()-shooter.getHeight()/4;
         shooter.setObjectInTrigger(new Alpha_Atom(new Position(x,y),90));
         frameListener.onCreate(shooter);
+        GameConfiguration.getInstance().getData().setShooter(shooter);
         return shooter;
     }
 
