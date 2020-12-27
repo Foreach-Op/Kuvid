@@ -56,11 +56,20 @@ public class GameConfiguration {
     }
 
     public void setRemainingObjects(String type,String subtype){
-        getData().getRemainingObjects().get(type).replace(subtype,getData().getRemainingObjects().get(type).get(subtype)-1);
+        data.getRemainingObjects().get(type).replace(subtype,getData().getRemainingObjects().get(type).get(subtype)-1);
     }
 
     public HashMap<String, HashMap<String, Integer>> getRemainingObjects(){
-        return getData().getRemainingObjects();
+        return data.getRemainingObjects();
+    }
+
+    public void setRemainingSheild(String shieldType){
+        data.getRemainingShield().replace(shieldType,getData().getRemainingShield().get(shieldType)-1);
+        staticWindowListener.shieldChangeListener(getData().getRemainingShield());
+    }
+
+    public int getRemainingShield(String shieldType){
+        return getData().getRemainingShield().get(shieldType);
     }
 
 

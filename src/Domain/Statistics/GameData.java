@@ -14,24 +14,24 @@ import java.util.HashMap;
 
 public class GameData implements Serializable {
 
-    //If it is loaded
     private ArrayList<GameObject> frameObjects = null;
+    private ArrayList<GameObject> shieldedAtoms = null;
     private double health;
     private double score;
-    //private Player player;
 
     private double remainingTime;
     private GameObject objectInTheTrigger = null;
     private HashMap<String, HashMap<String, Integer>> powerUps=null;
 
-    //Always
-    //If it is saved, these will be updated
     private boolean isLoaded = false;
     private HashMap<String, HashMap<String, Integer>> ammunition;
     private HashMap<String, HashMap<String, Integer>> remainingObjects;
-    //Even if it is saved, these will be same
+    private HashMap<String,Integer> remainingShield;
+
+
+
     private Difficulty difficulty;
-    public static int L;/////// make it visible
+    public static int L;
     private String alphaBetaType;
     private String movementType;
 
@@ -202,14 +202,19 @@ public class GameData implements Serializable {
         this.shooter = shooter;
     }
 
-    /*
-    public Player getPlayer() {
-        return player;
+    public HashMap<String, Integer> getRemainingShield() {
+        return remainingShield;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setRemainingShield(HashMap<String, Integer> remainingShield) {
+        this.remainingShield = remainingShield;
     }
 
-     */
+    public ArrayList<GameObject> getShieldedAtoms() {
+        return shieldedAtoms;
+    }
+
+    public void setShieldedAtoms(ArrayList<GameObject> shieldedAtoms) {
+        this.shieldedAtoms = shieldedAtoms;
+    }
 }
