@@ -212,4 +212,9 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         textAreaGammaAtomAmount.setText(String.valueOf(map.get(FinalValues.ATOM).get(FinalValues.GAMMA)));
         textAreaSigmaAtomAmount.setText(String.valueOf(map.get(FinalValues.ATOM).get(FinalValues.SIGMA)));
     }
+
+    @Override
+    public void shieldChangeListener(HashMap<String, Integer> remainingShields) {
+        // String = FinalValues.ETA, FinalValues.LOTA, FinalValues.THETA, FinalValues.ZETA
+    }
 }

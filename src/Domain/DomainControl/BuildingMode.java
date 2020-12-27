@@ -1,10 +1,12 @@
 package Domain.DomainControl;
 
+import Domain.Objects.GameObject;
 import Domain.UserFunctionalities.Load;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
 import Domain.Utils.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildingMode {
@@ -116,6 +118,14 @@ public class BuildingMode {
         double health=100.0;
         gameData.setHealth(health);
 
+        HashMap<String,Integer> remainingShield= new HashMap<>();
+        remainingShield.put(FinalValues.ETA,10);
+        remainingShield.put(FinalValues.LOTA,10);
+        remainingShield.put(FinalValues.THETA,10);
+        remainingShield.put(FinalValues.ZETA,10);
+        gameData.setRemainingShield(remainingShield);
+
+        gameData.setShieldedAtoms(new ArrayList<>());
         return gameData;
     }
 }
