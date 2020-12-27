@@ -12,8 +12,8 @@ import static Domain.Utils.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
     private HashMap<String, HashMap<String, Integer>>  numOfBullets;
-    private String currentBulletType = null;
-    private String currentBulletSubtype = null;//bullet of the shooter.
+    //private String currentBulletType = null;
+    //private String currentBulletSubtype = null;//bullet of the shooter.
     private GameObject objectInTrigger=null;
     public Rectangle rectangle;
 
@@ -53,11 +53,11 @@ public class Shooter extends GameObject {
     }
 
     public void setObjectInTrigger(GameObject objectInTrigger) {
-        this.currentBulletType=objectInTrigger.getType();
-        this.currentBulletSubtype=objectInTrigger.getSubType();
+        //this.currentBulletType=objectInTrigger.getType();
+        //this.currentBulletSubtype=objectInTrigger.getSubType();
         this.objectInTrigger = objectInTrigger;
     }
-
+    /*
     public String getCurrentBulletType() {
         return currentBulletType;
     }
@@ -77,6 +77,13 @@ public class Shooter extends GameObject {
     public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
         numOfBullets.get(currentBulletType).replace(currentBulletSubtype,
                 numOfBullets.get(currentBulletType).get(currentBulletSubtype)-1);
+        GameConfiguration.getInstance().setAmmunition(numOfBullets);
+        //setAmmunition(numOfBullets);
+    }
+     */
+    public void reduceTheBullet(){ // reduce the number of bullet in the fire operation
+        numOfBullets.get(objectInTrigger.getType()).replace(objectInTrigger.getSubType(),
+                numOfBullets.get(objectInTrigger.getType()).get(objectInTrigger.getSubType())-1);
         GameConfiguration.getInstance().setAmmunition(numOfBullets);
         //setAmmunition(numOfBullets);
     }

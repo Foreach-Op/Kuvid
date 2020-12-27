@@ -40,7 +40,6 @@ public class ShooterHandler {
 
         double currentX=shooter.getX();
         double currentY=shooter.getY();
-        //şu anda her talepte L kadar gidecek
         double xPos=0;
 
         if (direction.equals("right") && gameData.getGameScreenWidth()-gameData.getL()>currentX+shooter.getVelocityX()){
@@ -59,12 +58,14 @@ public class ShooterHandler {
     public void fire(ObjectCreationHandler objectCreationHandler){
         int x=(int) shooter.getX()+shooter.getWidth()/3;
         int y=(int) shooter.getY()-shooter.getHeight()/4;
-        if(shooter.getCurrentBulletType().equals("Powerup")){
+        if(shooter.getObjectInTrigger().getType().equals("Powerup")){
             x=(int) shooter.getX()+0;
             y=(int) shooter.getY()-shooter.getHeight();
         }
-
-        GameObject fired=objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
+        shooter.getObjectInTrigger().setX(x);
+        shooter.getObjectInTrigger().setY(y);
+        //GameObject fired=objectCreationHandler.createGameObject(shooter.getCurrentBulletType(),shooter.getCurrentBulletSubtype(),new Position(x,y),false);
+        GameObject fired=objectCreationHandler.createGameObject(shooter.getObjectInTrigger());
         fired.setAngle(90-shooter.getRotationAngle());
         shooter.reduceTheBullet();
         changeBullet();
@@ -94,7 +95,7 @@ public class ShooterHandler {
         int x=(int) shooter.getX()+shooter.getWidth()/3;
         int y=(int) shooter.getY()-shooter.getHeight()/4;
         GameObject object=ObjectFactory.getInstance().createObject(ATOM,subtype,new Position(x,y),false);
-        shooter.setCurrentBulletSubtype(subtype);
+        //shooter.setCurrentBulletSubtype(subtype);
         shooter.setObjectInTrigger(object);
         //shooter.setCurrentBulletType(ATOM);
         //shooter.setCurrentBulletSubtype(subtype);
@@ -104,8 +105,8 @@ public class ShooterHandler {
 
     public void changeBulletToPowerup(String subtype){ //change the bullet to desired type powerup object
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
-            shooter.setCurrentBulletType(FinalValues.POWERUP);
-            shooter.setCurrentBulletSubtype(subtype);
+            //shooter.setCurrentBulletType(FinalValues.POWERUP);
+            //shooter.setCurrentBulletSubtype(subtype);
             int x=(int) shooter.getX();
             int y=(int) shooter.getY()-shooter.getHeight()/2;
             GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,new Position(x,y),false);
@@ -116,16 +117,23 @@ public class ShooterHandler {
 
 
     public void addShield(String shieldType){
+        GameObject shieldedObj;
         switch (shieldType){
             case "Eta":
-                GameObject shieldedObj=new Eta_Shield((Atom)shooter.getObjectInTrigger());
+                shieldedObj=new Eta_Shield((Atom)shooter.getObjectInTrigger());
                 shooter.setObjectInTrigger(shieldedObj);
                 break;
             case "Lota":
+                shieldedObj=new Lota_Shield((Atom)shooter.getObjectInTrigger());
+                shooter.setObjectInTrigger(shieldedObj);
                 break;
             case "Theta":
+                shieldedObj=new Theta_Shield((Atom)shooter.getObjectInTrigger());
+                shooter.setObjectInTrigger(shieldedObj);
                 break;
             case "Zeta":
+                shieldedObj=new Zeta_Shield((Atom)shooter.getObjectInTrigger());
+                shooter.setObjectInTrigger(shieldedObj);
                 break;
         }
 
