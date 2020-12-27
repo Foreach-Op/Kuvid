@@ -2,9 +2,7 @@ package Domain.ShooterFunctions;
 
 import Domain.ObjectCreation.ObjectCreationHandler;
 import Domain.ObjectCreation.ObjectFactory;
-import Domain.Objects.Alpha_Atom;
-import Domain.Objects.GameObject;
-import Domain.Objects.ObjectListener;
+import Domain.Objects.*;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
 import Domain.Utils.FinalValues;
@@ -96,6 +94,7 @@ public class ShooterHandler {
         int x=(int) shooter.getX()+shooter.getWidth()/3;
         int y=(int) shooter.getY()-shooter.getHeight()/4;
         GameObject object=ObjectFactory.getInstance().createObject(ATOM,subtype,new Position(x,y),false);
+        shooter.setCurrentBulletSubtype(subtype);
         shooter.setObjectInTrigger(object);
         //shooter.setCurrentBulletType(ATOM);
         //shooter.setCurrentBulletSubtype(subtype);
@@ -113,5 +112,22 @@ public class ShooterHandler {
             shooter.setObjectInTrigger(object);
             frameListener.onShooterTriggerBulletChange();
         }
+    }
+
+
+    public void addShield(String shieldType){
+        switch (shieldType){
+            case "Eta":
+                GameObject shieldedObj=new Eta_Shield((Atom)shooter.getObjectInTrigger());
+                shooter.setObjectInTrigger(shieldedObj);
+                break;
+            case "Lota":
+                break;
+            case "Theta":
+                break;
+            case "Zeta":
+                break;
+        }
+
     }
 }

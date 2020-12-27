@@ -12,9 +12,8 @@ public abstract class GameObject implements Serializable {
     private boolean isAlive=true;
     private String type;
     private String subType;
-    private Rectangle rect;
     private Position currentPosition;
-    private final int L = GameConfiguration.getInstance().getData().getL();;
+    private final int L = GameConfiguration.getInstance().getData().getL();
     private int height;
     private int width;
     private Position velocity;
@@ -173,16 +172,5 @@ public abstract class GameObject implements Serializable {
     public void setRotationType(String rotationType) {
         this.rotationType = rotationType;
     }
-
-    /*
-    public Rectangle getRectangle() {
-        return rect;
-    }
-
-    public void setRectangle(Rectangle r) {
-        this.rect = r;
-    }
-
-     */
 
 }

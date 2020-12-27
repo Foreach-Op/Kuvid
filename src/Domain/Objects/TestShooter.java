@@ -38,5 +38,6 @@ public class TestShooter {
         System.out.println(shield2.getVelocity().getX() + " " + shield2.getVelocity().getY());
 
 
+
     }
 }
