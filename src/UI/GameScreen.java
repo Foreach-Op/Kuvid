@@ -65,20 +65,21 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PICK_ATOM.getValue(),0), "pick atom");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.BLEND.getValue(),0), "blend");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.PAUSE.getValue(),0), "pause");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.RESUME.getValue(),0), "resume");
-
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("S"), "save");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke("L"), "load");
-
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), 0), "atom 1");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), 0), "atom 2");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), 0), "atom 3");
-        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), 0), "atom 4");
 
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 1");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 2");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 3");
         contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.ALT_DOWN_MASK), "choose powerup 4");
+
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), KeyEvent.SHIFT_DOWN_MASK), "eta shield");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), KeyEvent.SHIFT_DOWN_MASK), "lota shield");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), KeyEvent.SHIFT_DOWN_MASK), "theta shield");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), KeyEvent.SHIFT_DOWN_MASK), "zeta shield");
+
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE1.getValue(), 0), "atom 1");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE2.getValue(), 0), "atom 2");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE3.getValue(), 0), "atom 3");
+        contentPane.getInputMap(IFW).put(KeyStroke.getKeyStroke(HotKeys.ATOM_TYPE4.getValue(), 0), "atom 4");
 
         contentPane.getActionMap().put("move right", new GameActionHandler("move right", gameController));
         contentPane.getActionMap().put("move left", new GameActionHandler("move left", gameController));
@@ -88,11 +89,16 @@ public class GameScreen extends JFrame implements ObjectListener {
         contentPane.getActionMap().put("fire", new GameActionHandler("fire", gameController));
         contentPane.getActionMap().put("blend", new GameActionHandler("blend", gameController));
         contentPane.getActionMap().put("pause", new GameActionHandler("pause", gameController));
-        contentPane.getActionMap().put("resume", new GameActionHandler("resume", gameController));
+
         contentPane.getActionMap().put("choose powerup 1", new GameActionHandler("choose powerup 1", gameController));
         contentPane.getActionMap().put("choose powerup 2", new GameActionHandler("choose powerup 2", gameController));
         contentPane.getActionMap().put("choose powerup 3", new GameActionHandler("choose powerup 3", gameController));
         contentPane.getActionMap().put("choose powerup 4", new GameActionHandler("choose powerup 4", gameController));
+
+        contentPane.getActionMap().put("eta shield", new GameActionHandler("eta shield", gameController));
+        contentPane.getActionMap().put("lota shield", new GameActionHandler("lota shield", gameController));
+        contentPane.getActionMap().put("theta shield", new GameActionHandler("theta shield", gameController));
+        contentPane.getActionMap().put("zeta shield", new GameActionHandler("zeta shield", gameController));
 
         contentPane.getActionMap().put("atom 1", new GameActionHandler("atom 1", gameController));
         contentPane.getActionMap().put("atom 2", new GameActionHandler("atom 2", gameController));

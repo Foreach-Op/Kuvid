@@ -15,12 +15,9 @@ public enum HotKeys {
     ATOM_TYPE3(KeyEvent.VK_3),
     ATOM_TYPE4(KeyEvent.VK_4),
     // ALT + ATOM TYPE -> PICKING POWERUP
+    // ALT + ATOM TYPE -> ADD SHIELD (1: Eta, 2: Lota, 3: Theta, 4: Zeta)
 
-    PAUSE(KeyEvent.VK_ESCAPE),
-    RESUME(KeyEvent.VK_R),
-    SAVE(KeyEvent.VK_S),
-    LOAD(KeyEvent.VK_L);
-
+    PAUSE(KeyEvent.VK_ESCAPE);
 
     private int id;
 
