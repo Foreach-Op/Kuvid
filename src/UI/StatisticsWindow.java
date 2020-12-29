@@ -1,9 +1,11 @@
 package UI;
 
+import Domain.DomainControl.GameController;
 import Domain.Statistics.GameData;
 
 import Domain.Statistics.StaticWindowListener;
 import Domain.Utils.FinalValues;
+import Domain.Utils.GameActionHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,14 +56,21 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private int width;
     private int height;
 
+    GameController gameController;
+
     public StatisticsWindow(int width, int height) {
         this.width = width;
         this.height = height;
+
         CreateUIElements();
         SetPowerupIcons();
         SetAtomIcons();
         SetFonts();
         ActionListener();
+    }
+
+    public void SetGameController(GameController gameController){
+        this.gameController = gameController;
     }
 
     private void CreateUIElements() {
@@ -191,52 +200,52 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     private void ActionListener(){
-        powerupSigma.addActionListener(new ActionListener() {
+        powerupAlpha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Alpha selected");
+                new GameActionHandler("choose powerup 1", gameController).PerformAction();
             }
         });
         powerupBeta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Beta selected");
-            }
-        });
-        powerupAlpha.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Gamma selected");
+                new GameActionHandler("choose powerup 2", gameController).PerformAction();
             }
         });
         powerupGamma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Sigma selected");
+                new GameActionHandler("choose powerup 3", gameController).PerformAction();
+            }
+        });
+        powerupSigma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GameActionHandler("choose powerup 4", gameController).PerformAction();
             }
         });
         buttonEtaShield.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new GameActionHandler("eta shield", gameController).PerformAction();
             }
         });
         buttonLotaShield.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new GameActionHandler("lota shield", gameController).PerformAction();
             }
         });
         buttonThetaShield.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new GameActionHandler("theta shield", gameController).PerformAction();
             }
         });
         buttonZetaShield.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                new GameActionHandler("zeta shield", gameController).PerformAction();
             }
         });
     }

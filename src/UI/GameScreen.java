@@ -30,6 +30,7 @@ public class GameScreen extends JFrame implements ObjectListener {
     public void InitializeGameScreen(GameController gameController){
         this.gameController = gameController;
         statisticsWindow.SetData(GameConfiguration.getInstance().getData());
+        statisticsWindow.SetGameController(gameController);
         GameActionListener();
     }
 

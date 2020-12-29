@@ -72,6 +72,47 @@ public class GameActionHandler extends AbstractAction {
             case "choose powerup 4":
                 gameController.PickPowerup("Sigma");
                 break;
+            case "eta shield":
+                gameController.addShield(FinalValues.ETA);
+                break;
+            case "lota shield":
+                gameController.addShield(FinalValues.LOTA);
+                break;
+            case "theta shield":
+                gameController.addShield(FinalValues.THETA);
+                break;
+            case "zeta shield":
+                gameController.addShield(FinalValues.ZETA);
+                break;
+        }
+    }
+
+    public void PerformAction(){
+        switch (action){
+            case "choose powerup 1":
+                gameController.PickPowerup("Alpha");
+                break;
+            case "choose powerup 2":
+                gameController.PickPowerup("Beta");
+                break;
+            case "choose powerup 3":
+                gameController.PickPowerup("Gamma");
+                break;
+            case "choose powerup 4":
+                gameController.PickPowerup("Sigma");
+                break;
+            case "eta shield":
+                gameController.addShield(FinalValues.ETA);
+                break;
+            case "lota shield":
+                gameController.addShield(FinalValues.LOTA);
+                break;
+            case "theta shield":
+                gameController.addShield(FinalValues.THETA);
+                break;
+            case "zeta shield":
+                gameController.addShield(FinalValues.ZETA);
+                break;
         }
     }
 }
