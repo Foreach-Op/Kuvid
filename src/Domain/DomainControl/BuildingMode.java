@@ -110,19 +110,20 @@ public class BuildingMode {
         String movementType = configHash.get("fallingType");
         gameData.setMovementType(movementType);
 
-        double time=1000.0;
+        double time = 1000.0;
         gameData.setRemainingTime(time);
 
-        double score=0.0;
+        double score = 0.0;
         gameData.setScore(score);
-        double health=100.0;
+
+        double health = 100.0;
         gameData.setHealth(health);
 
-        HashMap<String,Integer> remainingShield= new HashMap<>();
-        remainingShield.put(FinalValues.ETA,10);
-        remainingShield.put(FinalValues.LOTA,10);
-        remainingShield.put(FinalValues.THETA,10);
-        remainingShield.put(FinalValues.ZETA,10);
+        HashMap<String, Integer> remainingShield = new HashMap<>();
+        remainingShield.put(FinalValues.ETA, 10);
+        remainingShield.put(FinalValues.LOTA, 10);
+        remainingShield.put(FinalValues.THETA, 10);
+        remainingShield.put(FinalValues.ZETA, 10);
         gameData.setRemainingShield(remainingShield);
 
         gameData.setShieldedAtoms(new ArrayList<>());

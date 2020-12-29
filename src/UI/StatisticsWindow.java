@@ -42,11 +42,17 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     private JTextArea textAreaSigmaAtomAmount;
     private JLabel atomIconBeta;
     private JTextArea textAreaBetaAtomAmount;
+    private JButton buttonEtaShield;
+    private JTextArea textAreaEtaShieldAmount;
+    private JButton buttonLotaShield;
+    private JButton buttonThetaShield;
+    private JButton buttonZetaShield;
+    private JTextArea textAreaLotaShieldAmount;
+    private JTextArea textAreaThetaShieldAmount;
+    private JTextArea textAreaZetaShieldAmount;
 
     private int width;
     private int height;
-
-    private Font defaultFont = new Font("Text Me One", Font.PLAIN, 36);
 
     public StatisticsWindow(int width, int height) {
         this.width = width;
@@ -60,34 +66,55 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     private void CreateUIElements() {
         panelMain = new JPanel();
-        panelMain.setBackground(Color.LIGHT_GRAY);
+        panelMain.setOpaque(true);
 
         panelMain.add(panelGameInfo);
-        panelGameInfo.setPreferredSize(new Dimension(width-20, height/6));
+        panelGameInfo.setPreferredSize(new Dimension(width-10, ScreenInfo.textFont.getSize()*5));
 
         panelMain.add(panelPowerupInfo);
-        panelPowerupInfo.setPreferredSize(new Dimension(width-20, height/3));
+        panelPowerupInfo.setPreferredSize(new Dimension(width-10, height*3/9));
 
         panelMain.add(panelAtomInfo);
-        panelAtomInfo.setPreferredSize(new Dimension(width-20, height/2));
+        panelAtomInfo.setPreferredSize(new Dimension(width-10, height*4/9));
 
         panelMain.setVisible(true);
     }
 
     private void SetFonts(){
-        textAreaScore.setFont(defaultFont);
-        textAreaTime.setFont(defaultFont);
-        textAreaHealth.setFont(defaultFont);
+        textAreaStaticScore.setFont(ScreenInfo.textFont);
+        textAreaScore.setFont(ScreenInfo.textFont);
 
-        textAreaAlphaPowerupAmount.setFont(defaultFont);
-        textAreaBetaPowerupAmount.setFont(defaultFont);
-        textAreaGammaPowerupAmount.setFont(defaultFont);
-        textAreaSigmaPowerupAmount.setFont(defaultFont);
+        textAreaTime.setFont(ScreenInfo.textFont);
+        textAreaStaticTime.setFont(ScreenInfo.textFont);
 
-        textAreaAlphaAtomAmount.setFont(defaultFont);
-        textAreaBetaAtomAmount.setFont(defaultFont);
-        textAreaGammaAtomAmount.setFont(defaultFont);
-        textAreaSigmaAtomAmount.setFont(defaultFont);
+        textAreaHealth.setFont(ScreenInfo.textFont);
+        textAreaStaticHealth.setFont(ScreenInfo.textFont);
+
+        textAreaAlphaPowerupAmount.setFont(ScreenInfo.textFont);
+        textAreaBetaPowerupAmount.setFont(ScreenInfo.textFont);
+        textAreaGammaPowerupAmount.setFont(ScreenInfo.textFont);
+        textAreaSigmaPowerupAmount.setFont(ScreenInfo.textFont);
+
+        buttonEtaShield.setFont(ScreenInfo.textFont);
+        buttonEtaShield.setBackground(ScreenInfo.buttonBackgroundColor);
+        textAreaEtaShieldAmount.setFont(ScreenInfo.textFont);
+
+        textAreaLotaShieldAmount.setFont(ScreenInfo.textFont);
+        buttonLotaShield.setBackground(ScreenInfo.buttonBackgroundColor);
+        buttonLotaShield.setFont(ScreenInfo.textFont);
+
+        textAreaThetaShieldAmount.setFont(ScreenInfo.textFont);
+        buttonThetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
+        buttonThetaShield.setFont(ScreenInfo.textFont);
+
+        textAreaZetaShieldAmount.setFont(ScreenInfo.textFont);
+        buttonZetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
+        buttonZetaShield.setFont(ScreenInfo.textFont);
+
+        textAreaAlphaAtomAmount.setFont(ScreenInfo.textFont);
+        textAreaBetaAtomAmount.setFont(ScreenInfo.textFont);
+        textAreaGammaAtomAmount.setFont(ScreenInfo.textFont);
+        textAreaSigmaAtomAmount.setFont(ScreenInfo.textFont);
     }
 
     private void SetPowerupIcons(){
@@ -152,6 +179,11 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         textAreaGammaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.GAMMA)));
         textAreaSigmaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.SIGMA)));
 
+        textAreaEtaShieldAmount.setText(String.valueOf(gameData.getRemainingShield().get(FinalValues.ETA)));
+        textAreaLotaShieldAmount.setText(String.valueOf(gameData.getRemainingShield().get(FinalValues.LOTA)));
+        textAreaThetaShieldAmount.setText(String.valueOf(gameData.getRemainingShield().get(FinalValues.THETA)));
+        textAreaZetaShieldAmount.setText(String.valueOf(gameData.getRemainingShield().get(FinalValues.ZETA)));
+
         textAreaAlphaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.ALPHA)));
         textAreaBetaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.BETA)));
         textAreaGammaAtomAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.ATOM).get(FinalValues.GAMMA)));
@@ -181,6 +213,30 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Sigma selected");
+            }
+        });
+        buttonEtaShield.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        buttonLotaShield.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        buttonThetaShield.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        buttonZetaShield.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
@@ -215,6 +271,9 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     @Override
     public void shieldChangeListener(HashMap<String, Integer> remainingShields) {
-        // String = FinalValues.ETA, FinalValues.LOTA, FinalValues.THETA, FinalValues.ZETA
+        textAreaEtaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.ETA)));
+        textAreaLotaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.LOTA)));
+        textAreaThetaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.THETA)));
+        textAreaZetaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.ZETA)));
     }
 }

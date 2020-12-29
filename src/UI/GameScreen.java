@@ -19,9 +19,9 @@ public class GameScreen extends JFrame implements ObjectListener {
     private GameController gameController;
     private GamePanel gamePanel;
 
-    private static final int STATISTICS_WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width / 5;
-    public final int GAME_SCREEN_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width - STATISTICS_WINDOW_WIDTH;
-    public static final int GAME_SCREEN_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+    private static final int STATISTICS_WINDOW_WIDTH = ScreenInfo.WINDOW_WIDTH / 4;
+    public final int GAME_SCREEN_WIDTH = ScreenInfo.WINDOW_WIDTH - STATISTICS_WINDOW_WIDTH;
+    public static final int GAME_SCREEN_HEIGHT = ScreenInfo.WINDOW_HEIGHT;
 
     public GameScreen() {
         CreateUIElements();
@@ -35,7 +35,7 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     private void CreateUIElements() {
         gameScreen = new JFrame("KUVID GAME");
-        gameScreen.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+        gameScreen.setSize(ScreenInfo.WINDOW_WIDTH, ScreenInfo.WINDOW_HEIGHT);
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameScreen.setResizable(false);
 

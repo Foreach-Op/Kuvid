@@ -28,8 +28,6 @@ public class GameData implements Serializable {
     private HashMap<String, HashMap<String, Integer>> remainingObjects;
     private HashMap<String,Integer> remainingShield;
 
-
-
     private Difficulty difficulty;
     public static int L;
     private String alphaBetaType;
