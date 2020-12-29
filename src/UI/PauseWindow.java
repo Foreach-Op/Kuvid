@@ -13,7 +13,7 @@ public class PauseWindow {
     private JPanel panelMain;
     private JButton buttonResume;
     private JButton buttonRestart;
-    private JButton buttonSettings;
+    private JButton buttonOptions;
     private JButton buttonMainMenu;
     private JButton buttonExit;
     private JButton buttonSave;
@@ -48,7 +48,7 @@ public class PauseWindow {
         buttonSave.setFont(buttonFont);
         buttonLoad.setFont(buttonFont);
         buttonRestart.setFont(buttonFont);
-        buttonSettings.setFont(buttonFont);
+        buttonOptions.setFont(buttonFont);
         buttonMainMenu.setFont(buttonFont);
         buttonExit.setFont(buttonFont);
     }
@@ -87,10 +87,10 @@ public class PauseWindow {
             }
         });
 
-        buttonSettings.addActionListener(new ActionListener() {
+        buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SettingsWindow();
+                new OptionsWindow();
             }
         });
 

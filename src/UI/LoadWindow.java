@@ -121,7 +121,7 @@ public class LoadWindow {
         // Panel adjustments
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
         panel.setBackground(Color.DARK_GRAY);
-        panel.setMaximumSize(new Dimension(ScreenInfo.WINDOW_WIDTH - panelMenu.getWidth(), ScreenInfo.textFont.getSize()*4));
+        panel.setMaximumSize(new Dimension(ScreenInfo.WINDOW_WIDTH - panelMenu.getWidth(), ScreenInfo.textFontMedium.getSize()*4));
         panelLoad.add(panel);
         panelLoad.add(Box.createRigidArea(new Dimension(0, 20)));
 
@@ -166,31 +166,31 @@ public class LoadWindow {
         textAreaGameTitle.setText("Game: " + hash.get("title"));
         textAreaGameTitle.setEditable(false);
         textAreaGameTitle.setOpaque(false);
-        textAreaGameTitle.setFont(ScreenInfo.textFont);
+        textAreaGameTitle.setFont(ScreenInfo.textFontMedium);
 
         textAreaUsername = new JTextPane();
         textAreaUsername.setText("Username: " + hash.get("username"));
         textAreaUsername.setEditable(false);
         textAreaUsername.setOpaque(false);
-        textAreaUsername.setFont(ScreenInfo.textFont);
+        textAreaUsername.setFont(ScreenInfo.textFontMedium);
 
         textAreaScore = new JTextPane();
         textAreaScore.setText("Score: " + hash.get("score"));
         textAreaScore.setEditable(false);
         textAreaScore.setOpaque(false);
-        textAreaScore.setFont(ScreenInfo.textFont);
+        textAreaScore.setFont(ScreenInfo.textFontMedium);
 
         textAreaTime = new JTextPane();
         textAreaTime.setText("Time: " + hash.get("time"));
         textAreaTime.setEditable(false);
         textAreaTime.setOpaque(false);
-        textAreaTime.setFont(ScreenInfo.textFont);
+        textAreaTime.setFont(ScreenInfo.textFontMedium);
 
         textAreaHealth = new JTextPane();
         textAreaHealth.setText("Health: " + hash.get("health"));
         textAreaHealth.setEditable(false);
         textAreaHealth.setOpaque(false);
-        textAreaHealth.setFont(ScreenInfo.textFont);
+        textAreaHealth.setFont(ScreenInfo.textFontMedium);
 
         myInfoPanel.add(textAreaGameTitle, 0);
         myInfoPanel.add(textAreaUsername, 1);

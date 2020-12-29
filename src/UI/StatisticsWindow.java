@@ -78,7 +78,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         panelMain.setOpaque(true);
 
         panelMain.add(panelGameInfo);
-        panelGameInfo.setPreferredSize(new Dimension(width-10, ScreenInfo.textFont.getSize()*5));
+        panelGameInfo.setPreferredSize(new Dimension(width-10, ScreenInfo.textFontMedium.getSize()*5));
 
         panelMain.add(panelPowerupInfo);
         panelPowerupInfo.setPreferredSize(new Dimension(width-10, height*3/9));
@@ -90,40 +90,40 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     private void SetFonts(){
-        textAreaStaticScore.setFont(ScreenInfo.textFont);
-        textAreaScore.setFont(ScreenInfo.textFont);
+        textAreaStaticScore.setFont(ScreenInfo.textFontMedium);
+        textAreaScore.setFont(ScreenInfo.textFontMedium);
 
-        textAreaTime.setFont(ScreenInfo.textFont);
-        textAreaStaticTime.setFont(ScreenInfo.textFont);
+        textAreaTime.setFont(ScreenInfo.textFontMedium);
+        textAreaStaticTime.setFont(ScreenInfo.textFontMedium);
 
-        textAreaHealth.setFont(ScreenInfo.textFont);
-        textAreaStaticHealth.setFont(ScreenInfo.textFont);
+        textAreaHealth.setFont(ScreenInfo.textFontMedium);
+        textAreaStaticHealth.setFont(ScreenInfo.textFontMedium);
 
-        textAreaAlphaPowerupAmount.setFont(ScreenInfo.textFont);
-        textAreaBetaPowerupAmount.setFont(ScreenInfo.textFont);
-        textAreaGammaPowerupAmount.setFont(ScreenInfo.textFont);
-        textAreaSigmaPowerupAmount.setFont(ScreenInfo.textFont);
+        textAreaAlphaPowerupAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaBetaPowerupAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaGammaPowerupAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaSigmaPowerupAmount.setFont(ScreenInfo.textFontMedium);
 
-        buttonEtaShield.setFont(ScreenInfo.textFont);
+        buttonEtaShield.setFont(ScreenInfo.textFontMedium);
         buttonEtaShield.setBackground(ScreenInfo.buttonBackgroundColor);
-        textAreaEtaShieldAmount.setFont(ScreenInfo.textFont);
+        textAreaEtaShieldAmount.setFont(ScreenInfo.textFontMedium);
 
-        textAreaLotaShieldAmount.setFont(ScreenInfo.textFont);
+        textAreaLotaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonLotaShield.setBackground(ScreenInfo.buttonBackgroundColor);
-        buttonLotaShield.setFont(ScreenInfo.textFont);
+        buttonLotaShield.setFont(ScreenInfo.textFontMedium);
 
-        textAreaThetaShieldAmount.setFont(ScreenInfo.textFont);
+        textAreaThetaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonThetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
-        buttonThetaShield.setFont(ScreenInfo.textFont);
+        buttonThetaShield.setFont(ScreenInfo.textFontMedium);
 
-        textAreaZetaShieldAmount.setFont(ScreenInfo.textFont);
+        textAreaZetaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonZetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
-        buttonZetaShield.setFont(ScreenInfo.textFont);
+        buttonZetaShield.setFont(ScreenInfo.textFontMedium);
 
-        textAreaAlphaAtomAmount.setFont(ScreenInfo.textFont);
-        textAreaBetaAtomAmount.setFont(ScreenInfo.textFont);
-        textAreaGammaAtomAmount.setFont(ScreenInfo.textFont);
-        textAreaSigmaAtomAmount.setFont(ScreenInfo.textFont);
+        textAreaAlphaAtomAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaBetaAtomAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaGammaAtomAmount.setFont(ScreenInfo.textFontMedium);
+        textAreaSigmaAtomAmount.setFont(ScreenInfo.textFontMedium);
     }
 
     private void SetPowerupIcons(){

@@ -12,7 +12,8 @@ public interface ScreenInfo {
 
     Font titleFont = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/15);
     Font buttonFont = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/22);
-    Font textFont = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/25);
+    Font textFontMedium = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/25);
+    Font textFontSmall = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/35);
 
     Color buttonBackgroundColor = Color.decode("#E1E1E1");
     Color buttonTextColor = Color.BLACK;

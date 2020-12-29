@@ -8,7 +8,7 @@ public class HomeScreen {
 
     private JPanel panelMain;
     private JButton buttonPlay;
-    private JButton buttonSettings;
+    private JButton buttonOptions;
     private JButton buttonCredits;
     private JButton buttonExit;
 
@@ -32,10 +32,10 @@ public class HomeScreen {
         buttonPlay.setForeground(ScreenInfo.buttonTextColor);
         buttonPlay.setBorderPainted(false);
 
-        buttonSettings.setFont(ScreenInfo.buttonFont);
-        buttonSettings.setBackground(ScreenInfo.buttonBackgroundColor);
-        buttonSettings.setForeground(ScreenInfo.buttonTextColor);
-        buttonSettings.setBorderPainted(false);
+        buttonOptions.setFont(ScreenInfo.buttonFont);
+        buttonOptions.setBackground(ScreenInfo.buttonBackgroundColor);
+        buttonOptions.setForeground(ScreenInfo.buttonTextColor);
+        buttonOptions.setBorderPainted(false);
 
         buttonCredits.setFont(ScreenInfo.buttonFont);
         buttonCredits.setBackground(ScreenInfo.buttonBackgroundColor);
@@ -67,10 +67,10 @@ public class HomeScreen {
             }
         });
 
-        buttonSettings.addActionListener(new ActionListener() {
+        buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SettingsWindow();
+                new OptionsWindow();
             }
         });
 
