@@ -173,7 +173,7 @@ public class ShooterHandler {
             frameListener.onShooterTriggerBulletChange();
         }
 
-        System.out.println("burası çalıştı((shooterhandleraddShield)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
+        //System.out.println("burası çalıştı((shooterhandleraddShield)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
 
     }
 

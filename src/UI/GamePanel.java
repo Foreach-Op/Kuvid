@@ -49,10 +49,6 @@ public class GamePanel extends JPanel {
             triggerObject=shooter.getObjectInTrigger();
             triggerPanel=new ObjectPanel(triggerObject.getType(),triggerObject.getSubType(),triggerObject.getCurrentPosition(),
                     triggerObject.getWidth(),triggerObject.getHeight()," "," ");
-            //System.out.println(triggerObject.getX());
-            //ObjectPanel triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),triggerObject.getWidth(),triggerObject.getHeight());
-            //hashMap.put(triggerObject,triggerPanel);
-            //System.out.println("Shooter added");
         }
         repaint();
     }
@@ -76,7 +72,7 @@ public class GamePanel extends JPanel {
 
     public void onShooterTriggerBulletChange() {
         triggerObject=shooter.getObjectInTrigger();
-        //System.out.println("is shielded:(gamepanel içinde) "+((Atom)triggerObject).isShielded());
+        //System.out.println("is shielded:(gamepanel içinde) "+((Atom)triggerObject).isShielded() );
         triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),
                 triggerObject.getWidth(),triggerObject.getHeight()," "," ");
         repaint();
