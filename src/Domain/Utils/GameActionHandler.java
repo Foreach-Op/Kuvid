@@ -2,6 +2,7 @@ package Domain.Utils;
 
 import Domain.DomainControl.GameController;
 import UI.PauseWindow;
+import UI.UIController;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -10,10 +11,12 @@ public class GameActionHandler extends AbstractAction {
 
     private String action;
     private GameController gameController;
+    private UIController uiController;
 
     public GameActionHandler(String action, GameController gameController) {
         this.action = action;
         this.gameController = gameController;
+        uiController = UIController.GetInstance();
     }
 
     @Override
@@ -40,7 +43,7 @@ public class GameActionHandler extends AbstractAction {
             case "pause":
                 gameController.Pause();
                 if (gameController.isGamePaused())
-                    new PauseWindow(gameController);
+                    uiController.openPauseWindow();
                 break;
             case "resume":
                 gameController.Resume();
@@ -89,6 +92,9 @@ public class GameActionHandler extends AbstractAction {
 
     public void PerformAction(){
         switch (action){
+            case "resume":
+                gameController.Resume();
+                break;
             case "choose powerup 1":
                 gameController.PickPowerup("Alpha");
                 break;

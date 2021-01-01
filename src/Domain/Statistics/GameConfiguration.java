@@ -1,7 +1,5 @@
 package Domain.Statistics;
 
-import Domain.ShooterFunctions.Shooter;
-
 import java.util.HashMap;
 
 public class GameConfiguration {
@@ -17,8 +15,6 @@ public class GameConfiguration {
         }
         return gameConfiguration;
     }
-
-
 
     public void setStaticWindowListener(StaticWindowListener staticWindowListener){
         this.staticWindowListener=staticWindowListener;
@@ -69,6 +65,4 @@ public class GameConfiguration {
     public int getRemainingShield(String shieldType){
         return getData().getRemainingShield().get(shieldType);
     }
-
-
 }

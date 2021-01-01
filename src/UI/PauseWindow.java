@@ -1,6 +1,7 @@
 package UI;
 
 import Domain.DomainControl.GameController;
+import Domain.Utils.GameActionHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,8 +26,10 @@ public class PauseWindow {
     private Font buttonFont = new Font("Text Me One", Font.PLAIN, 28);
 
     private GameController gameController;
+    private UIController uiController;
 
     public PauseWindow(GameController gameController) {
+        uiController = UIController.GetInstance();
         this.gameController = gameController;
         CreateUIElements();
         ActionListener();
@@ -57,7 +60,7 @@ public class PauseWindow {
         buttonResume.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameController.Resume();
+                new GameActionHandler("resume", gameController).PerformAction();
                 ClosePauseWindow();
             }
         });
@@ -65,14 +68,14 @@ public class PauseWindow {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new SaveWindow();
+                uiController.openSaveWindow();
             }
         });
 
         buttonLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new LoadWindow();
+                uiController.openLoadWindow();
             }
         });
 
@@ -90,7 +93,7 @@ public class PauseWindow {
         buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new OptionsWindow();
+                uiController.openOptionsWindow();
             }
         });
 

@@ -14,6 +14,8 @@ import Domain.Utils.*;
 
 public class ConfigureScreen {
 
+    UIController uiController;
+
     public JPanel panelMain;
     private JPanel panelSelectionFields;
 
@@ -55,26 +57,15 @@ public class ConfigureScreen {
     private ButtonGroup gameDifficultyGroup;
 
     private HashMap<String, String> configurationInfo;
-    private GameController gameController;
 
     private JFrame configureScreenFrame;
 
     public ConfigureScreen() {
+        uiController = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
         InitializeRBGroups();
         ActionListener();
-    }
-
-    private void InitiateGame(HashMap<String, String> configurationInfo) {
-        GameScreen screen = new GameScreen();
-        configurationInfo.put("width", String.valueOf(screen.GAME_SCREEN_WIDTH));
-        configurationInfo.put("height", String.valueOf(screen.GAME_SCREEN_HEIGHT));
-        RunningMode runningMode = new RunningMode(screen);
-        screen.initialize(runningMode);
-        gameController = new GameController(runningMode);
-        gameController.StartGame(configurationInfo);
-        screen.InitializeGameScreen(gameController);
     }
 
     private void CreateUIElements() {
@@ -114,6 +105,10 @@ public class ConfigureScreen {
         gameDifficultyGroup.add(radioButtonNormal);
         gameDifficultyGroup.add(radioButtonHard);
         radioButtonNormal.setSelected(true);
+    }
+
+    public HashMap<String, String> GetConfigurationInfo(){
+        return configurationInfo;
     }
 
     private void ActionListener() {
@@ -182,9 +177,13 @@ public class ConfigureScreen {
                     configurationInfo.put("fallingType", fallingType);
                     configurationInfo.put("difficulty", gameDifficulty);
 
+                    // Put screen width and height into hashmap
+                    configurationInfo.put("width", String.valueOf(ScreenInfo.GAME_SCREEN_WIDTH));
+                    configurationInfo.put("height", String.valueOf(ScreenInfo.GAME_SCREEN_HEIGHT));
+
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    InitiateGame(configurationInfo);
+                    uiController.initGame(configurationInfo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
@@ -229,8 +228,8 @@ public class ConfigureScreen {
         configureScreenFrame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new HomeScreen();
                 e.getWindow().dispose();
+                uiController.openHomeScreen();
             }
         });
     }

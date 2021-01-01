@@ -19,10 +19,6 @@ public class GameScreen extends JFrame implements ObjectListener {
     private GameController gameController;
     private GamePanel gamePanel;
 
-    private static final int STATISTICS_WINDOW_WIDTH = ScreenInfo.WINDOW_WIDTH / 4;
-    public final int GAME_SCREEN_WIDTH = ScreenInfo.WINDOW_WIDTH - STATISTICS_WINDOW_WIDTH;
-    public static final int GAME_SCREEN_HEIGHT = ScreenInfo.WINDOW_HEIGHT;
-
     public GameScreen() {
         CreateUIElements();
     }
@@ -40,12 +36,12 @@ public class GameScreen extends JFrame implements ObjectListener {
         gameScreen.setDefaultCloseOperation(EXIT_ON_CLOSE);
         gameScreen.setResizable(false);
 
-        statisticsWindow = new StatisticsWindow(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT);
+        statisticsWindow = new StatisticsWindow(ScreenInfo.STATISTICS_WINDOW_WIDTH, ScreenInfo.GAME_SCREEN_HEIGHT);
         GameConfiguration.getInstance().setStaticWindowListener(statisticsWindow);
         gameScreen.add(statisticsWindow.panelMain, BorderLayout.EAST);
-        statisticsWindow.panelMain.setPreferredSize(new Dimension(STATISTICS_WINDOW_WIDTH, GAME_SCREEN_HEIGHT));
+        statisticsWindow.panelMain.setPreferredSize(new Dimension(ScreenInfo.STATISTICS_WINDOW_WIDTH, ScreenInfo.GAME_SCREEN_HEIGHT));
 
-        gamePanel = new GamePanel(GAME_SCREEN_WIDTH,GAME_SCREEN_HEIGHT);
+        gamePanel = new GamePanel(ScreenInfo.GAME_SCREEN_WIDTH,ScreenInfo.GAME_SCREEN_HEIGHT);
         gameScreen.add(gamePanel);
 
         pack();

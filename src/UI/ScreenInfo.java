@@ -8,6 +8,10 @@ public interface ScreenInfo {
     //int WINDOW_WIDTH = 1280;
     //int WINDOW_HEIGHT = 720;
 
+    int STATISTICS_WINDOW_WIDTH = WINDOW_WIDTH / 4;
+    int GAME_SCREEN_WIDTH = WINDOW_WIDTH - STATISTICS_WINDOW_WIDTH;
+    int GAME_SCREEN_HEIGHT = WINDOW_HEIGHT;
+
     int SCROLL_INCREMENT_AMOUNT = WINDOW_HEIGHT/100;
 
     Font titleFont = new Font("Text Me One", Font.PLAIN, WINDOW_HEIGHT/15);

@@ -16,6 +16,9 @@ import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 public class LoadWindow {
+
+    private  UIController uiController;
+
     private JFrame frame;
 
     private JPanel panelMain;
@@ -35,6 +38,7 @@ public class LoadWindow {
     private int buttonIndex = 0;
 
     public LoadWindow() {
+        uiController = UIController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -42,7 +46,6 @@ public class LoadWindow {
     private void CreateUIElements() {
         frame = new JFrame();
         frame.setSize(ScreenInfo.WINDOW_WIDTH, ScreenInfo.WINDOW_HEIGHT);
-        //frame.setSize(1280, 720);
         frame.setResizable(false);
         frame.setUndecorated(true);
 
@@ -195,6 +198,9 @@ public class LoadWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
+                if(!uiController.isGameRunning){
+                    uiController.openHomeScreen();
+                }
             }
         });
     }
