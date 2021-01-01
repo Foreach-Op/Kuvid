@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.Objects.Atom;
 import Domain.Objects.GameObject;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Position;
@@ -71,11 +72,11 @@ public class GamePanel extends JPanel {
 
     public void onDestroy(GameObject obj1) {
         removeFromScreen(obj1);
-
     }
 
     public void onShooterTriggerBulletChange() {
         triggerObject=shooter.getObjectInTrigger();
+        //System.out.println("is shielded:(gamepanel içinde) "+((Atom)triggerObject).isShielded());
         triggerPanel = new ObjectPanel(triggerObject.getType(), triggerObject.getSubType(), triggerObject.getCurrentPosition(),
                 triggerObject.getWidth(),triggerObject.getHeight()," "," ");
         repaint();
@@ -84,13 +85,7 @@ public class GamePanel extends JPanel {
 
     public void onShooterPositionChange() {
         hashMap.get(shooter).updatePosition(shooter.getCurrentPosition());
-        int x=(int) shooter.getX()+shooter.getWidth()/3;
-        int y=(int) shooter.getY()-shooter.getHeight()/4;
-        if(triggerObject.getType().equals("Powerup")){
-            x=(int) shooter.getX();
-            y=(int) shooter.getY()-shooter.getHeight()/2;
-        }
-        triggerPanel.updatePosition(new Position(x,y));
+        triggerPanel.updatePosition(triggerObject.getCurrentPosition());
         repaint();
     }
 

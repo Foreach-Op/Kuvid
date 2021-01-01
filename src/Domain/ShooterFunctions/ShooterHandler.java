@@ -37,6 +37,17 @@ public class ShooterHandler {
         return shooter;
     }
 
+    public Position setTriggerposition(String triggerType){
+
+        int x=(int) shooter.getX()+shooter.getWidth()/3;
+        int y=(int) shooter.getY()-shooter.getHeight()/4;
+        if(triggerType.equals(POWERUP)){
+            x=(int) shooter.getX();
+            y=(int) shooter.getY()-shooter.getHeight()/2;
+        }
+        return new Position(x,y);
+    }
+
     public void moveShooter(String direction){
 
         double currentX=shooter.getX();
@@ -48,33 +59,32 @@ public class ShooterHandler {
         } else if(direction.equals("left") && 0<currentX-shooter.getVelocityX()){
             xPos=currentX-shooter.getVelocityX();
         }
-
         Position newPos=new Position(xPos,currentY);
         newPos.setRotation(shooter.getRotationAngle());
         shooter.setCurrentPosition(newPos);
+        Position triggerPosition = setTriggerposition(shooter.getObjectInTrigger().getType());
+        shooter.getObjectInTrigger().setCurrentPosition(triggerPosition);
         frameListener.onShooterPositionChange();
 
     }
 
     public void fire(ObjectCreationHandler objectCreationHandler){
-        int x=0;
-        int y=0;
-        if(shooter.getObjectInTrigger().getType().equals("Powerup")){
-            x=(int) shooter.getX()+0;
-            y=(int) shooter.getY()-shooter.getHeight();
-        } else {
-            x=(int) shooter.getX()+shooter.getWidth()/3;
-            y=(int) shooter.getY()-shooter.getHeight()/4;
+        //System.out.println("burası çalıştı(shooterhandlerFire): "+((Atom)shooter.getObjectInTrigger()).isShielded());
+        Position triggerPosition = setTriggerposition(shooter.getObjectInTrigger().getType());
+
+        if(shooter.getObjectInTrigger().getType().equals(ATOM)){
             if (((Atom) shooter.getObjectInTrigger()).isShielded())
                 GameConfiguration.getInstance().getData().getShieldedAtoms().remove(shooter.getObjectInTrigger());
+        } else {
+            triggerPosition.setY((int) shooter.getY()-shooter.getHeight());
         }
 
-        shooter.getObjectInTrigger().setX(x);
-        shooter.getObjectInTrigger().setY(y);
+        shooter.getObjectInTrigger().setCurrentPosition(triggerPosition);
         GameObject fired=objectCreationHandler.createGameObject(shooter.getObjectInTrigger());
         fired.setAngle(90-shooter.getRotationAngle());
         shooter.reduceTheBullet();
         changeBullet();
+        //System.out.println("burası çalıştı((shooterhandlerFire)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
     }
 
     public void rotateShooter(String direction) {
@@ -107,9 +117,8 @@ public class ShooterHandler {
                     if (shooter.getNumOfAtoms().get(FinalValues.SIGMA) > 0) subtype = FinalValues.SIGMA;
                 }
             }
-            int x = (int) shooter.getX() + shooter.getWidth() / 3;
-            int y = (int) shooter.getY() - shooter.getHeight() / 4;
-            object = ObjectFactory.getInstance().createObject(ATOM, subtype, new Position(x, y), false);
+            Position triggerPosition = setTriggerposition(ATOM);
+            object = ObjectFactory.getInstance().createObject(ATOM, subtype,triggerPosition, false);
         }
 
         shooter.setObjectInTrigger(object);
@@ -120,9 +129,8 @@ public class ShooterHandler {
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
             //shooter.setCurrentBulletType(FinalValues.POWERUP);
             //shooter.setCurrentBulletSubtype(subtype);
-            int x=(int) shooter.getX();
-            int y=(int) shooter.getY()-shooter.getHeight()/2;
-            GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,new Position(x,y),false);
+            Position triggerPosition = setTriggerposition(POWERUP);
+            GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,triggerPosition,false);
             shooter.setObjectInTrigger(object);
             frameListener.onShooterTriggerBulletChange();
         }
@@ -130,24 +138,43 @@ public class ShooterHandler {
 
 
     public void addShield(String shieldType){
+        System.out.println("burası çalıştı((shooterhandleraddShield)): "+((Atom)shooter.getObjectInTrigger()).isShielded());
         GameObject shieldedObj=null;
+        Integer remaining=0;
         switch (shieldType){
             case FinalValues.ETA:
+                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.ETA);
+                if(remaining>0)
                 shieldedObj=add_Eta(shooter.getObjectInTrigger());
                 break;
             case FinalValues.LOTA:
+                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.LOTA);
+                if(remaining>0)
                 shieldedObj=add_Lota(shooter.getObjectInTrigger());
                 break;
             case FinalValues.THETA:
+                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.THETA);
+                if(remaining>0)
                 shieldedObj=add_Theta(shooter.getObjectInTrigger());
                 break;
             case FinalValues.ZETA:
+                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.ZETA);
+                if(remaining>0)
                 shieldedObj=add_Zeta(shooter.getObjectInTrigger());
                 break;
         }
-        shooter.setObjectInTrigger(shieldedObj);
-        GameConfiguration.getInstance().setRemainingSheild(shieldType);
-        GameConfiguration.getInstance().getData().getShieldedAtoms().add(shieldedObj);
+        if(remaining>0){
+            Position triggerPosition = setTriggerposition(ATOM);
+            shieldedObj.setCurrentPosition(triggerPosition);
+
+            shooter.setObjectInTrigger(shieldedObj);
+            GameConfiguration.getInstance().setRemainingSheild(shieldType);
+            GameConfiguration.getInstance().getData().getShieldedAtoms().add(shieldedObj);
+            frameListener.onShooterTriggerBulletChange();
+        }
+
+        System.out.println("burası çalıştı((shooterhandleraddShield)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
+
     }
 
 
