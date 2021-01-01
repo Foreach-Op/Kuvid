@@ -11,6 +11,8 @@ public class Lota_Shield extends Shield{
     public Lota_Shield(Atom contextObj){
         super(contextObj);
         this.contextObj=contextObj;
+        this.setVelocity(getVelocity());
+        this.setEfficiency(getEfficiency());
     }
 
     @Override

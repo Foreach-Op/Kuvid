@@ -11,6 +11,8 @@ public class Zeta_Shield extends Shield{
     public Zeta_Shield(Atom contextObj) {
         super(contextObj);
         this.contextObj = contextObj;
+        this.setVelocity(getVelocity());
+        this.setEfficiency(getEfficiency());
     }
     @Override
     public double getEfficiency() {

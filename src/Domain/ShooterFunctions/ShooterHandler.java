@@ -101,8 +101,10 @@ public class ShooterHandler {
 
     public void changeBullet(){
         GameObject object=null;
+        Position triggerPosition = setTriggerposition(ATOM);
         if((!GameConfiguration.getInstance().getData().getShieldedAtoms().isEmpty()) && (Math.random() * 4)<=1){ //şimdilik .25 ihtimal
             object=GameConfiguration.getInstance().getData().getShieldedAtoms().get(0);
+            object.setCurrentPosition(triggerPosition);
         } else {
             String subtype = null;
             while (subtype == null) {
@@ -117,7 +119,7 @@ public class ShooterHandler {
                     if (shooter.getNumOfAtoms().get(FinalValues.SIGMA) > 0) subtype = FinalValues.SIGMA;
                 }
             }
-            Position triggerPosition = setTriggerposition(ATOM);
+
             object = ObjectFactory.getInstance().createObject(ATOM, subtype,triggerPosition, false);
         }
 
@@ -138,7 +140,7 @@ public class ShooterHandler {
 
 
     public void addShield(String shieldType){
-        System.out.println("burası çalıştı((shooterhandleraddShield)): "+((Atom)shooter.getObjectInTrigger()).isShielded());
+
         GameObject shieldedObj=null;
         Integer remaining=0;
         switch (shieldType){
@@ -166,14 +168,12 @@ public class ShooterHandler {
         if(remaining>0){
             Position triggerPosition = setTriggerposition(ATOM);
             shieldedObj.setCurrentPosition(triggerPosition);
-
             shooter.setObjectInTrigger(shieldedObj);
             GameConfiguration.getInstance().setRemainingSheild(shieldType);
             GameConfiguration.getInstance().getData().getShieldedAtoms().add(shieldedObj);
             frameListener.onShooterTriggerBulletChange();
         }
 
-        //System.out.println("burası çalıştı((shooterhandleraddShield)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
 
     }
 

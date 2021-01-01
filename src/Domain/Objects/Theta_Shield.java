@@ -12,6 +12,8 @@ public class Theta_Shield extends Shield{
         super(contextObj);
         this.contextObj = contextObj;
         boost =0.5+ Math.random()*0.1;
+        this.setVelocity(getVelocity());
+        this.setEfficiency(getEfficiency());
     }
     @Override
     public double getEfficiency() {
