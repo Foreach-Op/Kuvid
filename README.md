@@ -6,11 +6,12 @@ Game Control Keys:(Some Keys are different because of practical usage)
 * Change Atom Randomly->C
 * Blend Mode Activate/DeActivate ->B
 * Transform(if Blend mode is activated)-> (1,2,3,4) then (1,2,3,4) 
-* Pick Powerup -> (alt)+(1,2,3,4)
+* Pick Powerup -> (alt)+(1,2,3,4) or click buttons on Screen
+* Add Shield -> (shift)+(1,2,3,4) or click buttons on Screen
 * Pause -> Esc
 * Resume -> Click Resume
-* Save -> S (not functioning now)
-* Load -> L (not functioning now)
+* Save -> Click Save Game on Pause Screen(coming soon)
+* Load -> Click Load Game on Pause Screen(coming soon)
 
 Active Functions so Far: 
 
@@ -23,7 +24,9 @@ Active Functions so Far:
 *  Change Atom
 *  Choose powerup
 *  Game Object Reflections
-*  Score-Health updates
+*  Score(uses efficiency and shields)
+*  Health
 *  Blocker-Shooter Collision(Health working)
 *  Atom-Molecule Collisino(Score working )
 *  Poweup-Blocker Collision
+*  Add Shield
