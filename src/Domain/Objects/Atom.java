@@ -12,11 +12,10 @@ public abstract class Atom extends GameObject {
     private int num_of_neutrons;
     private double efficiency; // used for atom
 
-    private boolean isShielded;
+    private boolean isShielded = false;
 
     public Atom(String subType, Position position, int angle) {
         super(FinalValues.ATOM, subType, position,angle,false);
-        setShielded(false);
         setVelocityY(-getVelocityY()*getL()/50);
         setVelocityX(getVelocityX()*getL()/50);
         setHeight((int) (getL()/5));
