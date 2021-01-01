@@ -1,6 +1,7 @@
 package UI;
 
-import Domain.Statistics.GameConfiguration;
+
+import Domain.UserFunctionalities.Save;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -127,7 +128,9 @@ public class SaveWindow {
     }
 
     private void SaveGame(String saveTitle, String username) {
-        try {
+        Save save=new Save(username);
+        save.SaveTheGame();
+        /*try {
             FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(GameConfiguration.getInstance().getData());
@@ -136,7 +139,7 @@ public class SaveWindow {
             System.out.printf("Serialized data is saved.");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private void CenterFrame(JFrame frame) {

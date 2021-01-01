@@ -21,7 +21,6 @@ public class GameData implements Serializable {
 
     private double remainingTime;
     private GameObject objectInTheTrigger = null;
-    private HashMap<String, HashMap<String, Integer>> powerUps=null;
 
     private boolean isLoaded = false;
     private HashMap<String, HashMap<String, Integer>> ammunition;
@@ -52,17 +51,15 @@ public class GameData implements Serializable {
     }
 
     public GameData(ArrayList<GameObject> frameObjects, double health,
-                    double score, double remainingTime, GameObject objectInTheTrigger,
-                    HashMap<String, HashMap<String, Integer>> powerUps, boolean isLoaded,
+                    double score, double remainingTime, GameObject objectInTheTrigger, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
                     Difficulty difficulty, int l, String alphaBetaType) {
         this.frameObjects = frameObjects;
-        //this.health = health;
-        //this.score = score;
+        this.health = health;
+        this.score = score;
         this.remainingTime = remainingTime;
         this.objectInTheTrigger = objectInTheTrigger;
-        this.powerUps = powerUps;
         this.isLoaded = isLoaded;
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
@@ -110,14 +107,6 @@ public class GameData implements Serializable {
 
     public void setObjectInTheTrigger(GameObject objectInTheTrigger) {
         this.objectInTheTrigger = objectInTheTrigger;
-    }
-
-    public HashMap<String, HashMap<String, Integer>> getPowerUps() {
-        return powerUps;
-    }
-
-    public void setPowerUps(HashMap<String, HashMap<String, Integer>> powerUps) {
-        this.powerUps = powerUps;
     }
 
     public boolean isLoaded() {

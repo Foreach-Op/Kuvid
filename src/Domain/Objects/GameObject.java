@@ -20,6 +20,7 @@ public abstract class GameObject implements Serializable {
     private int angle;
     private boolean isFallable;
     private boolean isCollectible;
+
     private String shape;
     private String rotationType;
 
