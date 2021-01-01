@@ -141,21 +141,29 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
         Image newAlphaIcon = alphaIcon.getImage().getScaledInstance(65, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupAlpha.setIcon(new ImageIcon(newAlphaIcon));
         powerupAlpha.setPreferredSize(new Dimension(iconHeight, iconHeight));
+        powerupAlpha.setFocusPainted(false);
+        powerupAlpha.setFocusable(false);
 
         ImageIcon betaIcon = new ImageIcon("./assets/Powerups/Beta.png");
         Image newBetaIcon = betaIcon.getImage().getScaledInstance(iconHeight, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupBeta.setIcon(new ImageIcon(newBetaIcon));
         powerupBeta.setPreferredSize(new Dimension(iconHeight, iconHeight));
+        powerupBeta.setFocusPainted(false);
+        powerupBeta.setFocusable(false);
 
         ImageIcon gammaIcon = new ImageIcon("./assets/Powerups/Gamma.png");
         Image newGammaIcon = gammaIcon.getImage().getScaledInstance(32, iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupGamma.setIcon(new ImageIcon(newGammaIcon));
         powerupGamma.setPreferredSize(new Dimension(iconHeight, iconHeight));
+        powerupGamma.setFocusPainted(false);
+        powerupGamma.setFocusable(false);
 
         ImageIcon sigmaIcon = new ImageIcon("./assets/Powerups/Sigma.png");
         Image newSigmaIcon = sigmaIcon.getImage().getScaledInstance((int) (iconHeight*0.76), iconHeight,  java.awt.Image.SCALE_SMOOTH);
         powerupSigma.setIcon(new ImageIcon(newSigmaIcon));
         powerupSigma.setPreferredSize(new Dimension(iconHeight, iconHeight));
+        powerupSigma.setFocusPainted(false);
+        powerupSigma.setFocusable(false);
     }
 
     private void SetAtomIcons(){
