@@ -19,8 +19,8 @@ public class BuildingMode {
 
     public void loadTheGame(String fileName) {
         Load load = new Load(fileName);
-        GameData gameData = load.LoadTheGame();
-        GameConfiguration.getInstance().setData(gameData);
+        //GameData gameData = load.LoadTheGame();
+        //GameConfiguration.getInstance().setData(gameData);
         //Player.getInstance().setHealth(gameData.getHealth());
         //Player.getInstance().setScore(gameData.getScore());
         //Time will be set

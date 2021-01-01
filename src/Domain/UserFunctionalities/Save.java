@@ -50,10 +50,12 @@ public class Save {
             for (String subtype:map.keySet()) {
                 JSONObject jo=new JSONObject();
                 int amount=map.get(subtype);
-                jo.put(subtype,amount);
+                jo.put("Subtype",subtype);
+                jo.put("Amount",amount);
                 jsonArray1.add(jo);
             }
-            jo1.put(type,jsonArray1);
+            jo1.put("Type",type);
+            jo1.put("Array",jsonArray1);
             jsonRemainingObjectArray.add(jo1);
         }
         mainJsonObject.put("RemainingObjects",jsonRemainingObjectArray);
@@ -66,11 +68,12 @@ public class Save {
             for (String subtype:map.keySet()) {
                 JSONObject jo=new JSONObject();
                 int amount=map.get(subtype);
-
-                jo.put(subtype,amount);
+                jo.put("Subtype",subtype);
+                jo.put("Amount",amount);
                 jsonArray1.add(jo);
             }
-            jo1.put(type,jsonArray1);
+            jo1.put("Type",type);
+            jo1.put("Array",jsonArray1);
             jsonAmmunitionArray.add(jo1);
         }
         mainJsonObject.put("Ammunition",jsonAmmunitionArray);
@@ -100,7 +103,7 @@ public class Save {
             jsonFrameObjectArray.add(jo);
         }
         mainJsonObject.put("FrameObjects",jsonFrameObjectArray);
-        System.out.println(mainJsonObject.toJSONString());
+        System.out.println(mainJsonObject);
 
 
     }
