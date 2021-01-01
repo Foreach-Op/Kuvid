@@ -73,7 +73,7 @@ public class ConfigureScreen {
         RunningMode runningMode = new RunningMode(screen);
         screen.initialize(runningMode);
         gameController = new GameController(runningMode);
-        gameController.startGame(configurationInfo);
+        gameController.StartGame(configurationInfo);
         screen.InitializeGameScreen(gameController);
     }
 

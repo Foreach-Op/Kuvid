@@ -46,7 +46,7 @@ public class GameData implements Serializable {
         this.ammunition = ammunition;
         this.remainingObjects = remainingObjects;
         this.difficulty = difficulty;
-        L = l;
+        setL(l);
         this.alphaBetaType = alphaBetaType;
     }
 

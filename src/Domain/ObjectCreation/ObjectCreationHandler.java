@@ -27,7 +27,6 @@ public class ObjectCreationHandler {
         L=GameConfiguration.getInstance().getData().getL();
         gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
         remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
-
     }
 
 

@@ -28,7 +28,7 @@ public class GameController {
         statueControl=GameStatueControl.getInstance();
     }
 
-    public void startGame(HashMap<String, String> configurationInfo) {
+    public void StartGame(HashMap<String, String> configurationInfo) {
         buildingMode.startNewGame(configurationInfo);
         runningMode.startGame();
     }

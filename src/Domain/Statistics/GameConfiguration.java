@@ -8,7 +8,7 @@ public class GameConfiguration {
     private static GameConfiguration gameConfiguration;
     private GameData data;
     private StaticWindowListener staticWindowListener;
-    private Shooter shooter;
+
     private GameConfiguration(){}
 
     public static GameConfiguration getInstance(){
@@ -18,9 +18,7 @@ public class GameConfiguration {
         return gameConfiguration;
     }
 
-    public Shooter getShooter() {
-        return shooter;
-    }
+
 
     public void setStaticWindowListener(StaticWindowListener staticWindowListener){
         this.staticWindowListener=staticWindowListener;

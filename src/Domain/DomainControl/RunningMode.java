@@ -20,35 +20,25 @@ public class RunningMode {
     private ObjectListener frameListener;
 
     private ArrayList<GameObject> frameObjects;
-    ArrayList<GameObject> frameObjects2=new ArrayList<>();
-
-
-    private HashMap<String, HashMap<String, Integer>> objectsToBeProduced = new HashMap<>();
-    private HashMap<String, HashMap<String, Integer>> ammunition = new HashMap<>();
 
     CollisionHandler collisionHandler;
     MovementHandler movementHandler;
-    private Timer timerObjectCreation;
-    private Timer timerMoveAndCollision;
-    private Timer timerClock;
+
     private Timer timerFunction;
     private TimerTask functionTask;
     private TimerTask createObjectTask;
     private TimerTask moveAndCollideTask;
     private TimerTask clockTask;
+
     public ObjectCreationHandler objectCreationHandler; //static?
-    ShooterHandler shooterHandler;
-    public double clock;
+    public ShooterHandler shooterHandler;
 
-    public int moveCollidePeriod;
-    public int objectCreationPeriod;
-    public int clockPeriod;
-
-    public int clockCounter;
-    public int creationCounter;
-
-
-    //private int refreshRate;
+    private double clock;
+    private int moveCollidePeriod;
+    private int objectCreationPeriod;
+    private int clockPeriod;
+    private int clockCounter;
+    private int creationCounter;
 
     public RunningMode(ObjectListener frameListener) {
         setFrameListener(frameListener);
@@ -58,6 +48,7 @@ public class RunningMode {
 
     public void startGame() {
         clock=GameConfiguration.getInstance().getData().getRemainingTime();
+        GameConfiguration.getInstance().getData().setFrameObjects(frameObjects);
         moveCollidePeriod=20;
         clockPeriod=100;
         objectCreationPeriod=setCreationTime();
@@ -66,11 +57,11 @@ public class RunningMode {
 
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=shooterHandler.createShooter();
-        frameObjects2.add(shooter);
+        frameObjects.add(shooter);
 
-        objectCreationHandler = new ObjectCreationHandler(frameObjects2, frameListener);
-        movementHandler = new MovementHandler(frameObjects2, frameListener);
-        collisionHandler = new CollisionHandler(frameObjects2, frameListener);
+        objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
+        movementHandler = new MovementHandler(frameObjects, frameListener);
+        collisionHandler = new CollisionHandler(frameObjects, frameListener);
         timerFunction=new Timer();
         //timerObjectCreation=new Timer();
         //timerMoveAndCollision=new Timer();

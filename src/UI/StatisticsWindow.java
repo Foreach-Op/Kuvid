@@ -106,19 +106,27 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
         buttonEtaShield.setFont(ScreenInfo.textFontMedium);
         buttonEtaShield.setBackground(ScreenInfo.buttonBackgroundColor);
+        buttonEtaShield.setFocusPainted(false);
+        buttonEtaShield.setFocusable(false);
         textAreaEtaShieldAmount.setFont(ScreenInfo.textFontMedium);
 
         textAreaLotaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonLotaShield.setBackground(ScreenInfo.buttonBackgroundColor);
         buttonLotaShield.setFont(ScreenInfo.textFontMedium);
+        buttonLotaShield.setFocusPainted(false);
+        buttonLotaShield.setFocusable(false);
 
         textAreaThetaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonThetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
         buttonThetaShield.setFont(ScreenInfo.textFontMedium);
+        buttonThetaShield.setFocusPainted(false);
+        buttonThetaShield.setFocusable(false);
 
         textAreaZetaShieldAmount.setFont(ScreenInfo.textFontMedium);
         buttonZetaShield.setBackground(ScreenInfo.buttonBackgroundColor);
         buttonZetaShield.setFont(ScreenInfo.textFontMedium);
+        buttonZetaShield.setFocusPainted(false);
+        buttonZetaShield.setFocusable(false);
 
         textAreaAlphaAtomAmount.setFont(ScreenInfo.textFontMedium);
         textAreaBetaAtomAmount.setFont(ScreenInfo.textFontMedium);
@@ -230,6 +238,8 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
                 new GameActionHandler("eta shield", gameController).PerformAction();
             }
         });
+
+        //buttonEtaShield.setVisible(true);
         buttonLotaShield.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

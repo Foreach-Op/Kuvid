@@ -30,6 +30,7 @@ public class Save {
         HashMap<String,HashMap<String,Integer>> ammunition= gameData.getAmmunition();
         HashMap<String,HashMap<String,Integer>> remainingObjects= gameData.getRemainingObjects();
         ArrayList<GameObject> frameObjects=gameData.getFrameObjects();
+        HashMap<String,Integer> remainingShielded=gameData.getRemainingShield();
 
 
 
@@ -65,6 +66,7 @@ public class Save {
             for (String subtype:map.keySet()) {
                 JSONObject jo=new JSONObject();
                 int amount=map.get(subtype);
+
                 jo.put(subtype,amount);
                 jsonArray1.add(jo);
             }
@@ -72,6 +74,16 @@ public class Save {
             jsonAmmunitionArray.add(jo1);
         }
         mainJsonObject.put("Ammunition",jsonAmmunitionArray);
+
+        JSONArray jsonRemainingShieldArray=new JSONArray();
+        for (String type:remainingShielded.keySet()) {
+            int amount=remainingShielded.get(type);
+            JSONObject jo=new JSONObject();
+            jo.put("Type",type);
+            jo.put("Amount",amount);
+            jsonRemainingShieldArray.add(jo);
+        }
+        mainJsonObject.put("Shield",jsonRemainingShieldArray);
 
         JSONArray jsonFrameObjectArray=new JSONArray();
         for (int i = 0; i < frameObjects.size(); i++) {
@@ -90,16 +102,6 @@ public class Save {
         mainJsonObject.put("FrameObjects",jsonFrameObjectArray);
         System.out.println(mainJsonObject.toJSONString());
 
-
-
-
-        try(FileOutputStream file = new FileOutputStream(fileName);
-            ObjectOutputStream write = new ObjectOutputStream(file)){
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
 
     }
 
