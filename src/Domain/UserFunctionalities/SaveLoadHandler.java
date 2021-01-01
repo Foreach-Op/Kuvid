@@ -19,7 +19,8 @@ public class SaveLoadHandler {
         try {
             //json yaratılacak
             //filename json içine yazılacak
-            JSONObject json=new JSONObject();
+            Save save=new Save(username);
+            JSONObject json=save.SaveTheGame();
             adapter.upload(json);
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,7 +30,9 @@ public class SaveLoadHandler {
     public void Load(String filename){
         try {
             //bundan sonra json ayrıştırma yeri çağırılıp yapılabilir.
+            Load load=new Load();
             JSONObject json=adapter.download(filename);
+            load.LoadTheGame(json);
         } catch (Exception e) {
             e.printStackTrace();
         }

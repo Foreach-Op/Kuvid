@@ -18,7 +18,7 @@ public class BuildingMode {
     }
 
     public void loadTheGame(String fileName) {
-        Load load = new Load(fileName);
+        //Load load = new Load(fileName);
         //GameData gameData = load.LoadTheGame();
         //GameConfiguration.getInstance().setData(gameData);
         //Player.getInstance().setHealth(gameData.getHealth());

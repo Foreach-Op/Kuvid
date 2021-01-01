@@ -17,12 +17,4 @@ public class Powerup extends GameObject{
         //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
 
-
-    public boolean isFallable() {
-        return isFallable();
-    }
-
-
-
-
 }

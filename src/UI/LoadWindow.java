@@ -1,6 +1,7 @@
 package UI;
 
 import Domain.Statistics.GameData;
+import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -138,21 +139,8 @@ public class LoadWindow {
     }
 
     private void LoadGame() {
-        GameData gameData = null;
-        try {
-            FileInputStream fileIn = new FileInputStream("./save_files/" + "deneme2" + "_" + "alperklnc" + ".ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            gameData = (GameData) in.readObject();
-            in.close();
-            fileIn.close();
-
-            System.out.println(gameData.getAmmunition());
-            System.out.println(gameData.getRemainingObjects());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        saveLoadHandler.Load("Oguz");
     }
 
     private JPanel SetInfoPanel(HashMap<String, String> hash) {

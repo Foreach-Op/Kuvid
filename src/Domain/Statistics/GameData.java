@@ -204,4 +204,26 @@ public class GameData implements Serializable {
     public void setShieldedAtoms(ArrayList<GameObject> shieldedAtoms) {
         this.shieldedAtoms = shieldedAtoms;
     }
+
+    @Override
+    public String toString() {
+        return "GameData{" +
+                "frameObjects=" + frameObjects +
+                ", shieldedAtoms=" + shieldedAtoms +
+                ", health=" + health +
+                ", score=" + score +
+                ", remainingTime=" + remainingTime +
+                ", objectInTheTrigger=" + objectInTheTrigger +
+                ", isLoaded=" + isLoaded +
+                ", ammunition=" + ammunition +
+                ", remainingObjects=" + remainingObjects +
+                ", remainingShield=" + remainingShield +
+                ", difficulty=" + difficulty +
+                ", alphaBetaType='" + alphaBetaType + '\'' +
+                ", movementType='" + movementType + '\'' +
+                ", gameScreenWidth=" + gameScreenWidth +
+                ", gameScreenHeight=" + gameScreenHeight +
+                ", shooter=" + shooter +
+                '}';
+    }
 }

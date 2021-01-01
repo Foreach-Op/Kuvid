@@ -3,6 +3,7 @@ package UI;
 
 import Domain.DomainControl.GameController;
 import Domain.UserFunctionalities.Save;
+import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -129,9 +130,10 @@ public class SaveWindow {
     }
 
     private void SaveGame(String saveTitle, String username) {
-        Save save=new Save(username);
-        save.SaveTheGame();
-
+        //Save save=new Save(username);
+        //save.SaveTheGame();
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        saveLoadHandler.Save(username);
         /*try {
             FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);

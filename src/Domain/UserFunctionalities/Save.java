@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Save {
-    private String fileName="";
+    private String username="";
 
-    public Save(String fileName){
-        this.fileName=fileName;
+    public Save(String username){
+        this.username=username;
     }
 
-    public void SaveTheGame(){
+    public JSONObject SaveTheGame(){
         GameConfiguration gameConfiguration = GameConfiguration.getInstance();
         GameData gameData=gameConfiguration.getData();
 
@@ -40,6 +40,7 @@ public class Save {
         mainJsonObject.put("Time",time);
         mainJsonObject.put("AlphaBetaMovement",alphaBetaMovement);
         mainJsonObject.put("AlphaBetaShape",alphaBetaShape);
+        mainJsonObject.put("username",username);
 
 
         JSONArray jsonRemainingObjectArray=new JSONArray();
@@ -95,17 +96,19 @@ public class Save {
             String subtype=currentObject.getSubType();
             double xPos=currentObject.getX();
             double yPos=currentObject.getY();
+            boolean isFallable=currentObject.isFallable();
             JSONObject jo=new JSONObject();
             jo.put("Type",type);
             jo.put("Subtype",subtype);
             jo.put("XPos",xPos);
             jo.put("YPos",yPos);
+            jo.put("IsFallable",isFallable);
             jsonFrameObjectArray.add(jo);
         }
         mainJsonObject.put("FrameObjects",jsonFrameObjectArray);
         System.out.println(mainJsonObject);
 
-
+        return mainJsonObject;
     }
 
 }

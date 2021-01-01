@@ -1,8 +1,10 @@
 package Domain.UserFunctionalities;
 
+import Domain.ObjectCreation.ObjectFactory;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
+import Domain.Utils.Position;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -12,24 +14,32 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Load {
-    private String fileName="";
 
-    public Load(String fileName){
-        this.fileName=fileName;
-    }
+    public Load(){}
 
-    public GameData LoadTheGame(JSONObject mainJsonObject){
+    public void LoadTheGame(JSONObject mainJsonObject){
+        //System.out.println(mainJsonObject.toJSONString());
         GameData data=new GameData();
-
+        //GameConfiguration.getInstance().setData(data);
         double health= (double) mainJsonObject.get("Health");
+        data.setHealth(health);
         double score= (double) mainJsonObject.get("Score");
+        data.setScore(score);
         double time= (double) mainJsonObject.get("Time");
+        data.setRemainingTime(time);
         String alphaBetaMovement= (String) mainJsonObject.get("AlphaBetaMovement");
+        data.setMovementType(alphaBetaMovement);
         String alphaBetaShape= (String) mainJsonObject.get("AlphaBetaShape");
+        data.setAlphaBetaType(alphaBetaShape);
 
         HashMap<String,HashMap<String,Integer>> remainingObjects= new HashMap<>();
+        data.setRemainingObjects(remainingObjects);
         HashMap<String,HashMap<String,Integer>> ammunition= new HashMap<>();
-        HashMap<String,Integer> remainingShielded= new HashMap<>();
+        data.setAmmunition(ammunition);
+        HashMap<String,Integer> remainingShield= new HashMap<>();
+        data.setRemainingShield(remainingShield);
+        ArrayList<GameObject> frameObjects=new ArrayList<>();
+        data.setFrameObjects(frameObjects);
 
         JSONArray jsonRemainingObjectArray=(JSONArray) mainJsonObject.get("RemainingObjects");
         for (int i = 0; i < jsonRemainingObjectArray.size(); i++) {
@@ -40,7 +50,7 @@ public class Load {
             for (int j = 0; j < jsonArray.size(); j++) {
                 JSONObject jo= (JSONObject) jsonArray.get(j);
                 String subtype= (String) jo.get("Subtype");
-                int amount= (int) jo.get("Amount");
+                int amount= (int) (long) jo.get("Amount");
                 hashMap.put(subtype,amount);
             }
             remainingObjects.put(type,hashMap);
@@ -55,7 +65,7 @@ public class Load {
             for (int j = 0; j < jsonArray.size(); j++) {
                 JSONObject jo= (JSONObject) jsonArray.get(j);
                 String subtype= (String) jo.get("Subtype");
-                int amount= (int) jo.get("Amount");
+                int amount= (int) (long) jo.get("Amount");
                 hashMap.put(subtype,amount);
             }
             ammunition.put(type,hashMap);
@@ -65,30 +75,26 @@ public class Load {
         for (int i = 0; i < jsonRemainingShieldArray.size(); i++) {
             JSONObject jo= (JSONObject) jsonRemainingShieldArray.get(i);
             String type= (String) jo.get("Type");
-            int amount= (int) jo.get("Amount");
-            remainingShielded.put(type,amount);
+            int amount= (int) (long) jo.get("Amount");
+            remainingShield.put(type,amount);
         }
 
 
-        /*JSONArray jsonFrameObjectArray= (JSONArray) mainJsonObject.get("FrameObjects");
-        for (int i = 0; i < frameObjects.size(); i++) {
-            GameObject currentObject=frameObjects.get(i);
-            String type=currentObject.getType();
-            String subtype=currentObject.getSubType();
-            double xPos=currentObject.getX();
-            double yPos=currentObject.getY();
-            JSONObject jo=new JSONObject();
-            jo.put("Type",type);
-            jo.put("Subtype",subtype);
-            jo.put("XPos",xPos);
-            jo.put("YPos",yPos);
-            jsonFrameObjectArray.add(jo);
-        }*/
+        JSONArray jsonFrameObjectArray= (JSONArray) mainJsonObject.get("FrameObjects");
+        ObjectFactory objectFactory=ObjectFactory.getInstance();
+        for (int i = 0; i < jsonFrameObjectArray.size(); i++) {
+            JSONObject jo= (JSONObject) jsonFrameObjectArray.get(i);
+            String type= (String) jo.get("Type");
+            String subtype= (String) jo.get("Subtype");
+            double xPos= (double) jo.get("XPos");
+            double yPos=(double) jo.get("YPos");
+            boolean isFallable= (boolean) jo.get("IsFallable");
+            Position position=new Position(xPos,yPos);
+            GameObject gameObject=objectFactory.createObject(type,subtype,position,isFallable);
+            frameObjects.add(gameObject);
+        }
 
+        System.out.println(data.toString());
 
-
-
-
-        return data;
     }
 }
