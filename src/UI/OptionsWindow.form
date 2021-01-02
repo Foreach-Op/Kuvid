@@ -1105,7 +1105,7 @@
                       <borderPainted value="false"/>
                       <contentAreaFilled value="false"/>
                       <foreground color="-1644826"/>
-                      <text value="Shift"/>
+                      <text value="Ctrl"/>
                     </properties>
                   </component>
                   <component id="80697" class="javax.swing.JButton" binding="pkLotaShield">
@@ -1158,7 +1158,7 @@
                       <borderPainted value="false"/>
                       <contentAreaFilled value="false"/>
                       <foreground color="-1644826"/>
-                      <text value="Shift"/>
+                      <text value="Ctrl"/>
                     </properties>
                   </component>
                   <component id="4b197" class="javax.swing.JButton" binding="pkThetaShield">
@@ -1223,7 +1223,7 @@
                       <borderPainted value="false"/>
                       <contentAreaFilled value="false"/>
                       <foreground color="-1644826"/>
-                      <text value="Shift"/>
+                      <text value="Ctrl"/>
                     </properties>
                   </component>
                   <component id="fc9aa" class="javax.swing.JButton" binding="pkZetaShield">
@@ -1286,7 +1286,7 @@
                       <borderPainted value="false"/>
                       <contentAreaFilled value="false"/>
                       <foreground color="-1644826"/>
-                      <text value="Shift"/>
+                      <text value="Ctrl"/>
                     </properties>
                   </component>
                 </children>

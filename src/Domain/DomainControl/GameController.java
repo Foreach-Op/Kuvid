@@ -50,7 +50,7 @@ public class GameController {
         }
     }
 
-    public void PickAtom() {
+    public void ChangeAtom() {
         if(!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBullet();
         }

@@ -1,7 +1,6 @@
 package Domain.Utils;
 
 import Domain.DomainControl.GameController;
-import UI.PauseWindow;
 import UI.UIController;
 
 import javax.swing.*;
@@ -35,7 +34,7 @@ public class GameActionHandler extends AbstractAction {
                 gameController.Rotate("right");
                 break;
             case "pick atom":
-                gameController.PickAtom();
+                gameController.ChangeAtom();
                 break;
             case "fire":
                 gameController.Shoot();
@@ -92,6 +91,12 @@ public class GameActionHandler extends AbstractAction {
 
     public void PerformAction(){
         switch (action){
+            case "rotate left":
+                gameController.Rotate("left");
+                break;
+            case "rotate right":
+                gameController.Rotate("right");
+                break;
             case "resume":
                 gameController.Resume();
                 break;
