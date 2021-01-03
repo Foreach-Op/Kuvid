@@ -140,6 +140,7 @@ public class ShooterHandler {
 
 
     public void addShield(String shieldType){
+        if(shooter.getObjectInTrigger().getType().equals(POWERUP)) return;
 
         GameObject shieldedObj=null;
         Integer remaining=0;
