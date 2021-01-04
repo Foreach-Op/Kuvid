@@ -278,8 +278,6 @@ public class OptionsWindow {
         textAreaPlus8.setFont(ScreenInfo.textFontSmall);
         pkZetaShield.setFont(ScreenInfo.textFontSmall);
         skZetaShield.setFont(ScreenInfo.textFontSmall);
-
-
     }
 
     private void ActionListener() {
@@ -287,8 +285,8 @@ public class OptionsWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelSound.show();
-                panelGameSettings.show(false);
-                panelControls.show(false);
+                panelGameSettings.hide();
+                panelControls.hide();
             }
         });
 
@@ -296,8 +294,8 @@ public class OptionsWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelGameSettings.show();
-                panelSound.show(false);
-                panelControls.show(false);
+                panelSound.hide();
+                panelControls.hide();
             }
         });
 
@@ -305,8 +303,8 @@ public class OptionsWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 panelControls.show();
-                panelSound.show(false);
-                panelGameSettings.show(false);
+                panelSound.hide();
+                panelGameSettings.hide();
             }
         });
 
@@ -325,9 +323,7 @@ public class OptionsWindow {
                 } else if (result == 1){
                     CloseSettingsWindow();
                 }
-
                  */
-
                 CloseSettingsWindow();
             }
         });
