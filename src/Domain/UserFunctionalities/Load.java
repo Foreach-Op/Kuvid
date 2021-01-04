@@ -17,10 +17,10 @@ public class Load {
 
     public Load(){}
 
-    public void LoadTheGame(JSONObject mainJsonObject){
-        //System.out.println(mainJsonObject.toJSONString());
+    public GameData LoadTheGame(JSONObject mainJsonObject){
+
         GameData data=new GameData();
-        //GameConfiguration.getInstance().setData(data);
+
         double health= (double) mainJsonObject.get("Health");
         data.setHealth(health);
         double score= (double) mainJsonObject.get("Score");
@@ -38,8 +38,8 @@ public class Load {
         data.setAmmunition(ammunition);
         HashMap<String,Integer> remainingShield= new HashMap<>();
         data.setRemainingShield(remainingShield);
-        ArrayList<GameObject> frameObjects=new ArrayList<>();
-        data.setFrameObjects(frameObjects);
+        ArrayList<String[]> objectsOnFrame=new ArrayList<>();
+        data.setObjectsOnFrame(objectsOnFrame);
 
         JSONArray jsonRemainingObjectArray=(JSONArray) mainJsonObject.get("RemainingObjects");
         for (int i = 0; i < jsonRemainingObjectArray.size(); i++) {
@@ -81,20 +81,21 @@ public class Load {
 
 
         JSONArray jsonFrameObjectArray= (JSONArray) mainJsonObject.get("FrameObjects");
-        ObjectFactory objectFactory=ObjectFactory.getInstance();
         for (int i = 0; i < jsonFrameObjectArray.size(); i++) {
             JSONObject jo= (JSONObject) jsonFrameObjectArray.get(i);
-            String type= (String) jo.get("Type");
-            String subtype= (String) jo.get("Subtype");
+            String[] info=new String[5];
+            info[0]= (String) jo.get("Type");
+            info[1]= (String) jo.get("Subtype");
             double xPos= (double) jo.get("XPos");
             double yPos=(double) jo.get("YPos");
+            info[2]=String.valueOf(xPos);
+            info[3]=String.valueOf(yPos);
             boolean isFallable= (boolean) jo.get("IsFallable");
-            Position position=new Position(xPos,yPos);
-            GameObject gameObject=objectFactory.createObject(type,subtype,position,isFallable);
-            frameObjects.add(gameObject);
+            info[4]=String.valueOf(isFallable);
+            objectsOnFrame.add(info);
         }
 
-        System.out.println(data.toString());
+        return data;
 
     }
 }

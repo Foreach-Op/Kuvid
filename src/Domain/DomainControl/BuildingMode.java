@@ -17,15 +17,15 @@ public class BuildingMode {
         //RunningMode runningMode = new RunningMode();
     }
 
-    public void loadTheGame(String fileName) {
-        //Load load = new Load(fileName);
-        //GameData gameData = load.LoadTheGame();
-        //GameConfiguration.getInstance().setData(gameData);
-        //Player.getInstance().setHealth(gameData.getHealth());
-        //Player.getInstance().setScore(gameData.getScore());
-        //Time will be set
-
-        //RunningMode runningMode = new RunningMode(gameData);
+    public void loadTheGame(GameData data) {
+        GameData gameData=GameConfiguration.getInstance().getData();
+        if(data!=null){
+            if(gameData!=null){
+                //Gerekli yerler doldurulacak
+            }else {
+                GameConfiguration.getInstance().setData(data);
+            }
+        }
     }
 
     public GameData hashToGameData(HashMap<String, String> configHash) {

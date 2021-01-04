@@ -39,7 +39,6 @@ public class GameConfiguration {
     }
 
     public void setHealth(double health){
-        //data.getPlayer().setHealth(health);
         data.setHealth(health);
         staticWindowListener.onHealthChange(health);
     }

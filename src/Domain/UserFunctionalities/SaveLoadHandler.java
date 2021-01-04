@@ -1,5 +1,6 @@
 package Domain.UserFunctionalities;
 
+import Domain.Statistics.GameData;
 import org.json.simple.JSONObject;
 
 public class SaveLoadHandler {
@@ -27,15 +28,17 @@ public class SaveLoadHandler {
         }
     }
 
-    public void Load(String filename){
+    public GameData Load(String filename){
+        GameData gameData=null;
         try {
             //bundan sonra json ayrıştırma yeri çağırılıp yapılabilir.
             Load load=new Load();
             JSONObject json=adapter.download(filename);
-            load.LoadTheGame(json);
+            gameData=load.LoadTheGame(json);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return gameData;
     }
 
 

@@ -4,6 +4,7 @@ package Domain.ObjectCreation;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
@@ -18,15 +19,34 @@ public class ObjectCreationHandler {
     private final int L;
     //private final int gamescreenheight;
     private final int gamescreenwidth;
-    //Timer timer;
+    private ObjectFactory objectFactory;
 
+
+    public void initiateFrame(){
+        GameData gameData=GameConfiguration.getInstance().getData();
+        ArrayList<String[]> frame= gameData.getObjectsOnFrame();
+        if (frame!=null){
+            for (int i = 0; i < frame.size(); i++) {
+                String[] info= frame.get(i);
+                String type=info[0];
+                String subtype=info[1];
+                double xPos=Double.parseDouble(info[2]);
+                double yPos=Double.parseDouble(info[3]);
+                boolean isFallable=Boolean.parseBoolean(info[4]);
+                Position position=new Position(xPos,yPos);
+                createGameObject(type,subtype,position,isFallable);
+            }
+        }
+
+    }
     public ObjectCreationHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
-        //this.timer=new Timer();
+        this.objectFactory=ObjectFactory.getInstance();
         L=GameConfiguration.getInstance().getData().getL();
         gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
         remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
+        initiateFrame();
     }
 
 
@@ -47,7 +67,7 @@ public class ObjectCreationHandler {
     }
 
     public GameObject createGameObject(String type,String subtype,Position position,boolean isFallable){
-        GameObject gameObject=ObjectFactory.getInstance().createObject(type,subtype, position,isFallable);
+        GameObject gameObject=objectFactory.createObject(type,subtype, position,isFallable);
         createGameObject(gameObject);
         return gameObject;
     }

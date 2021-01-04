@@ -2,7 +2,9 @@ package Domain.DomainControl;
 
 import Domain.Blend.Blender;
 import Domain.ShooterFunctions.ShooterHandler;
+import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.GameStatueControl;
+import Domain.UserFunctionalities.SaveLoadHandler;
 import UI.Audio;
 
 import java.util.HashMap;
@@ -34,9 +36,17 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void LoadGame(String FileName) {
-        buildingMode.loadTheGame(FileName);
+    public void LoadGame(String fileName) {
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        GameData gameData=saveLoadHandler.Load(fileName);
+        buildingMode.loadTheGame(gameData);
         runningMode.startGame();
+    }
+
+    public void SaveGame(String fileName) {
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        saveLoadHandler.Save(fileName);
+
     }
 
     public void Move(String direction) {

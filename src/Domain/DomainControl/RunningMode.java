@@ -47,14 +47,8 @@ public class RunningMode {
 
 
     public void startGame() {
-        clock=GameConfiguration.getInstance().getData().getRemainingTime();
-        GameConfiguration.getInstance().getData().setFrameObjects(frameObjects);
-        moveCollidePeriod=20;
-        clockPeriod=100;
-        objectCreationPeriod=setCreationTime();
-        clockCounter=0;
-        creationCounter=0;
 
+        refreshTheGame();
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=shooterHandler.createShooter();
         frameObjects.add(shooter);
@@ -78,6 +72,17 @@ public class RunningMode {
         //timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
         //timerClock.scheduleAtFixedRate(clockTask,0,100);
 
+    }
+
+    public void refreshTheGame(){
+        frameObjects=new ArrayList<>();
+        clock=GameConfiguration.getInstance().getData().getRemainingTime();
+        GameConfiguration.getInstance().getData().setFrameObjects(frameObjects);
+        moveCollidePeriod=20;
+        clockPeriod=100;
+        objectCreationPeriod=setCreationTime();
+        clockCounter=0;
+        creationCounter=0;
     }
 
     public void setFrameListener(ObjectListener frameListener) {
