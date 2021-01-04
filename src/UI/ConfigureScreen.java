@@ -9,12 +9,11 @@ import java.awt.event.WindowEvent;
 import java.util.Enumeration;
 import java.util.HashMap;
 
-import Domain.DomainControl.*;  //Domain.Modes.GameController does not work
 import Domain.Utils.*;
 
 public class ConfigureScreen {
 
-    UIController uiController;
+    private UIListener uiListener;
 
     public JPanel panelMain;
     private JPanel panelSelectionFields;
@@ -61,7 +60,7 @@ public class ConfigureScreen {
     private JFrame configureScreenFrame;
 
     public ConfigureScreen() {
-        uiController = UIController.GetInstance();
+        uiListener = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
         InitializeRBGroups();
@@ -183,7 +182,7 @@ public class ConfigureScreen {
 
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    uiController.initGame(configurationInfo);
+                    uiListener.onStart(configurationInfo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
@@ -229,7 +228,7 @@ public class ConfigureScreen {
             @Override
             public void windowClosing(WindowEvent e) {
                 e.getWindow().dispose();
-                uiController.openHomeScreen();
+                uiListener.onHomeScreen();
             }
         });
     }

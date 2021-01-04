@@ -1,6 +1,5 @@
 package UI;
 
-import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
@@ -10,14 +9,11 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.HashMap;
 
 public class LoadWindow {
 
-    private  UIController uiController;
+    private  UIListener uiListener;
 
     private JFrame frame;
 
@@ -38,7 +34,7 @@ public class LoadWindow {
     private int buttonIndex = 0;
 
     public LoadWindow() {
-        uiController = UIController.GetInstance();
+        uiListener = UIController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -198,8 +194,8 @@ public class LoadWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
-                if(!uiController.isGameRunning){
-                    uiController.openHomeScreen();
+                if(!uiListener.isGameRunning()) {
+                    uiListener.onHomeScreen();
                 }
             }
         });
