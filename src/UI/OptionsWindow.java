@@ -1,6 +1,8 @@
 package UI;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,7 +24,7 @@ public class OptionsWindow {
 
     private JSlider sliderMenuMusic;
     private JTextArea textAreaMenuMusic;
-    private JSlider sliderMusicEffects;
+    private JSlider sliderSFX;
     private JSlider sliderGameMusic;
     private JTextArea textAreaGameMusic;
     private JTextArea textAreaSFX;
@@ -125,10 +127,16 @@ public class OptionsWindow {
     private JButton skLotaShield;
     private JButton skThetaShield;
     private JButton skZetaShield;
+    private JLabel textAreaMenuMusicVolume;
+    private JLabel textAreaGameMusicVolume;
+    private JLabel textAreaSFXVolume;
 
     private JFrame optionsFrame;
 
+    private AudioController audioController;
+
     public OptionsWindow() {
+        audioController = AudioController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -149,13 +157,26 @@ public class OptionsWindow {
 
         scrollPane.getVerticalScrollBar().setUnitIncrement(ScreenInfo.SCROLL_INCREMENT_AMOUNT);
 
+        sliderMenuMusic.setValue(audioController.getMenuMusicVolumeAsInteger());
+        sliderGameMusic.setValue(audioController.getGameMusicVolumeAsInteger());
+        sliderSFX.setValue(audioController.getSFXVolumeAsInteger());
+
         SetFonts();
     }
 
     private void SetFonts() {
+        // PANEL - SOUND
         textAreaMenuMusic.setFont(ScreenInfo.textFontSmall);
+        textAreaMenuMusicVolume.setFont(ScreenInfo.textFontSmall);
+        textAreaMenuMusicVolume.setText(audioController.getMenuMusicVolumeAsInteger() + "%");
+
         textAreaGameMusic.setFont(ScreenInfo.textFontSmall);
+        textAreaGameMusicVolume.setFont(ScreenInfo.textFontSmall);
+        textAreaGameMusicVolume.setText(audioController.getGameMusicVolumeAsInteger() + "%");
+
         textAreaSFX.setFont(ScreenInfo.textFontSmall);
+        textAreaSFXVolume.setFont(ScreenInfo.textFontSmall);
+        textAreaSFXVolume.setText(audioController.getSFXVolumeAsInteger() + "%");
 
         // PANEL - CONTROLS
         textAreaActivity.setFont(ScreenInfo.textFontMedium);
@@ -257,6 +278,8 @@ public class OptionsWindow {
         textAreaPlus8.setFont(ScreenInfo.textFontSmall);
         pkZetaShield.setFont(ScreenInfo.textFontSmall);
         skZetaShield.setFont(ScreenInfo.textFontSmall);
+
+
     }
 
     private void ActionListener() {
@@ -290,7 +313,46 @@ public class OptionsWindow {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*
+                String[] options = new String[2];
+                options[0] = "Save";
+                options[1] = "Don't Save";
+                int result = JOptionPane.showOptionDialog(null, "Do you want to create a new game or continue on an existing game?",
+                        "Save Changes", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
+                if (result == 0) {
+                    SaveChanges();
+                    CloseSettingsWindow();
+                } else if (result == 1){
+                    CloseSettingsWindow();
+                }
+
+                 */
+
                 CloseSettingsWindow();
+            }
+        });
+
+        sliderMenuMusic.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                textAreaMenuMusicVolume.setText(sliderMenuMusic.getValue() + "%");
+                audioController.setMenuMusicVolume(sliderMenuMusic.getValue() / 100.0);
+            }
+        });
+
+        sliderGameMusic.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                textAreaGameMusicVolume.setText(sliderGameMusic.getValue() + "%");
+                audioController.setGameMusicVolume(sliderGameMusic.getValue() / 100.0);
+            }
+        });
+
+        sliderSFX.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                textAreaSFXVolume.setText(sliderSFX.getValue() + "%");
+                audioController.setSFXVolume(sliderSFX.getValue() / 100.0);
             }
         });
 

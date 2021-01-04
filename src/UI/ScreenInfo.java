@@ -3,10 +3,10 @@ package UI;
 import java.awt.*;
 
 public interface ScreenInfo {
-    int WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
-    int WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
-    //int WINDOW_WIDTH = 1280;
-    //int WINDOW_HEIGHT = 720;
+    //int WINDOW_WIDTH = Toolkit.getDefaultToolkit().getScreenSize().width;
+    //int WINDOW_HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().height;
+    int WINDOW_WIDTH = 1280;
+    int WINDOW_HEIGHT = 720;
 
     int STATISTICS_WINDOW_WIDTH = WINDOW_WIDTH / 4;
     int GAME_SCREEN_WIDTH = WINDOW_WIDTH - STATISTICS_WINDOW_WIDTH;

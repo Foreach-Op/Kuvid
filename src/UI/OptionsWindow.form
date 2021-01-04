@@ -127,6 +127,9 @@
                 <colspec value="fill:d:noGrow"/>
                 <colspec value="left:20dlu:noGrow"/>
                 <colspec value="fill:d:noGrow"/>
+                <colspec value="left:5dlu:noGrow"/>
+                <colspec value="fill:max(d;4px):noGrow"/>
+                <colspec value="fill:max(d;4px):noGrow"/>
                 <colspec value="fill:max(d;4px):grow"/>
                 <constraints>
                   <card name="CardSound"/>
@@ -155,7 +158,17 @@
                       <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                       <forms defaultalign-horz="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <inverted value="false"/>
+                      <opaque value="false"/>
+                      <orientation value="0"/>
+                      <paintLabels value="false"/>
+                      <paintTicks value="false"/>
+                      <snapToTicks value="false"/>
+                      <value value="100"/>
+                      <valueIsAdjusting value="false"/>
+                      <visible value="true"/>
+                    </properties>
                   </component>
                   <component id="ee98a" class="javax.swing.JTextArea" binding="textAreaGameMusic">
                     <constraints>
@@ -176,7 +189,10 @@
                       <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                       <forms defaultalign-horz="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <opaque value="false"/>
+                      <value value="100"/>
+                    </properties>
                   </component>
                   <component id="206cc" class="javax.swing.JTextArea" binding="textAreaSFX">
                     <constraints>
@@ -192,12 +208,45 @@
                       <text value="SFX Volume"/>
                     </properties>
                   </component>
-                  <component id="9345a" class="javax.swing.JSlider" binding="sliderMusicEffects">
+                  <component id="9345a" class="javax.swing.JSlider" binding="sliderSFX">
                     <constraints>
                       <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                       <forms defaultalign-horz="false"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <opaque value="false"/>
+                      <value value="100"/>
+                    </properties>
+                  </component>
+                  <component id="30a33" class="javax.swing.JLabel" binding="textAreaMenuMusicVolume">
+                    <constraints>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-1"/>
+                      <text value="100%"/>
+                    </properties>
+                  </component>
+                  <component id="462a5" class="javax.swing.JLabel" binding="textAreaGameMusicVolume">
+                    <constraints>
+                      <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-1"/>
+                      <text value="100%"/>
+                    </properties>
+                  </component>
+                  <component id="f96b3" class="javax.swing.JLabel" binding="textAreaSFXVolume">
+                    <constraints>
+                      <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-1"/>
+                      <text value="100%"/>
+                    </properties>
                   </component>
                 </children>
               </grid>
@@ -918,7 +967,7 @@
                       <borderPainted value="false"/>
                       <contentAreaFilled value="false"/>
                       <foreground color="-1644826"/>
-                      <text value="Tab"/>
+                      <text value="Numpad 0"/>
                     </properties>
                   </component>
                   <component id="f01c0" class="javax.swing.JButton" binding="skAlphaAtom">

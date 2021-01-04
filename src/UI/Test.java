@@ -5,8 +5,6 @@ public class Test {
         UIController uiController = UIController.GetInstance();
         uiController.openHomeScreen();
 
-        Audio backgroundMusic = new Audio("background");
-        backgroundMusic.Start(true);
-        backgroundMusic.SetVolume(1);
+        AudioController.GetInstance().onStart();
     }
 }
