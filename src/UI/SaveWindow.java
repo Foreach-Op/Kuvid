@@ -130,20 +130,10 @@ public class SaveWindow {
     }
 
     private void SaveGame(String saveTitle, String username) {
-        //Save save=new Save(username);
-        //save.SaveTheGame();
+
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
         saveLoadHandler.Save(username);
-        /*try {
-            FileOutputStream fileOut = new FileOutputStream("./save_files/" + saveTitle + "_" + username + ".ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(GameConfiguration.getInstance().getData());
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved.");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+
     }
 
     private void CenterFrame(JFrame frame) {

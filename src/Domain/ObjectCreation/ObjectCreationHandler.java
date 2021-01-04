@@ -9,7 +9,6 @@ import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectCreationHandler {
 
@@ -18,7 +17,7 @@ public class ObjectCreationHandler {
     private final HashMap<String, HashMap<String, Integer>> remainingObjects;
     private final int L;
     //private final int gamescreenheight;
-    private final int gamescreenwidth;
+    private final int gameScreenWidth;
     private ObjectFactory objectFactory;
 
 
@@ -37,8 +36,8 @@ public class ObjectCreationHandler {
                 createGameObject(type,subtype,position,isFallable);
             }
         }
-
     }
+
     public ObjectCreationHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
         GameData gameData=GameConfiguration.getInstance().getData();
         this.frameObjects=frameObjects;
@@ -46,7 +45,7 @@ public class ObjectCreationHandler {
         this.objectFactory=ObjectFactory.getInstance();
         this.remainingObjects=gameData.getRemainingObjects();
         L=gameData.getL();
-        gamescreenwidth=gameData.getGameScreenWidth();
+        gameScreenWidth =gameData.getGameScreenWidth();
         initiateFrame();
     }
 
@@ -59,7 +58,7 @@ public class ObjectCreationHandler {
             type = getRandomType();
             subtype = getRandomSubType(type,subtype,remainingObjects);
         }
-        //GameConfiguration.getInstance().setRemainingObjects(type,subtype);
+
         remainingObjects.get(type).replace(subtype,remainingObjects.get(type).get(subtype)-1);
         return createGameObject(type,subtype, randomInitialPosition());
     }
@@ -106,7 +105,7 @@ public class ObjectCreationHandler {
     private Position randomInitialPosition(){
         int y=-L;
         //int y=20; //test purpose
-        int x= (new Random()).nextInt(gamescreenwidth*4/5-L);
+        int x= (new Random()).nextInt(gameScreenWidth *4/5-L);
 
         return new Position(x,y); /// randomize position
     }
