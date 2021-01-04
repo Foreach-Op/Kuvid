@@ -17,4 +17,5 @@ public interface UIListener {
     void onSave();
 
     boolean isGameRunning();
+
 }
