@@ -1,11 +1,8 @@
 package Domain.DomainControl;
 
 import Domain.Blend.Blender;
-import Domain.ShooterFunctions.ShooterHandler;
-import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.GameStatueControl;
-import Domain.UserFunctionalities.SaveLoadHandler;
-import UI.Audio;
+import UI.AudioListener;
 
 import java.util.HashMap;
 
@@ -22,13 +19,19 @@ public class GameController {
     private String firstAtomForBlender = "";
     private String secondAtomForBlender = "";
     private final GameStatueControl statueControl;
-    private long lastTimeShoot=0;
-    private final int FIRE_RATE=2000;
+    private long lastTimeShoot = 0;
+    private final int FIRE_RATE = 2000;
+
+    private AudioListener audioListener;
 
     public GameController(RunningMode runningMode) {
         this.runningMode = runningMode;
         buildingMode = new BuildingMode();
-        statueControl=GameStatueControl.getInstance();
+        statueControl = GameStatueControl.getInstance();
+    }
+
+    public void setAudioListener(AudioListener audioListener){
+        this.audioListener = audioListener;
     }
 
     public void StartGame(HashMap<String, String> configurationInfo) {
@@ -36,55 +39,46 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void LoadGame(String fileName) {
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        GameData gameData=saveLoadHandler.Load(fileName);
-        buildingMode.loadTheGame(gameData);
+    public void LoadGame(String FileName) {
+        buildingMode.loadTheGame(FileName);
         runningMode.startGame();
     }
 
-    public void SaveGame(String fileName) {
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        saveLoadHandler.Save(fileName);
-
-    }
-
     public void Move(String direction) {
-        if(!statueControl.isGamePaused()) {
+        if (!statueControl.isGamePaused()) {
             runningMode.shooterHandler.moveShooter(direction);
         }
     }
 
     public void Rotate(String direction) {
-        if(!statueControl.isGamePaused()) {
+        if (!statueControl.isGamePaused()) {
             runningMode.shooterHandler.rotateShooter(direction);
         }
     }
 
     public void ChangeAtom() {
-        if(!statueControl.isGamePaused()) {
+        if (!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBullet();
         }
     }
 
-    public void PickPowerup(String subtype){
-        if(!statueControl.isGamePaused()) {
+    public void PickPowerup(String subtype) {
+        if (!statueControl.isGamePaused()) {
             runningMode.shooterHandler.changeBulletToPowerup(subtype);
         }
     }
 
     public void Shoot() {
-        if(!statueControl.isGamePaused()&&(System.currentTimeMillis()-lastTimeShoot)>=FIRE_RATE) {
+        if (!statueControl.isGamePaused() && (System.currentTimeMillis() - lastTimeShoot) >= FIRE_RATE) {
             runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
-            lastTimeShoot=System.currentTimeMillis();
+            lastTimeShoot = System.currentTimeMillis();
 
-            Audio fireSFX = new Audio("fire");
-            fireSFX.Start(false);
+            audioListener.onFire();
         }
     }
 
     public void Blend() {
-        if(!statueControl.isGamePaused()) {
+        if (!statueControl.isGamePaused()) {
             if (isBlendModeActive) {
                 isBlendModeActive = false;
             } else {
@@ -94,19 +88,19 @@ public class GameController {
     }
 
     public void Pause() {
-        if(!statueControl.isGamePaused()){
+        if (!statueControl.isGamePaused()) {
             runningMode.pauseGame();
         }
     }
 
     public void Resume() {
-        if(statueControl.isGamePaused()){
+        if (statueControl.isGamePaused()) {
             runningMode.resumeGame();
         }
     }
 
     public void ChooseAtomForBlender(String type) {
-        if(!statueControl.isGamePaused()) {
+        if (!statueControl.isGamePaused()) {
             blenderCounter++;
             if (isBlendModeActive) {
                 if (blenderCounter == 1) {
@@ -133,12 +127,15 @@ public class GameController {
         }
     }
 
-    public boolean isGamePaused(){
+    public void GameOver(){
+        audioListener.onGameOver();
+    }
+
+    public boolean isGamePaused() {
         return statueControl.isGamePaused();
     }
 
-
-    public void addShield(String shieldtype){
+    public void addShield(String shieldtype) {
         runningMode.shooterHandler.addShield(shieldtype);
     }
 }

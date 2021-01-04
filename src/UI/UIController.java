@@ -2,7 +2,6 @@ package UI;
 
 import Domain.DomainControl.GameController;
 import Domain.DomainControl.RunningMode;
-import Domain.Statistics.GameConfiguration;
 
 import java.util.HashMap;
 
@@ -58,6 +57,7 @@ public class UIController {
         RunningMode runningMode = new RunningMode(gameScreen);
         gameScreen.initialize(runningMode);
         gameController = new GameController(runningMode);
+        gameController.setAudioListener(AudioController.GetInstance());
         gameController.StartGame(configurationInfo);
         gameScreen.InitializeGameScreen(gameController);
 
