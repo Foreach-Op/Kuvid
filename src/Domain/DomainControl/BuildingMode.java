@@ -18,10 +18,19 @@ public class BuildingMode {
     }
 
     public void loadTheGame(GameData data) {
-        GameData gameData=GameConfiguration.getInstance().getData();
+        GameConfiguration gameConfiguration=GameConfiguration.getInstance();
+        GameData gameData=gameConfiguration.getData();
         if(data!=null){
             if(gameData!=null){
                 //Gerekli yerler doldurulacak
+                gameConfiguration.setTime(data.getRemainingTime());
+                gameConfiguration.setScore(data.getScore());
+                gameConfiguration.setHealth(data.getHealth());
+                gameConfiguration.setAmmunition(data.getAmmunition());
+                gameData.setAlphaBetaType(data.getAlphaBetaType());
+                gameData.setMovementType(data.getMovementType());
+                gameData.setRemainingObjects(data.getRemainingObjects());
+                gameData.setObjectsOnFrame(data.getObjectsOnFrame());
             }else {
                 GameConfiguration.getInstance().setData(data);
             }

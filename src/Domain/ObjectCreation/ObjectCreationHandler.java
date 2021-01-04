@@ -40,12 +40,13 @@ public class ObjectCreationHandler {
 
     }
     public ObjectCreationHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
+        GameData gameData=GameConfiguration.getInstance().getData();
         this.frameObjects=frameObjects;
         this.frame=frame;
         this.objectFactory=ObjectFactory.getInstance();
-        L=GameConfiguration.getInstance().getData().getL();
-        gamescreenwidth=GameConfiguration.getInstance().getData().getGameScreenWidth();
-        remainingObjects=GameConfiguration.getInstance().getRemainingObjects();
+        this.remainingObjects=gameData.getRemainingObjects();
+        L=gameData.getL();
+        gamescreenwidth=gameData.getGameScreenWidth();
         initiateFrame();
     }
 
@@ -58,7 +59,8 @@ public class ObjectCreationHandler {
             type = getRandomType();
             subtype = getRandomSubType(type,subtype,remainingObjects);
         }
-        GameConfiguration.getInstance().setRemainingObjects(type,subtype);
+        //GameConfiguration.getInstance().setRemainingObjects(type,subtype);
+        remainingObjects.get(type).replace(subtype,remainingObjects.get(type).get(subtype)-1);
         return createGameObject(type,subtype, randomInitialPosition());
     }
 

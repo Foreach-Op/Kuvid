@@ -170,7 +170,7 @@ public class ShooterHandler {
             Position triggerPosition = setTriggerposition(ATOM);
             shieldedObj.setCurrentPosition(triggerPosition);
             shooter.setObjectInTrigger(shieldedObj);
-            GameConfiguration.getInstance().setRemainingSheild(shieldType);
+            GameConfiguration.getInstance().setRemainingShield(shieldType);
             GameConfiguration.getInstance().getData().getShieldedAtoms().add(shieldedObj);
             frameListener.onShooterTriggerBulletChange();
         }
