@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.DomainControl.GameController;
 import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.SaveLoadHandler;
 
@@ -142,8 +143,7 @@ public class LoadWindow {
     }
 
     private void LoadGame() {
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        saveLoadHandler.Load("Oguz");
+        GameController.getInstance().LoadGame("Oguz");
     }
 
     private JPanel SetInfoPanel(HashMap<String, String> hash) {

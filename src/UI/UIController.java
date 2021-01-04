@@ -56,7 +56,8 @@ public class UIController {
         GameScreen gameScreen = new GameScreen();
         RunningMode runningMode = new RunningMode(gameScreen);
         gameScreen.initialize(runningMode);
-        gameController = new GameController(runningMode);
+        gameController = GameController.getInstance();
+        gameController.initialize(runningMode);
         gameController.setAudioListener(AudioController.GetInstance());
         gameController.StartGame(configurationInfo);
         gameScreen.InitializeGameScreen(gameController);

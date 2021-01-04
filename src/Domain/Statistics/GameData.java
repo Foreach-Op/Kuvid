@@ -70,7 +70,6 @@ public class GameData implements Serializable {
         this.frameObjects = frameObjects;
     }
 
-
     public double getHealth() {
         return health;
     }

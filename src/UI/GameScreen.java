@@ -148,8 +148,8 @@ public class GameScreen extends JFrame implements ObjectListener {
     }
 
     @Override
-    public void onDestroy(GameObject obj1) {
-        gamePanel.onDestroy(obj1);
+    public void onDestroy(GameObject obj) {
+        gamePanel.onDestroy(obj);
     }
 
     @Override

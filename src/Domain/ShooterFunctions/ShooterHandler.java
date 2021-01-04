@@ -16,7 +16,7 @@ import static Domain.Utils.FinalValues.POWERUP;
 
 public class ShooterHandler {
 
-    private Shooter shooter;
+    private Shooter shooter=GameConfiguration.getInstance().getData().getShooter();
     private ObjectListener frameListener;
     private GameData gameData;
     private HashMap<String,Integer> remainingShield;
@@ -53,7 +53,6 @@ public class ShooterHandler {
     }
 
     public void moveShooter(String direction){
-
         double currentX=shooter.getX();
         double currentY=shooter.getY();
         double xPos=0;

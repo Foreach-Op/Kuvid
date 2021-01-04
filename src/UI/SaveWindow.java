@@ -131,8 +131,7 @@ public class SaveWindow {
 
     private void SaveGame(String saveTitle, String username) {
 
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        saveLoadHandler.Save(username);
+        GameController.getInstance().SaveGame(username);
 
     }
 

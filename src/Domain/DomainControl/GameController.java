@@ -20,13 +20,22 @@ public class GameController {
     private int blenderCounter = 0;
     private String firstAtomForBlender = "";
     private String secondAtomForBlender = "";
-    private final GameStatueControl statueControl;
+    private GameStatueControl statueControl;
     private long lastTimeShoot = 0;
     private final int FIRE_RATE = 2000;
 
     private AudioListener audioListener;
+    private static GameController gameController;
 
-    public GameController(RunningMode runningMode) {
+    private GameController(){}
+
+    public static GameController getInstance(){
+        if(gameController==null)
+            gameController=new GameController();
+        return gameController;
+    }
+
+    public void initialize(RunningMode runningMode) {
         this.runningMode = runningMode;
         buildingMode = new BuildingMode();
         statueControl = GameStatueControl.getInstance();

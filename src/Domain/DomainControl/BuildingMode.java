@@ -1,12 +1,14 @@
 package Domain.DomainControl;
 
 import Domain.Objects.GameObject;
+import Domain.Player.Player;
 import Domain.UserFunctionalities.Load;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
 import Domain.Utils.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class BuildingMode {
@@ -24,8 +26,8 @@ public class BuildingMode {
             if(gameData!=null){
                 //Gerekli yerler doldurulacak
                 gameConfiguration.setTime(data.getRemainingTime());
-                gameConfiguration.setScore(data.getScore());
-                gameConfiguration.setHealth(data.getHealth());
+                //gameConfiguration.setScore(data.getScore());
+                //gameConfiguration.setHealth(data.getHealth());
                 gameConfiguration.setAmmunition(data.getAmmunition());
                 gameConfiguration.setRemainingShield(data.getRemainingShield());
                 gameData.setAlphaBetaType(data.getAlphaBetaType());
@@ -33,6 +35,8 @@ public class BuildingMode {
                 gameData.setRemainingObjects(data.getRemainingObjects());
                 gameData.setObjectsOnFrame(data.getObjectsOnFrame());
                 gameData.setDifficulty(data.getDifficulty());
+                Player.getInstance().setHealth(data.getHealth());
+                Player.getInstance().setScore(data.getScore());
             }else {
                 GameConfiguration.getInstance().setData(data);
             }

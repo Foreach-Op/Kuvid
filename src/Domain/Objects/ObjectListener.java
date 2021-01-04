@@ -4,7 +4,7 @@ public interface ObjectListener {
 
     void onCreate(GameObject obj);
     void onLocationChange();
-    void onDestroy(GameObject obj1);
+    void onDestroy(GameObject obj);
     void onShooterTriggerBulletChange();
     void onShooterPositionChange();
 }

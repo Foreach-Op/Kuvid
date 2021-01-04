@@ -25,7 +25,7 @@ public class ObjectCreationHandler {
         GameData gameData=GameConfiguration.getInstance().getData();
         ArrayList<String[]> frame= gameData.getObjectsOnFrame();
         if (frame!=null){
-            for (int i = 0; i < frame.size(); i++) {
+            for (int i = 1; i < frame.size(); i++) {
                 String[] info= frame.get(i);
                 String type=info[0];
                 String subtype=info[1];

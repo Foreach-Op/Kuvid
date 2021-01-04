@@ -8,11 +8,10 @@ import Domain.Collision.CollisionHandler;
 import Domain.Movement.MovementHandler;
 import Domain.ObjectCreation.ObjectCreationHandler;
 import Domain.ShooterFunctions.ShooterHandler;
+import Domain.Utils.FinalValues;
+import Domain.Utils.Position;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class RunningMode {
@@ -50,24 +49,42 @@ public class RunningMode {
 
         refreshTheGame();
         shooterHandler=new ShooterHandler(frameListener);
-        Shooter shooter=shooterHandler.createShooter();
+        Shooter shooter=GameConfiguration.getInstance().getData().getShooter();
+        ArrayList<String[]> shooterList=GameConfiguration.getInstance().getData().getObjectsOnFrame();
+        if(shooter==null){
+            shooter=shooterHandler.createShooter();
+        }else {
+            double xPos=Double.parseDouble(shooterList.get(0)[2]);
+            double yPos=Double.parseDouble(shooterList.get(0)[3]);
+            Position position=new Position(xPos,yPos);
+            shooter.setCurrentPosition(position);
+        }
+
         frameObjects.add(shooter);
+
+
 
         objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
         movementHandler = new MovementHandler(frameObjects, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
-        timerFunction=new Timer();
+
+        if(!GameStatueControl.getInstance().isGamePaused()){
+            timerFunction=new Timer();
+            functionTask=timerFunctions();
+            timerFunction.scheduleAtFixedRate(functionTask,10,moveCollidePeriod);
+        }
+
         //timerObjectCreation=new Timer();
         //timerMoveAndCollision=new Timer();
         //timerClock=new Timer();
 
         //refreshRate = 10;
         //int creationTime = setCreationTime();
-        functionTask=timerFunctions();
+
         //createObjectTask = createObject();
         //moveAndCollideTask = moveAndCollide();
         //clockTask=clock();
-        timerFunction.scheduleAtFixedRate(functionTask,10,moveCollidePeriod);
+
         //timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,creationTime);
         //timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
         //timerClock.scheduleAtFixedRate(clockTask,0,100);
@@ -75,6 +92,12 @@ public class RunningMode {
     }
 
     public void refreshTheGame(){
+        if(frameObjects!=null){
+            for (int i = 1; i < frameObjects.size(); i++) {
+                frameObjects.get(i).destroy();
+                frameListener.onDestroy(frameObjects.get(i));
+            }
+        }
         frameObjects=new ArrayList<>();
         clock=GameConfiguration.getInstance().getData().getRemainingTime();
         GameConfiguration.getInstance().getData().setFrameObjects(frameObjects);
@@ -83,6 +106,7 @@ public class RunningMode {
         objectCreationPeriod=setCreationTime();
         clockCounter=0;
         creationCounter=0;
+        //GameStatueControl.getInstance().setPaused();
     }
 
     public void setFrameListener(ObjectListener frameListener) {
