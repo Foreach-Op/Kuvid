@@ -3,6 +3,7 @@ package Domain.DomainControl;
 import Domain.Blend.Blender;
 import Domain.ShooterFunctions.ShooterHandler;
 import Domain.UserFunctionalities.GameStatueControl;
+import UI.Audio;
 
 import java.util.HashMap;
 
@@ -66,6 +67,8 @@ public class GameController {
         if(!statueControl.isGamePaused()&&(System.currentTimeMillis()-lastTimeShoot)>=FIRE_RATE) {
             runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
             lastTimeShoot=System.currentTimeMillis();
+
+            new Audio("fire", false);
         }
     }
 
