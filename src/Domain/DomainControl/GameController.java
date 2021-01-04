@@ -68,7 +68,8 @@ public class GameController {
             runningMode.shooterHandler.fire(runningMode.objectCreationHandler);
             lastTimeShoot=System.currentTimeMillis();
 
-            new Audio("fire", false);
+            Audio fireSFX = new Audio("fire");
+            fireSFX.Start(false);
         }
     }
 
