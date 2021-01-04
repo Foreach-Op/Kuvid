@@ -1,10 +1,7 @@
 package Domain.Objects;
 
-//import Domain.Modes.RunningMode;
 import Domain.Statistics.GameConfiguration;
 import Domain.Utils.Position;
-import Domain.Utils.Rectangle;
-
 import java.io.Serializable;
 
 public abstract class GameObject implements Serializable {

@@ -199,7 +199,7 @@ public class LoadWindow {
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
                 if(!uiController.isGameRunning){
-                    uiController.openHomeScreen();
+                    uiController.onHomeScreen();
                 }
             }
         });

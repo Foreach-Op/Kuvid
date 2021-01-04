@@ -5,7 +5,7 @@ import Domain.DomainControl.RunningMode;
 
 import java.util.HashMap;
 
-public class UIController {
+public class UIController implements UIListener {
 
     private static UIController instance;
 
@@ -24,34 +24,6 @@ public class UIController {
         instance = this;
     }
 
-    public void openHomeScreen() {
-        new HomeScreen();
-    }
-
-    public void openConfigureScreen() {
-        new ConfigureScreen();
-    }
-
-    public void openLoadWindow() {
-        new LoadWindow();
-    }
-
-    public void openOptionsWindow() {
-        new OptionsWindow();
-    }
-
-    public void openCreditsWindow() {
-
-    }
-
-    public void openPauseWindow() {
-        new PauseWindow(gameController);
-    }
-
-    public void openSaveWindow() {
-        new SaveWindow();
-    }
-
     public void initGame(HashMap<String, String> configurationInfo) {
         GameScreen gameScreen = new GameScreen();
         RunningMode runningMode = new RunningMode(gameScreen);
@@ -63,5 +35,66 @@ public class UIController {
         gameScreen.InitializeGameScreen(gameController);
 
         isGameRunning = true;
+    }
+
+    @Override
+    public void onHomeScreen() {
+        new HomeScreen();
+    }
+
+    @Override
+    public void onConfigureScreen() {
+        new ConfigureScreen();
+    }
+
+    @Override
+    public void onStart(HashMap<String, String> configurationInfo) {
+        initGame(configurationInfo);
+        System.out.println(isGameRunning);
+    }
+
+    @Override
+    public void onGameStart() {
+
+    }
+
+    @Override
+    public void onGameOver() {
+
+    }
+
+    @Override
+    public void onPause() {
+        new PauseWindow(gameController);
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onCredits() {
+
+    }
+
+    @Override
+    public void onOptions() {
+        new OptionsWindow();
+    }
+
+    @Override
+    public void onLoadScreen() {
+        new LoadWindow();
+    }
+
+    @Override
+    public void onSave() {
+        new SaveWindow();
+    }
+
+    @Override
+    public boolean isGameRunning() {
+        return isGameRunning;
     }
 }

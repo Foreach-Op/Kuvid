@@ -3,6 +3,8 @@ package Domain.Statistics;
 import Domain.Objects.*;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Difficulty;
+import UI.ScreenInfo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,8 +29,8 @@ public class GameData implements Serializable {
     private String alphaBetaType;
     private String movementType;
 
-    private int gameScreenWidth=1000;
-    private int gameScreenHeight=800;
+    private int gameScreenWidth= ScreenInfo.GAME_SCREEN_WIDTH;
+    private int gameScreenHeight=ScreenInfo.GAME_SCREEN_HEIGHT;
 
     private Shooter shooter;
 

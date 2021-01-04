@@ -22,7 +22,7 @@ public class GameController {
     private String secondAtomForBlender = "";
     private GameStatueControl statueControl;
     private long lastTimeShoot = 0;
-    private final int FIRE_RATE = 2000;
+    private final int FIRE_RATE = 1000;
 
     private AudioListener audioListener;
     private static GameController gameController;
