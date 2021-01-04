@@ -7,5 +7,5 @@ public interface StaticWindowListener {
     void onHealthChange(double health);
     void onScoreChange(double score);
     void onAmmunitionChange(HashMap<String,HashMap<String,Integer>> map);
-    void shieldChangeListener(HashMap<String,Integer> remainingShields);
+    void onShieldChange(HashMap<String,Integer> remainingShields);
 }

@@ -27,10 +27,12 @@ public class BuildingMode {
                 gameConfiguration.setScore(data.getScore());
                 gameConfiguration.setHealth(data.getHealth());
                 gameConfiguration.setAmmunition(data.getAmmunition());
+                gameConfiguration.setRemainingShield(data.getRemainingShield());
                 gameData.setAlphaBetaType(data.getAlphaBetaType());
                 gameData.setMovementType(data.getMovementType());
                 gameData.setRemainingObjects(data.getRemainingObjects());
                 gameData.setObjectsOnFrame(data.getObjectsOnFrame());
+                gameData.setDifficulty(data.getDifficulty());
             }else {
                 GameConfiguration.getInstance().setData(data);
             }

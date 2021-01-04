@@ -3,6 +3,7 @@ package Domain.UserFunctionalities;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
+import Domain.Utils.Difficulty;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -25,6 +26,7 @@ public class Save {
         double health= gameData.getHealth();
         double score= gameData.getScore();
         double time= gameData.getRemainingTime();
+        String difficulty=gameData.getDifficulty().toString();
         String alphaBetaMovement= gameData.getMovementType();
         String alphaBetaShape= gameData.getAlphaBetaType();
         HashMap<String,HashMap<String,Integer>> ammunition= gameData.getAmmunition();
@@ -41,6 +43,7 @@ public class Save {
         mainJsonObject.put("AlphaBetaMovement",alphaBetaMovement);
         mainJsonObject.put("AlphaBetaShape",alphaBetaShape);
         mainJsonObject.put("username",username);
+        mainJsonObject.put("Difficulty",difficulty);
 
 
         JSONArray jsonRemainingObjectArray=new JSONArray();

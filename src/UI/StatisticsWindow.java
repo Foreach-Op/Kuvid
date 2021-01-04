@@ -297,7 +297,7 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     @Override
-    public void shieldChangeListener(HashMap<String, Integer> remainingShields) {
+    public void onShieldChange(HashMap<String, Integer> remainingShields) {
         textAreaEtaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.ETA)));
         textAreaLotaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.LOTA)));
         textAreaThetaShieldAmount.setText(String.valueOf(remainingShields.get(FinalValues.THETA)));

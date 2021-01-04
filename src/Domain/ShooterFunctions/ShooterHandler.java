@@ -8,6 +8,8 @@ import Domain.Statistics.GameData;
 import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
+import java.util.HashMap;
+
 import static Domain.Utils.FinalValues.ATOM;
 import static Domain.Utils.FinalValues.POWERUP;
 
@@ -16,12 +18,14 @@ public class ShooterHandler {
 
     private Shooter shooter;
     private ObjectListener frameListener;
-    private static GameData gameData;
+    private GameData gameData;
+    private HashMap<String,Integer> remainingShield;
 
 
     public ShooterHandler(ObjectListener frameListener) {
         this.frameListener=frameListener;
         gameData = GameConfiguration.getInstance().getData();
+        this.remainingShield= gameData.getRemainingShield();
     }
 
     public Shooter createShooter() {
@@ -37,7 +41,7 @@ public class ShooterHandler {
         return shooter;
     }
 
-    public Position setTriggerposition(String triggerType){
+    public Position setTriggerPosition(String triggerType){
 
         int x=(int) shooter.getX()+shooter.getWidth()/3;
         int y=(int) shooter.getY()-shooter.getHeight()/4;
@@ -62,7 +66,7 @@ public class ShooterHandler {
         Position newPos=new Position(xPos,currentY);
         newPos.setRotation(shooter.getRotationAngle());
         shooter.setCurrentPosition(newPos);
-        Position triggerPosition = setTriggerposition(shooter.getObjectInTrigger().getType());
+        Position triggerPosition = setTriggerPosition(shooter.getObjectInTrigger().getType());
         shooter.getObjectInTrigger().setCurrentPosition(triggerPosition);
         frameListener.onShooterPositionChange();
 
@@ -70,11 +74,11 @@ public class ShooterHandler {
 
     public void fire(ObjectCreationHandler objectCreationHandler){
         //System.out.println("burası çalıştı(shooterhandlerFire): "+((Atom)shooter.getObjectInTrigger()).isShielded());
-        Position triggerPosition = setTriggerposition(shooter.getObjectInTrigger().getType());
+        Position triggerPosition = setTriggerPosition(shooter.getObjectInTrigger().getType());
 
         if(shooter.getObjectInTrigger().getType().equals(ATOM)){
             if (((Atom) shooter.getObjectInTrigger()).isShielded())
-                GameConfiguration.getInstance().getData().getShieldedAtoms().remove(shooter.getObjectInTrigger());
+                gameData.getShieldedAtoms().remove(shooter.getObjectInTrigger());
         } else {
             triggerPosition.setY((int) shooter.getY()-shooter.getHeight());
         }
@@ -101,9 +105,9 @@ public class ShooterHandler {
 
     public void changeBullet(){
         GameObject object=null;
-        Position triggerPosition = setTriggerposition(ATOM);
-        if((!GameConfiguration.getInstance().getData().getShieldedAtoms().isEmpty()) && (Math.random() * 4)<=1){ //şimdilik .25 ihtimal
-            object=GameConfiguration.getInstance().getData().getShieldedAtoms().get(0);
+        Position triggerPosition = setTriggerPosition(ATOM);
+        if((!gameData.getShieldedAtoms().isEmpty()) && (Math.random() * 4)<=1){ //şimdilik .25 ihtimal
+            object=gameData.getShieldedAtoms().get(0);
             object.setCurrentPosition(triggerPosition);
         } else {
             String subtype = null;
@@ -131,7 +135,7 @@ public class ShooterHandler {
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
             //shooter.setCurrentBulletType(FinalValues.POWERUP);
             //shooter.setCurrentBulletSubtype(subtype);
-            Position triggerPosition = setTriggerposition(POWERUP);
+            Position triggerPosition = setTriggerPosition(POWERUP);
             GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,triggerPosition,false);
             shooter.setObjectInTrigger(object);
             frameListener.onShooterTriggerBulletChange();
@@ -146,31 +150,34 @@ public class ShooterHandler {
         Integer remaining=0;
         switch (shieldType){
             case FinalValues.ETA:
-                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.ETA);
+                remaining=remainingShield.get(FinalValues.ETA);
                 if(remaining>0)
                 shieldedObj=add_Eta(shooter.getObjectInTrigger());
                 break;
             case FinalValues.LOTA:
-                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.LOTA);
+                remaining=remainingShield.get(FinalValues.LOTA);
                 if(remaining>0)
                 shieldedObj=add_Lota(shooter.getObjectInTrigger());
                 break;
             case FinalValues.THETA:
-                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.THETA);
+                remaining=remainingShield.get(FinalValues.THETA);
                 if(remaining>0)
                 shieldedObj=add_Theta(shooter.getObjectInTrigger());
                 break;
             case FinalValues.ZETA:
-                remaining=GameConfiguration.getInstance().getRemainingShield(FinalValues.ZETA);
+                remaining=remainingShield.get(FinalValues.ZETA);
                 if(remaining>0)
                 shieldedObj=add_Zeta(shooter.getObjectInTrigger());
                 break;
         }
         if(remaining>0){
-            Position triggerPosition = setTriggerposition(ATOM);
+            Position triggerPosition = setTriggerPosition(ATOM);
             shieldedObj.setCurrentPosition(triggerPosition);
             shooter.setObjectInTrigger(shieldedObj);
-            GameConfiguration.getInstance().setRemainingShield(shieldType);
+
+            remainingShield.replace(shieldType,remainingShield.get(shieldType)-1);
+            GameConfiguration.getInstance().setRemainingShield(remainingShield);
+
             GameConfiguration.getInstance().getData().getShieldedAtoms().add(shieldedObj);
             frameListener.onShooterTriggerBulletChange();
         }

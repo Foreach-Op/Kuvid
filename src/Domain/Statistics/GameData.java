@@ -1,13 +1,8 @@
 package Domain.Statistics;
 
 import Domain.Objects.*;
-import Domain.Player.Player;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Difficulty;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,10 +11,10 @@ public class GameData implements Serializable {
 
     private ArrayList<GameObject> frameObjects = null;
     private ArrayList<GameObject> shieldedAtoms = null;
-    private double health;
-    private double score;
 
-    private double remainingTime;
+    private double health=100;
+    private double score=0;
+    private double remainingTime=10000;
 
     private boolean isLoaded = false;
     private HashMap<String, HashMap<String, Integer>> ammunition;
@@ -27,13 +22,13 @@ public class GameData implements Serializable {
     private HashMap<String,Integer> remainingShield;
     private ArrayList<String[]> objectsOnFrame=null;
 
-    private Difficulty difficulty;
+    private Difficulty difficulty=Difficulty.NORMAL;
     private int L=10;
     private String alphaBetaType;
     private String movementType;
 
-    private int gameScreenWidth;
-    private int gameScreenHeight;
+    private int gameScreenWidth=1000;
+    private int gameScreenHeight=800;
 
     private Shooter shooter;
 
@@ -130,6 +125,22 @@ public class GameData implements Serializable {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        Difficulty diff=Difficulty.NORMAL;
+        switch (difficulty){
+            case "EASY":
+                diff=Difficulty.EASY;
+                break;
+            case "NORMAL":
+                diff=Difficulty.NORMAL;
+                break;
+            case "HARD":
+                diff=Difficulty.HARD;
+                break;
+        }
+        this.difficulty = diff;
     }
 
     public int getL() {

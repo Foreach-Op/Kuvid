@@ -31,6 +31,8 @@ public class Load {
         data.setMovementType(alphaBetaMovement);
         String alphaBetaShape= (String) mainJsonObject.get("AlphaBetaShape");
         data.setAlphaBetaType(alphaBetaShape);
+        String difficulty=(String) mainJsonObject.get("Difficulty");
+        data.setDifficulty(difficulty);
 
         HashMap<String,HashMap<String,Integer>> remainingObjects= new HashMap<>();
         data.setRemainingObjects(remainingObjects);

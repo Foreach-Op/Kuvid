@@ -48,12 +48,8 @@ public class GameConfiguration {
         staticWindowListener.onAmmunitionChange(ammo);
     }
 
-    public void setRemainingShield(String shieldType){
-        data.getRemainingShield().replace(shieldType,getData().getRemainingShield().get(shieldType)-1);
-        staticWindowListener.shieldChangeListener(getData().getRemainingShield());
-    }
-
-    public int getRemainingShield(String shieldType){
-        return getData().getRemainingShield().get(shieldType);
+    public void setRemainingShield(HashMap<String,Integer> remainingShield){
+        data.setRemainingShield(remainingShield);
+        staticWindowListener.onShieldChange(remainingShield);
     }
 }
