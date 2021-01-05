@@ -196,7 +196,11 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
 
     public void SetData(GameData gameData){
         textAreaScore.setText(String.valueOf(gameData.getScore()));
-        textAreaTime.setText(String.valueOf(gameData.getRemainingTime()));
+        double time =gameData.getRemainingTime();
+        int min=(int)time/60;
+        int sec=(int)((time-min*60)%60);
+        String clock=min+":"+sec;
+        textAreaTime.setText(clock);
         textAreaHealth.setText(String.valueOf(gameData.getHealth()));
 
         textAreaAlphaPowerupAmount.setText(String.valueOf(gameData.getAmmunition().get(FinalValues.POWERUP).get(FinalValues.ALPHA)));
@@ -269,18 +273,18 @@ public class StatisticsWindow extends JPanel implements StaticWindowListener {
     }
 
     @Override
-    public void onTimeChange(double time) {
-        textAreaTime.setText(String.valueOf(time));
+    public void onTimeChange(String time) {
+        textAreaTime.setText(time);
     }
 
     @Override
-    public void onHealthChange(double health) {
-        textAreaHealth.setText(String.valueOf(health));
+    public void onHealthChange(String health) {
+        textAreaHealth.setText(health);
     }
 
     @Override
-    public void onScoreChange(double score) {
-        textAreaScore.setText(String.valueOf(score));
+    public void onScoreChange(String score) {
+        textAreaScore.setText(score);
     }
 
     @Override

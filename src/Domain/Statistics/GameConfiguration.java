@@ -1,5 +1,6 @@
 package Domain.Statistics;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class GameConfiguration {
@@ -30,17 +31,22 @@ public class GameConfiguration {
 
     public void setTime(double time){
         data.setRemainingTime(time);
-        staticWindowListener.onTimeChange(time);
+        int min=(int)time/60;
+        int sec=(int)((time-min*60)%60);
+        String Clock=min+":"+sec;
+        staticWindowListener.onTimeChange(Clock);
     }
 
     public void setScore(double score){
+        DecimalFormat df = new DecimalFormat("#.000");
         data.setScore(score);
-        staticWindowListener.onScoreChange(score);
+        staticWindowListener.onScoreChange(String.format("%d,%02f",(int)score/1,score %1));
     }
 
     public void setHealth(double health){
+        DecimalFormat df = new DecimalFormat("#.00");
         data.setHealth(health);
-        staticWindowListener.onHealthChange(health);
+        staticWindowListener.onHealthChange(df.format(health));
     }
 
     public void setAmmunition(HashMap<String,HashMap<String,Integer>> ammo){
