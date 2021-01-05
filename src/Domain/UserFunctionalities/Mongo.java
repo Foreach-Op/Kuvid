@@ -26,7 +26,7 @@ public class Mongo implements SaveLoadAdapter {
     public Mongo(){
         Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
         mongoLogger.setLevel(Level.SEVERE); // e.g. or Log.WARNING, etc.
-        MongoClient mongoClient = MongoClients.create("mongodb+srv://comp302_user:comp302_password@sandbox.v2mqr.mongodb.net/"); // uri connection to the server
+        MongoClient mongoClient = MongoClients.create("mongodb+srv://comp302_user:comp302_password@cluster0.fmfpb.mongodb.net/Comp302?retryWrites=true&w=majority"); // uri connection to the server
         MongoDatabase database = mongoClient.getDatabase("Comp302"); // selecting the database
         this.collection = database.getCollection("KuvidCollection"); // collection
     }

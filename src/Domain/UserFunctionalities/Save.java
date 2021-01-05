@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Save {
-    private String username="";
+    private String username="Oguz";
 
     public Save(String username){
         this.username=username;
