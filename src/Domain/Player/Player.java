@@ -45,7 +45,6 @@ public class Player {
         }
     }
 
-    // Method changed according to the score formula.
     public void increaseScore(double efficiency, double remaining_time_on_frame){
         score.updateTotalScore(efficiency,remaining_time_on_frame);
         gameConfiuration.setScore(score.getTotalScore());

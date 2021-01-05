@@ -16,7 +16,6 @@ public class ObjectCreationHandler {
     private final ObjectListener frame;
     private final HashMap<String, HashMap<String, Integer>> remainingObjects;
     private final int L;
-    //private final int gamescreenheight;
     private final int gameScreenWidth;
     private ObjectFactory objectFactory;
 
@@ -56,7 +55,6 @@ public class ObjectCreationHandler {
         //          call createGameObject(type,subtype, randomInitialPosition()) to create object
         //          and add it to the frameObject list.
         // returns: Created gameObject
-
         String type=null;
         String subtype=null;
         while (subtype == null) {

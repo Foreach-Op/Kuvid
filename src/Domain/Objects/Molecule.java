@@ -11,7 +11,6 @@ public class Molecule extends GameObject{
         setVelocityX(getVelocityX()*getL()/50);
         setHeight(getL()/2);
         setWidth(getL()/2);
-        //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, angle));
     }
 
 }

@@ -17,8 +17,8 @@ public class MoleculeAtomCollision implements CollisionStrategy{
             HashMap<String,HashMap<String,Integer>> ammo=configuration.getData().getAmmunition();
             HashMap<String,Integer> map=ammo.get(FinalValues.ATOM);
             map.replace(object1.getSubType(),map.get(object1.getSubType())+1);
-            //Player.getInstance().increaseScore(1,);
             configuration.setAmmunition(ammo);
+
             object1.destroy();
             Player.getInstance().increaseScore(((Atom)object2).getEfficiency(),object1.getY()/object1.getVelocityY());
         }

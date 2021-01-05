@@ -18,8 +18,6 @@ public class SaveLoadHandler {
     public void Save(String username){ //username-playername-filename is same
 
         try {
-            //json yaratılacak
-            //filename json içine yazılacak
             Save save=new Save(username);
             JSONObject json=save.SaveTheGame();
             adapter.upload(json);
@@ -31,7 +29,6 @@ public class SaveLoadHandler {
     public GameData Load(String filename){
         GameData gameData=null;
         try {
-            //bundan sonra json ayrıştırma yeri çağırılıp yapılabilir.
             Load load=new Load();
             JSONObject json=adapter.download(filename);
             gameData=load.LoadTheGame(json);

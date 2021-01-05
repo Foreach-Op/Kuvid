@@ -14,7 +14,6 @@ public class Powerup extends GameObject{
         if(!isFallable){
             setVelocityY(-getVelocityY());
         }
-        //setRectangle(new Rectangle(position, widthCoef*L, heightCoef*L, 0));
     }
 
 }

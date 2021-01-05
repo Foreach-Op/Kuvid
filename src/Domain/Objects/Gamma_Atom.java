@@ -10,7 +10,6 @@ import java.util.Random;
 public class Gamma_Atom extends Atom {
 
 
-    private int num_of_neutrons; //Number of neutrons is a random integer between {29, 32, 33}
 
     public Gamma_Atom(Position position,int angle) {
         super(FinalValues.GAMMA,position,angle);

@@ -12,18 +12,13 @@ import static Domain.Utils.FinalValues.ATOM;
 
 public class Shooter extends GameObject {
     private HashMap<String, HashMap<String, Integer>>  numOfBullets;
-    //private String currentBulletType = null;
-    //private String currentBulletSubtype = null;//bullet of the shooter.
     private GameObject objectInTrigger=null;
-    public Rectangle rectangle;
 
     private static GameData gameData=GameConfiguration.getInstance().getData();
 
     public Shooter() {
         super("Shooter","1",new Position(500,500),90,false);
         numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
-        //super("Shooter","1",new Position(gameData.getGameScreenWidth()/2 - (gameData.getL()/2),
-        //        gameData.getGameScreenHeight()-gameData.getL()),90);
         setVelocity(new Position(getL()/20,0));
         setHeight(getL());
         setWidth(getL()/3);
@@ -51,8 +46,6 @@ public class Shooter extends GameObject {
     }
 
     public void setObjectInTrigger(GameObject objectInTrigger) {
-        //this.currentBulletType=objectInTrigger.getType();
-        //this.currentBulletSubtype=objectInTrigger.getSubType();
         this.objectInTrigger = objectInTrigger;
     }
 
@@ -60,7 +53,6 @@ public class Shooter extends GameObject {
         numOfBullets.get(objectInTrigger.getType()).replace(objectInTrigger.getSubType(),
                 numOfBullets.get(objectInTrigger.getType()).get(objectInTrigger.getSubType())-1);
         GameConfiguration.getInstance().setAmmunition(numOfBullets);
-        //setAmmunition(numOfBullets);
     }
 
     public HashMap<String, HashMap<String, Integer>> getNumOfBullets() {
@@ -70,18 +62,11 @@ public class Shooter extends GameObject {
         return numOfBullets.get(ATOM);
     }
 
-    public void setNumOfAtoms(HashMap<String, Integer> set){
-        numOfBullets.replace(ATOM, set);
-        setAmmunition(numOfBullets);
-    }
 
     public HashMap<String, HashMap<String, Integer>> getAmmunition(){
         return GameConfiguration.getInstance().getData().getAmmunition();
     }
 
-    public void setAmmunition(HashMap<String, HashMap<String, Integer>> numOfBullets){
-        GameConfiguration.getInstance().getData().setAmmunition(numOfBullets);
-    }
 
 
 }

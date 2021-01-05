@@ -13,8 +13,8 @@ public class ShooterPowerupCollision implements CollisionStrategy{
         HashMap<String,HashMap<String,Integer>> ammo=configuration.getData().getAmmunition();
         HashMap<String,Integer> map=ammo.get(FinalValues.POWERUP);
         map.replace(object2.getSubType(),map.get(object2.getSubType())+1);
+
         configuration.setAmmunition(ammo);
-        //System.out.println(object2.getType());
         object2.destroy();
     }
 }

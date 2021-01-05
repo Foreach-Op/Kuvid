@@ -72,7 +72,6 @@ public class ShooterHandler {
     }
 
     public void fire(ObjectCreationHandler objectCreationHandler){
-        //System.out.println("burası çalıştı(shooterhandlerFire): "+((Atom)shooter.getObjectInTrigger()).isShielded());
         Position triggerPosition = setTriggerPosition(shooter.getObjectInTrigger().getType());
 
         if(shooter.getObjectInTrigger().getType().equals(ATOM)){
@@ -87,7 +86,7 @@ public class ShooterHandler {
         fired.setAngle(90-shooter.getRotationAngle());
         shooter.reduceTheBullet();
         changeBullet();
-        //System.out.println("burası çalıştı((shooterhandlerFire)-son): "+((Atom)shooter.getObjectInTrigger()).isShielded());
+
     }
 
     public void rotateShooter(String direction) {
@@ -103,7 +102,7 @@ public class ShooterHandler {
     }
 
     public void changeBullet(){
-        GameObject object=null;
+        GameObject object;
         Position triggerPosition = setTriggerPosition(ATOM);
         if((!gameData.getShieldedAtoms().isEmpty()) && (Math.random() * 4)<=1){ //şimdilik .25 ihtimal
             object=gameData.getShieldedAtoms().get(0);
@@ -132,8 +131,6 @@ public class ShooterHandler {
 
     public void changeBulletToPowerup(String subtype){ //change the bullet to desired type powerup object
         if(shooter.getNumOfBullets().get(FinalValues.POWERUP).get(subtype)>0) {
-            //shooter.setCurrentBulletType(FinalValues.POWERUP);
-            //shooter.setCurrentBulletSubtype(subtype);
             Position triggerPosition = setTriggerPosition(POWERUP);
             GameObject object=ObjectFactory.getInstance().createObject(POWERUP,subtype,triggerPosition,false);
             shooter.setObjectInTrigger(object);

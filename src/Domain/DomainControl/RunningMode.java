@@ -29,7 +29,7 @@ public class RunningMode {
     private TimerTask moveAndCollideTask;
     private TimerTask clockTask;
 
-    public ObjectCreationHandler objectCreationHandler; //static?
+    public ObjectCreationHandler objectCreationHandler;
     public ShooterHandler shooterHandler;
 
     private double clock;
@@ -73,21 +73,6 @@ public class RunningMode {
             functionTask=timerFunctions();
             timerFunction.scheduleAtFixedRate(functionTask,10,moveCollidePeriod);
         }
-
-        //timerObjectCreation=new Timer();
-        //timerMoveAndCollision=new Timer();
-        //timerClock=new Timer();
-
-        //refreshRate = 10;
-        //int creationTime = setCreationTime();
-
-        //createObjectTask = createObject();
-        //moveAndCollideTask = moveAndCollide();
-        //clockTask=clock();
-
-        //timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,creationTime);
-        //timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
-        //timerClock.scheduleAtFixedRate(clockTask,0,100);
 
     }
 
@@ -200,26 +185,11 @@ public class RunningMode {
     }
 
     public void pauseGame(){
-        //createObjectTask.cancel();
-        //moveAndCollideTask.cancel();
-        //clockTask.cancel();
-        //timerObjectCreation.cancel();
-        //timerMoveAndCollision.cancel();
-        //timerClock.cancel();
         functionTask.cancel();
         timerFunction.cancel();
         GameStatueControl.getInstance().setPaused();
     }
     public void resumeGame(){
-        //createObjectTask = createObject();
-        //moveAndCollideTask = moveAndCollide();
-        //clockTask=clock();
-        //timerObjectCreation=new Timer();
-        //timerMoveAndCollision=new Timer();
-        //timerClock=new Timer();
-        //timerObjectCreation.scheduleAtFixedRate(createObjectTask,10,setCreationTime());
-        //timerMoveAndCollision.scheduleAtFixedRate(moveAndCollideTask,20,20);
-        //timerClock.scheduleAtFixedRate(clockTask,0,100);
         timerFunction=new Timer();
         functionTask=timerFunctions();
         timerFunction.scheduleAtFixedRate(functionTask,10,moveCollidePeriod);
