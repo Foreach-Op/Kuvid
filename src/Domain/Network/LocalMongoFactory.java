@@ -1,4 +1,4 @@
-package Domain.UserFunctionalities;
+package Domain.Network;
 
 public class LocalMongoFactory {
 

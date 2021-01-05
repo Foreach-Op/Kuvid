@@ -9,11 +9,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MovementHandler {
 
-    private final ArrayList<GameObject> frameObjects;
+    private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
 
 
-    public MovementHandler(ArrayList<GameObject> frameObjects,ObjectListener frame) {
+    public MovementHandler(CopyOnWriteArrayList<GameObject> frameObjects,ObjectListener frame) {
         this.frameObjects=frameObjects;
         this.frame=frame;
     }

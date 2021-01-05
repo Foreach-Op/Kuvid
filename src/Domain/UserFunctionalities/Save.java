@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Save {
     private String username="Oguz";
@@ -31,7 +32,7 @@ public class Save {
         String alphaBetaShape= gameData.getAlphaBetaType();
         HashMap<String,HashMap<String,Integer>> ammunition= gameData.getAmmunition();
         HashMap<String,HashMap<String,Integer>> remainingObjects= gameData.getRemainingObjects();
-        ArrayList<GameObject> frameObjects=gameData.getFrameObjects();
+        CopyOnWriteArrayList<GameObject> frameObjects=gameData.getFrameObjects();
         HashMap<String,Integer> remainingShielded=gameData.getRemainingShield();
 
 

@@ -9,10 +9,11 @@ import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ObjectCreationHandler {
 
-    private final ArrayList<GameObject> frameObjects;
+    private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
     private final HashMap<String, HashMap<String, Integer>> remainingObjects;
     private final int L;
@@ -37,7 +38,7 @@ public class ObjectCreationHandler {
         }
     }
 
-    public ObjectCreationHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
+    public ObjectCreationHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         GameData gameData=GameConfiguration.getInstance().getData();
         this.frameObjects=frameObjects;
         this.frame=frame;

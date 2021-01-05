@@ -1,4 +1,4 @@
-package Domain.UserFunctionalities;
+package Domain.Network;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Sorts.descending;
 
 public class Mongo implements SaveLoadAdapter {
 
@@ -34,7 +35,7 @@ public class Mongo implements SaveLoadAdapter {
 
     @Override
     public JSONObject download(String filename) throws Exception {
-        Document my_doc = collection.find(eq("username", filename)).first();
+        Document my_doc = collection.find(eq("username", filename)).sort(new Document("_id", -1)).first();
         return changetoJson(my_doc);
     }
 

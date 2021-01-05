@@ -8,10 +8,11 @@ import UI.ScreenInfo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameData implements Serializable {
 
-    private ArrayList<GameObject> frameObjects = null;
+    private CopyOnWriteArrayList<GameObject> frameObjects = null;
     private ArrayList<GameObject> shieldedAtoms = null;
 
     private double health=100;
@@ -47,7 +48,7 @@ public class GameData implements Serializable {
         this.alphaBetaType = alphaBetaType;
     }
 
-    public GameData(ArrayList<GameObject> frameObjects, double health,
+    public GameData(CopyOnWriteArrayList<GameObject> frameObjects, double health,
                     double score, double remainingTime, boolean isLoaded,
                     HashMap<String, HashMap<String, Integer>> ammunition,
                     HashMap<String, HashMap<String, Integer>> remainingObjects,
@@ -64,11 +65,11 @@ public class GameData implements Serializable {
         this.alphaBetaType = alphaBetaType;
     }
 
-    public ArrayList<GameObject> getFrameObjects() {
+    public CopyOnWriteArrayList<GameObject> getFrameObjects() {
         return frameObjects;
     }
 
-    public void setFrameObjects(ArrayList<GameObject> frameObjects) {
+    public void setFrameObjects(CopyOnWriteArrayList<GameObject> frameObjects) {
         this.frameObjects = frameObjects;
     }
 

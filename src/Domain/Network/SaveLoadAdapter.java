@@ -1,4 +1,4 @@
-package Domain.UserFunctionalities;
+package Domain.Network;
 
 import org.json.simple.JSONObject;
 

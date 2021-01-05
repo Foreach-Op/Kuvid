@@ -12,11 +12,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CollisionHandler {
 
-    private final ArrayList<GameObject> frameObjects;
+    private final CopyOnWriteArrayList<GameObject> frameObjects;
     private final ObjectListener frame;
     private HashMap<String, HashMap<String, CollisionStrategy>> strategyMap;
 
-    public CollisionHandler(ArrayList<GameObject> frameObjects, ObjectListener frame) {
+    public CollisionHandler(CopyOnWriteArrayList<GameObject> frameObjects, ObjectListener frame) {
         this.frameObjects = frameObjects;
         this.frame = frame;
         initializeStrategyMap();

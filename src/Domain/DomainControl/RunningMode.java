@@ -18,7 +18,7 @@ public class RunningMode {
 
     private ObjectListener frameListener;
 
-    private ArrayList<GameObject> frameObjects;
+    private CopyOnWriteArrayList<GameObject> frameObjects;
 
     CollisionHandler collisionHandler;
     MovementHandler movementHandler;
@@ -41,7 +41,7 @@ public class RunningMode {
 
     public RunningMode(ObjectListener frameListener) {
         setFrameListener(frameListener);
-        frameObjects = new ArrayList<>();
+        frameObjects = new CopyOnWriteArrayList<>();
     }
 
 
@@ -83,7 +83,7 @@ public class RunningMode {
                 frameListener.onDestroy(frameObjects.get(i));
             }
         }
-        frameObjects=new ArrayList<>();
+        frameObjects=new CopyOnWriteArrayList<>();
         clock=GameConfiguration.getInstance().getData().getRemainingTime();
         GameConfiguration.getInstance().getData().setFrameObjects(frameObjects);
         moveCollidePeriod=20;

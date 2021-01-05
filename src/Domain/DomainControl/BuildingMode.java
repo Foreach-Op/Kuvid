@@ -125,7 +125,7 @@ public class BuildingMode {
         String movementType = configHash.get("fallingType");
         gameData.setMovementType(movementType);
 
-        double time = 1000.0;
+        double time = 3600.0;
         gameData.setRemainingTime(time);
 
         double score = 0.0;

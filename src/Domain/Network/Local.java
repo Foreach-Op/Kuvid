@@ -1,6 +1,5 @@
-package Domain.UserFunctionalities;
+package Domain.Network;
 
-import org.bson.Document;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
