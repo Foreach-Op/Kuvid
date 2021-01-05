@@ -51,6 +51,11 @@ public class ObjectCreationHandler {
 
 
     public GameObject createRandomFallingObject(){
+        // requires: remaining objects not null
+        // effects: decrease remainingObjects(type,subtype) by 1.
+        //          call createGameObject(type,subtype, randomInitialPosition()) to create object
+        //          and add it to the frameObject list.
+        // returns: Created gameObject
 
         String type=null;
         String subtype=null;
@@ -64,16 +69,30 @@ public class ObjectCreationHandler {
     }
 
     public GameObject createGameObject(String type, String subtype, Position position){
+        // requires: type,subtype is String ; position is position (x,y)
+        //           type,subtype,position is not null
+        // effects: call createGameObject(type,subtype, position,true) to create fallable object
+        //          and add it to the frameObject list.
+        // returns: Created gameObject
         return createGameObject(type,subtype,position,true);
     }
 
     public GameObject createGameObject(String type,String subtype,Position position,boolean isFallable){
+        // requires: type,subtype is String ; position is position (x,y)
+        //           type,subtype,position,isFallable is not null
+        // effects: create new gameObject with given parameters,
+        //          call createGameObject(gameObject),
+        //          and add created object to the frameObject list.
+        // returns: Created gameObject
         GameObject gameObject=objectFactory.createObject(type,subtype, position,isFallable);
         createGameObject(gameObject);
         return gameObject;
     }
 
     public GameObject createGameObject(GameObject gameObject){
+        // requires: gameObject is instance of GameObject, and not null
+        // effects: add given object to the frameObject list. call frame.onCreate to show added object on Frame
+        // returns: Created gameObject
         frameObjects.add(gameObject);
         frame.onCreate(gameObject);
         return gameObject;
@@ -104,27 +123,9 @@ public class ObjectCreationHandler {
 
     private Position randomInitialPosition(){
         int y=-L;
-        //int y=20; //test purpose
         int x= (new Random()).nextInt(gameScreenWidth *4/5-L);
 
         return new Position(x,y); /// randomize position
     }
 
-
-
-    /*
-    private class RemindTask extends TimerTask {
-
-        GameObject gameObject;
-        public RemindTask(GameObject gameObject) {
-            this.gameObject=gameObject;
-        }
-
-        @Override
-        public void run() {
-            gameObject.setCollectible(true);
-        }
-    }
-
-     */
 }
