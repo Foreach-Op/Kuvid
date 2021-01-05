@@ -59,7 +59,7 @@ public class RunningMode {
             Position position=new Position(xPos,yPos);
             shooter.setCurrentPosition(position);
         }
-
+        shooterHandler.changeBullet(); //since we do not keep current bullet
         frameObjects.add(shooter);
 
 
