@@ -38,9 +38,9 @@ public class GameConfiguration {
     }
 
     public void setScore(double score){
-        DecimalFormat df = new DecimalFormat("#.000");
+        DecimalFormat df = new DecimalFormat("#.00");
         data.setScore(score);
-        staticWindowListener.onScoreChange(String.format("%d,%02f",(int)score/1,score %1));
+        staticWindowListener.onScoreChange(df.format(score));
     }
 
     public void setHealth(double health){

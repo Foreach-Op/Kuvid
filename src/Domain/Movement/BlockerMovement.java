@@ -15,7 +15,8 @@ public class BlockerMovement implements MovementStrategy{
 
     public void killObj(GameObject obj){
         int height=GameConfiguration.getInstance().getData().getGameScreenHeight();
-        if(height<obj.getY()){
+        int L = GameConfiguration.getInstance().getData().getL();
+        if(height-L<obj.getY()){
             obj.destroy();
         }
     }
