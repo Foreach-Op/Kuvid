@@ -131,7 +131,7 @@ public class SaveWindow {
 
     private void SaveGame(String saveTitle, String username) {
 
-        GameController.getInstance().SaveGame(username);
+        GameController.getInstance().SaveGame(saveTitle,username);
 
     }
 

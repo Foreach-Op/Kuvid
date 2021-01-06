@@ -90,8 +90,6 @@ public class LoadWindow {
         panelLoad.setLayout(boxLayout);
         List<HashMap<String, String>> GameList = GameController.getInstance().LoadAllGames();
         for (HashMap<String, String> game: GameList) {
-            //title save-load kaldır kullanmıyoruz, hata vermesin diye put yaptım.
-            game.put("title", "AAAAAAA");
             AddSavedGameArea(game);
         }
 
