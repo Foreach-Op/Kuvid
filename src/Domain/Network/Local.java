@@ -4,7 +4,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +14,6 @@ public class Local implements SaveLoadAdapter {
 
 
     List<String> savedFilenames=new ArrayList<>();
-    List<JSONObject> savedGames=new ArrayList<>();
 
     @Override
     public JSONObject download(String filename) throws Exception {
@@ -50,24 +51,29 @@ public class Local implements SaveLoadAdapter {
     }
 
     @Override
-    public List<String> savedFiles() throws Exception { //if you need other variables, return savedGames
+    public List<HashMap<String, String>> savedFiles() throws Exception { //if you need other variables, return savedGames
+        List<HashMap<String, String>> savedGames=new ArrayList<>();
+        DecimalFormat df = new DecimalFormat("#.00");
         try {
             File myObj = new File("ave_files/saved_games.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 savedFilenames.add(data);
-
                 JSONObject json=getJson(data);
-                savedGames.add(json);
-
+                HashMap<String, String> gameMap=new HashMap<>();
+                gameMap.put("username",(String) json.get("username"));
+                gameMap.put("score",df.format((double) json.get("Score")));
+                gameMap.put("time",df.format((double) json.get("Time")));
+                gameMap.put("health",df.format((double) json.get("Health")));
+                savedGames.add(gameMap);
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("FileNotFound in Local.");
             e.printStackTrace();
         }
-        return savedFilenames;
+        return savedGames;
     }
 
     private JSONObject getJson(String filename) throws Exception{

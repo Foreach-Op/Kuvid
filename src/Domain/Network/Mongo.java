@@ -1,31 +1,27 @@
 package Domain.Network;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.*;
 import org.bson.Document;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Sorts.descending;
 
 public class Mongo implements SaveLoadAdapter {
 
     MongoCollection<Document> collection;
-    List<String> savedFilenames=new ArrayList<>();
-    List<JSONObject> savedGames=new ArrayList<>();
 
-    public Mongo(){
-        Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
+    public Mongo() {
+        Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
         mongoLogger.setLevel(Level.SEVERE); // e.g. or Log.WARNING, etc.
         MongoClient mongoClient = MongoClients.create("mongodb+srv://comp302_user:comp302_password@cluster0.fmfpb.mongodb.net/Comp302?retryWrites=true&w=majority"); // uri connection to the server
         MongoDatabase database = mongoClient.getDatabase("Comp302"); // selecting the database
@@ -64,29 +60,26 @@ public class Mongo implements SaveLoadAdapter {
     }
 
     @Override
-    public List<String> savedFiles() throws Exception {//if you need other variables, return savedGames
-        try {
-            File myObj = new File("ave_files/saved_games.txt");
-            Scanner myReader = new Scanner(myObj);
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                savedFilenames.add(data);
-
-                Document my_doc = collection.find(eq("username", data)).first();
-                JSONObject json=changetoJson(my_doc);
-                savedGames.add(json);
-            }
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+    public List<HashMap<String, String>> savedFiles() throws Exception {
+        List<HashMap<String, String>> savedGames = new ArrayList<>();
+        DecimalFormat df = new DecimalFormat("#.00");
+        FindIterable<Document> docs = collection.find();
+        for (Document doc : docs) {
+            JSONObject json = changetoJson(doc);
+            HashMap<String, String> gameMap = new HashMap<>();
+            gameMap.put("username", (String) json.get("username"));
+            gameMap.put("score", df.format((double) json.get("Score")));
+            gameMap.put("time", df.format((double) json.get("Time")));
+            gameMap.put("health", df.format((double) json.get("Health")));
+            savedGames.add(gameMap);
         }
-        return savedFilenames;
+
+        return savedGames;
     }
 
 
-    private JSONObject changetoJson(Document my_doc) throws Exception{
-        String jsonString=my_doc.toJson();
+    private JSONObject changetoJson(Document my_doc) throws Exception {
+        String jsonString = my_doc.toJson();
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(jsonString);
         return json;

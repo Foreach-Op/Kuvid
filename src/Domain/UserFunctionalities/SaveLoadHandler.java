@@ -5,6 +5,9 @@ import Domain.Network.SaveLoadAdapter;
 import Domain.Statistics.GameData;
 import org.json.simple.JSONObject;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class SaveLoadHandler {
 
     //burası çağırılarak yapılabilir.
@@ -38,6 +41,17 @@ public class SaveLoadHandler {
             e.printStackTrace();
         }
         return gameData;
+    }
+
+    public List<HashMap<String, String>> LoadAllGames(){
+        List<HashMap<String, String>> allGames=null;
+        try {
+            allGames=adapter.savedFiles();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return allGames;
+
     }
 
 

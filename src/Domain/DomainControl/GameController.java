@@ -7,6 +7,7 @@ import Domain.UserFunctionalities.SaveLoadHandler;
 import UI.AudioListener;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class GameController {
 
@@ -60,6 +61,11 @@ public class GameController {
     public void SaveGame(String fileName) {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
         saveLoadHandler.Save(fileName);
+    }
+
+    public List<HashMap<String, String>> LoadAllGames(){
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        return saveLoadHandler.LoadAllGames();
     }
 
     public void Move(String direction) {

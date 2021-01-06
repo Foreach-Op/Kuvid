@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
+import java.util.List;
 
 public class LoadWindow {
 
@@ -87,15 +88,12 @@ public class LoadWindow {
         panelLoad = new JPanel();
         BoxLayout boxLayout = new BoxLayout(panelLoad, BoxLayout.PAGE_AXIS);
         panelLoad.setLayout(boxLayout);
-
-        HashMap<String, String> hash = new HashMap<>();
-        hash.put("title", "Game 123");
-        hash.put("username", "alperklnc");
-        hash.put("score", "100");
-        hash.put("time", "25.2");
-        hash.put("health", "30");
-
-        AddSavedGameArea(hash);
+        List<HashMap<String, String>> GameList = GameController.getInstance().LoadAllGames();
+        for (HashMap<String, String> game: GameList) {
+            //title save-load kaldır kullanmıyoruz, hata vermesin diye put yaptım.
+            game.put("title", "AAAAAAA");
+            AddSavedGameArea(game);
+        }
 
         scrollPane = new JScrollPane(panelLoad);
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
@@ -135,15 +133,15 @@ public class LoadWindow {
             public void actionPerformed(ActionEvent e) {
                 int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game???? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
-                    LoadGame();
+                    LoadGame(hash.get("username"));
                     CloseLoadWindow();
                 }
             }
         });
     }
 
-    private void LoadGame() {
-        GameController.getInstance().LoadGame("Oguz");
+    private void LoadGame(String fileName) {
+        GameController.getInstance().LoadGame(fileName);
     }
 
     private JPanel SetInfoPanel(HashMap<String, String> hash) {
