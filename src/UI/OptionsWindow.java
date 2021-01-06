@@ -332,7 +332,8 @@ public class OptionsWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 textAreaMenuMusicVolume.setText(sliderMenuMusic.getValue() + "%");
-                audioController.setMenuMusicVolume(sliderMenuMusic.getValue() / 100.0);
+                //audioController.setMenuMusicVolume(sliderMenuMusic.getValue() / 100.0);
+                audioController.setMenuMusicVolume(0);
             }
         });
 

@@ -14,10 +14,10 @@ public class Shooter extends GameObject {
     private HashMap<String, HashMap<String, Integer>>  numOfBullets;
     private GameObject objectInTrigger=null;
 
-    private static GameData gameData=GameConfiguration.getInstance().getData();
+    private static GameData gameData = GameConfiguration.getInstance().getData();
 
     public Shooter() {
-        super("Shooter","1",new Position(500,500),90,false);
+        super("Shooter","1",new Position(gameData.getGameScreenWidth()/2,gameData.getGameScreenHeight() - 2*gameData.getL()),90,false);
         numOfBullets=GameConfiguration.getInstance().getData().getAmmunition();
         setVelocity(new Position(getL()/20,0));
         setHeight(getL());
@@ -66,7 +66,4 @@ public class Shooter extends GameObject {
     public HashMap<String, HashMap<String, Integer>> getAmmunition(){
         return GameConfiguration.getInstance().getData().getAmmunition();
     }
-
-
-
 }
