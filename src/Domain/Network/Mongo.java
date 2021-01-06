@@ -72,6 +72,11 @@ public class Mongo implements SaveLoadAdapter {
             gameMap.put("score", df.format((double) json.get("Score")));
             gameMap.put("time", df.format((double) json.get("Time")));
             gameMap.put("health", df.format((double) json.get("Health")));
+            double time=(double) json.get("Time");
+            int min=(int)time/60;
+            int sec=(int)((time-min*60)%60);
+            String clock=min+":"+sec;
+            gameMap.put("time", clock);
             savedGames.add(gameMap);
         }
 

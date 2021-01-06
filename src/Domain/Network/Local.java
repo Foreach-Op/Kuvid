@@ -55,7 +55,7 @@ public class Local implements SaveLoadAdapter {
         List<HashMap<String, String>> savedGames=new ArrayList<>();
         DecimalFormat df = new DecimalFormat("#.00");
         try {
-            File myObj = new File("ave_files/saved_games.txt");
+            File myObj = new File("save_files/saved_games.txt");
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -65,8 +65,12 @@ public class Local implements SaveLoadAdapter {
                 gameMap.put("title", (String) json.get("title"));
                 gameMap.put("username",(String) json.get("username"));
                 gameMap.put("score",df.format((double) json.get("Score")));
-                gameMap.put("time",df.format((double) json.get("Time")));
                 gameMap.put("health",df.format((double) json.get("Health")));
+                double time=(double) json.get("Time");
+                int min=(int)time/60;
+                int sec=(int)((time-min*60)%60);
+                String clock=min+":"+sec;
+                gameMap.put("time", clock);
                 savedGames.add(gameMap);
             }
             myReader.close();
