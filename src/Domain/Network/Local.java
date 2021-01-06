@@ -62,6 +62,7 @@ public class Local implements SaveLoadAdapter {
                 savedFilenames.add(data);
                 JSONObject json=getJson(data);
                 HashMap<String, String> gameMap=new HashMap<>();
+                gameMap.put("title", (String) json.get("title"));
                 gameMap.put("username",(String) json.get("username"));
                 gameMap.put("score",df.format((double) json.get("Score")));
                 gameMap.put("time",df.format((double) json.get("Time")));

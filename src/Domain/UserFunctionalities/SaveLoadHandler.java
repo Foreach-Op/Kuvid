@@ -20,10 +20,10 @@ public class SaveLoadHandler {
 
 
 
-    public void Save(String username){ //username-playername-filename is same
+    public void Save(String saveTitle,String username){ //username-playername-filename is same
 
         try {
-            Save save=new Save(username);
+            Save save=new Save(saveTitle,username);
             JSONObject json=save.SaveTheGame();
             adapter.upload(json);
         } catch (Exception e) {

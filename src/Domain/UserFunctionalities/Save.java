@@ -14,9 +14,11 @@ import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Save {
-    private String username="Oguz";
+    private String username;
+    private String saveTitle;
 
-    public Save(String username){
+    public Save(String saveTitle,String username){
+        this.saveTitle=saveTitle;
         this.username=username;
     }
 
@@ -38,13 +40,15 @@ public class Save {
 
 
         JSONObject mainJsonObject=new JSONObject();
+        mainJsonObject.put("title",saveTitle);
+        mainJsonObject.put("username",username);
         mainJsonObject.put("Health",health);
         mainJsonObject.put("Score",score);
         mainJsonObject.put("Time",time);
         mainJsonObject.put("AlphaBetaMovement",alphaBetaMovement);
         mainJsonObject.put("AlphaBetaShape",alphaBetaShape);
-        mainJsonObject.put("username",username);
         mainJsonObject.put("Difficulty",difficulty);
+
 
 
         JSONArray jsonRemainingObjectArray=new JSONArray();

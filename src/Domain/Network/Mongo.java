@@ -67,6 +67,7 @@ public class Mongo implements SaveLoadAdapter {
         for (Document doc : docs) {
             JSONObject json = changetoJson(doc);
             HashMap<String, String> gameMap = new HashMap<>();
+            gameMap.put("title", (String) json.get("title"));
             gameMap.put("username", (String) json.get("username"));
             gameMap.put("score", df.format((double) json.get("Score")));
             gameMap.put("time", df.format((double) json.get("Time")));

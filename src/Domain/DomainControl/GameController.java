@@ -58,9 +58,9 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void SaveGame(String fileName) {
+    public void SaveGame(String saveTitle,String fileName) {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        saveLoadHandler.Save(fileName);
+        saveLoadHandler.Save(saveTitle,fileName);
     }
 
     public List<HashMap<String, String>> LoadAllGames(){
