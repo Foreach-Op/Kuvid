@@ -5,6 +5,7 @@ import Domain.Objects.ObjectListener;
 import Domain.DomainControl.RunningMode;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 import Domain.Utils.GameActionHandler;
 import Domain.Utils.HotKeys;
 
@@ -25,7 +26,19 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     public void InitializeGameScreen(GameController gameController) {
         this.gameController = gameController;
+        if(GameConfiguration.getInstance().getData() == null){
+            System.out.println("deneme 1");
+        }
+        System.out.println("deneme 2");
+
         statisticsWindow.SetData(GameConfiguration.getInstance().getData());
+        statisticsWindow.SetGameController(gameController);
+        GameActionListener();
+    }
+
+    public void LoadGameScreen(GameController gameController, GameData data){
+        this.gameController = gameController;
+        statisticsWindow.SetData(data);
         statisticsWindow.SetGameController(gameController);
         GameActionListener();
     }

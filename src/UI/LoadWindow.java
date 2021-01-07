@@ -1,6 +1,8 @@
 package UI;
 
 import Domain.DomainControl.GameController;
+import Domain.Statistics.GameConfiguration;
+import Domain.Statistics.GameData;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -134,7 +136,15 @@ public class LoadWindow {
     }
 
     private void LoadGame(String fileName) {
-        GameController.getInstance().LoadGame(fileName);
+
+        if(!UIController.GetInstance().isGameRunning()){
+            UIController.GetInstance().initGame();
+            GameController.getInstance().LoadGameData(fileName);
+            GameController.getInstance().LoadGame();
+            UIController.GetInstance().loadGame();
+        }
+        GameController.getInstance().LoadGameData(fileName);
+        GameController.getInstance().LoadGame();
     }
 
     private JPanel SetInfoPanel(HashMap<String, String> hash) {
@@ -189,7 +199,7 @@ public class LoadWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
-                if(!uiController.isGameRunning){
+                if(!uiController.isGameRunning()){
                     uiController.openHomeScreen();
                 }
             }

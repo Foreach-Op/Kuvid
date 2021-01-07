@@ -57,10 +57,15 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void LoadGame(String fileName) {
+    GameData gameData;
+
+    public void LoadGameData(String fileName) {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        GameData data=saveLoadHandler.Load(fileName);
-        buildingMode.loadTheGame(data);
+        gameData=saveLoadHandler.Load(fileName);
+    }
+
+    public void LoadGame(){
+        buildingMode.loadTheGame(gameData);
         runningMode.startGame();
     }
 
