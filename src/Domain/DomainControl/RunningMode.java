@@ -116,7 +116,7 @@ public class RunningMode {
                 }
 
 
-                if(creationCounter==objectCreationPeriod){
+                if(creationCounter>=objectCreationPeriod){
                     objectCreationHandler.createRandomFallingObject();
                     creationCounter=0;
                 }
