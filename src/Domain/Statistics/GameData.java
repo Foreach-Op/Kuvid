@@ -4,13 +4,11 @@ import Domain.Objects.*;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Difficulty;
 import UI.ScreenInfo;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class GameData implements Serializable {
+public class GameData{
 
     private CopyOnWriteArrayList<GameObject> frameObjects = null;
     private ArrayList<GameObject> shieldedAtoms = null;
@@ -36,34 +34,6 @@ public class GameData implements Serializable {
     private Shooter shooter;
 
     public GameData(){}
-
-    public GameData(boolean isLoaded, HashMap<String, HashMap<String, Integer>> ammunition,
-                    HashMap<String, HashMap<String, Integer>> remainingObjects,
-                    Difficulty difficulty, int l, String alphaBetaType) {
-        this.isLoaded = isLoaded;
-        this.ammunition = ammunition;
-        this.remainingObjects = remainingObjects;
-        this.difficulty = difficulty;
-        setL(l);
-        this.alphaBetaType = alphaBetaType;
-    }
-
-    public GameData(CopyOnWriteArrayList<GameObject> frameObjects, double health,
-                    double score, double remainingTime, boolean isLoaded,
-                    HashMap<String, HashMap<String, Integer>> ammunition,
-                    HashMap<String, HashMap<String, Integer>> remainingObjects,
-                    Difficulty difficulty, int l, String alphaBetaType) {
-        this.frameObjects = frameObjects;
-        this.health = health;
-        this.score = score;
-        this.remainingTime = remainingTime;
-        this.isLoaded = isLoaded;
-        this.ammunition = ammunition;
-        this.remainingObjects = remainingObjects;
-        this.difficulty = difficulty;
-        setL(l);
-        this.alphaBetaType = alphaBetaType;
-    }
 
     public CopyOnWriteArrayList<GameObject> getFrameObjects() {
         return frameObjects;

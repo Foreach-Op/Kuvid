@@ -37,7 +37,6 @@ public class GameConfiguration {
         clock.append(min);
         clock.append(":");
         clock.append(sec);
-        //String Clock=min+":"+sec;
         staticWindowListener.onTimeChange(clock.toString());
     }
 

@@ -2,9 +2,8 @@ package Domain.Objects;
 
 import Domain.Statistics.GameConfiguration;
 import Domain.Utils.Position;
-import java.io.Serializable;
 
-public abstract class GameObject implements Serializable {
+public abstract class GameObject{
 
     private boolean isAlive=true;
     private String type;
