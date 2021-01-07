@@ -5,9 +5,9 @@ import Domain.Statistics.GameConfiguration;
 
 public class Player {
     private static Player player;
-    GameConfiguration gameConfiuration=GameConfiguration.getInstance();
-    private Health health=new Health(gameConfiuration.getData().getHealth());
-    private Score score=new Score(gameConfiuration.getData().getScore());
+    GameConfiguration gameConfiguration =GameConfiguration.getInstance();
+    private Health health=new Health(gameConfiguration.getData().getHealth());
+    private Score score=new Score(gameConfiguration.getData().getScore());
     //private String playerName;
 
     private Player(){}
@@ -25,7 +25,7 @@ public class Player {
 
     public void setHealth(double healthLevel) {
         this.health.setHealthLevel(healthLevel);
-        gameConfiuration.setHealth(healthLevel);
+        gameConfiguration.setHealth(healthLevel);
     }
 
     public double getScore() {
@@ -34,12 +34,12 @@ public class Player {
 
     public void setScore(double score) {
         this.score.setTotalScore(score);
-        gameConfiuration.setScore(score);
+        gameConfiguration.setScore(score);
     }
 
     public void hit(int distance){
         health.updateHealthLevel(distance);
-        gameConfiuration.setHealth(health.getHealthLevel());
+        gameConfiguration.setHealth(health.getHealthLevel());
         if(health.getHealthLevel()<=0){
             GameStatueControl.getInstance().setGameEnded();
         }
@@ -47,6 +47,6 @@ public class Player {
 
     public void increaseScore(double efficiency, double remaining_time_on_frame){
         score.updateTotalScore(efficiency,remaining_time_on_frame);
-        gameConfiuration.setScore(score.getTotalScore());
+        gameConfiguration.setScore(score.getTotalScore());
     }
 }

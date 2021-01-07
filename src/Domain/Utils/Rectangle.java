@@ -17,7 +17,7 @@ public class Rectangle {
     private ArrayList<Point> pointList;
     ArrayList<Position> cornerList;
     boolean isBlocker;
-    int L;
+    static int L=GameConfiguration.getInstance().getData().getL();
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
     public Rectangle(Position p, double width, double height, int angle, boolean isBlocker){
@@ -30,7 +30,6 @@ public class Rectangle {
         midPointY = locationY + height/2;
         this.isBlocker = isBlocker;
         setCorners(p);
-        L=GameConfiguration.getInstance().getData().getL();
 
     }
     private void setCorners(Position p){

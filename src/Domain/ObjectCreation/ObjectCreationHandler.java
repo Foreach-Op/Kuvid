@@ -51,6 +51,7 @@ public class ObjectCreationHandler {
 
 
     public GameObject createRandomFallingObject(){
+        //
         // requires: remaining objects not null
         // effects: decrease remainingObjects(type,subtype) by 1.
         //          call createGameObject(type,subtype, randomInitialPosition()) to create object

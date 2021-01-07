@@ -13,7 +13,7 @@ import Domain.Utils.*;
 
 public class ConfigureScreen {
 
-    private UIListener uiListener;
+    private UIController uiController;
 
     public JPanel panelMain;
     private JPanel panelSelectionFields;
@@ -60,10 +60,10 @@ public class ConfigureScreen {
     private JFrame configureScreenFrame;
 
     public ConfigureScreen() {
-        uiListener = UIController.GetInstance();
+        uiController = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
-        InitializeRBGroups();
+        BoundRBGroups();
         ActionListener();
     }
 
@@ -88,7 +88,10 @@ public class ConfigureScreen {
         CenterFrame(configureScreenFrame);
     }
 
-    private void InitializeRBGroups() {
+    /**
+     * Creates new button groups for radio buttons.
+     */
+    private void BoundRBGroups() {
         structureGroup = new ButtonGroup();
         structureGroup.add(radioButtonLinear);
         structureGroup.add(radioButtonTriangle);
@@ -104,10 +107,6 @@ public class ConfigureScreen {
         gameDifficultyGroup.add(radioButtonNormal);
         gameDifficultyGroup.add(radioButtonHard);
         radioButtonNormal.setSelected(true);
-    }
-
-    public HashMap<String, String> GetConfigurationInfo(){
-        return configurationInfo;
     }
 
     private void ActionListener() {
@@ -134,12 +133,7 @@ public class ConfigureScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Take numerical inputs as non-negative integers.
-                    int numberOfAtoms = Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
-                    int numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
-                    int numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
-                    int numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
-                    int length = Integer.parseUnsignedInt(textFieldLength.getText());
+                    CheckInput();
 
                     // Put object amounts and length into hashmap as String
                     configurationInfo.put(FinalValues.ATOM, textFieldNumberOfAtoms.getText());
@@ -182,7 +176,7 @@ public class ConfigureScreen {
 
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    uiListener.onStart(configurationInfo);
+                    uiController.startGame(configurationInfo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
@@ -228,9 +222,17 @@ public class ConfigureScreen {
             @Override
             public void windowClosing(WindowEvent e) {
                 e.getWindow().dispose();
-                uiListener.onHomeScreen();
+                uiController.openHomeScreen();
             }
         });
+    }
+
+    private void CheckInput() throws NumberFormatException{
+        Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
+        Integer.parseUnsignedInt(textFieldLength.getText());
     }
 
     private void CenterFrame(JFrame frame) {

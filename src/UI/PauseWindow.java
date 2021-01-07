@@ -26,10 +26,10 @@ public class PauseWindow {
     private Font buttonFont = new Font("Text Me One", Font.PLAIN, 28);
 
     private GameController gameController;
-    private UIListener uiListener;
+    private UIController uiController;
 
     public PauseWindow(GameController gameController) {
-        uiListener = UIController.GetInstance();
+        uiController = UIController.GetInstance();
         this.gameController = gameController;
         CreateUIElements();
         ActionListener();
@@ -68,14 +68,14 @@ public class PauseWindow {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uiListener.onSave();
+                uiController.openSaveWindow();
             }
         });
 
         buttonLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uiListener.onLoadScreen();
+                uiController.openLoadWindow();
             }
         });
 
@@ -93,7 +93,7 @@ public class PauseWindow {
         buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uiListener.onOptions();
+                uiController.openOptions();
             }
         });
 

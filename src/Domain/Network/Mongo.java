@@ -75,8 +75,11 @@ public class Mongo implements SaveLoadAdapter {
             double time=(double) json.get("Time");
             int min=(int)time/60;
             int sec=(int)((time-min*60)%60);
-            String clock=min+":"+sec;
-            gameMap.put("time", clock);
+            StringBuilder clock=new StringBuilder();
+            clock.append(min);
+            clock.append(":");
+            clock.append(sec);
+            gameMap.put("time", clock.toString());
             savedGames.add(gameMap);
         }
 

@@ -5,7 +5,7 @@ import Domain.Statistics.GameConfiguration;
 import java.io.Serializable;
 
 public class Health{
-
+    
     //We start from 100 health.
 
     private double healthLevel;

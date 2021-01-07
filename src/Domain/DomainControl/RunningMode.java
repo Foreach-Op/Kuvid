@@ -116,7 +116,7 @@ public class RunningMode {
                 }
 
 
-                if(creationCounter==objectCreationPeriod){
+                if(creationCounter>=objectCreationPeriod){
                     objectCreationHandler.createRandomFallingObject();
                     creationCounter=0;
                 }
@@ -205,7 +205,7 @@ public class RunningMode {
         int time = 0;
         switch (GameConfiguration.getInstance().getData().getDifficulty()) {
             case HARD:
-                time = 250; //hard has to be 250, but not working for 250?
+                time = 250;
                 break;
             case NORMAL:
                 time = 500;

@@ -2,9 +2,8 @@ package Domain.Collision;
 
 import Domain.Objects.GameObject;
 import Domain.Player.Player;
-import Domain.Statistics.GameConfiguration;
-import UI.AudioController;
-import UI.AudioListener;
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 public class ShooterBlockerCollision implements CollisionStrategy {
 

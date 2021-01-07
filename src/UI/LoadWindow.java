@@ -1,8 +1,8 @@
 package UI;
 
 import Domain.DomainControl.GameController;
+import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
-import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,9 +11,6 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -129,7 +126,7 @@ public class LoadWindow {
         loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game???? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? ", "Load Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     LoadGame(hash.get("username"));
                     CloseLoadWindow();
@@ -139,7 +136,15 @@ public class LoadWindow {
     }
 
     private void LoadGame(String fileName) {
-        GameController.getInstance().LoadGame(fileName);
+
+        if(!UIController.GetInstance().isGameRunning()){
+            UIController.GetInstance().initGame();
+            GameController.getInstance().LoadGameData(fileName);
+            GameController.getInstance().LoadGame();
+            UIController.GetInstance().loadGame();
+        }
+        GameController.getInstance().LoadGameData(fileName);
+        GameController.getInstance().LoadGame();
     }
 
     private JPanel SetInfoPanel(HashMap<String, String> hash) {
@@ -194,8 +199,8 @@ public class LoadWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
-                if(!uiController.isGameRunning){
-                    uiController.onHomeScreen();
+                if(!uiController.isGameRunning()){
+                    uiController.openHomeScreen();
                 }
             }
         });

@@ -4,7 +4,7 @@ import Domain.Blend.Blender;
 import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.GameStatueControl;
 import Domain.UserFunctionalities.SaveLoadHandler;
-import UI.AudioListener;
+import UI.Audio.AudioListener;
 
 import java.util.HashMap;
 import java.util.List;
@@ -51,14 +51,9 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void LoadGame(String fileName) {
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        GameData data=saveLoadHandler.Load(fileName);
-        buildingMode.loadTheGame(data);
-        runningMode.startGame();
-    }
+    GameData gameData;
 
-    public void SaveGame(String saveTitle,String fileName) {
+    public void SaveGameData(String saveTitle, String fileName) {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
         saveLoadHandler.Save(saveTitle,fileName);
     }
@@ -67,6 +62,17 @@ public class GameController {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
         return saveLoadHandler.LoadAllGames();
     }
+
+    public void LoadGameData(String fileName) {
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        gameData=saveLoadHandler.Load(fileName);
+    }
+
+    public void LoadGame(){
+        buildingMode.loadTheGame(gameData);
+        runningMode.startGame();
+    }
+
 
     public void Move(String direction) {
         if (!statueControl.isGamePaused()) {
