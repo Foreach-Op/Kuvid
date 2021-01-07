@@ -33,8 +33,12 @@ public class GameConfiguration {
         data.setRemainingTime(time);
         int min=(int)time/60;
         int sec=(int)((time-min*60)%60);
-        String Clock=min+":"+sec;
-        staticWindowListener.onTimeChange(Clock);
+        StringBuilder clock=new StringBuilder();
+        clock.append(min);
+        clock.append(":");
+        clock.append(sec);
+        //String Clock=min+":"+sec;
+        staticWindowListener.onTimeChange(clock.toString());
     }
 
     public void setScore(double score){
