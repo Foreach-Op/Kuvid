@@ -13,7 +13,7 @@ import Domain.Utils.*;
 
 public class ConfigureScreen {
 
-    private UIListener uiListener;
+    private UIController uiController;
 
     public JPanel panelMain;
     private JPanel panelSelectionFields;
@@ -60,7 +60,7 @@ public class ConfigureScreen {
     private JFrame configureScreenFrame;
 
     public ConfigureScreen() {
-        uiListener = UIController.GetInstance();
+        uiController = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
         InitializeRBGroups();
@@ -182,7 +182,7 @@ public class ConfigureScreen {
 
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    uiListener.onStart(configurationInfo);
+                    uiController.startGame(configurationInfo);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }
@@ -228,7 +228,7 @@ public class ConfigureScreen {
             @Override
             public void windowClosing(WindowEvent e) {
                 e.getWindow().dispose();
-                uiListener.onHomeScreen();
+                uiController.openHomeScreen();
             }
         });
     }

@@ -28,6 +28,8 @@ public class GameController {
     private AudioListener audioListener;
     private static GameController gameController;
 
+    private HashMap<String, String> configurationInfo;
+
     private GameController(){}
 
     public static GameController getInstance(){
@@ -44,6 +46,10 @@ public class GameController {
 
     public void setAudioListener(AudioListener audioListener){
         this.audioListener = audioListener;
+    }
+
+    public void setConfigurationInfo(HashMap<String, String> configurationInfo){
+        this.configurationInfo = configurationInfo;
     }
 
     public void StartGame(HashMap<String, String> configurationInfo) {

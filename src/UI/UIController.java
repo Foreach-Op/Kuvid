@@ -5,7 +5,7 @@ import Domain.DomainControl.RunningMode;
 
 import java.util.HashMap;
 
-public class UIController implements UIListener {
+public class UIController {
 
     private static UIController instance;
 
@@ -37,63 +37,58 @@ public class UIController implements UIListener {
         isGameRunning = true;
     }
 
-    @Override
-    public void onHomeScreen() {
+    public void loadGame(){
+
+    }
+
+    public void setConfigurationInfo(HashMap<String, String> configurationInfo){
+
+    }
+
+    public void initializeGame(){
+
+    }
+
+    public void openHomeScreen() {
         new HomeScreen();
     }
 
-    @Override
-    public void onConfigureScreen() {
+    public void openConfigureScreen() {
         new ConfigureScreen();
     }
 
-    @Override
-    public void onStart(HashMap<String, String> configurationInfo) {
-        initGame(configurationInfo);
-        System.out.println(isGameRunning);
-    }
-
-    @Override
-    public void onGameStart() {
-
-    }
-
-    @Override
-    public void onGameOver() {
-
-    }
-
-    @Override
-    public void onPause() {
-        new PauseWindow(gameController);
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onCredits() {
-
-    }
-
-    @Override
-    public void onOptions() {
-        new OptionsWindow();
-    }
-
-    @Override
-    public void onLoadScreen() {
-        new LoadWindow();
-    }
-
-    @Override
-    public void onSave() {
+    public void openSaveWindow() {
         new SaveWindow();
     }
 
-    @Override
+    public void openLoadWindow() {
+        new LoadWindow();
+    }
+
+    public void startGame(HashMap<String, String> configurationInfo) {
+        initGame(configurationInfo);
+    }
+
+    public void endGame() {
+
+    }
+
+    public void pause() {
+        new PauseWindow(gameController);
+    }
+
+    public void resume() {
+
+    }
+
+    public void openCredits() {
+
+    }
+
+    public void openOptions() {
+        new OptionsWindow();
+    }
+
     public boolean isGameRunning() {
         return isGameRunning;
     }

@@ -1,8 +1,6 @@
 package UI;
 
 import Domain.DomainControl.GameController;
-import Domain.Statistics.GameData;
-import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,9 +9,6 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -129,7 +124,7 @@ public class LoadWindow {
         loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game???? " + "index: " + buttonIndex, "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+                int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? ", "Load Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     LoadGame(hash.get("username"));
                     CloseLoadWindow();
@@ -195,7 +190,7 @@ public class LoadWindow {
             public void actionPerformed(ActionEvent e) {
                 CloseLoadWindow();
                 if(!uiController.isGameRunning){
-                    uiController.onHomeScreen();
+                    uiController.openHomeScreen();
                 }
             }
         });

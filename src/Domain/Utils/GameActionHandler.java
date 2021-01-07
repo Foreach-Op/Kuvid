@@ -2,7 +2,6 @@ package Domain.Utils;
 
 import Domain.DomainControl.GameController;
 import UI.UIController;
-import UI.UIListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,12 +10,10 @@ public class GameActionHandler extends AbstractAction {
 
     private String action;
     private GameController gameController;
-    private UIListener uiListener;
 
     public GameActionHandler(String action, GameController gameController) {
         this.action = action;
         this.gameController = gameController;
-        uiListener = UIController.GetInstance();
     }
 
     @Override
@@ -43,7 +40,7 @@ public class GameActionHandler extends AbstractAction {
             case "pause":
                 gameController.Pause();
                 if (gameController.isGamePaused())
-                    uiListener.onPause();
+                    UIController.GetInstance().pause();
                 break;
             case "resume":
                 gameController.Resume();

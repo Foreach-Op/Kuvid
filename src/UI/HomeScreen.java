@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class HomeScreen {
 
-    UIListener uiListener;
+    UIController uiController;
 
     private JPanel panelMain;
     private JButton buttonPlay;
@@ -17,7 +17,7 @@ public class HomeScreen {
     private JFrame homeScreenFrame;
 
     public HomeScreen() {
-        uiListener = UIController.GetInstance();
+        uiController = UIController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -55,10 +55,10 @@ public class HomeScreen {
                         "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
                 if (result == 0) {
                     CloseHomeScreen();
-                    uiListener.onConfigureScreen();
+                    uiController.openConfigureScreen();
                 } else if (result == 1){
                     CloseHomeScreen();
-                    uiListener.onLoadScreen();
+                    uiController.openLoadWindow();
                 }
             }
         });
@@ -66,14 +66,14 @@ public class HomeScreen {
         buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uiListener.onOptions();
+                uiController.openOptions();
             }
         });
 
         buttonCredits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                uiListener.onCredits();
+                uiController.openCredits();
             }
         });
 
