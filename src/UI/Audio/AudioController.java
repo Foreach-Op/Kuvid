@@ -1,4 +1,4 @@
-package UI;
+package UI.Audio;
 
 public class AudioController implements AudioListener {
 

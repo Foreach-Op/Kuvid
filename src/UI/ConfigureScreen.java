@@ -63,7 +63,7 @@ public class ConfigureScreen {
         uiController = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
-        InitializeRBGroups();
+        BoundRBGroups();
         ActionListener();
     }
 
@@ -88,7 +88,10 @@ public class ConfigureScreen {
         CenterFrame(configureScreenFrame);
     }
 
-    private void InitializeRBGroups() {
+    /**
+     * Creates new button groups for radio buttons.
+     */
+    private void BoundRBGroups() {
         structureGroup = new ButtonGroup();
         structureGroup.add(radioButtonLinear);
         structureGroup.add(radioButtonTriangle);
@@ -104,10 +107,6 @@ public class ConfigureScreen {
         gameDifficultyGroup.add(radioButtonNormal);
         gameDifficultyGroup.add(radioButtonHard);
         radioButtonNormal.setSelected(true);
-    }
-
-    public HashMap<String, String> GetConfigurationInfo(){
-        return configurationInfo;
     }
 
     private void ActionListener() {
@@ -134,12 +133,7 @@ public class ConfigureScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Take numerical inputs as non-negative integers.
-                    int numberOfAtoms = Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
-                    int numberOfBlockers = Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
-                    int numberOfPowerups = Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
-                    int numberOfMolecules = Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
-                    int length = Integer.parseUnsignedInt(textFieldLength.getText());
+                    CheckInput();
 
                     // Put object amounts and length into hashmap as String
                     configurationInfo.put(FinalValues.ATOM, textFieldNumberOfAtoms.getText());
@@ -231,6 +225,14 @@ public class ConfigureScreen {
                 uiController.openHomeScreen();
             }
         });
+    }
+
+    private void CheckInput() throws NumberFormatException{
+        Integer.parseUnsignedInt(textFieldNumberOfAtoms.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfBlockers.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfPowerups.getText());
+        Integer.parseUnsignedInt(textFieldNumberOfMolecules.getText());
+        Integer.parseUnsignedInt(textFieldLength.getText());
     }
 
     private void CenterFrame(JFrame frame) {
