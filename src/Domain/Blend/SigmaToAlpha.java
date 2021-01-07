@@ -12,7 +12,7 @@ public class SigmaToAlpha implements TransformStrategy {
 
     @Override
     public boolean Transform(HashMap<String, Integer> atomMap) {
-        int amount=atomMap.get(FinalValues.BETA);
+        int amount=atomMap.get(FinalValues.SIGMA);
         if(amount<SIGMA) return false;
         atomMap.put(FinalValues.SIGMA,atomMap.get(FinalValues.SIGMA)-SIGMA);
         atomMap.put(FinalValues.ALPHA,atomMap.get(FinalValues.ALPHA)+ALPHA);
