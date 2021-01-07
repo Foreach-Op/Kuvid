@@ -96,7 +96,6 @@ public class ShooterHandler {
             if(shooter.getRotationAngle()>-90){
                 shooter.setRotationAngle(shooter.getRotationAngle()-10);
             }
-
         }
         frameListener.onShooterPositionChange();
     }

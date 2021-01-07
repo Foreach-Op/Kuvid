@@ -53,6 +53,16 @@ public class GameController {
 
     GameData gameData;
 
+    public void SaveGameData(String saveTitle, String fileName) {
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        saveLoadHandler.Save(saveTitle,fileName);
+    }
+
+    public List<HashMap<String, String>> LoadAllGames(){
+        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
+        return saveLoadHandler.LoadAllGames();
+    }
+
     public void LoadGameData(String fileName) {
         SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
         gameData=saveLoadHandler.Load(fileName);
@@ -63,15 +73,6 @@ public class GameController {
         runningMode.startGame();
     }
 
-    public void SaveGame(String saveTitle,String fileName) {
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        saveLoadHandler.Save(saveTitle,fileName);
-    }
-
-    public List<HashMap<String, String>> LoadAllGames(){
-        SaveLoadHandler saveLoadHandler=new SaveLoadHandler();
-        return saveLoadHandler.LoadAllGames();
-    }
 
     public void Move(String direction) {
         if (!statueControl.isGamePaused()) {

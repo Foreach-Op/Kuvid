@@ -2,8 +2,6 @@ package UI;
 
 
 import Domain.DomainControl.GameController;
-import Domain.UserFunctionalities.Save;
-import Domain.UserFunctionalities.SaveLoadHandler;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -11,7 +9,6 @@ import javax.swing.text.StyleConstants;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
 
 public class SaveWindow {
     private JFrame frame;
@@ -131,7 +128,7 @@ public class SaveWindow {
 
     private void SaveGame(String saveTitle, String username) {
 
-        GameController.getInstance().SaveGame(saveTitle,username);
+        GameController.getInstance().SaveGameData(saveTitle,username);
 
     }
 
