@@ -23,7 +23,9 @@ public class BuildingMode {
         GameConfiguration gameConfiguration=GameConfiguration.getInstance();
         GameData gameData=gameConfiguration.getData();
         if(data!=null){
+            System.out.println("DEBUG 1");
             if(gameData!=null){
+                System.out.println("DEBUG 2");
                 //Gerekli yerler doldurulacak
                 gameConfiguration.setTime(data.getRemainingTime());
                 //gameConfiguration.setScore(data.getScore());
@@ -38,6 +40,7 @@ public class BuildingMode {
                 Player.getInstance().setHealth(data.getHealth());
                 Player.getInstance().setScore(data.getScore());
             }else {
+                System.out.println("DEBUG 3");
                 GameConfiguration.getInstance().setData(data);
             }
         }

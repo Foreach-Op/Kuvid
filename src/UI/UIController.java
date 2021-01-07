@@ -24,13 +24,18 @@ public class UIController {
         instance = this;
     }
 
-    public void initGame(HashMap<String, String> configurationInfo) {
-        GameScreen gameScreen = new GameScreen();
+    GameScreen gameScreen;
+
+    public void initGame(){
+        gameScreen = new GameScreen();
         RunningMode runningMode = new RunningMode(gameScreen);
         gameScreen.initialize(runningMode);
         gameController = GameController.getInstance();
         gameController.initialize(runningMode);
         gameController.setAudioListener(AudioController.GetInstance());
+    }
+
+    public void newGame(HashMap<String, String> configurationInfo) {
         gameController.StartGame(configurationInfo);
         gameScreen.InitializeGameScreen(gameController);
 
@@ -38,7 +43,9 @@ public class UIController {
     }
 
     public void loadGame(){
+        gameScreen.InitializeGameScreen(gameController);
 
+        isGameRunning = true;
     }
 
     public void setConfigurationInfo(HashMap<String, String> configurationInfo){
@@ -66,7 +73,8 @@ public class UIController {
     }
 
     public void startGame(HashMap<String, String> configurationInfo) {
-        initGame(configurationInfo);
+        initGame();
+        newGame(configurationInfo);
     }
 
     public void endGame() {
