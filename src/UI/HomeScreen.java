@@ -1,12 +1,16 @@
 package UI;
 
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class HomeScreen {
 
-    UIController uiController;
+    private UIController uiController;
+    private AudioListener audioListener;
 
     private JPanel panelMain;
     private JButton buttonPlay;
@@ -18,6 +22,7 @@ public class HomeScreen {
 
     public HomeScreen() {
         uiController = UIController.GetInstance();
+        audioListener = AudioController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -48,6 +53,7 @@ public class HomeScreen {
         buttonPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 String[] options = new String[2];
                 options[0] = "Create a new game";
                 options[1] = "Load a game";
@@ -66,6 +72,7 @@ public class HomeScreen {
         buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 uiController.openOptions();
             }
         });
@@ -73,6 +80,7 @@ public class HomeScreen {
         buttonCredits.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 uiController.openCredits();
             }
         });
@@ -80,6 +88,7 @@ public class HomeScreen {
         buttonExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game?",
                         "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {

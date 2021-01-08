@@ -12,6 +12,7 @@ public class AudioController implements AudioListener {
     private Audio fireSFX;
     private Audio gameOverSFX;
     private Audio blockSFX;
+    private Audio buttonClick;
 
     private static AudioController instance;
 
@@ -26,39 +27,33 @@ public class AudioController implements AudioListener {
         instance = this;
     }
 
-    public double getGameMusicVolume() {
-        return gameMusicVolume;
-    }
-
+    @Override
     public void setGameMusicVolume(double volume) {
         gameMusicVolume = volume;
     }
 
+    @Override
     public int getGameMusicVolumeAsInteger() {
         return (int) (gameMusicVolume * 100);
     }
 
-    public double getMenuMusicVolume() {
-        return menuMusicVolume;
-    }
-
+    @Override
     public int getMenuMusicVolumeAsInteger() {
         return (int) (menuMusicVolume * 100);
     }
 
+    @Override
     public void setMenuMusicVolume(double volume) {
         menuMusicVolume = volume;
         backgroundMenuMusic.SetVolume(volume);
     }
 
-    public double getSFXVolume() {
-        return SFXVolume;
-    }
-
+    @Override
     public int getSFXVolumeAsInteger() {
         return (int) (SFXVolume * 100);
     }
 
+    @Override
     public void setSFXVolume(double volume) {
         SFXVolume = volume;
     }
@@ -97,5 +92,11 @@ public class AudioController implements AudioListener {
     public void onBlock() {
         blockSFX = new Audio("fire");
         blockSFX.Start(false);
+    }
+
+    @Override
+    public void onButtonClick() {
+        buttonClick = new Audio("buttonClick");
+        buttonClick.Start(false);
     }
 }

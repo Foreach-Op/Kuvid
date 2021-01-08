@@ -7,4 +7,14 @@ public interface AudioListener {
     void onFire();
     void onGameOver();
     void onBlock();
+    void onButtonClick();
+
+    int getGameMusicVolumeAsInteger();
+    void setGameMusicVolume(double volume);
+
+    int getMenuMusicVolumeAsInteger();
+    void setMenuMusicVolume(double volume);
+
+    int getSFXVolumeAsInteger();
+    void setSFXVolume(double volume);
 }

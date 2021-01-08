@@ -10,10 +10,13 @@ import java.util.Enumeration;
 import java.util.HashMap;
 
 import Domain.Utils.*;
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 public class ConfigureScreen {
 
     private UIController uiController;
+    private AudioListener audioListener;
 
     public JPanel panelMain;
     private JPanel panelSelectionFields;
@@ -60,6 +63,7 @@ public class ConfigureScreen {
     private JFrame configureScreenFrame;
 
     public ConfigureScreen() {
+        audioListener = AudioController.GetInstance();
         uiController = UIController.GetInstance();
         configurationInfo = new HashMap<>();
         CreateUIElements();
@@ -133,6 +137,8 @@ public class ConfigureScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    audioListener.onButtonClick();
+
                     CheckInput();
 
                     // Put object amounts and length into hashmap as String
@@ -186,6 +192,8 @@ public class ConfigureScreen {
         buttonSetDefaultValues.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 // If Triangle Structure is selected, then unable falling type options and set Stationary type as default
                 textFieldNumberOfAtoms.setText("100");
                 textFieldNumberOfBlockers.setText("10");
@@ -204,6 +212,8 @@ public class ConfigureScreen {
         buttonResetValues.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 textFieldNumberOfAtoms.setText("");
                 textFieldNumberOfBlockers.setText("");
                 textFieldNumberOfPowerups.setText("");

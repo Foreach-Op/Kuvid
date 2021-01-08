@@ -1,6 +1,7 @@
 package UI;
 
 import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -9,12 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class OptionsWindow {
+
+    private AudioListener audioListener;
+
     private JPanel panelMain;
     private JTextArea textAreaTitle;
 
     private JPanel panelMenu;
     private JButton buttonSound;
-    private JButton buttonGameSettings;
     private JButton buttonControls;
     private JButton buttonBack;
 
@@ -135,10 +138,8 @@ public class OptionsWindow {
 
     private JFrame optionsFrame;
 
-    private AudioController audioController;
-
     public OptionsWindow() {
-        audioController = AudioController.GetInstance();
+        audioListener = AudioController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -153,15 +154,14 @@ public class OptionsWindow {
 
         textAreaTitle.setFont(ScreenInfo.titleFont);
         buttonSound.setFont(ScreenInfo.buttonFont);
-        buttonGameSettings.setFont(ScreenInfo.buttonFont);
         buttonControls.setFont(ScreenInfo.buttonFont);
         buttonBack.setFont(ScreenInfo.buttonFont);
 
         scrollPane.getVerticalScrollBar().setUnitIncrement(ScreenInfo.SCROLL_INCREMENT_AMOUNT);
 
-        sliderMenuMusic.setValue(audioController.getMenuMusicVolumeAsInteger());
-        sliderGameMusic.setValue(audioController.getGameMusicVolumeAsInteger());
-        sliderSFX.setValue(audioController.getSFXVolumeAsInteger());
+        sliderMenuMusic.setValue(audioListener.getMenuMusicVolumeAsInteger());
+        sliderGameMusic.setValue(audioListener.getGameMusicVolumeAsInteger());
+        sliderSFX.setValue(audioListener.getSFXVolumeAsInteger());
 
         SetFonts();
     }
@@ -170,15 +170,15 @@ public class OptionsWindow {
         // PANEL - SOUND
         textAreaMenuMusic.setFont(ScreenInfo.textFontSmall);
         textAreaMenuMusicVolume.setFont(ScreenInfo.textFontSmall);
-        textAreaMenuMusicVolume.setText(audioController.getMenuMusicVolumeAsInteger() + "%");
+        textAreaMenuMusicVolume.setText(audioListener.getMenuMusicVolumeAsInteger() + "%");
 
         textAreaGameMusic.setFont(ScreenInfo.textFontSmall);
         textAreaGameMusicVolume.setFont(ScreenInfo.textFontSmall);
-        textAreaGameMusicVolume.setText(audioController.getGameMusicVolumeAsInteger() + "%");
+        textAreaGameMusicVolume.setText(audioListener.getGameMusicVolumeAsInteger() + "%");
 
         textAreaSFX.setFont(ScreenInfo.textFontSmall);
         textAreaSFXVolume.setFont(ScreenInfo.textFontSmall);
-        textAreaSFXVolume.setText(audioController.getSFXVolumeAsInteger() + "%");
+        textAreaSFXVolume.setText(audioListener.getSFXVolumeAsInteger() + "%");
 
         // PANEL - CONTROLS
         textAreaActivity.setFont(ScreenInfo.textFontMedium);
@@ -286,17 +286,9 @@ public class OptionsWindow {
         buttonSound.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelSound.show();
-                panelGameSettings.hide();
-                panelControls.hide();
-            }
-        });
+                audioListener.onButtonClick();
 
-        buttonGameSettings.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                panelGameSettings.show();
-                panelSound.hide();
+                panelSound.show();
                 panelControls.hide();
             }
         });
@@ -304,15 +296,18 @@ public class OptionsWindow {
         buttonControls.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 panelControls.show();
                 panelSound.hide();
-                panelGameSettings.hide();
             }
         });
 
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 /*
                 String[] options = new String[2];
                 options[0] = "Save";
@@ -334,8 +329,7 @@ public class OptionsWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 textAreaMenuMusicVolume.setText(sliderMenuMusic.getValue() + "%");
-                //audioController.setMenuMusicVolume(sliderMenuMusic.getValue() / 100.0);
-                audioController.setMenuMusicVolume(0);
+                audioListener.setMenuMusicVolume(sliderMenuMusic.getValue() / 100.0);
             }
         });
 
@@ -343,7 +337,7 @@ public class OptionsWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 textAreaGameMusicVolume.setText(sliderGameMusic.getValue() + "%");
-                audioController.setGameMusicVolume(sliderGameMusic.getValue() / 100.0);
+                audioListener.setGameMusicVolume(sliderGameMusic.getValue() / 100.0);
             }
         });
 
@@ -351,7 +345,7 @@ public class OptionsWindow {
             @Override
             public void stateChanged(ChangeEvent e) {
                 textAreaSFXVolume.setText(sliderSFX.getValue() + "%");
-                audioController.setSFXVolume(sliderSFX.getValue() / 100.0);
+                audioListener.setSFXVolume(sliderSFX.getValue() / 100.0);
             }
         });
 

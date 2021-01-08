@@ -1,7 +1,8 @@
 package UI;
 
-
 import Domain.DomainControl.GameController;
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 import javax.swing.*;
 import javax.swing.text.SimpleAttributeSet;
@@ -11,6 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SaveWindow {
+
+    private AudioListener audioListener;
+
     private JFrame frame;
 
     private JPanel panelMain;
@@ -29,14 +33,14 @@ public class SaveWindow {
     private JButton buttonSaveNewGame;
 
     public SaveWindow() {
+        audioListener = AudioController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
 
     private void CreateUIElements() {
         frame = new JFrame();
-        frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        //frame.setSize(1280, 720);
+        frame.setSize(ScreenInfo.WINDOW_WIDTH, ScreenInfo.WINDOW_HEIGHT);
         frame.setResizable(false);
         frame.setUndecorated(true);
 
@@ -48,7 +52,6 @@ public class SaveWindow {
 
         frame.setContentPane(panelMain);
         frame.setVisible(true);
-        CenterFrame(frame);
     }
 
     private void AddTitle() {
@@ -89,6 +92,7 @@ public class SaveWindow {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 CloseSaveWindow();
             }
         });
@@ -96,6 +100,8 @@ public class SaveWindow {
         buttonSaveNewGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 JTextField textFieldTitle = new JTextField(10);
                 JTextField textFieldUsername = new JTextField(10);
 
@@ -130,15 +136,6 @@ public class SaveWindow {
 
         GameController.getInstance().SaveGameData(saveTitle,username);
 
-    }
-
-    private void CenterFrame(JFrame frame) {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-
-        int x = (dim.width - frame.getSize().width) / 2;
-        int y = (dim.height - frame.getSize().height) / 2;
-
-        frame.setLocation(x, y);
     }
 
     public void CloseSaveWindow() {

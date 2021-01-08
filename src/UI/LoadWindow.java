@@ -3,6 +3,8 @@ package UI;
 import Domain.DomainControl.GameController;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +19,7 @@ import java.util.List;
 public class LoadWindow {
 
     private  UIController uiController;
+    private AudioListener audioListener;
 
     private JFrame frame;
 
@@ -38,6 +41,7 @@ public class LoadWindow {
 
     public LoadWindow() {
         uiController = UIController.GetInstance();
+        audioListener = AudioController.GetInstance();
         CreateUIElements();
         ActionListener();
     }
@@ -126,6 +130,8 @@ public class LoadWindow {
         loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 int result = JOptionPane.showConfirmDialog(null, "Do you want to load this game? ", "Load Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     LoadGame(hash.get("username"));
@@ -198,6 +204,7 @@ public class LoadWindow {
         buttonBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 CloseLoadWindow();
                 if(!uiController.isGameRunning()){
                     uiController.openHomeScreen();

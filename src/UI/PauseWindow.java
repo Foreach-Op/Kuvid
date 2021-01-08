@@ -2,6 +2,8 @@ package UI;
 
 import Domain.DomainControl.GameController;
 import Domain.Utils.GameActionHandler;
+import UI.Audio.AudioController;
+import UI.Audio.AudioListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PauseWindow {
+
+    private GameController gameController;
+    private UIController uiController;
+    private AudioListener audioListener;
 
     private JTextArea textAreaTitle;
     private JPanel panelMain;
@@ -25,14 +31,13 @@ public class PauseWindow {
     private Font titleFont = new Font("Text Me One", Font.PLAIN, 48);
     private Font buttonFont = new Font("Text Me One", Font.PLAIN, 28);
 
-    private GameController gameController;
-    private UIController uiController;
-
     public PauseWindow(GameController gameController) {
+        audioListener = AudioController.GetInstance();
         uiController = UIController.GetInstance();
         this.gameController = gameController;
         CreateUIElements();
         ActionListener();
+
     }
 
     private void CreateUIElements() {
@@ -60,6 +65,8 @@ public class PauseWindow {
         buttonResume.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
+
                 new GameActionHandler("resume", gameController).PerformAction();
                 ClosePauseWindow();
             }
@@ -68,6 +75,7 @@ public class PauseWindow {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 uiController.openSaveWindow();
             }
         });
@@ -75,6 +83,7 @@ public class PauseWindow {
         buttonLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 uiController.openLoadWindow();
             }
         });
@@ -82,6 +91,7 @@ public class PauseWindow {
         buttonRestart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to restart the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     // END GAME
@@ -93,6 +103,7 @@ public class PauseWindow {
         buttonOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 uiController.openOptions();
             }
         });
@@ -100,6 +111,7 @@ public class PauseWindow {
         buttonMainMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game and go back to main menu?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     // END GAME
@@ -111,6 +123,7 @@ public class PauseWindow {
         buttonExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
                     System.exit(-1);
