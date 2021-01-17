@@ -1,15 +1,10 @@
 package Domain.UserFunctionalities;
 
-import Domain.ObjectCreation.ObjectFactory;
-import Domain.Objects.GameObject;
-import Domain.Statistics.GameConfiguration;
+
 import Domain.Statistics.GameData;
-import Domain.Utils.Position;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 

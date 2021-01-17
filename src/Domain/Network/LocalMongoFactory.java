@@ -11,8 +11,6 @@ public class LocalMongoFactory {
         } else{
             adapter=new Local();
         }
-        //adapter=new Local();
-
         return adapter;
     }
 

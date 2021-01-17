@@ -1,6 +1,5 @@
 package Domain.Movement;
 
-
 import Domain.Objects.GameObject;
 
 public class MovementStrategyFactory {

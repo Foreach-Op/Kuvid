@@ -1,9 +1,5 @@
 package Domain.Player;
 
-import Domain.Statistics.GameConfiguration;
-
-import java.io.Serializable;
-
 public class Score{
 
     //Obviously we start from 0 score.

@@ -1,5 +1,6 @@
-package Domain.Objects;
+package Domain.ShieldFeature;
 
+import Domain.Objects.Atom;
 import Domain.Utils.FinalValues;
 
 public abstract class Shield extends Atom {

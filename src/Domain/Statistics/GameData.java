@@ -70,10 +70,6 @@ public class GameData{
         this.remainingTime = remainingTime;
     }
 
-    public boolean isLoaded() {
-        return isLoaded;
-    }
-
     public void setLoaded(boolean loaded) {
         isLoaded = loaded;
     }

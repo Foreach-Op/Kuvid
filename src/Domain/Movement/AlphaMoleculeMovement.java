@@ -2,7 +2,6 @@ package Domain.Movement;
 
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
-import Domain.Utils.Position;
 
 public class AlphaMoleculeMovement implements MovementStrategy{
 

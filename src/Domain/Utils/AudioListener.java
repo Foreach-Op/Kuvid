@@ -1,4 +1,4 @@
-package UI.Audio;
+package Domain.Utils;
 
 public interface AudioListener {
     void onStart();

@@ -1,5 +1,7 @@
 package UI.Audio;
 
+import Domain.Utils.AudioListener;
+
 public class AudioController implements AudioListener {
 
     private double gameMusicVolume = 1.0;

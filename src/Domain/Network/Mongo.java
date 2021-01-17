@@ -5,7 +5,6 @@ import org.bson.Document;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.logging.Level;

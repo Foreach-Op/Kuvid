@@ -2,7 +2,7 @@ package UI;
 
 import Domain.DomainControl.GameController;
 import UI.Audio.AudioController;
-import UI.Audio.AudioListener;
+import Domain.Utils.AudioListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

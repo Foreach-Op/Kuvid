@@ -1,7 +1,7 @@
 package UI;
 
 import UI.Audio.AudioController;
-import UI.Audio.AudioListener;
+import Domain.Utils.AudioListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

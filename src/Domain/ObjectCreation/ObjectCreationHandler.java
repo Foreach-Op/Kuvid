@@ -1,6 +1,5 @@
 package Domain.ObjectCreation;
 
-
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;

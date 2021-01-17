@@ -1,6 +1,6 @@
-package Domain.Objects;
+package Domain.ShieldFeature;
 
-import Domain.Utils.FinalValues;
+import Domain.Objects.Atom;
 import Domain.Utils.Position;
 
 public class Zeta_Shield extends Shield{

@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 import Domain.Utils.*;
 import UI.Audio.AudioController;
-import UI.Audio.AudioListener;
+import Domain.Utils.AudioListener;
 
 public class ConfigureScreen {
 

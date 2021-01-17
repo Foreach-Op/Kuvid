@@ -3,8 +3,6 @@ package Domain.Movement;
 import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class MovementHandler {

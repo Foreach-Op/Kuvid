@@ -8,7 +8,6 @@ public class Player {
     GameConfiguration gameConfiguration =GameConfiguration.getInstance();
     private Health health=new Health(gameConfiguration.getData().getHealth());
     private Score score=new Score(gameConfiguration.getData().getScore());
-    //private String playerName;
 
     private Player(){}
 
