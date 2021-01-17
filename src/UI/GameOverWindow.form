@@ -4,12 +4,12 @@
     <rowspec value="center:20dlu:noGrow"/>
     <rowspec value="center:d:noGrow"/>
     <rowspec value="top:20dlu:noGrow"/>
-    <rowspec value="center:30dlu:noGrow"/>
+    <rowspec value="center:d:noGrow"/>
     <rowspec value="top:5dlu:noGrow"/>
-    <rowspec value="center:30dlu:noGrow"/>
+    <rowspec value="center:d:noGrow"/>
     <rowspec value="top:20dlu:grow"/>
     <rowspec value="center:50dlu:noGrow"/>
-    <rowspec value="top:30dlu:noGrow"/>
+    <rowspec value="top:20dlu:noGrow"/>
     <rowspec value="center:30dlu:noGrow"/>
     <rowspec value="center:30dlu:noGrow"/>
     <colspec value="fill:20dlu:noGrow"/>

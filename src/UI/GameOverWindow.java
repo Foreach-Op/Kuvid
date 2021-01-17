@@ -42,20 +42,20 @@ public class GameOverWindow {
         gameOverFrame = new JFrame();
         panelMain.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 20));
         gameOverFrame.setContentPane(panelMain);
-        gameOverFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 4, 600);
+        gameOverFrame.setSize(ScreenInfo.WINDOW_WIDTH * 2 / 7, ScreenInfo.WINDOW_HEIGHT * 2 / 3);
         gameOverFrame.setResizable(false);
         gameOverFrame.setUndecorated(true);
         gameOverFrame.setVisible(true);
 
         CenterFrame(gameOverFrame);
 
-        textAreaTitle.setFont(titleFont);
-        textAreaScore.setFont(buttonFont);
-        textAreaHighscore.setFont(buttonFont);
+        textAreaTitle.setFont(ScreenInfo.titleFont);
+        textAreaScore.setFont(ScreenInfo.textFontMedium);
+        textAreaHighscore.setFont(ScreenInfo.textFontMedium);
 
-        buttonRestart.setFont(buttonFont);
-        buttonMainMenu.setFont(buttonFont);
-        buttonExit.setFont(buttonFont);
+        buttonRestart.setFont(ScreenInfo.buttonFont);
+        buttonMainMenu.setFont(ScreenInfo.textFontSmall);
+        buttonExit.setFont(ScreenInfo.textFontSmall);
     }
 
     private void ActionListener() {
