@@ -56,7 +56,7 @@ public class ObjectPanel {
         final BufferedImage rotatedImage = new BufferedImage(w, h, bufferedImage.getType());
         final AffineTransform at = new AffineTransform();
         at.translate(w / 2, h / 2);
-        at.rotate(rads,width/2, height/2);
+        at.rotate(rads,width/2, height);
         at.translate(-bufferedImage.getWidth() / 2, -bufferedImage.getHeight() / 2);
         final AffineTransformOp rotateOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         rotateOp.filter(bufferedImage,rotatedImage);
@@ -70,6 +70,13 @@ public class ObjectPanel {
         if(type.equals("Shooter")){
             //System.out.println("Rotation: "+rotation);
             BufferedImage rotatedImage=rotateImage();
+            /*
+            final double rads = Math.toRadians(rotation);
+            final double sin = Math.abs(Math.sin(rads));
+            final double cos = Math.abs(Math.cos(rads));
+            final int w = (int) Math.floor(width * cos + height * sin);
+            final int h = (int) Math.floor(height * cos + width * sin);
+             */
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         }
 
