@@ -182,7 +182,9 @@ public class ConfigureScreen {
 
                     // CONFIGURE SCREEN'S JOB IS DONE
                     CloseConfigureScreen();
-                    uiController.startGame(configurationInfo);
+                    uiController.setConfigurationInfo(configurationInfo);
+                    uiController.initializeGame();
+                    uiController.startGame();
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(panelMain, "Please enter a non-negative integer.");
                 }

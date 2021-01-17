@@ -12,6 +12,11 @@ public class Player {
 
     private Player(){}
 
+    public void initializePlayer(){
+        health = new Health(gameConfiguration.getData().getHealth());
+        score=new Score(gameConfiguration.getData().getScore());
+    }
+
     public static Player getInstance(){
         if(player==null){
             player=new Player();
@@ -41,7 +46,7 @@ public class Player {
         health.updateHealthLevel(distance);
         gameConfiguration.setHealth(health.getHealthLevel());
         if(health.getHealthLevel()<=0){
-            GameStatueControl.getInstance().setGameEnded();
+            GameStatueControl.getInstance().setGameEnded(true);
         }
     }
 

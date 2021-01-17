@@ -157,6 +157,10 @@ public class GameController {
         }
     }
 
+    public void EndGame(){
+        runningMode.endGame();
+    }
+
     public void GameOver(){
         audioListener.onGameOver();
     }

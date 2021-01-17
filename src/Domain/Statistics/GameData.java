@@ -4,6 +4,7 @@ import Domain.Objects.*;
 import Domain.ShooterFunctions.Shooter;
 import Domain.Utils.Difficulty;
 import UI.ScreenInfo;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -11,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GameData{
 
     private CopyOnWriteArrayList<GameObject> frameObjects = null;
-    private ArrayList<GameObject> shieldedAtoms = null;
+    private ArrayList<GameObject> shieldedAtoms = new ArrayList<>();
 
     private double health=100;
     private double score=0;
@@ -24,7 +25,7 @@ public class GameData{
     private ArrayList<String[]> objectsOnFrame=null;
 
     private Difficulty difficulty=Difficulty.NORMAL;
-    private int L=10;
+    private int L;
     private String alphaBetaType;
     private String movementType;
 
@@ -33,7 +34,9 @@ public class GameData{
 
     private Shooter shooter;
 
-    public GameData(){}
+    public GameData(){
+        setL(10);
+    }
 
     public CopyOnWriteArrayList<GameObject> getFrameObjects() {
         return frameObjects;

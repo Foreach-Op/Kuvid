@@ -1,7 +1,6 @@
 package UI;
 
 import Domain.DomainControl.GameController;
-import Domain.Utils.GameActionHandler;
 import UI.Audio.AudioController;
 import UI.Audio.AudioListener;
 
@@ -10,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PauseWindow {
+public class GameOverWindow {
 
     private GameController gameController;
     private UIController uiController;
@@ -18,20 +17,20 @@ public class PauseWindow {
 
     private JTextArea textAreaTitle;
     private JPanel panelMain;
-    private JButton buttonResume;
+
     private JButton buttonRestart;
-    private JButton buttonOptions;
     private JButton buttonMainMenu;
     private JButton buttonExit;
-    private JButton buttonSave;
-    private JButton buttonLoad;
 
-    private JFrame pauseFrame;
+    private JTextArea textAreaScore;
+    private JTextArea textAreaHighscore;
+
+    private JFrame gameOverFrame;
 
     private Font titleFont = new Font("Text Me One", Font.PLAIN, 48);
     private Font buttonFont = new Font("Text Me One", Font.PLAIN, 28);
 
-    public PauseWindow(GameController gameController) {
+    public GameOverWindow(GameController gameController) {
         audioListener = AudioController.GetInstance();
         uiController = UIController.GetInstance();
         this.gameController = gameController;
@@ -40,71 +39,31 @@ public class PauseWindow {
     }
 
     private void CreateUIElements() {
-        pauseFrame = new JFrame();
+        gameOverFrame = new JFrame();
         panelMain.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 20));
-        pauseFrame.setContentPane(panelMain);
-        pauseFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 4, 600);
-        pauseFrame.setResizable(false);
-        pauseFrame.setUndecorated(true);
-        pauseFrame.setVisible(true);
+        gameOverFrame.setContentPane(panelMain);
+        gameOverFrame.setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 4, 600);
+        gameOverFrame.setResizable(false);
+        gameOverFrame.setUndecorated(true);
+        gameOverFrame.setVisible(true);
 
-        CenterFrame(pauseFrame);
+        CenterFrame(gameOverFrame);
 
         textAreaTitle.setFont(titleFont);
-        buttonResume.setFont(buttonFont);
-        buttonSave.setFont(buttonFont);
-        buttonLoad.setFont(buttonFont);
+        textAreaScore.setFont(buttonFont);
+        textAreaHighscore.setFont(buttonFont);
+
         buttonRestart.setFont(buttonFont);
-        buttonOptions.setFont(buttonFont);
         buttonMainMenu.setFont(buttonFont);
         buttonExit.setFont(buttonFont);
     }
 
     private void ActionListener() {
-        buttonResume.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                audioListener.onButtonClick();
-
-                new GameActionHandler("resume", gameController).PerformAction();
-                ClosePauseWindow();
-            }
-        });
-
-        buttonSave.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                audioListener.onButtonClick();
-                uiController.openSaveWindow();
-            }
-        });
-
-        buttonLoad.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                audioListener.onButtonClick();
-                uiController.openLoadWindow();
-            }
-        });
-
         buttonRestart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                audioListener.onButtonClick();
-                int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to restart the game?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-                if (result == JOptionPane.YES_OPTION) {
-                    // END GAME
-                    // START GAME
-                    uiController.restartGame();
-                }
-            }
-        });
-
-        buttonOptions.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                audioListener.onButtonClick();
-                uiController.openOptions();
+                CloseGameOverWindow();
+                uiController.restartNewGame();
             }
         });
 
@@ -114,9 +73,8 @@ public class PauseWindow {
                 audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game and go back to main menu?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
-                    ClosePauseWindow();
-                    uiController.endGame();
-                    uiController.openHomeScreen();
+                    // END GAME
+                    // HOME SCREEN
                 }
             }
         });
@@ -142,7 +100,7 @@ public class PauseWindow {
         frame.setLocation(x, y);
     }
 
-    public void ClosePauseWindow() {
-        pauseFrame.dispose();
+    public void CloseGameOverWindow() {
+        gameOverFrame.dispose();
     }
 }

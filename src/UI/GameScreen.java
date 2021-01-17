@@ -26,10 +26,6 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     public void InitializeGameScreen(GameController gameController) {
         this.gameController = gameController;
-        if(GameConfiguration.getInstance().getData() == null){
-            System.out.println("deneme 1");
-        }
-        System.out.println("deneme 2");
 
         statisticsWindow.SetData(GameConfiguration.getInstance().getData());
         statisticsWindow.SetGameController(gameController);
@@ -177,5 +173,9 @@ public class GameScreen extends JFrame implements ObjectListener {
 
     public void initialize(RunningMode runningMode) {
         runningMode.setFrameListener(this);
+    }
+
+    public void CloseGameScreen() {
+        gameScreen.dispose();
     }
 }

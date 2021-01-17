@@ -1,12 +1,16 @@
 package UI;
 
 import Domain.DomainControl.GameController;
+import Domain.DomainControl.GameOverListener;
 import Domain.DomainControl.RunningMode;
+import Domain.UserFunctionalities.GameStatueControl;
 import UI.Audio.AudioController;
 
 import java.util.HashMap;
 
-public class UIController {
+public class UIController implements GameOverListener {
+
+    private PauseWindow pauseWindow;
 
     private static UIController instance;
 
@@ -25,37 +29,8 @@ public class UIController {
         instance = this;
     }
 
-    GameScreen gameScreen;
-
-    public void initGame(){
-        gameScreen = new GameScreen();
-        RunningMode runningMode = new RunningMode(gameScreen);
-        gameScreen.initialize(runningMode);
-        gameController = GameController.getInstance();
-        gameController.initialize(runningMode);
-        gameController.setAudioListener(AudioController.GetInstance());
-    }
-
-    public void newGame(HashMap<String, String> configurationInfo) {
-        gameController.StartGame(configurationInfo);
-        gameScreen.InitializeGameScreen(gameController);
-
-        isGameRunning = true;
-    }
-
-    public void loadGame(){
-        gameScreen.InitializeGameScreen(gameController);
-
-        isGameRunning = true;
-    }
-
-    public void setConfigurationInfo(HashMap<String, String> configurationInfo){
-
-    }
-
-    public void initializeGame(){
-
-    }
+    private GameScreen gameScreen;
+    private HashMap<String, String> configurationInfo;
 
     public void openHomeScreen() {
         new HomeScreen();
@@ -65,29 +40,71 @@ public class UIController {
         new ConfigureScreen();
     }
 
-    public void openSaveWindow() {
-        new SaveWindow();
+    public void setConfigurationInfo(HashMap<String, String> configurationInfo){
+        this.configurationInfo = configurationInfo;
+    }
+
+    public void initializeGame(){
+        gameScreen = new GameScreen();
+        RunningMode runningMode = new RunningMode(gameScreen);
+        runningMode.setGameOverListener(this);
+        gameScreen.initialize(runningMode);
+        gameController = GameController.getInstance();
+        gameController.initialize(runningMode);
+        gameController.setAudioListener(AudioController.GetInstance());
+    }
+
+    public void startGame() {
+        gameController.StartGame(configurationInfo);
+        gameScreen.InitializeGameScreen(gameController);
+
+        isGameRunning = true;
     }
 
     public void openLoadWindow() {
         new LoadWindow();
     }
 
-    public void startGame(HashMap<String, String> configurationInfo) {
-        initGame();
-        newGame(configurationInfo);
+    public void loadGame(){
+        gameScreen.InitializeGameScreen(gameController);
+
+        isGameRunning = true;
+    }
+
+    public void restartGame(){
+        restartNewGame();
+        ClosePauseWindow();
+    }
+
+    public void restartNewGame() {
+        gameScreen.CloseGameScreen();
+        GameStatueControl.getInstance().setResumed();
+        GameStatueControl.getInstance().setGameEnded(false);
+        initializeGame();
+        startGame();
+    }
+
+    private void ClosePauseWindow() {
+        pauseWindow.ClosePauseWindow();
+    }
+
+    public void openSaveWindow() {
+        new SaveWindow();
+    }
+
+    public void openGameOverWindow() {
+        new GameOverWindow(gameController);
     }
 
     public void endGame() {
-
+        // close game screen
+        gameController.EndGame();
+        gameScreen.CloseGameScreen();
+        isGameRunning = false;
     }
 
     public void pause() {
-        new PauseWindow(gameController);
-    }
-
-    public void resume() {
-
+        pauseWindow = new PauseWindow(gameController);
     }
 
     public void openCredits() {
@@ -100,5 +117,10 @@ public class UIController {
 
     public boolean isGameRunning() {
         return isGameRunning;
+    }
+
+    @Override
+    public void onGameOver() {
+        openGameOverWindow();
     }
 }

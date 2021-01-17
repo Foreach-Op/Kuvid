@@ -16,6 +16,9 @@ public class BuildingMode {
     public void startNewGame(HashMap<String, String> configMap) {
         GameData gameData = hashToGameData(configMap);
         GameConfiguration.getInstance().setData(gameData);
+
+        Player.getInstance().setScore(gameData.getScore());
+        Player.getInstance().setHealth(gameData.getHealth());
         //RunningMode runningMode = new RunningMode();
     }
 
@@ -23,9 +26,7 @@ public class BuildingMode {
         GameConfiguration gameConfiguration=GameConfiguration.getInstance();
         GameData gameData=gameConfiguration.getData();
         if(data!=null){
-            System.out.println("DEBUG 1");
             if(gameData!=null){
-                System.out.println("DEBUG 2");
                 //Gerekli yerler doldurulacak
                 gameConfiguration.setTime(data.getRemainingTime());
                 //gameConfiguration.setScore(data.getScore());
@@ -37,10 +38,10 @@ public class BuildingMode {
                 gameData.setRemainingObjects(data.getRemainingObjects());
                 gameData.setObjectsOnFrame(data.getObjectsOnFrame());
                 gameData.setDifficulty(data.getDifficulty());
+                gameData.setShieldedAtoms(new ArrayList<>());
                 Player.getInstance().setHealth(data.getHealth());
                 Player.getInstance().setScore(data.getScore());
             }else {
-                System.out.println("DEBUG 3");
                 GameConfiguration.getInstance().setData(data);
             }
         }
@@ -147,8 +148,10 @@ public class BuildingMode {
         double score = 0.0;
         gameData.setScore(score);
 
+
         double health = 100.0;
         gameData.setHealth(health);
+
 
         HashMap<String, Integer> remainingShield = new HashMap<>();
         remainingShield.put(FinalValues.ETA, 10);

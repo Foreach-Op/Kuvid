@@ -32,7 +32,7 @@ public class GameStatueControl {
         return isEnded;
     }
 
-    public void setGameEnded(){
-        this.isEnded=true;
+    public void setGameEnded(boolean bool){
+        this.isEnded=bool;
     }
 }

@@ -102,7 +102,6 @@ public class ObjectCreationHandler {
     }
 
     private String getRandomType() {
-
         int random=(int) (Math.random() * 140);
         if (random<100){
             return FinalValues.MOLECULE;
@@ -119,8 +118,6 @@ public class ObjectCreationHandler {
     }
 
     private String getRandomSubType(String type,String subtype) {
-
-
         int length=remainingObjects.get(type).keySet().size();
         int random = (int) (Math.random() * length);
         if (random == 0) {if (remainingObjects.get(type).get(FinalValues.ALPHA) > 0) subtype = FinalValues.ALPHA;}

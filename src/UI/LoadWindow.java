@@ -1,8 +1,6 @@
 package UI;
 
 import Domain.DomainControl.GameController;
-import Domain.Statistics.GameConfiguration;
-import Domain.Statistics.GameData;
 import UI.Audio.AudioController;
 import UI.Audio.AudioListener;
 
@@ -142,9 +140,9 @@ public class LoadWindow {
     }
 
     private void LoadGame(String fileName) {
-
         if(!UIController.GetInstance().isGameRunning()){
-            UIController.GetInstance().initGame();
+
+            UIController.GetInstance().initializeGame();
             GameController.getInstance().LoadGameData(fileName);
             GameController.getInstance().LoadGame();
             UIController.GetInstance().loadGame();

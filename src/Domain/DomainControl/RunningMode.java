@@ -1,5 +1,6 @@
 package Domain.DomainControl;
 
+import Domain.Statistics.GameData;
 import Domain.UserFunctionalities.GameStatueControl;
 import Domain.Objects.*;
 import Domain.ShooterFunctions.Shooter;
@@ -8,8 +9,8 @@ import Domain.Collision.CollisionHandler;
 import Domain.Movement.MovementHandler;
 import Domain.ObjectCreation.ObjectCreationHandler;
 import Domain.ShooterFunctions.ShooterHandler;
-import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
+import UI.UIController;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class RunningMode {
 
     private ObjectListener frameListener;
+    private GameOverListener gameOverListener;
 
     private CopyOnWriteArrayList<GameObject> frameObjects;
 
@@ -46,7 +48,6 @@ public class RunningMode {
 
 
     public void startGame() {
-
         refreshTheGame();
         shooterHandler=new ShooterHandler(frameListener);
         Shooter shooter=GameConfiguration.getInstance().getData().getShooter();
@@ -71,7 +72,6 @@ public class RunningMode {
             functionTask=timerFunctions();
             timerFunction.scheduleAtFixedRate(functionTask,10,moveCollidePeriod);
         }
-
     }
 
     public void refreshTheGame(){
@@ -89,7 +89,6 @@ public class RunningMode {
         objectCreationPeriod=setCreationTime();
         clockCounter=0;
         creationCounter=0;
-        //GameStatueControl.getInstance().setPaused();
     }
 
     public void setFrameListener(ObjectListener frameListener) {
@@ -109,73 +108,19 @@ public class RunningMode {
                     GameConfiguration.getInstance().setTime(clock);
                     if(clock<=0){
                         GameConfiguration.getInstance().setTime(0.0);
-                        GameStatueControl.getInstance().setGameEnded();
+                        GameStatueControl.getInstance().setGameEnded(true);
                     }
                     clockCounter=0;
                 }
-
 
                 if(creationCounter>=objectCreationPeriod){
                     objectCreationHandler.createRandomFallingObject();
                     creationCounter=0;
                 }
 
-
-
                 clockCounter=clockCounter+moveCollidePeriod;
                 creationCounter=creationCounter+moveCollidePeriod;
 
-                if(GameStatueControl.getInstance().isGameEnded()){
-                    endGame();
-                }
-            }
-        };
-    }
-
-
-
-    private TimerTask moveAndCollide() {
-
-        return new TimerTask() {
-            @Override
-            public void run() {
-                movementHandler.move();
-                collisionHandler.collisionDetect();
-                if(GameStatueControl.getInstance().isGameEnded()){
-                    endGame();
-                }
-            }
-        };
-    }
-
-
-    private TimerTask createObject() {
-
-        return new TimerTask() {
-            @Override
-            public void run() {
-
-                objectCreationHandler.createRandomFallingObject();
-                if(GameStatueControl.getInstance().isGameEnded()){
-                    endGame();
-                }
-            }
-        };
-    }
-
-
-    private TimerTask clock() {
-
-        return new TimerTask() {
-            @Override
-            public void run() {
-
-                clock=clock-0.1;
-                GameConfiguration.getInstance().setTime(clock);
-                if(clock<=0){
-                    GameConfiguration.getInstance().setTime(0.0);
-                    GameStatueControl.getInstance().setGameEnded();
-                }
                 if(GameStatueControl.getInstance().isGameEnded()){
                     endGame();
                 }
@@ -188,6 +133,7 @@ public class RunningMode {
         timerFunction.cancel();
         GameStatueControl.getInstance().setPaused();
     }
+
     public void resumeGame(){
         timerFunction=new Timer();
         functionTask=timerFunctions();
@@ -195,9 +141,15 @@ public class RunningMode {
         GameStatueControl.getInstance().setResumed();
     }
 
-    private void endGame(){
+    public void endGame(){
         pauseGame();
+        gameOverListener.onGameOver();
+
         //GameOver()
+    }
+
+    private void gameOver(){
+        GameConfiguration.getInstance().setData(new GameData());
     }
 
     private int setCreationTime() {
@@ -216,4 +168,9 @@ public class RunningMode {
         return time;
     }
 
+
+
+    public void setGameOverListener(UIController uiController) {
+        gameOverListener = uiController;
+    }
 }
