@@ -34,3 +34,5 @@ Active Functions so Far:
 *  Save
 *  Load
 *  Pause-Resume-Restart
+*  Collect Hearths (increase Health)
+*  Collect Clocks (increse Time)
