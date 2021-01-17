@@ -5,10 +5,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Local implements SaveLoadAdapter {
 
@@ -82,6 +79,7 @@ public class Local implements SaveLoadAdapter {
             System.out.println("FileNotFound in Local.");
             e.printStackTrace();
         }
+        Collections.reverse(savedGames);
         return savedGames;
     }
 

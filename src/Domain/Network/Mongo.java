@@ -7,10 +7,7 @@ import org.json.simple.parser.JSONParser;
 
 import java.io.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,25 +33,7 @@ public class Mongo implements SaveLoadAdapter {
     }
 
     @Override
-    public boolean upload(JSONObject json) throws Exception {
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-        PrintWriter pw = null;
-
-        try {
-            fw = new FileWriter("save_files/saved_games.txt", true);
-            bw = new BufferedWriter(fw);
-            pw = new PrintWriter(bw);
-
-            pw.println(json.get("username"));
-            pw.flush();
-
-        } finally {
-            pw.close();
-            bw.close();
-            fw.close();
-        }
-
+    public boolean upload(JSONObject json){
         collection.insertOne(Document.parse(json.toString()));
         return true;
     }
@@ -82,6 +61,7 @@ public class Mongo implements SaveLoadAdapter {
             gameMap.put("time", clock.toString());
             savedGames.add(gameMap);
         }
+        Collections.reverse(savedGames);
 
         return savedGames;
     }
