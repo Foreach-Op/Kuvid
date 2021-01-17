@@ -104,12 +104,19 @@ public class BuildingMode {
         remainingObjects.put(FinalValues.POWERUP, powerupAmountHash);
 
         //Clock
-        int clockAmount=100;
+        int clockAmount=50;
         HashMap<String,Integer> clockAmountHash=new HashMap<>();
         clockAmountHash.put("1",clockAmount);
         remainingObjects.put(FinalValues.CLOCK,clockAmountHash);
+
+        //Hearth
+        int hearthAmount=50;
+        HashMap<String,Integer> hearthAmountHash=new HashMap<>();
+        hearthAmountHash.put("1",hearthAmount);
+        remainingObjects.put(FinalValues.HEARTH,hearthAmountHash);
+
         gameData.setRemainingObjects(remainingObjects);
-        System.out.println(gameData.getRemainingObjects());
+
         //----Difficulty
         String difficultyStr = configHash.get("difficulty");
         Difficulty difficulty;

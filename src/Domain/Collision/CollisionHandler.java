@@ -34,6 +34,7 @@ public class CollisionHandler {
         HashMap<String, CollisionStrategy> shooterStrategies = new HashMap<String, CollisionStrategy>();
         shooterStrategies.put(FinalValues.POWERUP, new ShooterPowerupCollision());
         shooterStrategies.put(FinalValues.CLOCK,new ShooterClockCollision());
+        shooterStrategies.put(FinalValues.HEARTH,new ShooterHearthCollision());
         strategyMap.put(FinalValues.SHOOTER, shooterStrategies);
     }
 

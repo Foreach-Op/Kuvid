@@ -61,7 +61,7 @@ public class ObjectCreationHandler {
         String subtype=null;
         while (subtype == null) {
             type = getRandomType();
-            if(type.equals(FinalValues.CLOCK))
+            if(type.equals(FinalValues.CLOCK)||type.equals(FinalValues.HEARTH))
                 subtype="1";
             else
                 subtype = getRandomSubType(type,subtype);
@@ -103,7 +103,7 @@ public class ObjectCreationHandler {
 
     private String getRandomType() {
 
-        int random=(int) (Math.random() * 130);
+        int random=(int) (Math.random() * 140);
         if (random<100){
             return FinalValues.MOLECULE;
         }
@@ -111,8 +111,10 @@ public class ObjectCreationHandler {
             return FinalValues.BLOCKER;
         } else if(random<120&&random>=110){
             return FinalValues.POWERUP;
-        }else {
+        }else if(random<130&&random>=120){
             return FinalValues.CLOCK;
+        }else {
+            return FinalValues.HEARTH;
         }
     }
 

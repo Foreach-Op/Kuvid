@@ -28,8 +28,9 @@ public class ObjectFactory {
             case FinalValues.ATOM:
                 return AtomFactory.getInstance().createAtom(subtype,position,90);
             case FinalValues.CLOCK:
-                System.out.println("Here");
                 return new Clock("1",position,90);
+            case FinalValues.HEARTH:
+                return new Hearth("1",position,90);
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
         }

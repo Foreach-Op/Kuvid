@@ -5,6 +5,7 @@ public interface FinalValues {
     String MOLECULE="Molecule";
     String ATOM="Atom";
     String CLOCK="Clock";
+    String HEARTH="Hearth";
     String BLOCKER="Blocker";
     String SHOOTER="Shooter";
     String SHIELD = "Shield";
