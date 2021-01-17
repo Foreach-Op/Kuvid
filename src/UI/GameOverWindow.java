@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 public class GameOverWindow {
 
@@ -27,13 +28,13 @@ public class GameOverWindow {
 
     private JFrame gameOverFrame;
 
-    private Font titleFont = new Font("Text Me One", Font.PLAIN, 48);
-    private Font buttonFont = new Font("Text Me One", Font.PLAIN, 28);
+    private double score;
 
-    public GameOverWindow(GameController gameController) {
+    public GameOverWindow(GameController gameController, double score) {
         audioListener = AudioController.GetInstance();
         uiController = UIController.GetInstance();
         this.gameController = gameController;
+        this.score = score;
         CreateUIElements();
         ActionListener();
     }
@@ -51,6 +52,9 @@ public class GameOverWindow {
 
         textAreaTitle.setFont(ScreenInfo.titleFont);
         textAreaScore.setFont(ScreenInfo.textFontMedium);
+
+        DecimalFormat df = new DecimalFormat("#.00");
+        textAreaScore.setText("Score: " + df.format(score));
         textAreaHighscore.setFont(ScreenInfo.textFontMedium);
 
         buttonRestart.setFont(ScreenInfo.buttonFont);

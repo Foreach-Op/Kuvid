@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.GameOverWindow">
   <grid id="27dc6" binding="panelMain" layout-manager="FormLayout">
-    <rowspec value="center:20dlu:noGrow"/>
+    <rowspec value="center:30dlu:noGrow"/>
     <rowspec value="center:d:noGrow"/>
     <rowspec value="top:20dlu:noGrow"/>
     <rowspec value="center:d:noGrow"/>
@@ -12,11 +12,11 @@
     <rowspec value="top:20dlu:noGrow"/>
     <rowspec value="center:30dlu:noGrow"/>
     <rowspec value="center:30dlu:noGrow"/>
-    <colspec value="fill:20dlu:noGrow"/>
-    <colspec value="fill:d:grow"/>
-    <colspec value="left:4dlu:noGrow"/>
-    <colspec value="fill:max(d;4px):grow"/>
-    <colspec value="fill:20dlu:noGrow"/>
+    <colspec value="fill:max(m;10dlu):grow"/>
+    <colspec value="fill:d:noGrow"/>
+    <colspec value="left:10dlu:noGrow"/>
+    <colspec value="fill:d:noGrow"/>
+    <colspec value="fill:max(m;10dlu):grow"/>
     <constraints>
       <xy x="20" y="20" width="431" height="556"/>
     </constraints>
@@ -34,7 +34,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
-          <font name="Text Me One" size="48"/>
+          <font name="Calibri" size="48"/>
           <foreground color="-16777216"/>
           <opaque value="false"/>
           <text value="GAME OVER"/>
@@ -42,7 +42,7 @@
       </component>
       <component id="c10ef" class="javax.swing.JButton" binding="buttonRestart">
         <constraints>
-          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -50,12 +50,13 @@
           <borderPainted value="false"/>
           <contentAreaFilled value="true"/>
           <foreground color="-16777216"/>
+          <horizontalTextPosition value="0"/>
           <text value="Restart"/>
         </properties>
       </component>
       <component id="6e95c" class="javax.swing.JButton" binding="buttonMainMenu">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -63,6 +64,7 @@
           <borderPainted value="false"/>
           <contentAreaFilled value="true"/>
           <foreground color="-16777216"/>
+          <horizontalTextPosition value="0"/>
           <text value="Main Menu"/>
         </properties>
       </component>
@@ -75,7 +77,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
-          <font name="Text Me One" size="48"/>
+          <font name="Segoe UI" size="48"/>
           <foreground color="-16777216"/>
           <opaque value="false"/>
           <text value="Score:"/>
@@ -98,7 +100,7 @@
       </component>
       <component id="abb26" class="javax.swing.JButton" binding="buttonExit">
         <constraints>
-          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>

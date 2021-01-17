@@ -3,6 +3,7 @@ package UI;
 import Domain.DomainControl.GameController;
 import Domain.DomainControl.GameOverListener;
 import Domain.DomainControl.RunningMode;
+import Domain.Statistics.GameConfiguration;
 import Domain.UserFunctionalities.GameStatueControl;
 import UI.Audio.AudioController;
 
@@ -93,7 +94,7 @@ public class UIController implements GameOverListener {
     }
 
     public void openGameOverWindow() {
-        new GameOverWindow(gameController);
+        new GameOverWindow(gameController, GameConfiguration.getInstance().getData().getScore());
     }
 
     public void endGame() {
