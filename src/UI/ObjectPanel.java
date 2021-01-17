@@ -67,23 +67,24 @@ public class ObjectPanel {
         positionX=(int) newPosition.getX();
         positionY=(int) newPosition.getY();
         rotation=newPosition.getRotation();
+
+        //rotate içinde yapılanın width height lar içinde yaptım.(boyutlar sağlanıyor, dönme noktası sorunu var.)
+        final double rads = Math.toRadians(rotation);
+        final double sin = Math.abs(Math.sin(rads));
+        final double cos = Math.abs(Math.cos(rads));
+        final int w = (int) Math.floor(width * cos + height * sin);
+        final int h = (int) Math.floor(height * cos + width * sin);
+
+
         if(type.equals("Shooter")){
-            //System.out.println("Rotation: "+rotation);
             BufferedImage rotatedImage=rotateImage();
-            /*
-            final double rads = Math.toRadians(rotation);
-            final double sin = Math.abs(Math.sin(rads));
-            final double cos = Math.abs(Math.cos(rads));
-            final int w = (int) Math.floor(width * cos + height * sin);
-            final int h = (int) Math.floor(height * cos + width * sin);
-             */
-            newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            newImage = rotatedImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
         }
 
         else if(fallingType.equals("SPINNING")){
             if(type.equals("Molecule") && (subtype.equals(FinalValues.ALPHA) || subtype.equals(FinalValues.BETA))){
                 BufferedImage rotatedImage=rotateImage();
-                newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+                newImage = rotatedImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
             }
         }
 
