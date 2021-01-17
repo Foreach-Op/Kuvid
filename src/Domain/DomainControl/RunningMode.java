@@ -27,9 +27,6 @@ public class RunningMode {
 
     private Timer timerFunction;
     private TimerTask functionTask;
-    private TimerTask createObjectTask;
-    private TimerTask moveAndCollideTask;
-    private TimerTask clockTask;
 
     public ObjectCreationHandler objectCreationHandler;
     public ShooterHandler shooterHandler;
@@ -75,6 +72,7 @@ public class RunningMode {
     }
 
     public void refreshTheGame(){
+
         if(frameObjects!=null){
             for (int i = 1; i < frameObjects.size(); i++) {
                 frameObjects.get(i).destroy();
@@ -89,6 +87,13 @@ public class RunningMode {
         objectCreationPeriod=setCreationTime();
         clockCounter=0;
         creationCounter=0;
+        if(functionTask!=null){
+            functionTask.cancel();
+        }
+        if(timerFunction!=null){
+            timerFunction.cancel();
+        }
+
     }
 
     public void setFrameListener(ObjectListener frameListener) {
