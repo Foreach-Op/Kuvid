@@ -1,6 +1,6 @@
-Game Control Keys:(Some Keys are different because of practical usage)
+Game Control Keys:(check Options->Controls in Game to get more info)
 
-* Shoter Move-> A,D
+* Shoter Move-> A,D (left-right arrows)
 * Shooter Rotate-> Q,E
 * Fire->Space
 * Change Atom Randomly->C
@@ -10,8 +10,9 @@ Game Control Keys:(Some Keys are different because of practical usage)
 * Add Shield -> (shift)+(1,2,3,4) or click buttons on Screen
 * Pause -> Esc
 * Resume -> Click Resume
-* Save -> Click Save Game on Pause Screen(coming soon)
-* Load -> Click Load Game on Pause Screen(coming soon)
+* Restart -> Click Restart(on Pause Screen or End Screen)
+* Save -> Click Save Game on Pause Screen
+* Load -> Click Load Game on Pause Screen
 
 Active Functions so Far: 
 
@@ -30,3 +31,6 @@ Active Functions so Far:
 *  Atom-Molecule Collisino(Score working )
 *  Poweup-Blocker Collision
 *  Add Shield
+*  Save
+*  Load
+*  Pause-Resume-Restart
