@@ -24,10 +24,7 @@ public class BuildingMode {
         GameData gameData=gameConfiguration.getData();
         if(data!=null){
             if(gameData!=null){
-                //Gerekli yerler doldurulacak
                 gameConfiguration.setTime(data.getRemainingTime());
-                //gameConfiguration.setScore(data.getScore());
-                //gameConfiguration.setHealth(data.getHealth());
                 gameConfiguration.setAmmunition(data.getAmmunition());
                 gameConfiguration.setRemainingShield(data.getRemainingShield());
                 gameData.setAlphaBetaType(data.getAlphaBetaType());

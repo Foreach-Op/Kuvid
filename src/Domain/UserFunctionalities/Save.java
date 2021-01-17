@@ -3,13 +3,10 @@ package Domain.UserFunctionalities;
 import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
-import Domain.Utils.Difficulty;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 

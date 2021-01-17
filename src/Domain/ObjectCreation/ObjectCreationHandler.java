@@ -105,11 +105,11 @@ public class ObjectCreationHandler {
         if (random<100){
             return FinalValues.MOLECULE;
         }
-        else if(random<110 && random>=100) {
+        else if(random<115 && random>=100) {
             return FinalValues.BLOCKER;
-        } else if(random<120&&random>=110){
+        } else if(random<130&&random>=115){
             return FinalValues.POWERUP;
-        }else if(random<130&&random>=120){
+        }else if(random<135&&random>=130){
             return FinalValues.CLOCK;
         }else {
             return FinalValues.HEARTH;
