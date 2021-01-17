@@ -6,6 +6,7 @@ import Domain.Utils.AudioListener;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -307,20 +308,6 @@ public class OptionsWindow {
             @Override
             public void actionPerformed(ActionEvent e) {
                 audioListener.onButtonClick();
-
-                /*
-                String[] options = new String[2];
-                options[0] = "Save";
-                options[1] = "Don't Save";
-                int result = JOptionPane.showOptionDialog(null, "Do you want to create a new game or continue on an existing game?",
-                        "Save Changes", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, null);
-                if (result == 0) {
-                    SaveChanges();
-                    CloseSettingsWindow();
-                } else if (result == 1){
-                    CloseSettingsWindow();
-                }
-                 */
                 CloseSettingsWindow();
             }
         });
@@ -346,16 +333,6 @@ public class OptionsWindow {
             public void stateChanged(ChangeEvent e) {
                 textAreaSFXVolume.setText(sliderSFX.getValue() + "%");
                 audioListener.setSFXVolume(sliderSFX.getValue() / 100.0);
-            }
-        });
-
-        pkMoveRight.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(optionsFrame,
-                        "This feature does not provided yet. Please wait for updates.",
-                        "Warning",
-                        JOptionPane.WARNING_MESSAGE);
             }
         });
     }

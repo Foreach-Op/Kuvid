@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         UIController uiController = UIController.GetInstance();
         uiController.openHomeScreen();
-        //uiController.openGameOverWindow();
+        //uiController.openOptions();
 
         AudioController.GetInstance().onStart();
     }

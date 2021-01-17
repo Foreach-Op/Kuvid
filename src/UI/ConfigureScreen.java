@@ -76,7 +76,7 @@ public class ConfigureScreen {
         configureScreenFrame.setContentPane(panelMain);
         configureScreenFrame.pack();
         configureScreenFrame.setVisible(true);
-        configureScreenFrame.setSize(500, 500);
+        configureScreenFrame.setSize(ScreenInfo.WINDOW_WIDTH / 2, ScreenInfo.WINDOW_WIDTH / 2);
         configureScreenFrame.setResizable(false);
 
         radioButtonLinear.setText(MoleculeStructure.LINEAR.toString());
@@ -89,12 +89,45 @@ public class ConfigureScreen {
         radioButtonNormal.setText(Difficulty.NORMAL.toString());
         radioButtonHard.setText(Difficulty.HARD.toString());
 
+        SetFonts();
+
         CenterFrame(configureScreenFrame);
     }
 
-    /**
-     * Creates new button groups for radio buttons.
-     */
+    private void SetFonts(){
+        textAreaAtoms.setFont(ScreenInfo.textFontSmall);
+        textFieldNumberOfAtoms.setFont(ScreenInfo.textFontSmall);
+
+        textAreaBlockers.setFont(ScreenInfo.textFontSmall);
+        textFieldNumberOfBlockers.setFont(ScreenInfo.textFontSmall);
+
+        textAreaPowerups.setFont(ScreenInfo.textFontSmall);
+        textFieldNumberOfPowerups.setFont(ScreenInfo.textFontSmall);
+
+        textAreaMolecules.setFont(ScreenInfo.textFontSmall);
+        textFieldNumberOfMolecules.setFont(ScreenInfo.textFontSmall);
+
+        textAreaLength.setFont(ScreenInfo.textFontSmall);
+        textFieldLength.setFont(ScreenInfo.textFontSmall);
+
+        textAreaMoleculeStructure.setFont(ScreenInfo.textFontSmall);
+        radioButtonLinear.setFont(ScreenInfo.textFontSmall);
+        radioButtonTriangle.setFont(ScreenInfo.textFontSmall);
+
+        textAreaMoleculeFallingType.setFont(ScreenInfo.textFontSmall);
+        radioButtonStationary.setFont(ScreenInfo.textFontSmall);
+        radioButtonSpinning.setFont(ScreenInfo.textFontSmall);
+
+        textAreaDifficulty.setFont(ScreenInfo.textFontSmall);
+        radioButtonEasy.setFont(ScreenInfo.textFontSmall);
+        radioButtonNormal.setFont(ScreenInfo.textFontSmall);
+        radioButtonHard.setFont(ScreenInfo.textFontSmall);
+
+        buttonSetDefaultValues.setFont(ScreenInfo.textFontSmall);
+        buttonResetValues.setFont(ScreenInfo.textFontSmall);
+        buttonStart.setFont(ScreenInfo.buttonFont);
+    }
+
     private void BoundRBGroups() {
         structureGroup = new ButtonGroup();
         structureGroup.add(radioButtonLinear);
