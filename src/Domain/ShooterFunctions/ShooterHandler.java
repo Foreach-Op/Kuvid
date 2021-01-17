@@ -17,6 +17,7 @@ import static Domain.Utils.FinalValues.POWERUP;
 public class ShooterHandler {
 
     private Shooter shooter=GameConfiguration.getInstance().getData().getShooter();
+    private ShooterMovement shooterMovement;
     private ObjectListener frameListener;
     private GameData gameData;
     private HashMap<String,Integer> remainingShield;
@@ -24,14 +25,15 @@ public class ShooterHandler {
 
     public ShooterHandler(ObjectListener frameListener) {
         this.frameListener=frameListener;
-        gameData = GameConfiguration.getInstance().getData();
+        this.gameData = GameConfiguration.getInstance().getData();
         this.remainingShield= gameData.getRemainingShield();
+        this.shooterMovement=new ShooterMovement(shooter,gameData);
     }
 
     public Shooter createShooter() {
         this.shooter=new Shooter();
+        shooterMovement.setShooter(shooter);
         shooter.setCollectible(true);
-        //changeBullet();
         shooter.setY(GameConfiguration.getInstance().getData().getGameScreenHeight()-200);
         int x=(int) shooter.getX()+shooter.getWidth()/3;
         int y=(int) shooter.getY()-shooter.getHeight()/4;
@@ -53,7 +55,7 @@ public class ShooterHandler {
     }
 
     public void moveShooter(String direction){
-        double currentX=shooter.getX();
+        /*double currentX=shooter.getX();
         double currentY=shooter.getY();
         double xPos=0;
 
@@ -66,9 +68,9 @@ public class ShooterHandler {
         newPos.setRotation(shooter.getRotationAngle());
         shooter.setCurrentPosition(newPos);
         Position triggerPosition = setTriggerPosition(shooter.getObjectInTrigger().getType());
-        shooter.getObjectInTrigger().setCurrentPosition(triggerPosition);
+        shooter.getObjectInTrigger().setCurrentPosition(triggerPosition);*/
+        shooterMovement.moveShooter(direction);
         frameListener.onShooterPositionChange();
-
     }
 
     public void fire(ObjectCreationHandler objectCreationHandler){
@@ -90,13 +92,14 @@ public class ShooterHandler {
     }
 
     public void rotateShooter(String direction) {
-        if(direction.equals("right") && shooter.getRotationAngle()<90){
+        /*if(direction.equals("right") && shooter.getRotationAngle()<90){
             shooter.setRotationAngle(shooter.getRotationAngle()+10);
         } else{
             if(shooter.getRotationAngle()>-90){
                 shooter.setRotationAngle(shooter.getRotationAngle()-10);
             }
-        }
+        }*/
+        shooterMovement.rotateShooter(direction);
         frameListener.onShooterPositionChange();
     }
 

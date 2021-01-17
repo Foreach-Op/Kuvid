@@ -36,9 +36,11 @@ public class ObjectPanel {
         this.fallingType=fallingType;
 
         try {
-            bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + ".png"));
+
             if(type.equals("Molecule") && (subtype.equals("Alpha") || subtype.equals("Beta")) && alphaBetaType.equals("LINEAR")){
                 bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + "2" + ".png"));
+            } else {
+                bufferedImage = ImageIO.read(new File("assets/" + type + "s/" + subtype + ".png"));
             }
             BufferedImage rotatedImage=rotateImage();
             newImage = rotatedImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -56,23 +58,8 @@ public class ObjectPanel {
         final BufferedImage rotatedImage = new BufferedImage(w, h, bufferedImage.getType());
         final AffineTransform at = new AffineTransform();
         at.translate(w / 2, h / 2);
-        at.rotate(rads,width/2, height/2);
+        at.rotate(rads,0, 0);
         at.translate(-bufferedImage.getWidth() / 2, -bufferedImage.getHeight() / 2);
-        final AffineTransformOp rotateOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-        rotateOp.filter(bufferedImage,rotatedImage);
-        return rotatedImage;
-    }
-
-    //rotating objects
-    private BufferedImage rotateImage2() {
-        final double rads = Math.toRadians(rotation);
-        final double sin = Math.abs(Math.sin(rads));
-        final double cos = Math.abs(Math.cos(rads));
-        final int w = (int) Math.floor(bufferedImage.getWidth() * cos + bufferedImage.getHeight() * sin);
-        final int h = (int) Math.floor(bufferedImage.getHeight() * cos + bufferedImage.getWidth() * sin);
-        final BufferedImage rotatedImage = new BufferedImage(w, h, bufferedImage.getType());
-        final AffineTransform at = new AffineTransform();
-        at.rotate(Math.toRadians(rotation), bufferedImage.getWidth()/2, bufferedImage.getHeight()/2);
         final AffineTransformOp rotateOp = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
         rotateOp.filter(bufferedImage,rotatedImage);
         return rotatedImage;
@@ -98,7 +85,7 @@ public class ObjectPanel {
 
         else if(fallingType.equals("SPINNING")){
             if(type.equals("Molecule") && (subtype.equals(FinalValues.ALPHA) || subtype.equals(FinalValues.BETA))){
-                BufferedImage rotatedImage=rotateImage2();
+                BufferedImage rotatedImage=rotateImage();
                 newImage = rotatedImage.getScaledInstance(w, h, Image.SCALE_SMOOTH);
             }
         }

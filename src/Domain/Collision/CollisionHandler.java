@@ -4,9 +4,7 @@ import Domain.Objects.ObjectListener;
 import Domain.Objects.GameObject;
 import Domain.Utils.FinalValues;
 import Domain.Utils.Position;
-import Domain.Utils.Rectangle;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -39,8 +37,8 @@ public class CollisionHandler {
     }
 
     public void collisionDetect() {
-        Rectangle rectangle1;
-        Rectangle rectangle2;
+        Collider collider1;
+        Collider collider2;
         GameObject obj1;
         GameObject obj2;
         for (int i = 0; i < frameObjects.size(); i++) {
@@ -48,12 +46,12 @@ public class CollisionHandler {
             for (int j = 0; j < frameObjects.size(); j++) {
                 obj2 = frameObjects.get(j);
 
-                rectangle1 = new Rectangle(new Position((int) obj1.getX(), (int) obj1.getY()), obj1.getWidth(), obj2.getHeight(), 0,
+                collider1 = new Collider(new Position((int) obj1.getX(), (int) obj1.getY()), obj1.getWidth(), obj2.getHeight(), 0,
                         obj1.getType().equals(FinalValues.BLOCKER));
-                rectangle2 = new Rectangle(new Position((int) obj2.getX(), (int) obj2.getY()), obj2.getWidth(), obj2.getHeight(), 0,
+                collider2 = new Collider(new Position((int) obj2.getX(), (int) obj2.getY()), obj2.getWidth(), obj2.getHeight(), 0,
                         obj2.getType().equals(FinalValues.BLOCKER));
 
-                if (rectangle1.intersects(rectangle2)) {
+                if (collider1.intersects(collider2)) {
                     if (strategyMap.get(obj1.getType()) != null) {
                         CollisionStrategy collisionStrategy = strategyMap.get(obj1.getType()).get(obj2.getType());
                         if (collisionStrategy != null) {

@@ -1,12 +1,11 @@
-package Domain.Utils;
+package Domain.Collision;
 
 import Domain.Statistics.GameConfiguration;
+import Domain.Utils.Position;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Rectangle {
+public class Collider {
     private int locationX;
     private int locationY;
     private double length;
@@ -14,13 +13,12 @@ public class Rectangle {
     private int angle;
     private double midPointX;
     private double midPointY;
-    private ArrayList<Point> pointList;
-    ArrayList<Position> cornerList;
+    private ArrayList<Position> cornerList;
     boolean isBlocker;
     static int L=GameConfiguration.getInstance().getData().getL();
     //This class is created for simulating the window of GameObjects.
     //will be updated, some problems occurs because of the double-int casting
-    public Rectangle(Position p, double width, double height, int angle, boolean isBlocker){
+    public Collider(Position p, double width, double height, int angle, boolean isBlocker){
         this.locationX = (int) p.getX();
         this.locationY = (int) p.getY();
         this.length = height;
@@ -61,7 +59,7 @@ public class Rectangle {
         return cornerList;
     }
 
-    public boolean intersects(Rectangle second){
+    public boolean intersects(Collider second){
 
       for (Position p: cornerList){
           if(second.isIn(p)) return true;

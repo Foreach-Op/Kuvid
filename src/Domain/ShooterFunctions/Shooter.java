@@ -4,7 +4,6 @@ import Domain.Objects.GameObject;
 import Domain.Statistics.GameConfiguration;
 import Domain.Statistics.GameData;
 import Domain.Utils.Position;
-import Domain.Utils.Rectangle;
 
 import java.util.HashMap;
 
