@@ -27,6 +27,9 @@ public class ObjectFactory {
                 return BlockerFactory.getInstance().createBlocker(subtype, position);
             case FinalValues.ATOM:
                 return AtomFactory.getInstance().createAtom(subtype,position,90);
+            case FinalValues.CLOCK:
+                System.out.println("Here");
+                return new Clock("1",position,90);
             default:
                 return PowerupFactory.getInstance().createPowerup(subtype, position,isFallable);
         }

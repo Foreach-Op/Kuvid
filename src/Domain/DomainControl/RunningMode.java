@@ -62,8 +62,6 @@ public class RunningMode {
         shooterHandler.changeBullet(); //since we do not keep current bullet
         frameObjects.add(shooter);
 
-
-
         objectCreationHandler = new ObjectCreationHandler(frameObjects, frameListener);
         movementHandler = new MovementHandler(frameObjects, frameListener);
         collisionHandler = new CollisionHandler(frameObjects, frameListener);
@@ -106,6 +104,7 @@ public class RunningMode {
                 collisionHandler.collisionDetect();
 
                 if(clockCounter==clockPeriod){
+                    clock=GameConfiguration.getInstance().getData().getRemainingTime();
                     clock=clock-0.1;
                     GameConfiguration.getInstance().setTime(clock);
                     if(clock<=0){

@@ -61,7 +61,10 @@ public class ObjectCreationHandler {
         String subtype=null;
         while (subtype == null) {
             type = getRandomType();
-            subtype = getRandomSubType(type,subtype,remainingObjects);
+            if(type.equals(FinalValues.CLOCK))
+                subtype="1";
+            else
+                subtype = getRandomSubType(type,subtype);
         }
 
         remainingObjects.get(type).replace(subtype,remainingObjects.get(type).get(subtype)-1);
@@ -106,14 +109,18 @@ public class ObjectCreationHandler {
         }
         else if(random<110 && random>=100) {
             return FinalValues.BLOCKER;
-        } else {
+        } else if(random<120&&random>=110){
             return FinalValues.POWERUP;
+        }else {
+            return FinalValues.CLOCK;
         }
     }
 
-    private String getRandomSubType(String type,String subtype,HashMap<String, HashMap<String, Integer>> remainingObjects) {
+    private String getRandomSubType(String type,String subtype) {
 
-        int random = (int) (Math.random() * 4);
+
+        int length=remainingObjects.get(type).keySet().size();
+        int random = (int) (Math.random() * length);
         if (random == 0) {if (remainingObjects.get(type).get(FinalValues.ALPHA) > 0) subtype = FinalValues.ALPHA;}
         else if (random == 1){ if(remainingObjects.get(type).get(FinalValues.BETA)>0) subtype =FinalValues.BETA;}
         else if (random == 2){ if(remainingObjects.get(type).get(FinalValues.GAMMA)>0) subtype =FinalValues.GAMMA;}

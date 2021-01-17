@@ -11,6 +11,7 @@ public class MovementStrategyFactory {
     private static MovementStrategy gammaMolMovement = new GammaMoleculeMovement();
     private static MovementStrategy sigmaMolMovement = new SigmaMoleculeMovement();
     private static MovementStrategy powerupMovement = new PowerupMovement();
+    private static MovementStrategy clockMovement = new ClockMovement();
 
 
     public static MovementStrategy getStrategy(GameObject obj){
@@ -40,6 +41,9 @@ public class MovementStrategyFactory {
                 break;
             case "Powerup":
                 movementStrategy=powerupMovement;
+                break;
+            case "Clock":
+                movementStrategy=clockMovement;
                 break;
             default:
                 //How to handle Shooter...

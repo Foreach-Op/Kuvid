@@ -33,6 +33,7 @@ public class CollisionHandler {
         strategyMap.put(FinalValues.BLOCKER, blockerStrategies);
         HashMap<String, CollisionStrategy> shooterStrategies = new HashMap<String, CollisionStrategy>();
         shooterStrategies.put(FinalValues.POWERUP, new ShooterPowerupCollision());
+        shooterStrategies.put(FinalValues.CLOCK,new ShooterClockCollision());
         strategyMap.put(FinalValues.SHOOTER, shooterStrategies);
     }
 
