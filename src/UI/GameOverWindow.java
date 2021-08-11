@@ -77,8 +77,9 @@ public class GameOverWindow {
                 audioListener.onButtonClick();
                 int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit the game and go back to main menu?", "", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
                 if (result == JOptionPane.YES_OPTION) {
-                    // END GAME
-                    // HOME SCREEN
+                    CloseGameOverWindow();
+                    uiController.endGame();
+                    uiController.openHomeScreen();
                 }
             }
         });
